@@ -14,7 +14,7 @@ module.exports = {
     cert: "./certs/panazic.crt",
   },
 
-  DOMAIN: "https://donaldtrade.com",
+  DOMAIN: "localhost",
   TITLE_SITE: "DonaldTrade",
   CONTACT: "",
   MAIL_LOGO: "https://donaldtrade.com/logo.png",
@@ -45,9 +45,9 @@ module.exports = {
 
   DATA_HOST: "localhost",
   DATA_USER: "root",
-  DATA_PASS: "1",
+  DATA_PASS: "root",
   DATA_DB: "bovip",
-  DATA_PORT: 3306,
+  DATA_PORT: 3307,
 
   PORT_TRADE: 2096, // default 443 ssl
   PORT_SYS: 2087,
