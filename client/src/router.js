@@ -251,6 +251,19 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: "Trang chủ", url: "/" },
+              { title: "Công cụ trừ tiền", active: true },
+            ],
+            pageTitle: "Trừ tiền",
+            rule: "editor",
+          },
+        },
+        {
+          path: "/tool/data-tool/adds-money",
+          name: "tool-adds-money",
+          component: () => import("./layouts/tool/AddsMoney.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Trang chủ", url: "/" },
               { title: "Công cụ cộng tiền", active: true },
             ],
             pageTitle: "Cộng tiền",
