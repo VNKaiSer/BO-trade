@@ -59,7 +59,8 @@ const {
     getSecrect2FA,
     getListCmsHis,
     getListNotifi,
-    updateListNotifi
+    updateListNotifi,
+
 } = require("./user.service")
 
 const { genSaltSync, hashSync, compareSync } = require("bcrypt")
@@ -220,6 +221,7 @@ module.exports = {
                                 console.log(err);
                                 return;
                             }
+                            console.log('Update user active success');
                             if (!results) {
                                 return res.json({
                                     success: 0,
@@ -323,8 +325,9 @@ module.exports = {
                         console.log(err);
                         return;
                     }
+                    console.log('pass');
                     if (!results.length) {
-                        createAccount(body, (err, results) => {
+                        createUser(body, (err, results) => {
                             if (err) {
                                 console.log(err);
                                 return res.status(500).json({
@@ -332,9 +335,19 @@ module.exports = {
                                     message: "Database connection error"
                                 })
                             }
-                            sendActiveMail(body)
-                            return res.status(200).json({
-                                success: 1
+                            //sendActiveMail(body)
+                            // return res.status(200).json({
+                            //     success: 1
+                            // })
+
+                            createAccount(body, (err, results) => {
+                                if (err) {
+                                    console.log(err);
+                                    return;
+                                }
+                                return res.status(200).json({
+                                    success: 1
+                                })
                             })
                         })
                     } else {
@@ -1113,7 +1126,8 @@ module.exports = {
 
     verifiedAccount: (req, res) => {
         const data = req.body;
-        verifiedAccount(data, (err, results) => {
+        // verifiedAccount
+        activeUser(data, (err, results) => {
             if (err) {
                 console.log(err);
                 return;
