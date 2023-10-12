@@ -1048,15 +1048,15 @@ module.exports = {
                             expiresIn: "8h"
                         });
 
-                        let data = {
-                            email: body.email,
-                            nick_name: results.nick_name,
-                            ip: ip.clientIp,
-                            userAgent: s
-                        }
+                        // let data = {
+                        //     email: body.email,
+                        //     nick_name: results.nick_name,
+                        //     ip: ip.clientIp,
+                        //     userAgent: s
+                        // }
 
                         //if(!results.active_2fa){
-                        sendLoginMail(data)
+                        // sendLoginMail(data)
                         //}
 
                         return res.json({
