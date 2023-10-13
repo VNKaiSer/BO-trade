@@ -15,12 +15,12 @@ module.exports = {
         global['ARESTele'].sendMessage(`@${TELEGRAM_BET_PHIM_LENH}`, content, {parse_mode : "HTML"})
     },
 	
-	sendMessThongBao: (content = '') => {
+	// sendMessThongBao: (content = '') => {
     
-        if(content == '' || content == null) return
+    //     if(content == '' || content == null) return
     
-        global['ARESTele'].sendMessage(`@${TELEGRAM_BET_THONG_BAO}`, content, {parse_mode : "HTML"})
-    },
+    //     global['ARESTele'].sendMessage(`@${TELEGRAM_BET_THONG_BAO}`, content, {parse_mode : "HTML"})
+    // },
 
     sendMessBetAmount: (content = '') => {
     

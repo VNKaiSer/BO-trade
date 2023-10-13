@@ -242,7 +242,7 @@ module.exports = {
                         if (error) {
                             return callback(error);
                         }
-                        Tele.sendMessThongBao(`🛫 Vừa thêm mới TÀI KHOẢN vào hệ thống: Email: <b>${data.email}</b>\nBiệt danh: ${data.nick_name}`);
+                        // Tele.sendMessThongBao(`🛫 Vừa thêm mới TÀI KHOẢN vào hệ thống: Email: <b>${data.email}</b>\nBiệt danh: ${data.nick_name}`);
 
                         return callback(null, results)
                     }
@@ -274,7 +274,7 @@ module.exports = {
                         }
                         console.log("insert thành công")
                         // creatAccountUser(data);
-                        return callback(null, results)
+                        // return callback(null, results)
                     }
                 );
 
@@ -508,10 +508,10 @@ module.exports = {
                     return callback(error);
                 }
 
-                Tele.sendMessThongBao(`📇📇📇Người dùng <b>${data.email}</b> vừa thực hiện xác minh tài khoản:\n
-                    Số căn cước (CMT): <b>${data.cmnd}</b>
-                    Họ tên: <b>${data.last_name} ${data.first_name}</b>
-                 `);
+                // Tele.sendMessThongBao(`📇📇📇Người dùng <b>${data.email}</b> vừa thực hiện xác minh tài khoản:\n
+                //     Số căn cước (CMT): <b>${data.cmnd}</b>
+                //     Họ tên: <b>${data.last_name} ${data.first_name}</b>
+                //  `);
 
                 return callback(null, results);
             }
@@ -533,12 +533,12 @@ module.exports = {
                 if (error) {
                     return callback(error);
                 }
-                Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện trừ tiền tới người dùng: <b>${data.nick}</b>\n
-                    USDT: <b>-${data.aUSDT}</b>
-                    BTC: <b>-${data.aBTC}</b>
-                    ETH: <b>-${data.aETH}</b>
-                    PAYPAL: <b>-${data.aPAYPAL}</b>
-                    VNĐ: <b>-${data.aVND}</b>`);
+                // Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện trừ tiền tới người dùng: <b>${data.nick}</b>\n
+                //     USDT: <b>-${data.aUSDT}</b>
+                //     BTC: <b>-${data.aBTC}</b>
+                //     ETH: <b>-${data.aETH}</b>
+                //     PAYPAL: <b>-${data.aPAYPAL}</b>
+                //     VNĐ: <b>-${data.aVND}</b>`);
                 return callback(null, results)
             }
         )
@@ -571,12 +571,12 @@ module.exports = {
                         data.money_paypal,
                         data.money_vn,
                     ]);
-                Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện thêm tiền tới người dùng: <b>${data.nick_name}</b>\n
-                    USDT: <b>${data.money_usdt}</b>
-                    BTC: <b>${data.money_btc}</b>
-                    ETH: <b>${data.money_eth}</b>
-                    PAYPAL: <b>${data.money_paypal}</b>
-                    VNĐ: <b>${data.money_vn}</b>`);
+                // Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện thêm tiền tới người dùng: <b>${data.nick_name}</b>\n
+                //     USDT: <b>${data.money_usdt}</b>
+                //     BTC: <b>${data.money_btc}</b>
+                //     ETH: <b>${data.money_eth}</b>
+                //     PAYPAL: <b>${data.money_paypal}</b>
+                //     VNĐ: <b>${data.money_vn}</b>`);
 
                 return callback(null, results)
             }
@@ -596,7 +596,7 @@ module.exports = {
                     return callback(error);
                 }
                 // creatAccountUser(data);
-                Tele.sendMessThongBao(`🧑Tài khoản mới: <b>${data.email}</b> vừa kích hoạt thành công!`);
+                // Tele.sendMessThongBao(`🧑Tài khoản mới: <b>${data.email}</b> vừa kích hoạt thành công!`);
                 return callback(null, results)
             }
         )
@@ -679,7 +679,7 @@ module.exports = {
                     db.query(
                         `SELECT email FROM users WHERE id = ?`,
                         [data.id], (error, result, fields) => {
-                            Tele.sendMessThongBao(`📇📇📇 Đã <i>BẬT</i> xác minh tài khoản cho người dùng <b>${result[0].email}</b>`);
+                            // Tele.sendMessThongBao(`📇📇📇 Đã <i>BẬT</i> xác minh tài khoản cho người dùng <b>${result[0].email}</b>`);
                         })
                 }
                 return callback(null, results);
@@ -3322,9 +3322,9 @@ module.exports = {
                     ], (error, results, fields) => {
                         let nick = results[0].nick_name;
                         if (data.type == 1) {
-                            Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện <i>BẬT</i> Marketing người dùng: <b>${nick}</b>`);
+                            // Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện <i>BẬT</i> Marketing người dùng: <b>${nick}</b>`);
                         } else {
-                            Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện <i>TẮT</i> Marketing người dùng: <b>${nick}</b>`);
+                            // Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện <i>TẮT</i> Marketing người dùng: <b>${nick}</b>`);
                         }
                     });
                 return callback(null, results)
