@@ -29,7 +29,7 @@ app.use(cors({
 }));
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://103.57.220.42:3000');
+    res.header('Access-Control-Allow-Origin', 'https://api-bo.onrender.com');
     // Các tiêu đề CORS khác nếu cần
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
