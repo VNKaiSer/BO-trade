@@ -25,21 +25,10 @@ const app = express();
 
 app.use(bodyParser.json())
 app.use(cors({
-    origin: 'https://api-bo.onrender.com'
-}));
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://api-bo.onrender.com');
-    // Các tiêu đề CORS khác nếu cần
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-    if (req.method === 'OPTIONS') {
-        res.sendStatus(200);
-    } else {
-        next();
-    }
-});
+    origin: 'https://api-bo.onrender.com',
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+}))
 
 app.use("/api/setup", walletSys)
 
