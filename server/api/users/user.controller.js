@@ -60,6 +60,7 @@ const {
     getListCmsHis,
     getListNotifi,
     updateListNotifi,
+    minusMoneyMember
 
 } = require("./user.service")
 
@@ -2287,6 +2288,26 @@ module.exports = {
     addMoneyMember: (req, res) => {
         const body = req.body;
         addMoneyMember(body, (err, results) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            if (!results) {
+                return res.json({
+                    success: 0,
+                    message: "Faile to update user"
+                })
+            }
+            return res.json({
+                success: 1,
+                message: "Update success"
+            })
+        })
+    },
+
+    minusMoneyMember: (req, res) => {
+        const body = req.body;
+        minusMoneyMember(body, (err, results) => {
             if (err) {
                 console.log(err);
                 return;

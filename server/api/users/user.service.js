@@ -521,13 +521,9 @@ module.exports = {
     addMoneyMember: (data, callback) => {
 
         db.query(
-            `UPDATE users SET money_usdt = money_usdt - ?, money_btc = money_btc - ?, money_eth = money_eth - ?, money_paypal = money_paypal - ?, money_vn = money_vn - ? WHERE nick_name = ?`,
+            `UPDATE users SET money_usdt = money_usdt + ? WHERE nick_name = ?`,
             [
                 data.aUSDT,
-                data.aBTC,
-                data.aETH,
-                data.aPAYPAL,
-                data.aVND,
                 data.nick
             ], (error, results, fields) => {
                 if (error) {
@@ -542,6 +538,30 @@ module.exports = {
                 return callback(null, results)
             }
         )
+        console.log('Cộng tiền thành công')
+    },
+
+    minusMoneyMember: (data, callback) => {
+
+        db.query(
+            `UPDATE users SET money_usdt = money_usdt - ? WHERE nick_name = ?`,
+            [
+                data.aUSDT,
+                data.nick
+            ], (error, results, fields) => {
+                if (error) {
+                    return callback(error);
+                }
+                // Tele.sendMessThongBao(`🧑ADMIN vừa thực hiện trừ tiền tới người dùng: <b>${data.nick}</b>\n
+                //     USDT: <b>-${data.aUSDT}</b>
+                //     BTC: <b>-${data.aBTC}</b>
+                //     ETH: <b>-${data.aETH}</b>
+                //     PAYPAL: <b>-${data.aPAYPAL}</b>
+                //     VNĐ: <b>-${data.aVND}</b>`);
+                return callback(null, results)
+            }
+        )
+        console.log('Cộng tiền thành công')
     },
 
 

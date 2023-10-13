@@ -1,5 +1,5 @@
-const { 
-    createUser, 
+const {
+    createUser,
     getUserById,
     getAllUser,
     checkUserEmail,
@@ -59,13 +59,14 @@ const {
     getListF1F7,
     getListCmsHis,
     getListNotifi,
-    updateListNotifi
-}  = require("./user.controller");
+    updateListNotifi,
+    minusMoneyMember
+} = require("./user.controller");
 const router = require("express");
 const app = router();
 const { checkToken } = require("../../auth/token_validation");
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", true);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -190,9 +191,11 @@ app.post('/agency-search-name', checkToken, getAgencySearchName);
 
 app.post('/addMoneyMember', checkToken, addMoneyMember);
 
+app.post('/minusMoneyMember', checkToken, minusMoneyMember);
+
 app.post('/login-2fa', loginG2FA);
 
-app.get('/code-2fa', checkToken , sendCodeG2FA);
+app.get('/code-2fa', checkToken, sendCodeG2FA);
 
 app.post("/changeAcc", checkToken, changeAccType);
 

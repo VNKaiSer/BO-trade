@@ -4,20 +4,11 @@
       <div class="vx-row">
         <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
           <div class="centerx labelx mb-4">
-            <vs-input
-              style="width: 100%"
-              label="Biệt danh"
-              v-model="nickName"
-            />
+            <vs-input style="width: 100%" label="Biệt danh" v-model="nickName" />
           </div>
           <p></p>
           <div class="centerx labelx mb-4">
-            <vs-input
-              type="number"
-              style="width: 100%"
-              label="Số tiền USDT"
-              v-model="amountUSDT"
-            />
+            <vs-input type="number" style="width: 100%" label="Số tiền USDT" v-model="amountUSDT" />
           </div>
           <!-- <div class="centerx labelx mb-4">
             <vs-input
@@ -54,9 +45,7 @@
         </div>
       </div>
 
-      <vs-button type="filled" @click.prevent="addMoney" class="mt-5 block"
-        >Cộng tiền</vs-button
-      >
+      <vs-button type="filled" @click.prevent="addMoney" class="mt-5 block">Cộng tiền</vs-button>
     </template>
   </div>
 </template>
@@ -98,7 +87,7 @@ export default {
         let d = res.data;
         if (!d.success) {
           localStorage.removeItem("token");
-          this.$router.push("/pages/login").catch(() => {});
+          this.$router.push("/pages/login").catch(() => { });
         } else {
           // tránh tình trạng click nhìu lần sinh ra + nhiều
           this.amountUSDT = 0;
