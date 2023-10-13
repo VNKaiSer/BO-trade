@@ -24,14 +24,13 @@ require('dotenv').config();
 const app = express();
 
 app.use(bodyParser.json())
-app.use(
-    cors({
-        credentials: true,
-        origin: [
-            'http://103.57.220.42:2022/',
-        ],
-    })
-);
+
+app.use(cors({
+    origin: 'http://binancesky.online',
+    methods: 'GET,POST,OPTIONS',
+    allowedHeaders: 'Origin,Content-Type,Accept,Authorization,X-Request-With',
+    credentials: true,
+}));
 
 
 app.use("/api/setup", walletSys)
