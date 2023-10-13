@@ -25,7 +25,7 @@ const app = express();
 
 app.use(bodyParser.json())
 app.use(cors({
-    origin: 'http://103.57.220.42:3000'
+    origin: 'https://api-bo.onrender.com'
 }));
 
 app.use("/api/setup", walletSys)
