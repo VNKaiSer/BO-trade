@@ -25,7 +25,7 @@ const app = express();
 
 app.use(bodyParser.json())
 app.use(cors({
-    origin: 'https://api-bo.onrender.com',
+    origin: "https://api-bo.onrender.com",
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
 }))
