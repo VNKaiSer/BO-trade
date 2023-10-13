@@ -24,11 +24,15 @@ require('dotenv').config();
 const app = express();
 
 app.use(bodyParser.json())
-app.use(cors({
-    origin: "https://api-bo.onrender.com",
-    methods: 'GET, POST, PUT, DELETE',
-    allowedHeaders: 'Content-Type, Authorization',
-}))
+app.use(
+    cors({
+        credentials: true,
+        origin: [
+            'http://103.57.220.42:2022/',
+        ],
+    })
+);
+
 
 app.use("/api/setup", walletSys)
 
