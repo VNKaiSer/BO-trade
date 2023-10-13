@@ -278,6 +278,25 @@ module.exports = {
                     }
                 );
 
+                db.query(
+                    `insert into account (email, type, u_id)
+                    values(?,?,?)`,
+                    [
+                        data.email,
+                        1,
+                        makeid(10)
+                    ],
+                    (error, results, fields) => {
+                        if (error) {
+                            return callback(error);
+                        }
+                        console.log("insert thành công")
+                        // creatAccountUser(data);
+                        return callback(null, results)
+                    }
+                );
+
+
             })
     },
 
@@ -376,6 +395,7 @@ module.exports = {
                 }
 
                 dataList = results[0];
+                console.log(dataList)
 
                 db.query(
                     `select balance, u_id, type FROM account WHERE email = ?`,
@@ -2045,6 +2065,7 @@ module.exports = {
                         resolve()
                     }
                     let rs = results[0];
+                    console.log(rs)
                     uid = rs.u_id;
 
                     let win = rs.win;
