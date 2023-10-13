@@ -18,7 +18,6 @@
   Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
-
 export default [
   // {
   //   url: "/apps/email",
@@ -35,7 +34,7 @@ export default [
     i18n: "Dashboard",
     submenu: [
       {
-        url: '/analytics',
+        url: "/analytics",
         name: "Analytics",
         slug: "admin-analytics",
         i18n: "Analytics",
@@ -46,7 +45,7 @@ export default [
       //   slug: "admin-ecommerce",
       //   i18n: "eCommerce",
       // },
-    ]
+    ],
   },
   {
     header: "Tài khoản",
@@ -54,27 +53,27 @@ export default [
     //i18n: "Tài khoản",
     items: [
       {
-        url: '/account/list-all-account',
+        url: "/account/list-all-account",
         name: "Tất cả",
         icon: "UsersIcon",
         slug: "list-all-account",
         //i18n: "Tất cả",
       },
       {
-        url: '/account/list-verify-account',
+        url: "/account/list-verify-account",
         name: "Xác minh",
         icon: "UserCheckIcon",
         slug: "list-verify-account",
         //i18n: "Xác minh",
       },
       {
-        url: '/account/list-agency-account',
+        url: "/account/list-agency-account",
         name: "Đại lý (VIP)",
         icon: "UserXIcon",
         slug: "list-agency-account",
         //i18n: "Đại lý",
       },
-    ]
+    ],
   },
   {
     header: "Danh sách lịch sử",
@@ -82,45 +81,45 @@ export default [
     //i18n: "Lịch sử",
     items: [
       {
-        url: '/history/data-list/list-deposit-view',
+        url: "/history/data-list/list-deposit-view",
         name: "Nạp tiền",
         icon: "DollarSignIcon",
         slug: "list-history-deposit",
         //i18n: "Lịch sử nạp",
       },
       {
-        url: '/history/data-list/list-withdrawal-view',
+        url: "/history/data-list/list-withdrawal-view",
         name: "Rút tiền",
         icon: "DollarSignIcon",
         slug: "list-history-withdrawal",
         //i18n: "Lịch sử nạp",
       },
       {
-        url: '/history/data-list/list-trade-view',
+        url: "/history/data-list/list-trade-view",
         name: "Tổng giao dịch",
         icon: "RepeatIcon",
         slug: "list-history-trade",
         //i18n: "Lịch sử giao dịch",
       },
       {
-        url: '/history/data-list/list-bet-view',
+        url: "/history/data-list/list-bet-view",
         name: "Đặt cược",
         icon: "TrendingUpIcon",
         slug: "list-bet-trade",
       },
       {
-        url: '/history/data-list/list-exchange-view',
+        url: "/history/data-list/list-exchange-view",
         name: "Đổi tiền",
         icon: "RepeatIcon",
         slug: "list-history-exchange",
-      }
-      ,{
-        url: '/history/data-list/list-addmoney',
+      },
+      {
+        url: "/history/data-list/list-addmoney",
         name: "Thêm tiền",
         icon: "DollarSignIcon",
         slug: "list-history-addmoney",
-      }
-    ]
+      },
+    ],
   },
   // {
   //   header: "Blog",
@@ -145,32 +144,38 @@ export default [
     icon: "PackageIcon",
     items: [
       {
-        url: '/tool/data-tool/edit-commission',
+        url: "/tool/data-tool/edit-commission",
         name: "Hoa hồng",
         icon: "PercentIcon",
         slug: "tool-edit-commission",
       },
       {
-        url: '/tool/data-tool/add-money',
+        url: "/tool/data-tool/add-money",
         name: "Trừ tiền tài khoản",
         icon: "DollarSignIcon",
         slug: "tool-add-money",
       },
       {
-        url: '/tool/data-tool/edit-bet',
+        url: "/tool/data-tool/adds-money",
+        name: "Cộng tiền tài khoản",
+        icon: "DollarSignIcon",
+        slug: "tool-adds-money",
+      },
+      {
+        url: "/tool/data-tool/edit-bet",
         name: "Bẻ cầu Cược",
         icon: "TrendingUpIcon",
         slug: "tool-edit-bet",
         //i18n: "Lịch sử nạp",
       },
       {
-        url: '/tool/data-tool/setting',
+        url: "/tool/data-tool/setting",
         name: "Cài đặt",
         icon: "SettingsIcon",
         slug: "tool-setting",
         //i18n: "Lịch sử nạp",
-      }
-    ]
+      },
+    ],
   },
   // {
   //   header: "Apps",
@@ -972,5 +977,4 @@ export default [
   //     },
   //   ]
   // },
-]
-
+];

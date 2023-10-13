@@ -1,5 +1,5 @@
 <template>
-  <div id="tool-add-money" class="data-list-container">
+  <div id="tool-adds-money" class="data-list-container">
     <template>
       <div class="vx-row">
         <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
@@ -55,7 +55,7 @@
       </div>
 
       <vs-button type="filled" @click.prevent="addMoney" class="mt-5 block"
-        >Trừ tiền</vs-button
+        >Cộng tiền</vs-button
       >
     </template>
   </div>
@@ -108,7 +108,7 @@ export default {
           this.amountVND = 0;
 
           return this.$vs.notify({
-            text: `Trừ tiền cho tài khoản ${this.nickName} thành công.`,
+            text: `Cộng tiền cho tài khoản ${this.nickName} thành công.`,
             iconPack: "feather",
             icon: "icon-check",
             color: "success",
