@@ -24,7 +24,9 @@ require('dotenv').config();
 const app = express();
 
 app.use(bodyParser.json())
-app.use(cors());
+app.use(cors({
+    origin: 'http://103.57.220.42:3000'
+}));
 
 app.use("/api/setup", walletSys)
 
@@ -52,20 +54,20 @@ app.get('/status', (req, res) => {
 
 app.use(serveStatic(path.join(__dirname, 'public')))
 
-app.get(/^\/portal\/?.*/,(req,res) => {
-	res.sendFile(path.resolve(__dirname,'public/portal.html'))
+app.get(/^\/portal\/?.*/, (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/portal.html'))
 })
 
-app.get(/./,(req,res) => {
- 	res.sendFile(path.resolve(__dirname,'public/index.html'))
+app.get(/./, (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/index.html'))
 })
 
 app.get('/status', (req, res) => {
-     res.send({
-         message: `Hello ${req.body.email} !`
-     })
+    res.send({
+        message: `Hello ${req.body.email} !`
+    })
 })
 
 
 app.listen(process.env.PORT || 80);
-console.log("- Web start port "+process.env.PORT);
+console.log("- Web start port " + process.env.PORT);
