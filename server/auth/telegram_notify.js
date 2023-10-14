@@ -12,7 +12,7 @@ module.exports = {
     
         if(content == '' || content == null) return
     
-        global['ARESTele'].sendMessage(`@${TELEGRAM_BET_PHIM_LENH}`, content, {parse_mode : "HTML"})
+        // global['ARESTele'].sendMessage(`@${TELEGRAM_BET_PHIM_LENH}`, content, {parse_mode : "HTML"})
     },
 	
 	// sendMessThongBao: (content = '') => {
