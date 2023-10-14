@@ -14,7 +14,7 @@ module.exports = {
     cert: "./certs/panazic.crt",
   },
 
-  DOMAIN: "localhost",
+  DOMAIN: "binancesky.online",
   TITLE_SITE: "DonaldTrade",
   CONTACT: "",
   MAIL_LOGO: "https://donaldtrade.com/logo.png",
