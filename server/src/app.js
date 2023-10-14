@@ -15,7 +15,7 @@ const payPal = require("./../auth/pay/paypal")
 const walletSys = require("./../api/sys.router")
 const { checkToken } = require("./../auth/token_validation");
 const { verify } = require("jsonwebtoken");
-
+require('../games/trade')
 const express = require('express');
 const bodyParser = require('body-parser');
 const Bank = require('../auth/pay/bank');
