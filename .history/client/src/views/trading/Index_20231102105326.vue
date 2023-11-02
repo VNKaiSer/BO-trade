@@ -2863,7 +2863,7 @@ export default {
             } else {
               getData.blDemo = getData.blDemo + mn;
             }
-            this.moneyLost = this.formatPrice(mn, 1);
+            this.moneyLost = this.formatPrice(mn, 2);
             this.isLostPop = true;
             setTimeout(() => {
               this.isLostPop = false;

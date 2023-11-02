@@ -2863,10 +2863,10 @@ export default {
             } else {
               getData.blDemo = getData.blDemo + mn;
             }
-            this.moneyLost = this.formatPrice(mn, 1);
-            this.isLostPop = true;
+            this.moneyWin = this.formatPrice(mn, 2);
+            this.isWinPop = true;
             setTimeout(() => {
-              this.isLostPop = false;
+              this.isWinPop = false;
             }, 3000);
           }
           // xóa notice = 0

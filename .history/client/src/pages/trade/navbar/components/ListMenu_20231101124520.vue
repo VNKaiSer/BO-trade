@@ -65,7 +65,7 @@
           <span class="textLink">{{ $t("Trade") || "Trade" }}</span>
         </router-link>
       </div>
-      <!-- <div class="nav-item">
+      <div class="nav-item">
         <router-link to="/trading4.0" class="cursor-pointer nav-link">
           <span
             ><svg
@@ -118,7 +118,7 @@
           ></span>
           <span class="textLink">{{ $t("Trade1") || "Trade1" }}</span>
         </router-link>
-      </div> -->
+      </div>
       <!-- <div class=" nav-item">
                 <router-link to="/" class="cursor-pointer nav-link">
                     <span class="mb-2 position-relative">

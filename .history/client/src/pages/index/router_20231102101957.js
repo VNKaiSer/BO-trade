@@ -110,15 +110,15 @@ const router = new Router({
             requiresAuth: true,
           },
         },
-        // {
-        //   path: "/trading4.0",
-        //   name: "client-index1",
-        //   component: () => import("../../views/trading4.0/Index.vue"),
-        //   meta: {
-        //     title: "Giao dịch 4.0",
-        //     requiresAuth: true,
-        //   },
-        // },
+        {
+          path: "/trading4.0",
+          name: "client-index1",
+          component: () => import("../../views/trading4.0/Index.vue"),
+          meta: {
+            title: "Giao dịch 4.0",
+            requiresAuth: true,
+          },
+        },
         {
           path: "/user/balance",
           name: "balance-user",

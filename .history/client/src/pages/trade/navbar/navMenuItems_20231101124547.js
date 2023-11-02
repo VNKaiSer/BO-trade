@@ -8,22 +8,22 @@ export default [
   {
     header: "Data",
     items: [
-      {
-        url: "/trading",
-        slug: "client-index",
-        name: "Trade",
-        tagColor: "success",
-        icon: "ActivityIcon",
-        i18n: "Trade",
-      },
       // {
-      //   url: "/trading4.0",
-      //   slug: "client-index1",
-      //   name: "Trade1",
+      //   url: "/trading",
+      //   slug: "client-index",
+      //   name: "Trade",
       //   tagColor: "success",
       //   icon: "ActivityIcon",
-      //   i18n: "Trade1",
+      //   i18n: "Trade",
       // },
+      {
+        url: "/trading4.0",
+        slug: "client-index1",
+        name: "Trade1",
+        tagColor: "success",
+        icon: "ActivityIcon",
+        i18n: "Trade1",
+      },
       {
         url: null,
         slug: "",

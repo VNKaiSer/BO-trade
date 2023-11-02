@@ -101,24 +101,24 @@ const router = new Router({
             title: "Đặt lại mật khẩu",
           },
         },
-        {
-          path: "/trading",
-          name: "client-index",
-          component: () => import("../../views/trading/Index.vue"),
-          meta: {
-            title: "Giao dịch",
-            requiresAuth: true,
-          },
-        },
         // {
-        //   path: "/trading4.0",
-        //   name: "client-index1",
-        //   component: () => import("../../views/trading4.0/Index.vue"),
+        //   path: "/trading",
+        //   name: "client-index",
+        //   component: () => import("../../views/trading/Index.vue"),
         //   meta: {
-        //     title: "Giao dịch 4.0",
+        //     title: "Giao dịch",
         //     requiresAuth: true,
         //   },
         // },
+        {
+          path: "/trading4.0",
+          name: "client-index1",
+          component: () => import("../../views/trading4.0/Index.vue"),
+          meta: {
+            title: "Giao dịch 4.0",
+            requiresAuth: true,
+          },
+        },
         {
           path: "/user/balance",
           name: "balance-user",

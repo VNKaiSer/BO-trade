@@ -1208,37 +1208,6 @@
         </div>
       </div>
     </div>
-    <div class="popupCongratulation" :class="{ block: isLostPop }">
-      <div class="mask"></div>
-      <div class="popupCongratulationContent">
-        <div class="flex justify-center winLive">
-          <div class="wrapNotify congratulation h-100">
-            <div class="boxNotify">
-              <img
-                :src="require('@/assets/images/sky/icon_win_live.svg')"
-                alt=""
-                class="iconWin"
-              />
-              <div class="badgeDemo">
-                {{ blObj.isAccount ? "LIVE" : "DEMO" }}
-              </div>
-              <div class="flex flex-col items-center justify-center boxContent">
-                <div class="flex items-center">
-                  <!---->
-                </div>
-                <p class="titleWin">Bạn đã thua!</p>
-                <span class="text-4xl font-bold message_money"
-                  >-{{ moneyLost }}$</span
-                >
-              </div>
-              <span class="cursor-pointer pointer"
-                ><i class="iconClose" data-feather="x"></i
-              ></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -1992,8 +1961,6 @@ export default {
 
       moneyWin: 0,
       isWinPop: false,
-      moneyLost: 0,
-      isLostPop: false,
       blObj: getData,
       isBet: true,
       CSBUY: 0,
@@ -2848,26 +2815,14 @@ export default {
             } else {
               getData.blDemo = getData.blDemo + mn;
             }
+
             this.moneyWin = this.formatPrice(mn, 2);
             this.isWinPop = true;
             setTimeout(() => {
               this.isWinPop = false;
             }, 3000);
           } else {
-            let mn = dl.money;
-
             this.playAudio("lose");
-
-            if (getData.isAccount) {
-              getData.blLive = getData.blLive + mn;
-            } else {
-              getData.blDemo = getData.blDemo + mn;
-            }
-            this.moneyLost = this.formatPrice(mn, 1);
-            this.isLostPop = true;
-            setTimeout(() => {
-              this.isLostPop = false;
-            }, 3000);
           }
           // xóa notice = 0
           getData.Notify = 0;

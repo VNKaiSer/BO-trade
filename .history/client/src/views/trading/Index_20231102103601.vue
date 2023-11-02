@@ -2848,26 +2848,15 @@ export default {
             } else {
               getData.blDemo = getData.blDemo + mn;
             }
+
             this.moneyWin = this.formatPrice(mn, 2);
+            this.moneyLost = this.formatPrice(mn, 1);
             this.isWinPop = true;
             setTimeout(() => {
               this.isWinPop = false;
             }, 3000);
           } else {
-            let mn = dl.money;
-
             this.playAudio("lose");
-
-            if (getData.isAccount) {
-              getData.blLive = getData.blLive + mn;
-            } else {
-              getData.blDemo = getData.blDemo + mn;
-            }
-            this.moneyLost = this.formatPrice(mn, 1);
-            this.isLostPop = true;
-            setTimeout(() => {
-              this.isLostPop = false;
-            }, 3000);
           }
           // xóa notice = 0
           getData.Notify = 0;

@@ -2,7 +2,6 @@
 export default {
   vi: {
     Trade: "Giao dịch",
-    Trade1: "Giao dịch 4.0",
     Help: "Trợ giúp",
     Shopping: "Mua sắm",
     Setting: "Thiết lập",

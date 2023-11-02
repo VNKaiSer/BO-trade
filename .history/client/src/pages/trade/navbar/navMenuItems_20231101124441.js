@@ -16,14 +16,14 @@ export default [
         icon: "ActivityIcon",
         i18n: "Trade",
       },
-      // {
-      //   url: "/trading4.0",
-      //   slug: "client-index1",
-      //   name: "Trade1",
-      //   tagColor: "success",
-      //   icon: "ActivityIcon",
-      //   i18n: "Trade1",
-      // },
+      {
+        url: "/trading4.0",
+        slug: "client-index1",
+        name: "Trade1",
+        tagColor: "success",
+        icon: "ActivityIcon",
+        i18n: "Trade1",
+      },
       {
         url: null,
         slug: "",

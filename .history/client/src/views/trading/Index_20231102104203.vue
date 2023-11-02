@@ -2855,18 +2855,11 @@ export default {
             }, 3000);
           } else {
             let mn = dl.money;
-
             this.playAudio("lose");
-
-            if (getData.isAccount) {
-              getData.blLive = getData.blLive + mn;
-            } else {
-              getData.blDemo = getData.blDemo + mn;
-            }
             this.moneyLost = this.formatPrice(mn, 1);
-            this.isLostPop = true;
+            this.moneyLost = true;
             setTimeout(() => {
-              this.isLostPop = false;
+              this.moneyLost = false;
             }, 3000);
           }
           // xóa notice = 0
