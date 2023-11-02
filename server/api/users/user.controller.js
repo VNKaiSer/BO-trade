@@ -10,6 +10,7 @@ const {
     getUserByUserEmail,
     getAdminByAdminUsername,
     verifiedAccount,
+    verifiedMoney,
     getListAgency,
     viewMemberAgency,
     createAccount,
@@ -601,7 +602,7 @@ module.exports = {
                                             message: "Faile to update user"
                                         })
                                     }
-                                    // send mail 
+                                    // send mail
                                     let nick = decoded.result.nick_name
                                     let data = {
                                         nick_name: nick,
@@ -704,7 +705,7 @@ module.exports = {
                                         message: "Faile to update user"
                                     })
                                 }
-                                // send mail 
+                                // send mail
                                 let nick = decoded.result.nick_name
                                 let data = {
                                     nick_name: nick,

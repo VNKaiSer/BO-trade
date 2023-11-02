@@ -175,9 +175,8 @@
           <vs-th sort-key="account">Tài khoản</vs-th>
           <vs-th sort-key="type">Loại tiền</vs-th>
           <vs-th sort-key="amount">Số tiền</vs-th>
-          <vs-th sort-key="note">Ghi chú</vs-th>
-          <vs-th sort-key="status">Trạng thái</vs-th>
           <vs-th sort-key="datecreate">Thời gian</vs-th>
+          <vs-th sort-key="status">Trạng thái</vs-th>
           <vs-th>Tác vụ</vs-th>
         </template>
 
@@ -226,9 +225,8 @@
               </vs-td>
 
               <vs-td>
-                <p class="de-note">{{ tr.note }}</p>
+                <p class="de-create">{{ formatDate(tr.created_at) }}</p>
               </vs-td>
-
               <vs-td>
                 <vs-chip
                   :color="getOrderStatusColor(tr.status)"
@@ -236,39 +234,33 @@
                   >{{ getOrderStatusColorText(tr.status) | title }}</vs-chip
                 >
               </vs-td>
-
-              <vs-td>
-                <p class="de-create">{{ formatDate(tr.created_at) }}</p>
-              </vs-td>
-
-              <vs-td class="text-center whitespace-no-wrap">
+              <vs-td class="text-center whitespace-no-wrap hover:text-success">
                 <vx-tooltip
-                  v-if="tr.delete_status == 0"
-                  style="float: left"
-                  color="danger"
-                  text="Xóa"
+                  v-if="tr.verified == 0 || tr.verified == 2"
+                  color="success"
+                  text="Nạp tiền"
                 >
-                  <vs-button
-                    color="dark"
-                    type="line"
-                    icon-pack="feather"
-                    icon="icon-trash"
-                    @click.stop="deleteDeposit(tr.id, indextr, 1)"
-                  ></vs-button>
+                  <!-- <vs-button color="dark" type="line" icon-pack="feather" icon="icon-check" @click.stop="doneVerify(tr.id)"></vs-button> -->
+                  <div @click.stop="doneVerifyMoney(tr.id, 1, indextr)">
+                    <feather-icon
+                      icon="CheckIcon"
+                      svgClasses="w-5 h-5 stroke-current"
+                    />
+                    Đồng ý
+                  </div>
                 </vx-tooltip>
                 <vx-tooltip
-                  v-else
-                  style="float: left"
-                  color="warning"
-                  text="Thu hồi"
+                  v-else-if="tr.verified == 1"
+                  color="danger"
+                  text="Hủy nạp tiền"
                 >
-                  <vs-button
-                    color="dark"
-                    type="line"
-                    icon-pack="feather"
-                    icon="icon-arrow-up-left"
-                    @click.stop="deleteDeposit(tr.id, indextr, 0)"
-                  ></vs-button>
+                  <div @click.stop="doneVerifyMoney(tr.id, 0, indextr)">
+                    <feather-icon
+                      icon="XIcon"
+                      svgClasses="w-5 h-5 stroke-current"
+                    />
+                    Hủy
+                  </div>
                 </vx-tooltip>
               </vs-td>
             </vs-tr>
@@ -376,6 +368,47 @@ export default {
     },
   },
   methods: {
+    doneVerifyMoney(id, val, index) {
+      const obj = {
+        id: id,
+        verified: val,
+      };
+      if (val) {
+        this.productsFake[index].verified = 1;
+      } else {
+        this.productsFake[index].verified = 0;
+      }
+
+      AuthenticationService.verifiedMoney(obj).then((resq) => {
+        if (resq.data.success) {
+          return this.$vs.notify({
+            text: val ? "Nạp tiền thành công" : "Hủy nạp tiền thành công",
+            color: "success",
+            iconPack: "feather",
+            icon: "icon-check",
+          });
+        } else {
+          return this.$vs.notify({
+            text: "Nạp tiền thất bại",
+            color: "danger",
+            iconPack: "feather",
+            icon: "icon-alert-circle",
+          });
+        }
+      });
+    },
+    getOrderStatusColor(status) {
+      if (status == 0) return "warning";
+      if (status == 1) return "success";
+      if (status == 2) return "danger";
+      return "warning";
+    },
+    getOrderStatusColorText(status) {
+      if (status == 0) return "Chưa Nạp";
+      if (status == 1) return "Đã Nạp";
+      if (status == 2) return "danger";
+      return "Chưa Nạp";
+    },
     deleteMultiple() {
       let token = localStorage.getItem("token");
       this.$store.dispatch("setToken", token);
