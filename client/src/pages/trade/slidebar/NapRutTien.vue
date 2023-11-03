@@ -765,9 +765,19 @@ export default {
       let seft = this;
       const amount = this.amount_bank;
       //console.log(amount);
-      if (amount <= 0 || !amount) {
+      if (amount <= 0 || !amount ) {
         return seft.$vs.notify({
           text: "Nhập số tiền muốn nạp",
+          color: "danger",
+          position: "top-right",
+          iconPack: "feather",
+          icon: "icon-x-circle",
+        });
+      }
+
+      if(amount < 5){
+        return seft.$vs.notify({
+          text: "Số tiền nạp tối thiểu là $5.",
           color: "danger",
           position: "top-right",
           iconPack: "feather",
@@ -777,33 +787,24 @@ export default {
       let obj = {
         amount: amount,
         nickname: getData.displayName,
+        email: getData.email,
       };
-      AuthenticationService.depositBank(obj).then((res) => {
-        console.log(res);
-        if (res.data.status == true) {
-          seft.namebank = res.data.data.bank_name;
-          seft.stk = res.data.data.banknumber;
-          seft.noidung = res.data.data.content;
-          seft.chutk = res.data.data.bankname;
-          this.isNap = true;
+
+      // trạnh spam
+      AuthenticationService.getDepositBankingCount(obj)
+      .then((result) => {
+        if(result.data.data > 1){
           return seft.$vs.notify({
-            text: "Vui lòng chuyển tiền vào STK và ngân hàng với nội dung hiển thị",
-            color: "success",
-            iconPack: "feather",
-            position: "top-right",
-            icon: "icon-check-circle",
-          });
-        } else {
-          return seft.$vs.notify({
-            text: "Hệ thống đang bận, thử lại sau",
-            color: "danger",
-            position: "top-right",
-            iconPack: "feather",
-            icon: "icon-x-circle",
-          });
-        }
-      });
-    },
+          text: "Không được spam. Vui lòng đợi lệnh nạp cũ được xác thực.",
+          color: "danger",
+          position: "top-right",
+          iconPack: "feather",
+          icon: "icon-x-circle",
+        });
+      }}).catch((err) => {
+        console.log(err);
+      })},
+
 
     CheckPAY(val) {
       if (!this.checkispay) {

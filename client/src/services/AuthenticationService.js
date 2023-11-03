@@ -171,9 +171,9 @@ export default {
   depositPaypal(obj) {
     return Api().get("api/paypal/pay?a=" + obj.a + "&n=" + obj.n);
   },
-  depositBank(obj) {
-    return Api().post("api/bank/pay", obj);
-  },
+  // depositBank(obj) {
+  //   return Api().post("api/bank/pay", obj);
+  // },
 
   getAddressCoin(coin) {
     return Api().get("api/wallet/" + coin + "/address");
@@ -452,9 +452,11 @@ export default {
   uploadPassportBack(obj) {
     return Api().post("api/auth/passport/back", obj);
   },
-};
 
-// AuthenticationService.register({
-//         email: 'testing@gmail.com',
-//         password: '123456'
-// })
+  depositBank(obj) {
+    return Api().post("api/users/depositBank", obj);
+  },
+  getDepositBankingCount(obj) {
+    return Api().get("api/users/getDepositBankingCount", obj);
+  },
+};

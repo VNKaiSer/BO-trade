@@ -863,6 +863,30 @@ module.exports = {
     );
   },
 
+  depositBank: (data, callback) => {
+    db.query(
+      `insert into trade_history (email, from_u, to_u, type_key, type, currency, amount, note, status, created_at)
+                            values(?,?,?,?,?,?,?,?,?,now())`,
+      [
+        data.email,
+        "Live Account",
+        data.nick,
+        "nt", // Chuyển Tiền
+        "Nạp tiền từ ngân hàng",
+        "usdt",
+        data.m,
+        null,
+        -1,
+      ],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error);
+        }
+        return callback(null, results);
+      }
+    );
+  },
+
   WithDrawalNoiBo: (data, callback) => {
     dataSys = Helper.getConfig(fileSys);
     db.query(
@@ -3627,5 +3651,22 @@ module.exports = {
     });
 
     return callback(null);
+  },
+  getDepositBankingCount: async (data, callback) => {
+    let email = data;
+
+    let rs = 0;
+    await new Promise((resolve, reject) => {
+      db.query(
+        `SELECT count(*) AS count FROM trade_history WHERE email = ? and status = -1`,
+        [email],
+        (error, results, fields) => {
+          rs = results[0].count;
+
+          resolve();
+        }
+      );
+    });
+    return callback(null, rs);
   },
 };

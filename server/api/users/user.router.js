@@ -62,6 +62,8 @@ const {
   getListNotifi,
   updateListNotifi,
   minusMoneyMember,
+  depositBank,
+  getDepositBankingCount,
 } = require("./user.controller");
 const router = require("express");
 const app = router();
@@ -205,5 +207,9 @@ app.post("/getListCmsHis", checkToken, getListCmsHis);
 app.post("/getListNotifi", checkToken, getListNotifi);
 
 app.post("/updateListNotifi", checkToken, updateListNotifi);
+
+app.post("/depositBank", checkToken, depositBank);
+
+app.get("/getDepositBankingCount", checkToken, getDepositBankingCount);
 
 module.exports = app;
