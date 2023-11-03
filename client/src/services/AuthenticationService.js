@@ -335,6 +335,9 @@ export default {
   getDepositListHistory() {
     return ApiAdmin().get("api/trades/hisDepositAll");
   },
+  getListDepoiteWaitForConfirm() {
+    return ApiAdmin().get("api/trades/depoiteWaitForConfirm");
+  },
 
   getDepositAllTrash() {
     return ApiAdmin().get("api/trades/hisDepositAllTrash");

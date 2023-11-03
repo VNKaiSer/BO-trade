@@ -483,18 +483,18 @@ export default {
       });
     },
 
-    getOrderStatusColor(status) {
-      if (status == 0) return "warning";
-      if (status == 1) return "success";
-      //if(status == 2) return "danger"
-      return "warning";
-    },
-    getOrderStatusColorText(status) {
-      if (status == 0) return "Đang xử lý";
-      if (status == 1) return "Hoàn thành";
-      //if(status == 2) return "danger"
-      return "Đang xử lý";
-    },
+    // getOrderStatusColor(status) {
+    //   if (status == 0) return "warning";
+    //   if (status == 1) return "success";
+    //   //if(status == 2) return "danger"
+    //   return "warning";
+    // },
+    // getOrderStatusColorText(status) {
+    //   if (status == 0) return "Đang xử lý";
+    //   if (status == 1) return "Hoàn thành";
+    //   //if(status == 2) return "danger"
+    //   return "Đang xử lý";
+    // },
 
     getIconType(type) {
       let cur = type.toUpperCase();
@@ -615,7 +615,8 @@ export default {
       let token = localStorage.getItem("token");
       this.$store.dispatch("setToken", token);
 
-      AuthenticationService.getDepositListHistory().then((resp) => {
+      AuthenticationService.getListDepoiteWaitForConfirm().then((resp) => {
+        console.log(resp.data);
         this.$vs.loading.close("#loading-corners > .con-vs-loading");
 
         if (resp.data.success == 4) {

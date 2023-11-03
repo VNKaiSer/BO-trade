@@ -88,14 +88,7 @@ var DATA_GL = require('./editBet');
 const { ppid } = require('process');
 //const { Console } = require('console')
 
-class PlayerData {
-    constructor(id, uid) {
-        this.id = id
-        this.uid = uid
-    }
-}
-const users = {};
-
+ 
 console.log(`- SV ${SEVER_GET} ${config.IS_PLAY_SPOT ? 'SPOT' : 'FUTERES'} START \n- Server started port: ${config.PORT_TRADE}.`);
 
 wss.on('connection', function (ws) {

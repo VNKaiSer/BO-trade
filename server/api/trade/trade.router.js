@@ -1,31 +1,33 @@
-const { 
-    getAllTradeHis,
-    getAllTradeHisTrash,
-    deleteTradeHisById,
-    getAllDepositHis,
-    getAllDepositHisTrash,
-    getAllWithDrawalHis,
-    doneWithdrawal,
-    getRevenueNap,
-    getRevenueRut,
-    getRevenueTrans,
-    getShowDT,
-    historyAllAddMoney,
-    totalAddMoney,
-    doneRefuseWithdrawal
-}  = require("./trade.controller");
+const {
+  getAllTradeHis,
+  getAllTradeHisTrash,
+  deleteTradeHisById,
+  getAllDepositHis,
+  getAllDepositHisTrash,
+  getAllWithDrawalHis,
+  doneWithdrawal,
+  getRevenueNap,
+  getRevenueRut,
+  getRevenueTrans,
+  getShowDT,
+  historyAllAddMoney,
+  totalAddMoney,
+  doneRefuseWithdrawal,
+  getAllDepositWaithForConfirm,
+} = require("./trade.controller");
 const router = require("express");
 const app = router();
 const { checkToken } = require("../../auth/token_validation");
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
 });
-
-
 
 app.get("/historyAll", checkToken, getAllTradeHis);
 
@@ -34,6 +36,8 @@ app.get("/historyAllTrash", checkToken, getAllTradeHisTrash);
 app.patch("/deleteTradeHisById", checkToken, deleteTradeHisById);
 
 app.get("/hisDepositAll", checkToken, getAllDepositHis);
+
+app.get("/depoiteWaitForConfirm", checkToken, getAllDepositWaithForConfirm);
 
 app.get("/hisDepositAllTrash", checkToken, getAllDepositHisTrash);
 

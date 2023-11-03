@@ -45,7 +45,7 @@ module.exports = {
 
   DATA_HOST: "localhost",
   DATA_USER: "root",
-  DATA_PASS: "1",
+  DATA_PASS: "root",
   DATA_DB: "bovip",
   DATA_PORT: 3306,
 
@@ -53,6 +53,7 @@ module.exports = {
   PORT_SYS: 2087,
   PORT_NAP: 2083,
   PORT_NOTIFY: 2053,
+  PORT_TRADE40: 2097,
 
   TELEGRAM_TOKEN: "5889097799:AAHn43NFZqjXqq5VSu1_gri1hJxy6V0Hp2w", // sử dụng BOT
   TELEGRAM_BET_ID: "dntrade", // là kênh để gửi thông báo
