@@ -176,7 +176,7 @@
           <vs-th sort-key="type">Loại tiền</vs-th>
           <vs-th sort-key="amount">Số tiền</vs-th>
           <vs-th sort-key="datecreate">Thời gian</vs-th>
-          <vs-th sort-key="status">Trạng thái</vs-th>
+          <vs-th sort-key="verify">Trạng thái</vs-th>
           <vs-th>Tác vụ</vs-th>
         </template>
 
@@ -236,7 +236,7 @@
               </vs-td>
               <vs-td class="text-center whitespace-no-wrap hover:text-success">
                 <vx-tooltip
-                  v-if="tr.verified == 0 || tr.verified == 2"
+                  v-if="tr.status == 0 || tr.status == -1"
                   color="success"
                   text="Nạp tiền"
                 >
@@ -250,7 +250,7 @@
                   </div>
                 </vx-tooltip>
                 <vx-tooltip
-                  v-else-if="tr.verified == 1"
+                  v-else-if="tr.status == 1"
                   color="danger"
                   text="Hủy nạp tiền"
                 >
@@ -291,8 +291,6 @@ export default {
       formats: ["xlsx", "csv", "txt"],
       cellAutoWidth: true,
       selectedFormat: "xlsx",
-      headerTitle: ["Tài khoản", "Loại", "Số Tiền", "Trạng Thái", "Ngày Nạp"],
-      headerVal: ["account", "type", "amount", "status", "datecreate"],
       productsFake: [
         {
           id: 1,
@@ -300,10 +298,10 @@ export default {
           to_u: "5344",
           type_key: "nt",
           type: "Nạp tiền (Nội bộ)",
-          currency: "sys",
+          currency: "USDT",
           amount: 100.0,
           note: "",
-          status: 1,
+          status: 0,
           created_at: "00:00:00 02-04-2021",
         },
         {
@@ -312,9 +310,9 @@ export default {
           to_u: "5344",
           type_key: "nt",
           type: "Nạp tiền (Nội bộ)",
-          currency: "BTC",
+          currency: "USDT",
           amount: 100.0,
-          note: "ok nha",
+          note: "",
           status: 1,
           created_at: "00:00:00 02-04-2021",
         },
@@ -324,22 +322,10 @@ export default {
           to_u: "5344",
           type_key: "nt",
           type: "Nạp tiền (Nội bộ)",
-          currency: "ETH",
-          amount: 100.0,
-          note: "",
-          status: 1,
-          created_at: "00:00:00 02-04-2021",
-        },
-        {
-          id: 5,
-          from_u: "123",
-          to_u: "5344",
-          type_key: "nt",
-          type: "Nạp tiền (Nội bộ)",
           currency: "USDT",
           amount: 100.0,
           note: "",
-          status: 1,
+          status: -1,
           created_at: "00:00:00 02-04-2021",
         },
       ],
@@ -371,12 +357,12 @@ export default {
     doneVerifyMoney(id, val, index) {
       const obj = {
         id: id,
-        verified: val,
+        status: val,
       };
       if (val) {
-        this.productsFake[index].verified = 1;
+        this.productsFake[index].status = 1;
       } else {
-        this.productsFake[index].verified = 0;
+        this.productsFake[index].status = 0;
       }
 
       AuthenticationService.verifiedMoney(obj).then((resq) => {
@@ -400,13 +386,13 @@ export default {
     getOrderStatusColor(status) {
       if (status == 0) return "warning";
       if (status == 1) return "success";
-      if (status == 2) return "danger";
+      if (status == -1) return "danger";
       return "warning";
     },
     getOrderStatusColorText(status) {
       if (status == 0) return "Chưa Nạp";
       if (status == 1) return "Đã Nạp";
-      if (status == 2) return "danger";
+      if (status == -1) return "Chờ xác nhận";
       return "Chưa Nạp";
     },
     deleteMultiple() {
@@ -482,19 +468,6 @@ export default {
         }
       });
     },
-
-    // getOrderStatusColor(status) {
-    //   if (status == 0) return "warning";
-    //   if (status == 1) return "success";
-    //   //if(status == 2) return "danger"
-    //   return "warning";
-    // },
-    // getOrderStatusColorText(status) {
-    //   if (status == 0) return "Đang xử lý";
-    //   if (status == 1) return "Hoàn thành";
-    //   //if(status == 2) return "danger"
-    //   return "Đang xử lý";
-    // },
 
     getIconType(type) {
       let cur = type.toUpperCase();

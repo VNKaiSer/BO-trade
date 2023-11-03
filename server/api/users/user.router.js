@@ -112,7 +112,6 @@ app.post("/login", loginUser);
 app.post("/AdminSingIn", getAdminByAdminUsername);
 
 app.post("/verifiedUser", checkToken, verifiedAccount);
-// app.post('/verifiedMoney', checkToken, verifiedMoney);
 
 app.get("/getAgency", checkToken, getListAgency);
 
