@@ -64,6 +64,7 @@ const {
   minusMoneyMember,
   depositBank,
   getDepositBankingCount,
+  verifyBankingUser,
 } = require("./user.controller");
 const router = require("express");
 const app = router();
@@ -210,5 +211,7 @@ app.post("/updateListNotifi", checkToken, updateListNotifi);
 app.post("/depositBank", checkToken, depositBank);
 
 app.get("/getDepositBankingCount", checkToken, getDepositBankingCount);
+
+app.post("/verifyBankingUser", checkToken, verifyBankingUser);
 
 module.exports = app;

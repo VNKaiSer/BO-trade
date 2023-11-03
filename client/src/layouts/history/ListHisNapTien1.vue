@@ -277,6 +277,7 @@ import AuthenticationService from "@/services/AuthenticationService";
 import moment from "moment";
 import Vue from "vue";
 
+
 export default {
   components: {
     vSelect,
@@ -355,16 +356,16 @@ export default {
   },
   methods: {
     doneVerifyMoney(id, val, index) {
+      console.log(id, val, index);
       const obj = {
         id: id,
-        status: val,
+        status: 1,
       };
       if (val) {
         this.productsFake[index].status = 1;
       } else {
         this.productsFake[index].status = 0;
       }
-
       AuthenticationService.verifiedMoney(obj).then((resq) => {
         if (resq.data.success) {
           return this.$vs.notify({

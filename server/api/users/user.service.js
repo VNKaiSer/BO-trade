@@ -3669,4 +3669,19 @@ module.exports = {
     });
     return callback(null, rs);
   },
+
+  verifyBankingUser: async (data, callback) => {
+    console.log(data);
+    await new Promise((resolve, reject) => {
+      db.query(
+        `UPDATE trade_history SET status = 1 WHERE id = ?`,
+        [data.id],
+        (error, results, fields) => {
+          resolve();
+        }
+      );
+    });
+
+    return callback(null);
+  },
 };

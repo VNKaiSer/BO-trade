@@ -64,6 +64,7 @@ const {
   minusMoneyMember,
   depositBank,
   getDepositBankingCount,
+  verifyBankingUser,
 } = require("./user.service");
 
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
@@ -1304,6 +1305,43 @@ module.exports = {
         body["nick"] = decoded.result.nick_name;
 
         getDepositBankingCount(email, (err, results) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          if (!results) {
+            return res.json({
+              success: 0,
+              message: "Record not Found",
+            });
+          }
+          console.log(results);
+          return res.json({
+            success: 1,
+            data: results,
+          });
+        });
+      }
+    });
+  },
+  verifyBankingUser: (req, res) => {
+    const body = req.body;
+    let token = req.get("authorization");
+    token = token.split(" ")[1];
+    verify(token, config.TOKEN_KEY, (err, decoded) => {
+      if (err) {
+        return res.json({
+          success: 3,
+          l: false,
+          message: "no no",
+        });
+      } else {
+        // tránh trường hợp sử dụng email người khác
+        let email = decoded.result.email;
+        body.email = email;
+        body["nick"] = decoded.result.nick_name;
+
+        verifyBankingUser(body, (err, results) => {
           if (err) {
             console.log(err);
             return;

@@ -459,4 +459,7 @@ export default {
   getDepositBankingCount(obj) {
     return Api().get("api/users/getDepositBankingCount", obj);
   },
+  verifiedMoney(obj) {
+    return ApiAdmin().post("api/users/verifyBankingUser", obj);
+  },
 };
