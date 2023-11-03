@@ -800,11 +800,31 @@ export default {
           position: "top-right",
           iconPack: "feather",
           icon: "icon-x-circle",
-        });
-      }}).catch((err) => {
-        console.log(err);
-      })},
-
+        })
+      } else{
+        AuthenticationService.depositBank(obj)  
+      .then((res) => {
+          return seft.$vs.notify({
+            text: "Tạo lệnh nạp tiền thành công.Vui lòng đợi admin kiểm tra",
+            color: "success",
+            iconPack: "feather",
+            position: "top-right",
+            icon: "icon-check-circle",
+          });
+      }).catch((err) => {
+        return seft.$vs.notify({
+            text: "Hệ thống đang bận, thử lại sau",
+            color: "danger",
+            position: "top-right",
+            iconPack: "feather",
+            icon: "icon-x-circle",
+          });
+      });
+      }
+    })
+   
+      
+    },
 
     CheckPAY(val) {
       if (!this.checkispay) {

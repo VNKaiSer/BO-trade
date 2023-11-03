@@ -874,7 +874,7 @@ module.exports = {
         "nt", // Chuyển Tiền
         "Nạp tiền từ ngân hàng",
         "usdt",
-        data.m,
+        data.amount,
         null,
         -1,
       ],
