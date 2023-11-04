@@ -13,56 +13,43 @@
         <div class="h-full">
           <div class="relative chartBox">
             <iframe
-                class="ht"
-                srcdoc='
-                <div style="width: 100%; height: 100%">
-                  <div class="tradingview-widget-container">
-                  <div
-                    id="tradingview_4a95d"
-                  ></div>
-                  <div class="tradingview-widget-copyright">
-                    <a
-                      href="https://www.tradingview.com/"
-                      rel="noopener nofollow"
-                      target="_blank"
-                      ><span class="blue-text">Track all markets on TradingView</span></a
-                    >
-                  </div>
-                </div>
-                  <script
-                    type="text/javascript"
-                    src="https://s3.tradingview.com/tv.js"
-                  ></script>
-                  <script type="text/javascript">
-                    new TradingView.widget({
-                      autosize: true,
-                      symbol: "BITSTAMP:ETHUSD",
-                      interval: "15",
-                      timezone: "Etc/UTC",
-                      theme: "dark",
-                      style: "1",
-                      locale: "en",
-                      enable_publishing: false,
-                      hide_side_toolbar: false,
-                      allow_symbol_change: true,
-                      watchlist: [
-                        "BINANCE:BTCUSD",
-                        "BINANCE:ETHUSD",
-                        "BINANCE:USDTNGN",
-                        "BINANCE:BNBUSDT",
-                        "CRYPTOCAP:XRP",
-                        "CRYPTOCAP:ADA",
-                        "MIL:DOT",
-                        "CRYPTOCAP:DOGE",
-                      ],
-                      container_id: "tradingview_4a95d",
-                    });
-                  </script>
-                </div>'
-                width="100%"
-                height="100%"
-                allowfullscreen
-              ></iframe>
+              class="ht"
+              srcdoc='
+                            <div class="tradingview-widget-container" style="height:calc(100vh - 16px);width:100%">
+
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.widget(
+                {
+                "autosize": true,
+                "symbol": "BITSTAMP:ETHUSD",
+                "interval": "15",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "enable_publishing": false,
+                "hide_side_toolbar": false,
+                "allow_symbol_change": true,
+                "watchlist": [
+                  "BINANCE:BTCUSD",
+                  "BINANCE:ETHUSD",
+                  "BINANCE:USDTNGN",
+                  "BINANCE:BNBUSDT",
+                  "CRYPTOCAP:XRP",
+                  "CRYPTOCAP:ADA",
+                  "MIL:DOT",
+                  "CRYPTOCAP:DOGE"
+                ],
+                "container_id": "tradingview_4a95d"
+              }
+                );
+                </script>
+              </div>'
+              width="100%"
+              height="100%"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </div>
@@ -2341,6 +2328,9 @@ export default {
 </script>
 
 <style scoped>
+.ht {
+  border-width: 0;
+}
 .mbTextCountdown {
   width: 150px;
   top: -35px;
@@ -3242,9 +3232,9 @@ export default {
 }
 
 #tradePage .chartBox {
-  height: calc(100vh);
+  height: 100%;
   overflow: hidden;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 @media screen and (max-width: 1300px) {
   #tradePage .chartBox {
