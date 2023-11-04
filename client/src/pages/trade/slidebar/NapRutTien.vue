@@ -119,7 +119,6 @@
             <div v-if="isPaypal">
               <div class="transfer-network">
                 <div v-if="!activeNRT">
-                  <h4 class="mt-0 transfer-network-title">Mạng lưới</h4>
                   <ul
                     class="transfer-network-list transfer-network-list--deposit has-bsc"
                   >
@@ -228,70 +227,6 @@
               </div>
             </div>
             <div v-else>
-              <div class="transfer-network">
-                <h4 class="mt-0 transfer-network-title">Mạng lưới</h4>
-                <ul
-                  class="transfer-network-list transfer-network-list--deposit has-bsc"
-                >
-                  <li
-                    class="transfer-network-item"
-                    :class="{ 'is-active': isActiveSelectTransNB }"
-                    @click="
-                      (isActiveSelectTransNB = true),
-                        (isActiveSelectTransBEP20 = false),
-                        (isActiveSelectTransERC20 = false)
-                    "
-                  >
-                    <span class="transfer-network-item-label">{{
-                      !activeNRT ? "Nội bộ" : "Ngân hàng"
-                    }}</span>
-                    <span class="transfer-network-item-fee" v-if="!activeNRT"
-                      >Phí: {{ getSetSys.feeRutUSDTNoiBo }} USDT</span
-                    >
-                  </li>
-                  <li
-                    v-if="!activeNRT"
-                    class="transfer-network-item transfer-network-item--bsc"
-                    :class="{ 'is-active': isActiveSelectTransBEP20 }"
-                    @click="
-                      (isActiveSelectTransBEP20 = true),
-                        (isActiveSelectTransNB = false),
-                        (isActiveSelectTransERC20 = false)
-                    "
-                  >
-                    <span class="transfer-network-item-label">Ngân hàng</span>
-                    <span class="transfer-network-item-fee" v-if="!activeNRT"
-                      >Phí: {{ getSetSys.feeRutUSDTBEP20 }} USDT</span
-                    >
-                  </li>
-                  <!--<li v-if="!activeNRT" class="transfer-network-item" :class="{'is-active': isActiveSelectTransERC20}" @click="isActiveSelectTransERC20 = true, isActiveSelectTransNB = false, isActiveSelectTransBEP20 = false">
-										<span class="transfer-network-item-label">ERC20</span>
-										<span class="transfer-network-item-fee" v-if="!activeNRT">Phí: {{ getSetSys.feeRutUSDTERC20 }} USDT</span>
-									</li>-->
-                </ul>
-                <p
-                  class="transfer-network-warn"
-                  v-if="activeNRT"
-                  :class="{ hidden: !isActiveSelectTransNB }"
-                >
-                  <span class="font-bold">Chú ý:</span> <br /><br />
-                  - Chuyển tiền đúng nội dung và không lưu lại thông tin chuyển
-                  khoản!
-                  <br />
-                  <br />
-                  - Bạn vui lòng liên hệ với CSKH Binacesky để nạp tiền để đảm
-                  bảo! ATTT
-                </p>
-
-                <p
-                  class="transfer-network-warn"
-                  v-if="!activeNRT"
-                  :class="{ hidden: !isActiveSelectTransBEP20 }"
-                >
-                  <span class="font-bold">Chú ý:</span> Hệ thống sẽ giúp bạn
-                  chuyển đổi USDT và gửi tiền vào số tài khoản của bạn!.
-                </p>
-              </div>
               <div class="depos" :class="{ block: activeNRT }">
                 <div class="relative form-group">
                   <h4 class="text-center"><span>Nhập Số Tiền</span></h4>
@@ -308,12 +243,6 @@
                   <div class="md:w-full">
                     <div class="relative form-group">
                       <input
-                        type="text"
-                        name="username"
-                        :placeholder="`  Username`"
-                        class="mb-5 form-control amountbank"
-                      />
-                      <input
                         type="number"
                         v-model="amount_bank"
                         decimal="true"
@@ -321,6 +250,7 @@
                         class="form-control amountbank"
                       />
                     </div>
+
                     <div class="infobank" v-if="isNap">
                       <div class="relative form-group">
                         <h4 class="text-center">
@@ -377,11 +307,53 @@
                     <!-- <div class="address">
                                             <input v-model="textAddress" readonly="readonly" id="depositAddress" class="text-center bgSecondary colorSecondary2">
                                         </div> -->
+                    <div class="relative">
+                      <h4 class="mb-1 text-center">
+                        <span>Để thanh toán bạn vui lòng chuyển tiền theo</span>
+                      </h4>
+                      <h4 class="mb-1 text-center">
+                        <span>Nội dung: Username_SotienNap</span>
+                      </h4>
+                      <h4 class="mb-1 text-center">
+                        <span
+                          >-----------------------------------------------------------</span
+                        >
+                      </h4>
+                      <h4 class="mb-1 text-center">
+                        <span>Chủ Tài Khoản: </span>
+                      </h4>
+                      <h4 class="mb-1 text-center">
+                        <span>Ngân hàng: </span>
+                      </h4>
+                      <h4 class="mb-1 text-center">
+                        <span>Số tài khoản:</span>
+                      </h4>
+                      <h4 class="mb-1 text-center">
+                        <span
+                          >-----------------------------------------------------------</span
+                        >
+                      </h4>
+
+                      <h4 class="mb-1 text-center">
+                        <span
+                          >Sau khi chuyển bạn nhập số tiền vào ô phía trên vào
+                          nhấn Nạp ở bên dưới.
+                        </span>
+                      </h4>
+                      <br />
+                      <h5 class="mb-1 text-center">
+                        <span>
+                          <i
+                            >Lưu ý: Hệ Thống Sẽ Không Chịu Trách Nhiệm Nếu Bạn
+                            Gửi Sai Nội Dung.</i
+                          >
+                        </span>
+                      </h5>
+                    </div>
                     <div class="text-center md:w-full">
                       <div class="address">
                         <span class="noted"
-                          >Nạp tối thiểu là {{ getSetSys.minDepositUSDT }} VND
-                          (1USDT = 24.000đ)</span
+                          >Nạp tối thiểu là 15 USDT (1USDT = 24.000đ)</span
                         >
                         <!-- <span class="noted">** Để giảm tải máy chủ, vui lòng khi nạp tiền rồi nhấp vào kiểm tra, hệ thống sẽ kiểm tra trong vòng 2 phút, nếu USDT chưa vào tài khoản thì xin nhấp KIỂM TRA lại. Vui lòng không Spam tránh việc khóa tài khoản!</span> -->
                         <vs-button
@@ -765,7 +737,7 @@ export default {
       let seft = this;
       const amount = this.amount_bank;
       //console.log(amount);
-      if (amount <= 0 || !amount ) {
+      if (amount <= 0 || !amount) {
         return seft.$vs.notify({
           text: "Nhập số tiền muốn nạp",
           color: "danger",
@@ -775,7 +747,7 @@ export default {
         });
       }
 
-      if(amount < 5){
+      if (amount < 5) {
         return seft.$vs.notify({
           text: "Số tiền nạp tối thiểu là $5.",
           color: "danger",
@@ -791,39 +763,37 @@ export default {
       };
 
       // trạnh spam
-      AuthenticationService.getDepositBankingCount(obj)
-      .then((result) => {
-        if(result.data.data > 1){
+      AuthenticationService.getDepositBankingCount(obj).then((result) => {
+        if (result.data.data > 1) {
           return seft.$vs.notify({
-          text: "Không được spam. Vui lòng đợi lệnh nạp cũ được xác thực.",
-          color: "danger",
-          position: "top-right",
-          iconPack: "feather",
-          icon: "icon-x-circle",
-        })
-      } else{
-        AuthenticationService.depositBank(obj)  
-      .then((res) => {
-          return seft.$vs.notify({
-            text: "Tạo lệnh nạp tiền thành công.Vui lòng đợi admin kiểm tra",
-            color: "success",
-            iconPack: "feather",
-            position: "top-right",
-            icon: "icon-check-circle",
-          });
-      }).catch((err) => {
-        return seft.$vs.notify({
-            text: "Hệ thống đang bận, thử lại sau",
+            text: "Không được spam. Vui lòng đợi lệnh nạp cũ được xác thực.",
             color: "danger",
             position: "top-right",
             iconPack: "feather",
             icon: "icon-x-circle",
           });
+        } else {
+          AuthenticationService.depositBank(obj)
+            .then((res) => {
+              return seft.$vs.notify({
+                text: "Tạo lệnh nạp tiền thành công.Vui lòng đợi admin kiểm tra",
+                color: "success",
+                iconPack: "feather",
+                position: "top-right",
+                icon: "icon-check-circle",
+              });
+            })
+            .catch((err) => {
+              return seft.$vs.notify({
+                text: "Hệ thống đang bận, thử lại sau",
+                color: "danger",
+                position: "top-right",
+                iconPack: "feather",
+                icon: "icon-x-circle",
+              });
+            });
+        }
       });
-      }
-    })
-   
-      
     },
 
     CheckPAY(val) {
