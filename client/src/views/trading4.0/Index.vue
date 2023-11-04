@@ -13,11 +13,56 @@
         <div class="h-full">
           <div class="relative chartBox">
             <iframe
-              style="width: 100%; height: 100%"
-              src="https://www.tradingview.com/embed-widget/advanced-chart/?symbol=ETH&width=800&height=600&toolbar_bg=ffffff&studies=RSI&theme=dark"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
+                class="ht"
+                srcdoc='
+                <div style="width: 100%; height: 100%">
+                  <div class="tradingview-widget-container">
+                  <div
+                    id="tradingview_4a95d"
+                  ></div>
+                  <div class="tradingview-widget-copyright">
+                    <a
+                      href="https://www.tradingview.com/"
+                      rel="noopener nofollow"
+                      target="_blank"
+                      ><span class="blue-text">Track all markets on TradingView</span></a
+                    >
+                  </div>
+                </div>
+                  <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/tv.js"
+                  ></script>
+                  <script type="text/javascript">
+                    new TradingView.widget({
+                      autosize: true,
+                      symbol: "BITSTAMP:ETHUSD",
+                      interval: "15",
+                      timezone: "Etc/UTC",
+                      theme: "dark",
+                      style: "1",
+                      locale: "en",
+                      enable_publishing: false,
+                      hide_side_toolbar: false,
+                      allow_symbol_change: true,
+                      watchlist: [
+                        "BINANCE:BTCUSD",
+                        "BINANCE:ETHUSD",
+                        "BINANCE:USDTNGN",
+                        "BINANCE:BNBUSDT",
+                        "CRYPTOCAP:XRP",
+                        "CRYPTOCAP:ADA",
+                        "MIL:DOT",
+                        "CRYPTOCAP:DOGE",
+                      ],
+                      container_id: "tradingview_4a95d",
+                    });
+                  </script>
+                </div>'
+                width="100%"
+                height="100%"
+                allowfullscreen
+              ></iframe>
           </div>
         </div>
       </div>
@@ -2040,7 +2085,7 @@ export default {
       //console.log(SETTINGS.BASE_URL_SOCKET);
       connected = true;
 
-      this.connection = new WebSocket(SETTINGS.BASE_URL_SOCKET);
+      this.connection = new WebSocket(SETTINGS.BASE_URL_SOCKET_TRADE40);
 
       //this.$store.connected = this.connection
 
