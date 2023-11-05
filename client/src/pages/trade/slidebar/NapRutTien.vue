@@ -320,13 +320,13 @@
                         >
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Chủ Tài Khoản: </span>
+                        <span>Chủ Tài Khoản: NGUYEN THI PHUONG NGA </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Ngân hàng: </span>
+                        <span>Ngân hàng: TECHCOMBANK </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Số tài khoản:</span>
+                        <span>Số tài khoản: 5115112005</span>
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span

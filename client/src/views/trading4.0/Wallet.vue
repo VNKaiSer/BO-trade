@@ -624,7 +624,7 @@
                                             svgClasses="w-4 h-4"
                                           />
                                         </span>
-                                        Đợi
+                                        Chờ xác nhận
                                       </span>
                                     </div>
                                   </div>

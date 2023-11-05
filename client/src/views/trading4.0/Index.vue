@@ -237,7 +237,7 @@
                     </vs-button> -->
           </div>
         </div>
-        <div class="hidden mobile">
+        <div class="hidden mt-2 mobile">
           <div class="relative sidebarPC">
             <vs-progress
               class="bg-red"
@@ -248,6 +248,58 @@
             <div class="block">
               <span class="float-left color-green"> {{ CSBUY }}% </span>
               <span class="float-right color-red"> {{ CSSELL }}% </span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mb-1">
+            <div class="flex items-center justify-between gap-3 mt-2">
+              <p class="mt-2">Coin:</p>
+              <select
+                class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
+                name=""
+                id=""
+              >
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  BTC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  ETH
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  USDT
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  BNB
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  XRP
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  ADA
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  DOT
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  DOGE
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  LTC
+                </option>
+              </select>
+            </div>
+            <div class="flex items-center justify-between w-5/12 gap-4 ml-6">
+              <p class="w-11/12 mt-3">Thời Gian:</p>
+              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12">
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  30s
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  60s
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="">
+                  120s
+                </option>
+              </select>
             </div>
           </div>
           <div class="relative">
@@ -3298,7 +3350,7 @@ export default {
 }
 @media screen and (max-width: 767px) {
   #tradePage .chartBox {
-    height: calc(100vh - 490px);
+    height: calc(100vh - 200px);
   }
 }
 @media screen and (max-width: 575px) {
@@ -3313,12 +3365,22 @@ export default {
 }
 @media screen and (max-width: 460px) {
   #tradePage .chartBox {
-    height: calc(100vh - 490px);
+    height: calc(100vh);
   }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 415px) {
   #tradePage .chartBox {
-    height: calc(100vh - 490px);
+    height: calc(100vh - 270px);
+  }
+}
+@media screen and (max-width: 375px) {
+  #tradePage .chartBox {
+    height: calc(100vh - 150px);
+  }
+}
+@media screen and (max-width: 360px) {
+  #tradePage .chartBox {
+    height: calc(100vh - 150px);
   }
 }
 
