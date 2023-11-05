@@ -9,9 +9,7 @@ const cors = require("cors");
 const { updatePriceWinLose } = require("./../api/trans_user");
 
 const BET_MAX = config.BET_MAX;
-var PRICE_BUY_LIVE_BACKUP = 0,
-  PRICE_SELL_LIVE_BACKUP = 0,
-  PRICE_BUY_LIVE = 0,
+var PRICE_BUY_LIVE = 0,
   PRICE_SELL_LIVE = 0,
   PRICE_BUY_DEMO = 0,
   PRICE_SELL_DEMO = 0;
@@ -19,21 +17,21 @@ var BTC_USER_BUY = [],
   BTC_USER_SELL = [],
   AMOUNT_USER_BUY = [],
   AMOUNT_USER_SELL = [];
+var rateNhaThuong = config.RATE_NHA_THUONG;
+
 const Helper = require("../helpers");
 
 let {
   getPriceUser,
   updateBalanceUser,
   updatePersonalTrading,
-  checkF0Commission,
-  updateAmountRateCommission,
-  checkF0CommissionInF0,
   updateAmountWin,
   updateAmountLose,
   insertBetOrder,
   getMaretingAcc,
-  listF0With7Level,
 } = require("./../games/service.trade");
+const WIN_STATUS = 1;
+const LOSE_STATUS = 0;
 
 app.use(
   cors({
@@ -135,7 +133,11 @@ wss.on("connection", function (ws) {
         BetSELL(ws, obj);
       }
       // gọi lấy kết quả từ server
-      ws.send(JSON.stringify({ type: "getKq", data: "Goi lấy kết quả" }));
+      // ws.send(JSON.stringify({ type: "getKq", data: "Goi lấy kết quả" }));
+    }
+    if (data.type === "getKq") {
+      const statusBet = randomWinLost();
+      HandlingProcessingGameTrade40(statusBet, data.data, ws);
     }
   });
 });
@@ -316,4 +318,125 @@ function BetSELL(ws, data) {
       });
     });
   }
+
+  // hàm radmom thắng thua
+}
+function randomWinLost() {
+  // Tạo một số ngẫu nhiên từ 0 đến 1
+  const randomValue = Math.random();
+
+  // Kiểm tra giá trị và trả về 0 hoặc 1 với tỷ lệ 70% và 30%
+  if (randomValue < 0.7) {
+    return LOSE_STATUS;
+  } else {
+    return WIN_STATUS;
+  }
+}
+async function HandlingProcessingGameTrade40(v, data, ws) {
+  let money = data.betAmount;
+  let uid = data.uid;
+  let email = data.email;
+  let type = 1;
+  let action = data.type;
+  let accMarketingBuy = 0;
+  if (v === WIN_STATUS) {
+    // đây là thắng của BUY
+    let amount = (money / 100) * rateNhaThuong; // Money của BUY
+
+    let amountShow = Number(amount); // là số tiền nhận được
+    let addMo = amountShow + Number(money);
+
+    let obj = {
+      balance: addMo,
+      win: amountShow,
+      upID: uid,
+      email: email,
+    };
+
+    updatePriceWinLose(obj, "w");
+
+    updateAmountWin(obj, (err, result) => {});
+
+    let obj2 = {
+      type: "kq",
+      data: { kq: "win", money: addMo },
+    };
+
+    if (ws !== "") ws.send(JSON.stringify(obj2));
+
+    // Lưu vào lịch sử
+    SaveHistory(
+      "win",
+      uid,
+      type,
+      action,
+      data.coinBet,
+      amountShow,
+      money,
+      email,
+      accMarketingBuy
+    );
+  } else {
+    let obj = {
+      lose: Number(money),
+      upID: uid,
+      email: email,
+    };
+    updateAmountLose(obj, (err, result) => {});
+    updatePriceWinLose(obj, "l");
+
+    let obj2 = {
+      type: "kq",
+      data: { kq: "lose", money: Number(money) },
+    };
+
+    if (ws !== "") ws.send(JSON.stringify(obj2));
+
+    // Lưu vào lịch sử
+    SaveHistory(
+      "lose",
+      uid,
+      type,
+      action,
+      data.coinBet,
+      money,
+      money,
+      email,
+      accMarketingBuy
+    );
+  }
+}
+
+function SaveHistory(
+  wl,
+  uid,
+  typeAccount,
+  buy_sell,
+  currency,
+  amountWL,
+  amountBet,
+  email,
+  marketing
+) {
+  let obj = {
+    uid: uid,
+    typeAccount: Number(typeAccount),
+    currency: currency,
+    buy_sell: buy_sell,
+    amount_win: wl == "win" ? Number(amountWL) : 0,
+    amount_lose: wl == "win" ? 0 : Number(amountWL),
+    amount_bet: amountBet,
+    open: 0,
+    close: 0,
+    session: 0,
+    email: email,
+    mkt: 0,
+  };
+
+  insertBetOrder(obj, (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+  });
 }

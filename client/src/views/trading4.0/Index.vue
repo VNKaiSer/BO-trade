@@ -1456,6 +1456,7 @@ export default {
         typeAccount: typeAccount, // 0: demo: 0 , 1: live
         betAmount: gAmount,
         type: v,
+        coinBet: this.coinBet,
         mkt: getData.mkt,
         //idPlayer: this.thisIDPlayer
       };
@@ -1467,7 +1468,7 @@ export default {
       let ss = this.$store.session;
       let timeGet = new Date().getTime();
       let currencyType = this.coinBet;
-      console.log(currencyType)
+      
       let icon = "";
       switch (currencyType){
         case "BTC":
@@ -1513,6 +1514,8 @@ export default {
       getData.Notify = this.betOpen.l.bet[0].items.length;
 
       this.clearBAmount();
+
+      this.sendMessage({ type: "getKq", data: obj });
 
       // if(v === 'buy'){
 
