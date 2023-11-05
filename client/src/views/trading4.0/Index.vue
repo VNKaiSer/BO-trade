@@ -1515,7 +1515,12 @@ export default {
 
       this.clearBAmount();
 
-      this.sendMessage({ type: "getKq", data: obj });
+      setTimeout(() => {
+        this.sendMessage({ type: "getKq", data: obj });
+      // }, this.timeBet* 1000
+      },2000
+      )
+
 
       // if(v === 'buy'){
 
@@ -2212,6 +2217,8 @@ export default {
           // xóa notice = 0
           getData.Notify = 0;
           this.betOpen.l.bet[0].items = [];
+          console.log(this.betOpen);
+          console.log(localStorage.getItem("stateOpen"));
           localStorage.removeItem("stateOpen");
         }
         if (data.type === "mess") {
