@@ -421,7 +421,7 @@ function SaveHistory(
   let obj = {
     uid: uid,
     typeAccount: Number(typeAccount),
-    currency: currency,
+    currency: currency + "USDT",
     buy_sell: buy_sell,
     amount_win: wl == "win" ? Number(amountWL) : 0,
     amount_lose: wl == "win" ? 0 : Number(amountWL),
