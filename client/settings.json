@@ -1,7 +1,7 @@
 {
   "BASE_URL": "http://localhost:2022/",
-  "BASE_URL_SOCKET": "ws://binancesky.online:2096",
-  "BASE_URL_SOCKET_SYS": "ws://binancesky.online:2087",
-  "BASE_URL_SOCKET_NAP": "ws://binancesky.online:2083",
-  "BASE_URL_SOCKET_TRADE40": "ws://binancesky.online:2097"
+  "BASE_URL_SOCKET": "ws://localhost:2096",
+  "BASE_URL_SOCKET_SYS": "ws://localhost:2087",
+  "BASE_URL_SOCKET_NAP": "ws://localhost:2083",
+  "BASE_URL_SOCKET_TRADE40": "ws://localhost:2097"
 }

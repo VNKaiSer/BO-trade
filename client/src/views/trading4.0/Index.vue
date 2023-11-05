@@ -34,11 +34,10 @@
                 "watchlist": [
                   "BINANCE:BTCUSD",
                   "BINANCE:ETHUSD",
-                  "BINANCE:USDTNGN",
-                  "BINANCE:BNBUSDT",
+                  "CRYPTOCAP:USDT",
+                  "CRYPTOCAP:BNB",
                   "CRYPTOCAP:XRP",
                   "CRYPTOCAP:ADA",
-                  "MIL:DOT",
                   "CRYPTOCAP:DOGE"
                 ],
                 "container_id": "tradingview_4a95d"
@@ -60,49 +59,43 @@
               <p class="mt-2">Coin:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
-                name=""
+                v-model="coinBet"
                 id=""
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="BTC">
                   BTC
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="ETH">
                   ETH
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="USDT">
                   USDT
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="BNB">
                   BNB
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="XRP">
                   XRP
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="ADA">
                   ADA
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
-                  DOT
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="DOGE">
                   DOGE
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
-                  LTC
                 </option>
               </select>
             </div>
             <div class="flex items-center justify-between gap-1">
               <p>Thời Gian:</p>
-              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12">
-                <option class="w-full h-8 cursor-pointer bpF" value="">
-                  30s
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12" v-model="timeBet">
+                <option class="w-full h-8 cursor-pointer bpF" value="60">
                   60s
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="120">
                   120s
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="180">
+                  150s
                 </option>
               </select>
             </div>
@@ -1271,6 +1264,10 @@ export default {
       NumSumNeutral: 0,
       textTitleSu: "NEUTRAL",
 
+      // trade 4.0 
+      timeBet : 60,
+      coinBet : "ETH",
+
       moneyWin: 0,
       isWinPop: false,
       blObj: getData,
@@ -1370,18 +1367,9 @@ export default {
     BetBuySell(v) {
       this.playAudio("order");
 
-      if (getData.countDown <= 1) {
-        return this.$vs.notify({
-          text: "Vui lòng đợi phiên sau!",
-          color: "danger",
-          position: "top-right",
-          iconPack: "feather",
-          icon: "icon-x-circle",
-        });
-      }
-      //this.isBet = false
-
       let gAmount = this.betAmount.toString();
+      let timeBet = this.timeBet;
+      
       gAmount = this.replaceAll(gAmount, ",", "");
 
       if (this.checkBet(gAmount)) {
@@ -1419,11 +1407,41 @@ export default {
         mkt: getData.mkt,
         //idPlayer: this.thisIDPlayer
       };
-
+      // đoạn này gửi đi này 
+      
       this.sendMessage({ type: "bet", data: obj });
+      
 
       let ss = this.$store.session;
       let timeGet = new Date().getTime();
+      let currencyType = this.coinBet;
+      console.log(currencyType)
+      let icon = "";
+      switch (currencyType){
+        case "BTC":
+          icon= "icon iconBitcoin";
+          break;
+        case "ETH":
+            icon = "icon iconETH";
+            break;
+        case "USDT":
+           icon = "icon iconUSDT";
+           break;
+        case "BTN":
+            icon = "icon iconBNB";
+            break;
+        case "XRP":
+            icon = "icon iconXRP";
+            break;
+        case "DOGE":
+          icon = "icon iconDOGE";
+          break;
+        case "ADA": 
+          icon = "icon iconADA";
+          break;
+        default:
+          icon = "icon iconBitcoin";
+      }
 
       this.betOpen.s = ss;
       let itp = {
@@ -1432,8 +1450,8 @@ export default {
         amt: gAmount,
         type: v,
         acc_type: typeAccount,
-        currencyType: "BTC/USD",
-        classIcon: "iconBitcoin",
+        currencyType: currencyType + "/USD",
+        classIcon: icon,
       };
 
       this.betOpen.l.bet[0].items.push(itp);
@@ -1937,24 +1955,24 @@ export default {
       }
 
       //$('.w-18').css('max-width', $('#analysis-wrapper').width() / 4)
-      let setS = setInterval(() => {
-        let w = $(".chartBox").width();
-        let h = $(".chartBox").height();
-        if (!!w && !!h) {
-          let cH = this.$refs.chartStock.chart.chartHeight;
-          if (cH !== h) {
-            let chartInstance = this.$refs.chartStock.chart;
-            chartInstance.setSize(
-              $(".chartBox").width(),
-              $(".chartBox").height(),
-              true
-            );
-            chartGet = chartInstance;
-          } else {
-            clearInterval(setS);
-          }
-        }
-      }, 600);
+      // let setS = setInterval(() => {
+      //   let w = $(".chartBox").width();
+      //   let h = $(".chartBox").height();
+      //   if (!!w && !!h) {
+      //     let cH = this.$refs.chartStock.chart.chartHeight;
+      //     if (cH !== h) {
+      //       let chartInstance = this.$refs.chartStock.chart;
+      //       chartInstance.setSize(
+      //         $(".chartBox").width(),
+      //         $(".chartBox").height(),
+      //         true
+      //       );
+      //       chartGet = chartInstance;
+      //     } else {
+      //       clearInterval(setS);
+      //     }
+      //   }
+      // }, 600);
 
       //this.$forceUpdate();
     },
