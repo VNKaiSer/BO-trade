@@ -1549,6 +1549,7 @@ export default {
         currencyType: currencyType + "/USD",
         classIcon: icon,
         op: priceOpen,
+        timeBet: timeBet,
       };
 
       this.betOpen.l.bet[0].items.push(itp);

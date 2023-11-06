@@ -101,11 +101,13 @@
                     </div>
                     <div class="flex justify-between bet-time">
                       <span class="colorGray">Phiên</span>
-                      <span class="text-sm font-bold">123456</span>
+                      <span class="text-sm font-bold">{{ oknha.timeBet }}</span>
                     </div>
                     <div class="flex justify-between bet-time">
                       <span class="colorGray">Kết Phiên</span>
-                      <span class="text-sm font-bold">123456</span>
+                      <span class="text-sm font-bold">{{
+                        startCountdown(oknha)
+                      }}</span>
                     </div>
                   </div>
                 </div>
@@ -231,6 +233,7 @@ export default {
       // Data Sidebar
       SidebarHSSetting: false,
       sidebarDataSetting: {},
+      countdown: 120,
       settings: {
         // perfectscrollbar settings
         maxScrollbarLength: 60,
@@ -324,6 +327,16 @@ export default {
 
     toggleDataSidebar(val = false) {
       this.SidebarHSSetting = val;
+    },
+    startCountdown(data) {
+      const countdownInterval = setInterval(() => {
+        if (data > 0) {
+          data--;
+        } else {
+          clearInterval(data);
+          data = 0;
+        }
+      }, 1000);
     },
   },
   components: {
