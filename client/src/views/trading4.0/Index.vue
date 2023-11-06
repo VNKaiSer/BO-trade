@@ -95,7 +95,10 @@
                   120s
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  150s
+                  180s
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="300">
+                  300s
                 </option>
               </select>
             </div>
@@ -1517,9 +1520,8 @@ export default {
 
       setTimeout(() => {
         this.sendMessage({ type: "getKq", data: obj });
-      // }, this.timeBet* 1000
-      },2000
-      )
+      }, this.timeBet* 1000)
+      // },2000)
 
 
       // if(v === 'buy'){

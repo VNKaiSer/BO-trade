@@ -3422,7 +3422,7 @@ request-promise@^4.2.2:
     stealthy-require "^1.1.1"
     tough-cookie "^2.3.3"
 
-request@^2.79.0, request@^2.83.0, request@^2.88.0, request@^2.88.2:
+request@^2.34, request@^2.79.0, request@^2.83.0, request@^2.88.0, request@^2.88.2:
   version "2.88.2"
   resolved "https://registry.npmjs.org/request/-/request-2.88.2.tgz"
   integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
@@ -3943,6 +3943,11 @@ tar@^6.1.0:
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
+
+textflow.js@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/textflow.js/-/textflow.js-0.1.4.tgz"
+  integrity sha512-0gVI2Didjpm6Hzbt+7gm9QvTexlXuiXb95BAaFDct57eQoNj1iKZWJr0Pe3P0t5/lB89QjrRVHRNP5ChgMK71A==
 
 timed-out@^4.0.0, timed-out@^4.0.1:
   version "4.0.1"
@@ -4490,6 +4495,11 @@ wrappy@1:
   resolved "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
+ws@*, ws@^7.2.0, ws@^7.4.5:
+  version "7.4.5"
+  resolved "https://registry.npmjs.org/ws/-/ws-7.4.5.tgz"
+  integrity sha512-xzyu3hFvomRfXKH8vOFMU3OguG6oOvhXMo3xsGy3xWExqaM2dxBbVxuD99O7m3ZUFMvvscsZDqxfgMaRr/Nr1g==
+
 ws@^3.0.0:
   version "3.3.3"
   resolved "https://registry.npmjs.org/ws/-/ws-3.3.3.tgz"
@@ -4507,11 +4517,6 @@ ws@^3.3.1:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
     ultron "~1.1.0"
-
-ws@^7.2.0, ws@^7.4.5:
-  version "7.4.5"
-  resolved "https://registry.npmjs.org/ws/-/ws-7.4.5.tgz"
-  integrity sha512-xzyu3hFvomRfXKH8vOFMU3OguG6oOvhXMo3xsGy3xWExqaM2dxBbVxuD99O7m3ZUFMvvscsZDqxfgMaRr/Nr1g==
 
 ws@~7.4.2:
   version "7.4.4"
