@@ -167,7 +167,7 @@
               >
             </div>
           </div>
-          <div class="mb-10 text-center lg:relative">
+          <!-- <div class="mb-10 text-center lg:relative">
             <div class="text-center">Chỉ báo tâm lý</div>
             <vs-progress
               class="bg-red"
@@ -179,10 +179,10 @@
               <span class="float-left color-green"> {{ CSBUY }}% </span>
               <span class="float-right color-red"> {{ CSSELL }}% </span>
             </div>
-          </div>
+          </div> -->
 
           <div class="mt-10 mb-5 lg:relative">
-            <div
+            <!-- <div
               class="pb-1 col-md-12 col-4 bet-box-time"
               style="
                 border: 1px solid #fa2843;
@@ -207,8 +207,8 @@
                   >
                 </p>
               </a>
-            </div>
-            <div class="h-6"></div>
+            </div> -->
+            <!-- <div class="h-6"></div> -->
             <vs-button
               @click="BetBuySell('buy')"
               :disabled="!isBet"
@@ -237,11 +237,11 @@
                 svgClasses="w-6 h-6"
               ></feather-icon>
             </vs-button>
-            <!--<vs-button @click="clickMin" class="w-full h-16 font-bold" color="danger" type="relief">
+          </div>
+          <!--<vs-button @click="clickMin" class="w-full h-16 font-bold" color="danger" type="relief">
                     TEST
                         <feather-icon style="top: 5px;" icon="TrendingDownIcon" svgClasses="w-6 h-6"></feather-icon>
                     </vs-button> -->
-          </div>
         </div>
         <div class="hidden mt-2 mobile">
           <div class="relative sidebarPC">
@@ -593,7 +593,7 @@
                   <!---->
                 </div>
                 <p class="titleWin">Bạn đã thua!</p>
-                <span class="text-4xl font-bold message_money"
+                <span class="text-4xl font-bold ght2 message_money1"
                   >-{{ moneyLost }}$</span
                 >
               </div>
@@ -1837,15 +1837,15 @@ export default {
               "</span></div>",
           });
 
-        if (boPrice.type === "order") {
-          this.isOrder = true;
-          this.isBet = true;
-          getData.textTimeDown = "Hãy đặt lệnh";
-        } else {
-          this.isOrder = false;
-          this.isBet = false;
-          getData.textTimeDown = "Chờ kết quả";
-        }
+        // if (boPrice.type === "order") {
+        //   this.isOrder = true;
+        //   this.isBet = true;
+        //   getData.textTimeDown = "Hãy đặt lệnh";
+        // } else {
+        //   this.isOrder = false;
+        //   this.isBet = false;
+        //   getData.textTimeDown = "Chờ kết quả";
+        // }
 
         getData.countDown = counter > 9 ? counter : "0" + counter;
       } catch {}
@@ -2261,9 +2261,21 @@ export default {
             this.isWinPop = true;
             setTimeout(() => {
               this.isWinPop = false;
-            }, 3000);
+            }, 2000);
           } else {
+            let mn = dl.money;
             this.playAudio("lose");
+            if (getData.isAccount) {
+              getData.blLive = getData.blLive + mn;
+            } else {
+              getData.blDemo = getData.blDemo + mn;
+            }
+
+            this.moneyLost = this.formatPrice(mn, 2);
+            this.isLostPop = true;
+            setTimeout(() => {
+              this.isLostPop = false;
+            }, 2000);
           }
 
           // xóa notice = 0
@@ -2463,6 +2475,9 @@ export default {
 .ht {
   border-width: 0;
 }
+.ght2 {
+  color: red;
+}
 
 .mbTextCountdown {
   width: 150px;
@@ -2626,7 +2641,9 @@ export default {
 .boxContent .message_money {
   color: #00c48c;
 }
-
+.boxContent message_money1 {
+  color: red;
+}
 .winDemo .wrapNotify .boxContent {
   padding: 0;
 }
