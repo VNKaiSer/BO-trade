@@ -49,7 +49,7 @@
                                         <span class="text-sm font-bold text-white">{{ oknha.currencyType }}
                                             <span class="text-xs accType">{{ oknha.acc_type ? 'LIVE' : 'DEMO' }}</span>
                                         </span>
-                                        <span class="icon iconBitcoin"></span>
+                                        <span :class="oknha.classIcon === 'iconBitcoin' ? 'icon iconBitcoin' : oknha.classIcon "></span>
                                     </div>
                                     <div class="flex justify-between mb-2 text-white">
                                         <span class="flex trendGroup align-items-center">
@@ -81,7 +81,7 @@
                                         <span class="text-sm font-bold text-white">{{ oknha.c }}
                                             <span class="text-xs accType">{{ oknha.t ? 'LIVE' : 'DEMO' }}</span>
                                         </span>
-                                        <span class="icon iconBitcoin"></span>
+                                        <span :class="oknha.classIcon === 'iconBitcoin' ? 'icon iconBitcoin' : oknha.classIcon "></span>
                                     </div>
                                     <div class="flex justify-between mb-2 text-white">
                                         <span class="flex trendGroup align-items-center">
