@@ -196,9 +196,6 @@
                   ADA
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="">
-                  DOT
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
                   DOGE
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="">
@@ -206,17 +203,20 @@
                 </option>
               </select>
             </div>
-            <div class="flex items-center justify-between w-5/12 gap-4 ml-6">
-              <p class="w-11/12 mt-3">Thời Gian:</p>
-              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12">
-                <option class="w-full h-8 cursor-pointer bpF" value="">
-                  30s
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+            <div class="flex items-center justify-between gap-1">
+              <p>Thời Gian:</p>
+              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12" v-model="timeBet">
+                <option class="w-full h-8 cursor-pointer bpF" value="60">
                   60s
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="120">
                   120s
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="180">
+                  180s
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="300">
+                  300s
                 </option>
               </select>
             </div>
