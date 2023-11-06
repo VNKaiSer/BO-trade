@@ -111,11 +111,11 @@ const router = new Router({
         //   },
         // },
         {
-          path: "/trading4.0",
+          path: "/tradingg",
           name: "client-index1",
-          component: () => import("../../views/trading4.0/Index.vue"),
+          component: () => import("../../views/tradingg/Index.vue"),
           meta: {
-            title: "Giao dịch 4.0",
+            title: "Giao dịch",
             requiresAuth: true,
           },
         },

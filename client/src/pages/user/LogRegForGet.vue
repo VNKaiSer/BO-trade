@@ -1263,7 +1263,7 @@ export default {
           // localStorage.removeItem('isLog')
           console.log("INFO", dt);
 
-          this.$router.push("/trading4.0").catch(() => {});
+          this.$router.push("/tradingg").catch(() => {});
         }
       });
     },

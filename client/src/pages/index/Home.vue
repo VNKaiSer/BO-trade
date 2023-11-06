@@ -813,7 +813,7 @@ export default {
       let path = this.$router.currentRoute.path;
       let checkTK = localStorage.hasOwnProperty("tokenUser");
       if (path == "/" && checkTK) {
-        this.$router.push({ path: "/trading4.0" });
+        this.$router.push({ path: "/tradingg" });
       }
       //this.activeLoading = false
       //this.$vs.loading.close()

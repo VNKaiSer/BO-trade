@@ -66,7 +66,7 @@
         </router-link>
       </div> -->
       <div class="nav-item">
-        <router-link to="/trading4.0" class="cursor-pointer nav-link">
+        <router-link to="/tradingg" class="cursor-pointer nav-link">
           <span
             ><svg
               xmlns="http://www.w3.org/2000/svg"
