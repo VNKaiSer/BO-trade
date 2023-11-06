@@ -1,15 +1,15 @@
 <template>
   <div
-    class="the-navbar__user-meta flex items-center text-acc"
+    class="flex items-center the-navbar__user-meta text-acc"
     v-if="activeUserInfo.displayName != ''"
   >
-    <!--<div class="the-navbar__user-meta flex items-center"> -->
-    <!-- <div class="text-right leading-tight hidden sm:block">
+    <!--<div class="flex items-center the-navbar__user-meta"> -->
+    <!-- <div class="hidden leading-tight text-right sm:block">
       <p class="font-semibold">{{ activeUserInfo.displayName }}</p>
      <small>Available</small>
     </div> -->
     <div
-      class="con-img ml-3 mr-3"
+      class="ml-3 mr-3 con-img"
       style="border-radius: 3px; padding: 0.375rem 0.75rem"
     >
       <vs-dropdown vs-custom-content vs-trigger-click>
@@ -35,36 +35,36 @@
           </p>
         </div>
         <vs-dropdown-menu class="dropdown-account" style="width: 160px">
-          <div class="accLive mb-3">
+          <div class="mb-3 accLive">
             <span style="font-size: 12px; color: #d6d6d6">Tài khoản Thực</span>
-            <div class="balance cursor-pointer" @click="changeAccount(1)">
+            <div class="cursor-pointer balance" @click="changeAccount(1)">
               <span style="color: #e8e8e8; font-weight: bold; font-size: 16px"
                 >$ {{ formatPrice(blObj.blLive, 2) }}</span
               >
               <span
-                class="reloadBalance absolute"
+                class="absolute reloadBalance"
                 style="right: 10px; z-index: 99999"
                 @click="clickShowPopTrans()"
               >
                 <feather-icon
                   icon="LinkIcon"
-                  class="cursor-pointer w-4"
+                  class="w-4 cursor-pointer"
                 ></feather-icon>
               </span>
             </div>
           </div>
           <hr style="border-color: #b4c2d2" />
-          <div class="accDemo mt-3">
+          <div class="mt-3 accDemo">
             <span style="font-size: 12px; color: #d6d6d6">Tài khoản Demo</span>
-            <div class="balance cursor-pointer" @click="changeAccount(0)">
+            <div class="cursor-pointer balance" @click="changeAccount(0)">
               <span style="color: #e8e8e8; font-weight: bold; font-size: 16px"
                 >$ {{ formatPrice(blObj.blDemo, 2) }}</span
               >
-              <span class="reloadBalance absolute z-10" style="right: 10px">
+              <span class="absolute z-10 reloadBalance" style="right: 10px">
                 <feather-icon
                   icon="RefreshCwIcon"
                   @click.stop="reloadBalanceDemo()"
-                  class="cursor-pointer w-4"
+                  class="w-4 cursor-pointer"
                 ></feather-icon>
               </span>
             </div>
@@ -72,7 +72,7 @@
         </vs-dropdown-menu>
       </vs-dropdown>
     </div>
-    <div class="con-img ml-3 mr-3">
+    <div class="ml-3 mr-3 con-img">
       <vs-button
         color="success"
         icon-pack="feather"
@@ -83,42 +83,42 @@
       >
       <!-- <vs-button type="line" icon-pack="feather" :color="colorNT" icon="icon-dollar-sign" @click.stop="viewNapTien()">Nạp nhanh</vs-button> -->
     </div>
-    <!--<div class="con-img ml-3">
+    <!--<div class="ml-3 con-img">
       <vs-button type="line" icon-pack="feather" :color="colorRT" icon="icon-dollar-sign" @click.stop="viewRutTien()">Rút tiền</vs-button>
     </div> -->
-    <div class="con-img ml-3 mr-3 cursor-pointer msetting">
+    <!-- <div class="ml-3 mr-3 cursor-pointer con-img msetting">
       <a href="https://t.me/daiphat2879" class="contactsss"
         ><feather-icon
           icon="CodeIcon"
           svgClasses="w-5 h-5"
-          class="block text-center h-5"
+          class="block h-5 text-center"
         />
         <span>Liên Hệ</span></a
       >
-    </div>
+    </div> -->
     <div
-      class="con-img ml-3 mr-3 cursor-pointer msetting"
+      class="ml-3 mr-3 cursor-pointer con-img msetting"
       @click="popupActiveCaiDat = true"
     >
       <feather-icon
         icon="SettingsIcon"
         svgClasses="w-5 h-5"
-        class="block text-center h-5"
+        class="block h-5 text-center"
       />
       <span>Cài Đặt</span>
     </div>
     <div
-      class="con-img ml-3 mr-3 cursor-pointer mhoso"
+      class="ml-3 mr-3 cursor-pointer con-img mhoso"
       @click.stop="viewHoSo()"
     >
       <feather-icon
         icon="UserIcon"
         svgClasses="w-5 h-5"
-        class="block text-center h-5"
+        class="block h-5 text-center"
       />
       <span>Hồ Sơ</span>
     </div>
-    <div class="con-img ml-3 mr-3 text-center relative cursor-pointer mTT">
+    <div class="relative ml-3 mr-3 text-center cursor-pointer con-img mTT">
       <notification-drop-down />
     </div>
 
@@ -127,13 +127,13 @@
           <feather-icon icon="ListIcon" svgClasses="w-8 h-8"/>
         </div>
     </div>
-    <div class="tabMenuMobileTOP flex items-center justify-center" :class="{'open': isMenuMobie}">
-      <div class="con-img ml-3 mr-3 cursor-pointer" @click="popupActiveCaiDat = true">
-        <feather-icon icon="SettingsIcon" svgClasses="w-5 h-5" class="block text-center h-5"/>
+    <div class="flex items-center justify-center tabMenuMobileTOP" :class="{'open': isMenuMobie}">
+      <div class="ml-3 mr-3 cursor-pointer con-img" @click="popupActiveCaiDat = true">
+        <feather-icon icon="SettingsIcon" svgClasses="w-5 h-5" class="block h-5 text-center"/>
         <span>Cài Đặt</span>
       </div>
-      <div class="con-img ml-3 mr-3 cursor-pointer" @click.stop="viewHoSo()">
-        <feather-icon icon="UserIcon" svgClasses="w-5 h-5" class="block text-center h-5"/>
+      <div class="ml-3 mr-3 cursor-pointer con-img" @click.stop="viewHoSo()">
+        <feather-icon icon="UserIcon" svgClasses="w-5 h-5" class="block h-5 text-center"/>
         <span>Hồ Sơ</span>
       </div>
     </div> -->
@@ -147,44 +147,44 @@
 
     <!-- <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
 
-      <div class="con-img ml-3">
+      <div class="ml-3 con-img">
         <feather-icon icon="UserIcon" svgClasses="w-8 h-8" />
-        <img v-if="activeUserInfo.photoURL" key="onlineImg" :src="activeUserInfo.photoURL" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
+        <img v-if="activeUserInfo.photoURL" key="onlineImg" :src="activeUserInfo.photoURL" alt="user-img" width="40" height="40" class="block rounded-full shadow-md cursor-pointer" />
       </div>
 
       <vs-dropdown-menu class="vx-navbar-dropdown">
         <ul style="min-width: 9rem">
 
           <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            class="flex px-4 py-2 cursor-pointer hover:bg-primary hover:text-white"
             @click="$router.push('/pages/profile').catch(() => {})">
             <feather-icon icon="UserIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Profile</span>
           </li>
 
           <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            class="flex px-4 py-2 cursor-pointer hover:bg-primary hover:text-white"
             @click="$router.push('/apps/email').catch(() => {})">
             <feather-icon icon="MailIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Inbox</span>
           </li>
 
           <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            class="flex px-4 py-2 cursor-pointer hover:bg-primary hover:text-white"
             @click="$router.push('/apps/todo').catch(() => {})">
             <feather-icon icon="CheckSquareIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Tasks</span>
           </li>
 
           <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            class="flex px-4 py-2 cursor-pointer hover:bg-primary hover:text-white"
             @click="$router.push('/apps/chat').catch(() => {})">
             <feather-icon icon="MessageSquareIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Chat</span>
           </li>
 
           <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            class="flex px-4 py-2 cursor-pointer hover:bg-primary hover:text-white"
             @click="$router.push('/apps/eCommerce/wish-list').catch(() => {})">
             <feather-icon icon="HeartIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Wish List</span>
@@ -193,7 +193,7 @@
           <vs-divider class="m-1" />
 
           <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            class="flex px-4 py-2 cursor-pointer hover:bg-primary hover:text-white"
             @click="logout">
             <feather-icon icon="LogOutIcon" svgClasses="w-4 h-4" />
             <span class="ml-2">Đăng xuất</span>
@@ -216,22 +216,22 @@
           <span class="icon USDT"></span>
           <span class="white">{{ balanceUSDT }}</span>
           <feather-icon
-            class="material-icons right-0"
+            class="right-0 material-icons"
             icon="ChevronDownIcon"
             svgClasses="w-4 h-4"
             style="top: -3px; position: absolute !important"
           />
         </vs-button>
-        <div class="listWallShow w-full" :class="{ block: showPopWalSL }">
+        <div class="w-full listWallShow" :class="{ block: showPopWalSL }">
           <span
-            class="drop cursor-pointer w-full block"
+            class="block w-full cursor-pointer drop"
             @click="selectWallet('usdt')"
           >
             <span class="icon USDT"></span>
             <span class="white">{{ balanceUSDT }}</span>
           </span>
         </div>
-        <p class="white mt-4 mb-2 text-xs">Tiền Nạp</p>
+        <p class="mt-4 mb-2 text-xs white">Tiền Nạp</p>
         <div class="relative">
           <vs-input
             class="w-full"
@@ -239,17 +239,17 @@
             @keyup="ttThucNhan"
             v-model="enterMoneyDeposit"
           />
-          <span class="allIn cursor-pointer" @click="allEnterWallet()">
+          <span class="cursor-pointer allIn" @click="allEnterWallet()">
             <span class="uppercase">Tất cả</span>
           </span>
         </div>
 
-        <p class="noticeDeposit mt-4 mb-4 text-right">
+        <p class="mt-4 mb-4 text-right noticeDeposit">
           <small>Giá trị nạp tối thiểu là $11</small>
         </p>
         <div class="sizeLarge">
-          <p class="white mb-2 title">*Tổng sẽ nhận</p>
-          <p title="0.00" class="receiveAmount white mb-2 text-3xl">
+          <p class="mb-2 white title">*Tổng sẽ nhận</p>
+          <p title="0.00" class="mb-2 text-3xl receiveAmount white">
             ${{ ttNhan }}
           </p>
         </div>
@@ -263,7 +263,7 @@
           >Nạp tiền ngay</vs-button
         >
 
-        <p class="noticeDeposit text-center mt-2">
+        <p class="mt-2 text-center noticeDeposit">
           <small>*Giá báo có thể thay đổi</small>
         </p>
       </div>
@@ -273,26 +273,26 @@
       title="Chuyển tiền"
       :active.sync="popupTransferActive"
     >
-      <div class="header flex">
-        <div class="leftHeader flex flex-col items-center">
+      <div class="flex header">
+        <div class="flex flex-col items-center leftHeader">
           <span
-            class="text-sm mb-2 font-bold white"
+            class="mb-2 text-sm font-bold white"
             v-html="textWalletHtml"
           ></span>
           <span class="text-3xl font-bold">{{
             formatPrice(amountAcc, 2)
           }}</span>
         </div>
-        <div class="rightHeader flex flex-col items-center">
+        <div class="flex flex-col items-center rightHeader">
           <span
-            class="text-sm mb-2 font-bold white"
+            class="mb-2 text-sm font-bold white"
             v-html="textAccLive"
           ></span>
           <span class="text-3xl font-bold">{{
             formatPrice(amountAccLive, 2)
           }}</span>
         </div>
-        <div @click="changeTransMoney" class="changeAmount cursor-pointer">
+        <div @click="changeTransMoney" class="cursor-pointer changeAmount">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -349,17 +349,17 @@
           </svg>
         </div>
       </div>
-      <div class="content flex flex-col items-center">
-        <div class="inputGroup mb-3 w-3/4 relative">
+      <div class="flex flex-col items-center content">
+        <div class="relative w-3/4 mb-3 inputGroup">
           <vs-input
-            class="inputx text-left w-full"
+            class="w-full text-left inputx"
             placeholder="Nhập số tiền"
             v-model="enterAmount"
           />
           <div class="input-append">
             <button
               type="button"
-              class="btn cursor-pointer"
+              class="cursor-pointer btn"
               @click="enterAllMoney"
             >
               Tất cả
@@ -397,7 +397,7 @@ export default {
     return {
       popupTransferActive: false,
       textWalletHtml:
-        '<span class="mr-1 color-blue uppercase green">USDT</span> <span>Wallet</span>',
+        '<span class="mr-1 uppercase color-blue green">USDT</span> <span>Wallet</span>',
       textAccLive: "Tài khoản Thực",
       amountAcc: 0,
       amountAccLive: 0,

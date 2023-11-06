@@ -116,7 +116,7 @@
                 </g>
               </g></svg
           ></span>
-          <span class="textLink">{{ $t("Trade1") || "Trade1" }}</span>
+          <span class="textLink">{{ $t("Trade") || "Trade" }}</span>
         </router-link>
       </div>
       <!-- <div class=" nav-item">
@@ -332,7 +332,7 @@
       <div class="mobileA nav-item">
         <a
           href.prevent
-          @click="popupActiveCaiDat = true"
+          @click="popupActiveCaiDat = false"
           class="cursor-pointer nav-link"
         >
           <span class="mb-2">
@@ -538,7 +538,7 @@ export default {
     return {
       blObj: getData,
       switchAmThanh: true,
-      popupActiveCaiDat: false,
+      popupActiveCaiDat: true,
       addSidebarHisOrder: false,
       // Data Sidebar
       addNewDataSidebar: false,
