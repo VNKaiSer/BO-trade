@@ -126,6 +126,7 @@ wss.on("connection", function (ws) {
         }
       }
     }
+
     if (data.type === "bet") {
       let obj = data.data;
       if (obj.type === "buy") {

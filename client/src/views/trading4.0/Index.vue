@@ -1282,7 +1282,7 @@ export default {
         op: 0,
       };
 
-      this.sendMessage({ type: "bet", data: obj });
+      
 
       let ss = this.$store.session;
       let timeGet = new Date().getTime();
@@ -1326,6 +1326,7 @@ export default {
         classIcon: icon,
         // op: priceOpen,
       };
+      this.sendMessage({ type: "bet", data: obj, itp: itp });
 
       this.betOpen.l.bet[0].items.push(itp);
 
@@ -1336,8 +1337,13 @@ export default {
       this.clearBAmount();
 
       setTimeout(() => {
-        this.sendMessage({ type: "getKq", data: obj });
+        this.sendMessage({ type: "getKq", data: obj  });
+        localStorage.removeItem("stateOpen");
+        this.betOpen.l.bet[0].items = this.betOpen.l.bet[0].items.filter(item => item.time !== itp.time);
+        localStorage.setItem("stateOpen", JSON.stringify(this.betOpen));
+        getData.Notify = this.betOpen.l.bet[0].items.length;
       }, this.timeBet * 1000);
+
       // },2000)
 
       // if(v === 'buy'){
@@ -2033,12 +2039,13 @@ export default {
           } else {
             this.playAudio("lose");
           }
+          
           // xóa notice = 0
-          getData.Notify = 0;
-          this.betOpen.l.bet[0].items = [];
-          console.log(this.betOpen);
-          console.log(localStorage.getItem("stateOpen"));
-          localStorage.removeItem("stateOpen");
+          // getData.Notify = 0;
+          console.log("Data", data);
+          // this.betOpen.l.bet[0].items = [];
+          // console.log('Hiển thị cho vui',localStorage.getItem("stateOpen"));
+          // localStorage.removeItem("stateOpen");
         }
         if (data.type === "mess") {
           if (dl.type == "bet") {
