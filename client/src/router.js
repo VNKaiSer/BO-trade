@@ -283,10 +283,23 @@ const router = new Router({
             rule: "editor",
           },
         },
+        // {
+        //   path: "/tool/data-tool/edit-bet",
+        //   name: "tool-edit-bet",
+        //   component: () => import("./layouts/tool/EditKetQua.vue"),
+        //   meta: {
+        //     breadcrumb: [
+        //       { title: "Trang chủ", url: "/" },
+        //       { title: "Công cụ chỉnh sửa trò chơi", active: true },
+        //     ],
+        //     pageTitle: "Bẻ cầu",
+        //     rule: "editor",
+        //   },
+        // },
         {
-          path: "/tool/data-tool/edit-bet",
-          name: "tool-edit-bet",
-          component: () => import("./layouts/tool/EditKetQua.vue"),
+          path: "/tool/data-tool/edit-bet1",
+          name: "tool-edit-bet1",
+          component: () => import("./layouts/tool/EditKetQua1.vue"),
           meta: {
             breadcrumb: [
               { title: "Trang chủ", url: "/" },
