@@ -72,7 +72,13 @@
                           oknha.acc_type ? "LIVE" : "DEMO"
                         }}</span>
                       </span>
-                      <span class="icon iconBitcoin"></span>
+                      <span
+                        :class="
+                          oknha.classIcon === 'iconBitcoin'
+                            ? 'icon iconBitcoin'
+                            : oknha.classIcon
+                        "
+                      ></span>
                     </div>
                     <div class="flex justify-between mb-2 text-white">
                       <span class="flex trendGroup align-items-center">
@@ -92,14 +98,6 @@
                       <span class="text-sm font-bold">{{
                         fromatTimzoneH(oknha.time)
                       }}</span>
-                    </div>
-                    <div class="flex justify-between bet-time">
-                      <span class="colorGray">Phiên</span>
-                      <span class="text-sm font-bold">123456</span>
-                    </div>
-                    <div class="flex justify-between bet-time">
-                      <span class="colorGray">Kết Phiên</span>
-                      <span class="text-sm font-bold">123456</span>
                     </div>
                   </div>
                 </div>
@@ -135,7 +133,13 @@
                           oknha.t ? "LIVE" : "DEMO"
                         }}</span>
                       </span>
-                      <span class="icon iconBitcoin"></span>
+                      <span
+                        :class="
+                          oknha.classIcon === 'iconBitcoin'
+                            ? 'icon iconBitcoin'
+                            : oknha.classIcon
+                        "
+                      ></span>
                     </div>
                     <div class="flex justify-between mb-2 text-white">
                       <span class="flex trendGroup align-items-center">
