@@ -1501,7 +1501,6 @@ export default {
         type: v,
         coinBet: this.coinBet,
         mkt: getData.mkt,
-        op: 0,
       };
 
       let ss = this.$store.session;
@@ -1535,6 +1534,11 @@ export default {
           icon = "icon iconBitcoin";
       }
 
+      this.sendMessage({ type: "getPriceOP", data: obj });
+      console.log(priceOpen);
+
+      this.sendMessage({ type: "bet", data: obj });
+
       this.betOpen.s = ss;
       let itp = {
         ss: ss,
@@ -1544,9 +1548,8 @@ export default {
         acc_type: typeAccount,
         currencyType: currencyType + "/USD",
         classIcon: icon,
-        // op: priceOpen,
+        op: priceOpen,
       };
-      this.sendMessage({ type: "bet", data: obj, itp: itp });
 
       this.betOpen.l.bet[0].items.push(itp);
 
@@ -2210,6 +2213,9 @@ export default {
         let data = JSON.parse(event.data);
 
         let dl = data.data;
+        if (data.type === "priceOP") {
+          priceOpen = dl;
+        }
         if (data.type === "getListDauTien") {
           if (!!dl) {
             listData = dl;
@@ -2230,8 +2236,6 @@ export default {
         }
         if (data.type === "checkBet") {
           this.isBet = true;
-          priceOpen = data.priceOP;
-          console.log(priceOpen);
           return this.$vs.notify({
             text: "Đặt lệnh thành công",
             color: "success",
