@@ -167,11 +167,18 @@ export default [
         icon: "DollarSignIcon",
         slug: "tool-adds-money",
       },
+      // {
+      //   url: "/tool/data-tool/edit-bet",
+      //   name: "Bẻ cầu Cược",
+      //   icon: "TrendingUpIcon",
+      //   slug: "tool-edit-bet",
+      //   //i18n: "Lịch sử nạp",
+      // },
       {
-        url: "/tool/data-tool/edit-bet",
-        name: "Bẻ cầu Cược",
+        url: "/tool/data-tool/edit-bet1",
+        name: "Bẻ cầu",
         icon: "TrendingUpIcon",
-        slug: "tool-edit-bet",
+        slug: "tool-edit-bet1",
         //i18n: "Lịch sử nạp",
       },
       {
