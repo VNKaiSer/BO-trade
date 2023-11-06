@@ -764,7 +764,7 @@ export default {
 
       // trạnh spam
       AuthenticationService.getDepositBankingCount(obj).then((result) => {
-        if (result.data.data > 1) {
+        if (result.data.data > 0) {
           return seft.$vs.notify({
             text: "Không được spam. Vui lòng đợi lệnh nạp cũ được xác thực.",
             color: "danger",

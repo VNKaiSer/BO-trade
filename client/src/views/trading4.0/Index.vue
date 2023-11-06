@@ -12,9 +12,7 @@
       <div class="relative w-full vx-col xl:w-10/12">
         <div class="h-full">
           <div class="relative chartBox">
-            <iframe
-              class="ht"
-              srcdoc='
+            <iframe class="ht" srcdoc='
                             <div class="tradingview-widget-container" style="height:calc(100vh - 16px);width:100%">
 
                 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -44,11 +42,7 @@
               }
                 );
                 </script>
-              </div>'
-              width="100%"
-              height="100%"
-              allowfullscreen
-            ></iframe>
+              </div>' width="100%" height="100%" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -57,11 +51,7 @@
           <div class="mb-6">
             <div class="flex items-center justify-between gap-3 mt-2">
               <p class="mt-2">Coin:</p>
-              <select
-                class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
-                v-model="coinBet"
-                id=""
-              >
+              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12" v-model="coinBet" id="">
                 <option class="w-full h-8 cursor-pointer bpF" value="BTC">
                   BTC
                 </option>
@@ -104,54 +94,26 @@
             </div>
             <div class="mt-2 mb-2">Tiền cược</div>
             <div class="relative">
-              <vs-input
-                @keyup="nhapBetAmount"
-                class="w-full betInput"
-                icon-pack="feather"
-                icon="icon-dollar-sign"
-                placeholder="10"
-                v-model="betAmount"
-                icon-no-border
-              />
-              <feather-icon
-                @click="clearBAmount()"
-                style="right: 5px; top: 7px; position: absolute !important"
-                class="cursor-pointer"
-                icon="XCircleIcon"
-                svgClasses="w-6 h-6 text-grey"
-              ></feather-icon>
+              <vs-input @keyup="nhapBetAmount" class="w-full betInput" icon-pack="feather" icon="icon-dollar-sign"
+                placeholder="10" v-model="betAmount" icon-no-border />
+              <feather-icon @click="clearBAmount()" style="right: 5px; top: 7px; position: absolute !important"
+                class="cursor-pointer" icon="XCircleIcon" svgClasses="w-6 h-6 text-grey"></feather-icon>
             </div>
             <div class="m-0 mt-2 vx-row">
               <div class="w-full p-1 mt-2 text-center vx-col md:w-6/12">
-                <span
-                  class="w-full h-8 cursor-pointer bpF"
-                  @click="truBetAmount"
-                  >-</span
-                >
+                <span class="w-full h-8 cursor-pointer bpF" @click="truBetAmount">-</span>
               </div>
               <div class="w-full p-1 mt-2 text-center vx-col md:w-6/12">
-                <span
-                  class="w-full h-8 cursor-pointer bpF"
-                  @click="congBetAmount"
-                  >+</span
-                >
+                <span class="w-full h-8 cursor-pointer bpF" @click="congBetAmount">+</span>
               </div>
               <div class="w-full p-1 mt-2 text-center vx-col md:w-4/12">
-                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(50)"
-                  >+50</span
-                >
+                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(50)">+50</span>
               </div>
               <div class="w-full p-1 mt-2 text-center vx-col md:w-4/12">
-                <span
-                  class="w-full h-8 cursor-pointer bpF"
-                  @click="clickCT(100)"
-                  >+100</span
-                >
+                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(100)">+100</span>
               </div>
               <div class="w-full p-1 mt-2 text-center vx-col md:w-4/12">
-                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(0)"
-                  >All</span
-                >
+                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(0)">All</span>
               </div>
             </div>
           </div>
@@ -159,19 +121,12 @@
             <div class="mt-2 mb-2 text-center">Lợi nhuận</div>
             <div class="text-center">
               <span class="mb-2 profitPercent color-light-blue">95%</span>
-              <span class="text-3xl font-bold profitValue color-green"
-                >+${{ loiNhuan }}</span
-              >
+              <span class="text-3xl font-bold profitValue color-green">+${{ loiNhuan }}</span>
             </div>
           </div>
           <div class="mb-10 text-center lg:relative">
             <div class="text-center">Chỉ báo tâm lý</div>
-            <vs-progress
-              class="bg-red"
-              :height="4"
-              :percent="CSBUY"
-              color="success"
-            ></vs-progress>
+            <vs-progress class="bg-red" :height="4" :percent="CSBUY" color="success"></vs-progress>
             <div class="block">
               <span class="float-left color-green"> {{ CSBUY }}% </span>
               <span class="float-right color-red"> {{ CSSELL }}% </span>
@@ -179,60 +134,30 @@
           </div>
 
           <div class="mt-10 mb-5 lg:relative">
-            <div
-              class="pb-1 col-md-12 col-4 bet-box-time"
-              style="
+            <div class="pb-1 col-md-12 col-4 bet-box-time" style="
                 border: 1px solid #fa2843;
                 border-radius: 4px;
                 background-color: #1d233b;
-              "
-            >
-              <a
-                class="flex flex-col items-center justify-center btn btn-trade-time btnTransparent w-100"
-                style="height: 37px; color: #fff"
-              >
-                <p
-                  class="mb-0 font-14"
-                  style="line-height: normal"
-                  :class="{ 'text-danger': !isBet }"
-                >
+              ">
+              <a class="flex flex-col items-center justify-center btn btn-trade-time btnTransparent w-100"
+                style="height: 37px; color: #fff">
+                <p class="mb-0 font-14" style="line-height: normal" :class="{ 'text-danger': !isBet }">
                   {{ textTimeDown }}:
-                  <span
-                    class="mb-0 ml-1 font-bold timer_counter second"
-                    style="line-height: normal"
-                    >{{ seconDown }}s</span
-                  >
+                  <span class="mb-0 ml-1 font-bold timer_counter second" style="line-height: normal">{{ seconDown
+                  }}s</span>
                 </p>
               </a>
             </div>
             <div class="h-6"></div>
-            <vs-button
-              @click="BetBuySell('buy')"
-              :disabled="!isBet"
-              class="w-full h-16 mb-3 font-bold"
-              color="success"
-              type="relief"
-            >
+            <vs-button @click="BetBuySell('buy')" :disabled="!isBet" class="w-full h-16 mb-3 font-bold" color="success"
+              type="relief">
               MUA
-              <feather-icon
-                style="top: 5px"
-                icon="TrendingUpIcon"
-                svgClasses="w-6 h-6"
-              ></feather-icon>
+              <feather-icon style="top: 5px" icon="TrendingUpIcon" svgClasses="w-6 h-6"></feather-icon>
             </vs-button>
-            <vs-button
-              @click="BetBuySell('sell')"
-              :disabled="!isBet"
-              class="w-full h-16 font-bold"
-              color="danger"
-              type="relief"
-            >
+            <vs-button @click="BetBuySell('sell')" :disabled="!isBet" class="w-full h-16 font-bold" color="danger"
+              type="relief">
               BÁN
-              <feather-icon
-                style="top: 5px"
-                icon="TrendingDownIcon"
-                svgClasses="w-6 h-6"
-              ></feather-icon>
+              <feather-icon style="top: 5px" icon="TrendingDownIcon" svgClasses="w-6 h-6"></feather-icon>
             </vs-button>
             <!--<vs-button @click="clickMin" class="w-full h-16 font-bold" color="danger" type="relief">
                     TEST
@@ -242,12 +167,7 @@
         </div>
         <div class="hidden mt-2 mobile">
           <div class="relative sidebarPC">
-            <vs-progress
-              class="bg-red"
-              :height="4"
-              :percent="CSBUY"
-              color="success"
-            ></vs-progress>
+            <vs-progress class="bg-red" :height="4" :percent="CSBUY" color="success"></vs-progress>
             <div class="block">
               <span class="float-left color-green"> {{ CSBUY }}% </span>
               <span class="float-right color-red"> {{ CSSELL }}% </span>
@@ -256,11 +176,7 @@
           <div class="flex items-center gap-3 mb-1">
             <div class="flex items-center justify-between gap-3 mt-2">
               <p class="mt-2">Coin:</p>
-              <select
-                class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
-                name=""
-                id=""
-              >
+              <select class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12" name="" id="">
                 <option class="w-full h-8 cursor-pointer bpF" value="">
                   BTC
                 </option>
@@ -309,97 +225,47 @@
             <div class="mt-2 mb-2 text-center">
               Lợi nhuận
               <span class="mb-2 profitPercent color-light-blue">95%</span>
-              <span class="text-3xl font-bold profitValue color-green"
-                >+${{ loiNhuan }}</span
-              >
+              <span class="text-3xl font-bold profitValue color-green">+${{ loiNhuan }}</span>
             </div>
           </div>
           <div class="relative">
             <div class="flex">
               <div class="flex w-full mr-2">
-                <vs-button
-                  @click="truBetAmount"
-                  class="w-full"
-                  type="border"
-                  icon-pack="feather"
-                  icon="icon-minus"
-                ></vs-button>
+                <vs-button @click="truBetAmount" class="w-full" type="border" icon-pack="feather"
+                  icon="icon-minus"></vs-button>
               </div>
               <div class="relative flex" style="width: 55rem">
-                <vs-input
-                  readonly="readonly"
-                  @click.stop="showMobileMenu = !showMobileMenu"
-                  class="w-full betInput"
-                  icon-pack="feather"
-                  icon="icon-dollar-sign"
-                  placeholder="10"
-                  v-model="betAmount"
-                  icon-no-border
-                />
-                <feather-icon
-                  @click="clearBAmount()"
-                  style="right: 5px; top: 7px; position: absolute !important"
-                  class="cursor-pointer"
-                  icon="XCircleIcon"
-                  svgClasses="w-6 h-6 text-grey"
-                ></feather-icon>
+                <vs-input readonly="readonly" @click.stop="showMobileMenu = !showMobileMenu" class="w-full betInput"
+                  icon-pack="feather" icon="icon-dollar-sign" placeholder="10" v-model="betAmount" icon-no-border />
+                <feather-icon @click="clearBAmount()" style="right: 5px; top: 7px; position: absolute !important"
+                  class="cursor-pointer" icon="XCircleIcon" svgClasses="w-6 h-6 text-grey"></feather-icon>
               </div>
               <div class="flex w-full ml-2">
-                <vs-button
-                  @click="congBetAmount"
-                  class="w-full"
-                  type="border"
-                  icon-pack="feather"
-                  icon="icon-plus"
-                ></vs-button>
+                <vs-button @click="congBetAmount" class="w-full" type="border" icon-pack="feather"
+                  icon="icon-plus"></vs-button>
               </div>
             </div>
           </div>
           <div class="relative mt-10 mb-5">
             <div class="flex">
-              <vs-button
-                @click="BetBuySell('sell')"
-                :disabled="!isBet"
-                class="w-full h-16 font-bold"
-                color="danger"
-                type="relief"
-              >
+              <vs-button @click="BetBuySell('sell')" :disabled="!isBet" class="w-full h-16 font-bold" color="danger"
+                type="relief">
                 BÁN
-                <feather-icon
-                  style="top: 5px"
-                  icon="TrendingDownIcon"
-                  svgClasses="w-6 h-6"
-                ></feather-icon>
+                <feather-icon style="top: 5px" icon="TrendingDownIcon" svgClasses="w-6 h-6"></feather-icon>
               </vs-button>
               <div class="flex m-2">
                 <div class="relative" style="margin: 0 auto">
-                  <div
-                    class="absolute mbTextCountdown"
-                    :class="{ 'text-danger': !isBet }"
-                  >
+                  <div class="absolute mbTextCountdown" :class="{ 'text-danger': !isBet }">
                     {{ textTimeDown }}
                   </div>
                   <div class="circle red">
-                    <svg
-                      width="45"
-                      viewBox="0 0 220 220"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="45" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
                       <g transform="translate(110,110)">
                         <circle r="100" class="e-c-base"></circle>
                         <g transform="rotate(-90)">
-                          <circle
-                            r="100"
-                            class="e-c-progress"
-                            style="stroke-dasharray: 628.319"
-                          ></circle>
+                          <circle r="100" class="e-c-progress" style="stroke-dasharray: 628.319"></circle>
                           <g id="e-pointer">
-                            <circle
-                              cx="100"
-                              cy="0"
-                              r="8"
-                              class="e-c-pointer"
-                            ></circle>
+                            <circle cx="100" cy="0" r="8" class="e-c-pointer"></circle>
                           </g>
                         </g>
                       </g>
@@ -412,27 +278,15 @@
                   </div>
                 </div>
               </div>
-              <vs-button
-                @click="BetBuySell('buy')"
-                :disabled="!isBet"
-                class="w-full h-16 font-bold"
-                color="success"
-                type="relief"
-              >
+              <vs-button @click="BetBuySell('buy')" :disabled="!isBet" class="w-full h-16 font-bold" color="success"
+                type="relief">
                 MUA
-                <feather-icon
-                  style="top: 5px"
-                  icon="TrendingUpIcon"
-                  svgClasses="w-6 h-6"
-                ></feather-icon>
+                <feather-icon style="top: 5px" icon="TrendingUpIcon" svgClasses="w-6 h-6"></feather-icon>
               </vs-button>
             </div>
           </div>
           <div class="keyboard-input-wrap" :class="{ active: showMobileMenu }">
-            <div
-              class="numKeyboardInput"
-              @click="showMobileMenu = !showMobileMenu"
-            ></div>
+            <div class="numKeyboardInput" @click="showMobileMenu = !showMobileMenu"></div>
             <div class="keyboard" :class="{ hiddenKey: !showMobileMenu }">
               <div id="amountWrapper" class="amountWrapper">
                 <div class="headerAmount">
@@ -440,54 +294,28 @@
                 </div>
                 <div class="flex groupButtonMobile">
                   <div class="flex w-full mr-2">
-                    <vs-button
-                      @click="truBetAmount"
-                      class="w-full"
-                      type="border"
-                      icon-pack="feather"
-                      icon="icon-minus"
-                    ></vs-button>
+                    <vs-button @click="truBetAmount" class="w-full" type="border" icon-pack="feather"
+                      icon="icon-minus"></vs-button>
                   </div>
                   <div class="relative flex" style="width: 55rem">
-                    <vs-input
-                      readonly="readonly"
-                      @keyup="nhapBetAmount"
-                      class="w-full betInput"
-                      icon-pack="feather"
-                      icon="icon-dollar-sign"
-                      placeholder="10"
-                      v-model="betAmount"
-                      icon-no-border
-                    />
-                    <feather-icon
-                      @click="clearBAmount()"
-                      style="
+                    <vs-input readonly="readonly" @keyup="nhapBetAmount" class="w-full betInput" icon-pack="feather"
+                      icon="icon-dollar-sign" placeholder="10" v-model="betAmount" icon-no-border />
+                    <feather-icon @click="clearBAmount()" style="
                         right: 5px;
                         top: 7px;
                         position: absolute !important;
-                      "
-                      class="cursor-pointer"
-                      icon="XCircleIcon"
-                      svgClasses="w-6 h-6 text-grey"
-                    ></feather-icon>
+                      " class="cursor-pointer" icon="XCircleIcon" svgClasses="w-6 h-6 text-grey"></feather-icon>
                   </div>
                   <div class="flex w-full ml-2">
-                    <vs-button
-                      @click="congBetAmount"
-                      class="w-full"
-                      type="border"
-                      icon-pack="feather"
-                      icon="icon-plus"
-                    ></vs-button>
+                    <vs-button @click="congBetAmount" class="w-full" type="border" icon-pack="feather"
+                      icon="icon-plus"></vs-button>
                   </div>
                 </div>
                 <div class="relative">
                   <div class="mt-2 mb-2 text-center">
                     Lợi nhuận
                     <span class="mb-2 profitPercent color-light-blue">95%</span>
-                    <span class="text-3xl font-bold profitValue color-green"
-                      >+${{ loiNhuan }}</span
-                    >
+                    <span class="text-3xl font-bold profitValue color-green">+${{ loiNhuan }}</span>
                   </div>
                 </div>
               </div>
@@ -522,11 +350,8 @@
                     <td @click="writeBetAmountKey('.')">.</td>
                     <td @click="writeBetAmountKey(0)">0</td>
                     <td @click="deleteString">
-                      <feather-icon
-                        class="cursor-pointer"
-                        icon="DeleteIcon"
-                        svgClasses="w-6 h-6 text-grey"
-                      ></feather-icon>
+                      <feather-icon class="cursor-pointer" icon="DeleteIcon"
+                        svgClasses="w-6 h-6 text-grey"></feather-icon>
                     </td>
                   </tr>
                 </tbody>
@@ -543,11 +368,7 @@
         <div class="flex justify-center winLive">
           <div class="wrapNotify congratulation h-100">
             <div class="boxNotify">
-              <img
-                :src="require('@/assets/images/sky/icon_win_live.svg')"
-                alt=""
-                class="iconWin"
-              />
+              <img :src="require('@/assets/images/sky/icon_win_live.svg')" alt="" class="iconWin" />
               <div class="badgeDemo">
                 {{ blObj.isAccount ? "LIVE" : "DEMO" }}
               </div>
@@ -556,13 +377,9 @@
                   <!---->
                 </div>
                 <p class="titleWin">Xin chúc mừng!</p>
-                <span class="text-4xl font-bold message_money"
-                  >+{{ moneyWin }}$</span
-                >
+                <span class="text-4xl font-bold message_money">+{{ moneyWin }}$</span>
               </div>
-              <span class="cursor-pointer pointer"
-                ><i class="iconClose" data-feather="x"></i
-              ></span>
+              <span class="cursor-pointer pointer"><i class="iconClose" data-feather="x"></i></span>
             </div>
           </div>
         </div>
@@ -587,19 +404,20 @@ stockInit(Highcharts);
 loadIndicatorsAll(Highcharts);
 
 let timer = null;
+let priceOpen = 0;
 
 function convertTextValueMeter(t) {
   return t >= -90 && t <= -54
     ? { cl: "rank-1", text: "Strong sell", index: 1 }
     : t > -54 && t <= -18
-    ? { cl: "rank-2", text: "Sell", index: 2 }
-    : t > -18 && t <= 17
-    ? { cl: "rank-3", text: "Neutral", index: 3 }
-    : t > 17 && t <= 53
-    ? { cl: "rank-4", text: "Buy", index: 4 }
-    : t > 53
-    ? { cl: "rank-5", text: "Strong Buy", index: 5 }
-    : void 0;
+      ? { cl: "rank-2", text: "Sell", index: 2 }
+      : t > -18 && t <= 17
+        ? { cl: "rank-3", text: "Neutral", index: 3 }
+        : t > 17 && t <= 53
+          ? { cl: "rank-4", text: "Buy", index: 4 }
+          : t > 53
+            ? { cl: "rank-5", text: "Strong Buy", index: 5 }
+            : void 0;
 }
 
 var UP_COLOR = "#31BAA0",
@@ -638,7 +456,7 @@ const stockChart = {
     marginBottom: "pc" !== deviceVersion ? 25 : 30,
 
     events: {
-      load() {},
+      load() { },
     },
   },
   rangeSelector: {
@@ -689,7 +507,7 @@ const stockChart = {
       allowPointSelect: false,
       point: {
         events: {
-          click() {},
+          click() { },
         },
       },
     },
@@ -713,19 +531,19 @@ const stockChart = {
     formatter() {
       return "BTC/USDT" === this.series.name
         ? '\n<span style="margin-right: 10px;"><b>O</b>: ' +
-            this.point.open +
-            '</span>\n<span style="margin-right: 10px;"><b>C</b>: ' +
-            this.point.close +
-            '</span>\n<span>&nbsp;</span>\n<br/>\n<span style="margin-right: 10px;"><b>H</b>: ' +
-            this.point.high +
-            '</span>\n<span style="margin-right: 10px;"><b>L</b>: ' +
-            this.point.low +
-            "</span>\n<span><b>Vol</b>: " +
-            this.point.vol +
-            "</span>"
+        this.point.open +
+        '</span>\n<span style="margin-right: 10px;"><b>C</b>: ' +
+        this.point.close +
+        '</span>\n<span>&nbsp;</span>\n<br/>\n<span style="margin-right: 10px;"><b>H</b>: ' +
+        this.point.high +
+        '</span>\n<span style="margin-right: 10px;"><b>L</b>: ' +
+        this.point.low +
+        "</span>\n<span><b>Vol</b>: " +
+        this.point.vol +
+        "</span>"
         : "Volume" === this.series.name
-        ? "<b>Vol</b>: " + this.y
-        : "";
+          ? "<b>Vol</b>: " + this.y
+          : "";
     },
     positioner() {
       var t = 20,
@@ -1319,9 +1137,9 @@ export default {
       NumSumNeutral: 0,
       textTitleSu: "NEUTRAL",
 
-      // trade 4.0 
-      timeBet : 60,
-      coinBet : "ETH",
+      // trade 4.0
+      timeBet: 60,
+      coinBet: "ETH",
 
       moneyWin: 0,
       isWinPop: false,
@@ -1424,7 +1242,7 @@ export default {
 
       let gAmount = this.betAmount.toString();
       let timeBet = this.timeBet;
-      
+
       gAmount = this.replaceAll(gAmount, ",", "");
 
       if (this.checkBet(gAmount)) {
@@ -1450,7 +1268,7 @@ export default {
       } else {
         uidAcc = uidDemo;
       }
-
+      // đoạn này gửi đi này
       let obj = {
         email: email,
         uid: uidAcc,
@@ -1461,38 +1279,36 @@ export default {
         type: v,
         coinBet: this.coinBet,
         mkt: getData.mkt,
-        //idPlayer: this.thisIDPlayer
+        op: 0,
       };
-      // đoạn này gửi đi này 
-      
+
       this.sendMessage({ type: "bet", data: obj });
-      
 
       let ss = this.$store.session;
       let timeGet = new Date().getTime();
       let currencyType = this.coinBet;
-      
+
       let icon = "";
-      switch (currencyType){
+      switch (currencyType) {
         case "BTC":
-          icon= "icon iconBitcoin";
+          icon = "icon iconBitcoin";
           break;
         case "ETH":
-            icon = "icon iconETH";
-            break;
+          icon = "icon iconETH";
+          break;
         case "USDT":
-           icon = "icon iconUSDT";
-           break;
+          icon = "icon iconUSDT";
+          break;
         case "BTN":
-            icon = "icon iconBNB";
-            break;
+          icon = "icon iconBNB";
+          break;
         case "XRP":
-            icon = "icon iconXRP";
-            break;
+          icon = "icon iconXRP";
+          break;
         case "DOGE":
           icon = "icon iconDOGE";
           break;
-        case "ADA": 
+        case "ADA":
           icon = "icon iconADA";
           break;
         default:
@@ -1508,6 +1324,7 @@ export default {
         acc_type: typeAccount,
         currencyType: currencyType + "/USD",
         classIcon: icon,
+        // op: priceOpen,
       };
 
       this.betOpen.l.bet[0].items.push(itp);
@@ -1520,9 +1337,8 @@ export default {
 
       setTimeout(() => {
         this.sendMessage({ type: "getKq", data: obj });
-      }, this.timeBet* 1000)
+      }, this.timeBet * 1000);
       // },2000)
-
 
       // if(v === 'buy'){
 
@@ -1694,7 +1510,7 @@ export default {
       try {
         var lastCandle =
           chartInstance.series[1].points[
-            chartInstance.series[1].points.length - 1
+          chartInstance.series[1].points.length - 1
           ];
         var color = this.getColor(boPrice.open, boPrice.close);
 
@@ -1718,7 +1534,7 @@ export default {
             true
           );
         }
-      } catch {}
+      } catch { }
     },
 
     updateCandleStickChart(boPrice) {
@@ -1727,7 +1543,7 @@ export default {
       try {
         var lastCandle =
           chartInstance.series[0].points[
-            chartInstance.series[0].points.length - 1
+          chartInstance.series[0].points.length - 1
           ];
         var color = this.getColor(boPrice.open, boPrice.close);
 
@@ -1801,7 +1617,7 @@ export default {
         }
 
         getData.countDown = counter > 9 ? counter : "0" + counter;
-      } catch {}
+      } catch { }
 
       //let offset = -lengthp - lengthp * counter / (wholeTime);
       //let progressBar = $('.e-c-progress')
@@ -1866,7 +1682,7 @@ export default {
           left.update(leftVal, true);
           chart.redraw();
         }
-      } catch {}
+      } catch { }
     },
 
     StaSummary(e) {
@@ -1900,7 +1716,7 @@ export default {
           left.update(leftVal, true);
           chart.redraw();
         }
-      } catch {}
+      } catch { }
     },
 
     StaMovingAverages(e) {
@@ -1933,7 +1749,7 @@ export default {
           left.update(leftVal, true);
           chart.redraw();
         }
-      } catch {}
+      } catch { }
     },
 
     setSizeStock(data) {
@@ -2166,7 +1982,6 @@ export default {
         let data = JSON.parse(event.data);
 
         let dl = data.data;
-
         if (data.type === "getListDauTien") {
           if (!!dl) {
             listData = dl;
@@ -2187,6 +2002,8 @@ export default {
         }
         if (data.type === "checkBet") {
           this.isBet = true;
+          priceOpen = data.priceOP;
+          console.log(priceOpen);
           return this.$vs.notify({
             text: "Đặt lệnh thành công",
             color: "success",
@@ -2413,6 +2230,7 @@ export default {
 .ht {
   border-width: 0;
 }
+
 .mbTextCountdown {
   width: 150px;
   top: -35px;
@@ -2638,14 +2456,17 @@ export default {
   top: 0;
   padding-top: 40px;
 }
+
 .wrap-gauge-meter-inner {
   height: 100%;
 }
+
 .historyBox .item {
   width: 1.5rem;
   height: 1.5rem;
   margin: 1px !important;
 }
+
 .sidebarMobile {
   display: none;
 }
@@ -2664,15 +2485,19 @@ export default {
 .gridcs-1 {
   grid-column-start: 1;
 }
+
 .gridcs-2 {
   grid-column-start: 2;
 }
+
 .gridcs-3 {
   grid-column-start: 3;
 }
+
 .gridcs-4 {
   grid-column-start: 4;
 }
+
 .gridcs-5 {
   grid-column-start: 5;
 }
@@ -2681,6 +2506,7 @@ export default {
   .sidebarPC {
     display: none;
   }
+
   .sidebarMobile {
     display: block;
     position: absolute;
@@ -2688,11 +2514,13 @@ export default {
     left: 0;
     width: 50px;
   }
+
   .sidebarMobile .slidercontent {
     height: 100%;
     position: relative;
     width: 50px;
   }
+
   .sidebarMobile .slidercontent .backgroundOverlay {
     position: absolute;
     left: 0;
@@ -2700,13 +2528,16 @@ export default {
     height: 100%;
     width: 50px;
   }
+
   .sidebarMobile .slidercontent span {
     width: 50px;
     line-height: 1;
   }
+
   .zIndex99 {
     z-index: 99;
   }
+
   .sidebarMobile .slidercontent .progress {
     -webkit-transform: translateX(-48%) rotate(270deg);
     transform: translateX(-48%) rotate(270deg);
@@ -2714,27 +2545,32 @@ export default {
     overflow: unset !important;
   }
 }
+
 @media screen and (max-width: 1300px) {
   .wrap-gauge-meter-inner {
     height: auto;
     overflow: initial;
   }
 }
+
 @media screen and (max-width: 1023px) and (min-width: 991px) {
   .wrap-gauge-meter-inner {
     padding-bottom: 65px;
   }
 }
+
 @media screen and (max-width: 1023px) and (min-width: 991px) and (orientation: landscape) {
   .wrap-gauge-meter-inner {
     padding-bottom: 65px !important;
   }
 }
+
 @media screen and (max-width: 1023px) and (orientation: landscape) {
   .wrap-gauge-meter {
     padding-top: 36px;
   }
 }
+
 .gauge-meter {
   width: 900px;
   height: 135px;
@@ -2742,11 +2578,13 @@ export default {
   margin: 0 auto;
   top: 15px;
 }
+
 @media screen and (max-width: 1500px) {
   .gauge-meter {
     width: 700px;
   }
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter {
     width: 600px;
@@ -2756,36 +2594,43 @@ export default {
     margin-top: 20px;
   }
 }
+
 @media screen and (max-width: 1200px) {
   .gauge-meter {
     margin-top: 15px;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .gauge-meter {
     margin-top: 10px;
   }
 }
+
 @media screen and (max-width: 1000px) and (orientation: landscape) {
   .gauge-meter {
     margin-top: 5px;
     width: 350px;
   }
 }
+
 @media screen and (max-width: 767px) {
   .gauge-meter {
     width: 350px;
     margin-top: 15px;
   }
+
   .boxContent {
     margin-top: 3.2rem !important;
   }
 }
+
 @media screen and (max-width: 575px) {
   .gauge-meter {
     margin-top: 35px;
   }
 }
+
 @media screen and (max-width: 420px) {
   .gauge-meter {
     margin-top: 10px;
@@ -2803,40 +2648,48 @@ export default {
 .gauge-meter.is-show-transaction {
   width: 90%;
 }
+
 .gauge-meter-sub {
   width: 176px;
   height: 100%;
   position: absolute;
   bottom: 0;
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter-sub {
     width: 88px;
   }
 }
+
 .gauge-meter--os {
   left: 0;
   width: 140px;
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter--os {
     width: 70px;
   }
 }
+
 .gauge-meter--su {
   left: 50%;
   transform: translateX(-50%);
 }
+
 .gauge-meter--ma {
   width: 140px;
   left: auto;
   right: 0;
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter--ma {
     width: 70px;
   }
 }
+
 .gauge-meter-title {
   font-size: 16px;
   font-weight: bold;
@@ -2849,9 +2702,11 @@ export default {
   color: #fff;
   cursor: pointer;
 }
+
 .gauge-meter-title:hover {
   text-decoration: underline;
 }
+
 .gauge-meter-title-icon {
   width: 16px;
   height: 16px;
@@ -2860,10 +2715,12 @@ export default {
   transform: translateY(-50%);
   right: -20px;
 }
+
 .gauge-meter-title-icon svg {
   width: 100%;
   height: auto;
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter-title-icon {
     width: 12px;
@@ -2871,11 +2728,13 @@ export default {
     right: -14px;
   }
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter-title {
     font-size: 10px;
   }
 }
+
 .gauge-meter-sub-title {
   color: #fff;
   font-size: 14px;
@@ -2898,6 +2757,7 @@ export default {
     bottom: -12px;
   }
 }
+
 .gauge-meter-border {
   width: 100%;
   height: 88px;
@@ -2905,6 +2765,7 @@ export default {
   bottom: 0;
   left: 0;
 }
+
 .gauge-meter-border:after {
   content: "";
   position: absolute;
@@ -2916,21 +2777,26 @@ export default {
   background-size: cover;
   background-image: url("data:image/svg+xml;base64,PHN2ZyBpZD0iR3JvdXBfMjE1NTMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB2aWV3Qm94PSIwIDAgODYgNDMiPgogIDxnIGlkPSJQYXRoXzM1MzYzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDE4LjI1OSkiPgogICAgPHBhdGggaWQ9IlBhdGhfMzUzNzMiIGRhdGEtbmFtZT0iUGF0aCAzNTM3MyIgZD0iTTk0My4yNjIsMTE4Ni40MmEuODM0LjgzNCwwLDAsMS0uODY4LS44MjQsNDAuNTA5LDQwLjUwOSwwLDAsMSw3LjYzNi0yMy41Ni44NjguODY4LDAsMSwxLDEuMzg4LDEuMDQyLDM5LjEzNywzOS4xMzcsMCwwLDAtNy4yODksMjIuNDc1Ljg0NC44NDQsMCwwLDEtLjg2OC44NjhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOTQyLjM5MSAtMTE2MS42NzkpIiBmaWxsPSIjZWY1NDUwIi8+CiAgPC9nPgogIDxnIGlkPSJQYXRoXzM1MzY3IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3Ni43ODkgMTguMjE1KSI+CiAgICA8cGF0aCBpZD0iUGF0aF8zNTM3NCIgZGF0YS1uYW1lPSJQYXRoIDM1Mzc0IiBkPSJNMTEyOC42MTksMTE4Ni4zNjNoMGEuODguODgsMCwwLDEtLjg2OC0uOTExLDM5LjUyNSwzOS41MjUsMCwwLDAtNy4yODktMjIuNDc1Ljg2OC44NjgsMCwxLDEsMS4zODgtMS4wNDEsNDAuNTA5LDQwLjUwOSwwLDAsMSw3LjYzNiwyMy41NkEuODY5Ljg2OSwwLDAsMSwxMTI4LjYxOSwxMTg2LjM2M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMTIwLjI3OSAtMTE2MS41NzkpIiBmaWxsPSIjMzFiYWEwIi8+CiAgPC9nPgogIDxnIGlkPSJQYXRoXzM1MzY0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4LjgzIDIuNjgpIj4KICAgIDxwYXRoIGlkPSJQYXRoXzM1Mzc1IiBkYXRhLW5hbWU9IlBhdGggMzUzNzUiIGQ9Ik05NjMuNjM0LDExNDAuNjYzYS45NTMuOTUzLDAsMCwxLS41NjQtLjE3My44NDYuODQ2LDAsMCwxLS4xMy0xLjIxNSw1Mi40NTcsNTIuNDU3LDAsMCwxLDUuODU4LTUuOTQ0YzQuNzczLTQuMjA5LDkuMzcyLTYuOSwxMy43MTEtOC4wN2EuODUyLjg1MiwwLDEsMSwuNDM0LDEuNjQ5Yy05LjcxOSwyLjU2LTE4LjU3LDEzLjMyLTE4LjY1NywxMy40NTFBLjg0OC44NDgsMCwwLDEsOTYzLjYzNCwxMTQwLjY2M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC05NjIuNzQxIC0xMTI1LjIzKSIgZmlsbD0iI2Y1OTg5NiIvPgogIDwvZz4KICA8ZyBpZD0iUGF0aF8zNTM2NiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTYuMjQxIDIuNjc3KSI+CiAgICA8cGF0aCBpZD0iUGF0aF8zNTM3NiIgZGF0YS1uYW1lPSJQYXRoIDM1Mzc2IiBkPSJNMTA5Mi45MTUsMTE0MC42NmExLjAyNSwxLjAyNSwwLDAsMS0uNjk0LS4zYy0uMDg3LS4wODctOC45MzgtMTAuODQ3LTE4LjY1Ny0xMy40NWEuODUzLjg1MywwLDEsMSwuNDM0LTEuNjQ5YzQuMzM5LDEuMTI4LDguOTM4LDMuODYyLDEzLjcxMSw4LjA3YTYyLjMzMiw2Mi4zMzIsMCwwLDEsNS44NTcsNS45NDQuODQyLjg0MiwwLDAsMS0uMTMsMS4yMTVBLjkyOS45MjksMCwwLDEsMTA5Mi45MTUsMTE0MC42NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMDcyLjkyMyAtMTEyNS4yMjMpIiBmaWxsPSIjOGZmMGNiIi8+CiAgPC9nPgogIDxnIGlkPSJQYXRoXzM1MzY1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4yMTEpIj4KICAgIDxwYXRoIGlkPSJQYXRoXzM1Mzc3IiBkYXRhLW5hbWU9IlBhdGggMzUzNzciIGQ9Ik0xMDM3LjMsMTEyMi42NzVhLjczOC43MzgsMCwwLDEtLjMtLjA0M2MtMTEuMTA4LTQuMDc4LTIzLjI1Ni0uMDQzLTIzLjM4NywwYS44MjkuODI5LDAsMCwxLTEuMDg1LS41NjQuODM4LjgzOCwwLDAsMSwuNTIxLTEuMDg1Yy41MjEtLjE3MywxMi44NDMtNC4yNTIsMjQuNTU4LDBhLjg3Mi44NzIsMCwwLDEtLjMsMS42OTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTAxMi40NzUgLTExMTkuMDU0KSIgZmlsbD0iI2QxZDRkYyIvPgogIDwvZz4KPC9zdmc+Cg==");
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter-border {
     height: 44px;
   }
 }
+
 .gauge-meter--os .gauge-meter-border,
 .gauge-meter--ma .gauge-meter-border {
   height: 70px;
 }
+
 @media screen and (max-width: 1300px) {
+
   .gauge-meter--os .gauge-meter-border,
   .gauge-meter--ma .gauge-meter-border {
     height: 35px;
   }
 }
+
 .gauge-meter-background {
   width: 100%;
   height: 100%;
@@ -2942,21 +2808,27 @@ export default {
   transition: all 0.3s;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIHZpZXdCb3g9IjAgMCA4NiA0MyI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCI+CiAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfNTE0MSIgZGF0YS1uYW1lPSJSZWN0YW5nbGUgNTE0MSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0wLjAxKSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzA3MDcwIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjAuNSIgeTE9IjAuMDA2IiB4Mj0iMC41MDciIHkyPSIwLjQ5NCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMC42MDQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjVjYmIwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOTdkY2NmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGlkPSJNYXNrX0dyb3VwXzY0MSIgZGF0YS1uYW1lPSJNYXNrIEdyb3VwIDY0MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwLjAxKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAtcGF0aCkiPgogICAgPHBhdGggaWQ9IlBhdGhfMzU0NDAiIGRhdGEtbmFtZT0iUGF0aCAzNTQ0MCIgZD0iTTQzLDBDNjYuNzQ4LDAsODYsMTguOCw4Niw0MlM2Ni43NDgsODQsNDMsODQsMCw2NS4yLDAsNDIsMTkuMjUyLDAsNDMsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC45OSkiIG9wYWNpdHk9IjAuNiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIi8+CiAgPC9nPgo8L3N2Zz4K");
 }
+
 .gauge-meter-background.rank-1 {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIHZpZXdCb3g9IjAgMCA4NiA0MyI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCI+CiAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfNTE0MCIgZGF0YS1uYW1lPSJSZWN0YW5nbGUgNTE0MCIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0wLjAxKSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzA3MDcwIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjAuNSIgeTE9IjAuMDA2IiB4Mj0iMC41MDciIHkyPSIwLjQ5NCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlZjU0NTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYzk2NzY3IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOTdkY2NmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGlkPSJNYXNrX0dyb3VwXzY0MCIgZGF0YS1uYW1lPSJNYXNrIEdyb3VwIDY0MCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwLjAxKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAtcGF0aCkiPgogICAgPHBhdGggaWQ9IlBhdGhfMzU0MzkiIGRhdGEtbmFtZT0iUGF0aCAzNTQzOSIgZD0iTTQzLDBDNjYuNzQ4LDAsODYsMTguOCw4Niw0MlM2Ni43NDgsODQsNDMsODQsMCw2NS4yLDAsNDIsMTkuMjUyLDAsNDMsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC45OSkiIG9wYWNpdHk9IjAuNiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIi8+CiAgPC9nPgo8L3N2Zz4K");
 }
+
 .gauge-meter-background.rank-2 {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIHZpZXdCb3g9IjAgMCA4NiA0MyI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCI+CiAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfNTA4NCIgZGF0YS1uYW1lPSJSZWN0YW5nbGUgNTA4NCIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0wLjAxKSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzA3MDcwIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjAuNSIgeTE9Ii0wLjI5OCIgeDI9IjAuNTA3IiB5Mj0iMC40OTQiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94Ij4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmQ5MjkxIiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNTk4OTYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgaWQ9Ik1hc2tfR3JvdXBfNjIxIiBkYXRhLW5hbWU9Ik1hc2sgR3JvdXAgNjIxIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDAuMDEpIiBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+CiAgICA8ZWxsaXBzZSBpZD0iRWxsaXBzZV8yMjM5IiBkYXRhLW5hbWU9IkVsbGlwc2UgMjIzOSIgY3g9IjQzIiBjeT0iNDIiIHJ4PSI0MyIgcnk9IjQyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDAuOTkpIiBvcGFjaXR5PSIwLjYiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50KSIvPgogIDwvZz4KPC9zdmc+Cg==");
 }
+
 .gauge-meter-background.rank-3 {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIHZpZXdCb3g9IjAgMCA4NiA0MyI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCI+CiAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfNTE0MSIgZGF0YS1uYW1lPSJSZWN0YW5nbGUgNTE0MSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0wLjAxKSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzA3MDcwIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjAuNSIgeTE9IjAuMDA2IiB4Mj0iMC41MDciIHkyPSIwLjQ5NCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMC42MDQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjVjYmIwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOTdkY2NmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGlkPSJNYXNrX0dyb3VwXzY0MSIgZGF0YS1uYW1lPSJNYXNrIEdyb3VwIDY0MSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwLjAxKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAtcGF0aCkiPgogICAgPHBhdGggaWQ9IlBhdGhfMzU0NDAiIGRhdGEtbmFtZT0iUGF0aCAzNTQ0MCIgZD0iTTQzLDBDNjYuNzQ4LDAsODYsMTguOCw4Niw0MlM2Ni43NDgsODQsNDMsODQsMCw2NS4yLDAsNDIsMTkuMjUyLDAsNDMsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC45OSkiIG9wYWNpdHk9IjAuNiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIi8+CiAgPC9nPgo8L3N2Zz4K");
 }
+
 .gauge-meter-background.rank-4 {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIHZpZXdCb3g9IjAgMCA4NiA0MyI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCI+CiAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfNTE1MiIgZGF0YS1uYW1lPSJSZWN0YW5nbGUgNTE1MiIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0wLjAxKSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzA3MDcwIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjAuNSIgeTE9Ii0wLjI2IiB4Mj0iMC41MDciIHkyPSIwLjQ5NCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM4ZmYwY2IiIHN0b3Atb3BhY2l0eT0iMC44Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhmZjBjYiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhmZjBjYiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgaWQ9Ik1hc2tfR3JvdXBfNjQ1IiBkYXRhLW5hbWU9Ik1hc2sgR3JvdXAgNjQ1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDAuMDEpIiBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+CiAgICA8ZWxsaXBzZSBpZD0iRWxsaXBzZV8yMzIxIiBkYXRhLW5hbWU9IkVsbGlwc2UgMjMyMSIgY3g9IjQzIiBjeT0iNDIiIHJ4PSI0MyIgcnk9IjQyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDAuOTkpIiBvcGFjaXR5PSIwLjYiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50KSIvPgogIDwvZz4KPC9zdmc+Cg==");
 }
+
 .gauge-meter-background.rank-5 {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIHZpZXdCb3g9IjAgMCA4NiA0MyI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCI+CiAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfNTA4NCIgZGF0YS1uYW1lPSJSZWN0YW5nbGUgNTA4NCIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjQzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0wLjAxKSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzA3MDcwIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjAuNSIgeTE9IjAuMDA2IiB4Mj0iMC41MDciIHkyPSIwLjQ5NCIgZ3JhZGllbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzMWJhYTAiIHN0b3Atb3BhY2l0eT0iMC42MDQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjVjYmIwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOTdkY2NmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGlkPSJNYXNrX0dyb3VwXzYyMSIgZGF0YS1uYW1lPSJNYXNrIEdyb3VwIDYyMSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwLjAxKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAtcGF0aCkiPgogICAgPHBhdGggaWQ9IlBhdGhfMzUzODIiIGRhdGEtbmFtZT0iUGF0aCAzNTM4MiIgZD0iTTQzLDBDNjYuNzQ4LDAsODYsMTguOCw4Niw0MlM2Ni43NDgsODQsNDMsODQsMCw2NS4yLDAsNDIsMTkuMjUyLDAsNDMsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC45OSkiIG9wYWNpdHk9IjAuODAyIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudCkiLz4KICA8L2c+Cjwvc3ZnPgo=");
 }
+
 .gauge-meter-pane {
   width: 100%;
   height: 100%;
@@ -3056,6 +2928,7 @@ export default {
     display: none;
   }
 }
+
 .gauge-meter-label-item {
   font-size: 10px;
   color: #8383a1;
@@ -3065,54 +2938,66 @@ export default {
   text-transform: uppercase;
   transition: all 0.3s;
 }
+
 .gauge-meter-label-item.active {
   color: #fff;
 }
+
 .gauge-meter-label-item--strong-sell {
   top: 45px;
   left: -42px;
 }
+
 .gauge-meter--os .gauge-meter-label-item--strong-sell,
 .gauge-meter--ma .gauge-meter-label-item--strong-sell {
   top: 40px;
   left: -40px;
 }
+
 .gauge-meter-label-item--sell {
   top: 5px;
   left: 5px;
 }
+
 .gauge-meter--os .gauge-meter-label-item--sell,
 .gauge-meter--ma .gauge-meter-label-item--sell {
   top: 8px;
   left: -2px;
 }
+
 .gauge-meter-label-item--neutral {
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .gauge-meter--os .gauge-meter-label-item--neutral,
 .gauge-meter--ma .gauge-meter-label-item--neutral {
   top: -15px;
 }
+
 .gauge-meter-label-item--buy {
   top: 5px;
   right: 7px;
 }
+
 .gauge-meter--os .gauge-meter-label-item--buy,
 .gauge-meter--ma .gauge-meter-label-item--buy {
   top: 8px;
   right: 0px;
 }
+
 .gauge-meter-label-item--strong-buy {
   top: 45px;
   right: -42px;
 }
+
 .gauge-meter--os .gauge-meter-label-item--strong-buy,
 .gauge-meter--ma .gauge-meter-label-item--strong-buy {
   top: 40px;
   right: -40px;
 }
+
 .gauge-meter-status-list {
   position: absolute;
   width: 100%;
@@ -3122,60 +3007,74 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter-status-list {
     bottom: -55px;
   }
 }
+
 @media screen and (max-width: 1023px) and (orientation: landscape) {
   .gauge-meter-status-list {
     display: none;
   }
 }
+
 @media screen and (max-width: 767px) {
   .gauge-meter-status-list {
     display: none;
   }
 }
+
 .gauge-meter-status-item {
   display: flex;
   flex-direction: column;
   padding: 0 10px;
 }
+
 @media screen and (max-width: 1300px) {
   .gauge-meter-status-item {
     padding: 0 5px;
     font-size: 12px;
   }
 }
+
 .gauge-meter-status-value {
   color: #fff;
   text-align: center;
   font-weight: bold;
 }
+
 .gauge-meter-status-value--sell {
   color: #ef5450;
 }
+
 .gauge-meter-status-value--buy {
   color: #31baa0;
 }
+
 .gauge-meter-status-value--neutral {
   color: #d1d4dc;
 }
+
 .gauge-meter-status-text {
   color: #8383a1;
 }
+
 .gauge-meter-popover {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .gauge-meter--os .gauge-meter-popover,
 .gauge-meter--ma .gauge-meter-popover {
   top: 23px;
 }
+
 @media screen and (max-width: 1300px) {
+
   .gauge-meter--os .gauge-meter-popover,
   .gauge-meter--ma .gauge-meter-popover {
     top: 10px;
@@ -3278,11 +3177,13 @@ export default {
 
 <style>
 @media screen and (min-width: 768.98px) {
+
   #tradePage,
   .rightBar {
     height: calc(100vh - 77px);
     border-left: 2px solid #000;
   }
+
   .vs-navbar.navbar-skelton {
     border-bottom: 2px solid #000;
   }
@@ -3293,8 +3194,8 @@ export default {
 }
 
 .vs-input-primary.isFocus .vs-input--label,
-.vs-input-primary .vs-input--input:focus ~ .icon-inputx,
-.vs-input-primary .vs-input--input:focus ~ .vs-placeholder-label {
+.vs-input-primary .vs-input--input:focus~.icon-inputx,
+.vs-input-primary .vs-input--input:focus~.vs-placeholder-label {
   color: #4e4e4e;
 }
 
@@ -3318,6 +3219,7 @@ export default {
   overflow: hidden;
   /* padding-top: 20px; */
 }
+
 @media screen and (max-width: 1300px) {
   #tradePage .chartBox {
     height: calc(100vh - 270px);
@@ -3329,67 +3231,82 @@ export default {
     height: calc(100vh - 250px);
   }
 }
+
 @media screen and (max-width: 1024px) {
   #tradePage .pc {
     display: none !important;
   }
+
   #tradePage .mobile {
     display: block !important;
   }
+
   #tradePage .chartBox {
     height: calc(100vh - 490px);
   }
 }
+
 @media screen and (max-width: 1000px) {
   #tradePage .chartBox {
     height: calc(100vh - 490px);
   }
 }
+
 @media screen and (max-width: 768px) {
   .navbar-floating .router-content {
     margin-top: 3rem;
   }
+
   #tradePage .chartBox {
     height: calc(100vh - 480px);
   }
+
   body {
     overflow-x: hidden;
     overflow-y: auto;
   }
+
   /*#tradePage{
         padding-top: 75px !important;
     }*/
 }
+
 @media screen and (max-width: 767px) {
   #tradePage .chartBox {
     height: calc(100vh - 200px);
   }
 }
+
 @media screen and (max-width: 575px) {
   #tradePage .chartBox {
     height: calc(100vh - 490px);
   }
 }
+
 @media screen and (max-width: 540px) {
   #tradePage .chartBox {
     height: calc(100vh - 490px);
   }
 }
+
 @media screen and (max-width: 460px) {
   #tradePage .chartBox {
     height: calc(100vh);
   }
 }
+
 @media screen and (max-width: 415px) {
   #tradePage .chartBox {
     height: calc(100vh - 270px);
   }
 }
+
 @media screen and (max-width: 375px) {
   #tradePage .chartBox {
     height: calc(100vh - 150px);
   }
 }
+
 @media screen and (max-width: 360px) {
   #tradePage .chartBox {
     height: calc(100vh - 150px);
@@ -3405,24 +3322,31 @@ export default {
   justify-content: center;
   color: #fff;
 }
+
 .color-light-blue {
   color: #00cebe !important;
 }
+
 .color-green {
   color: #31baa0 !important;
 }
+
 .color-red {
   color: #ea5455 !important;
 }
+
 .bg-green {
   background: #31baa0 !important;
 }
+
 .bg-red {
   background: #ea5455 !important;
 }
+
 .empty {
   background: #637284;
 }
+
 .minutes-set {
   float: left;
   margin-right: 28px;
@@ -3462,18 +3386,21 @@ export default {
   stroke: #b6b6b6;
   stroke-width: 12px;
 }
+
 .red .e-c-progress {
   fill: none;
   stroke: #ff0000;
   stroke-width: 12px;
   transition: stroke-dashoffset 0.7s;
 }
+
 .green .e-c-progress {
   fill: none;
   stroke: #31baa0;
   stroke-width: 12px;
   transition: stroke-dashoffset 0.7s;
 }
+
 .red .e-c-progress {
   fill: none;
   stroke: #ff0000;
@@ -3499,18 +3426,23 @@ export default {
   stroke: #31baa0;
   stroke-width: 10px;
 }
+
 #e-pointer {
   transition: transform 0.7s;
 }
+
 .hide-sm {
   display: none !important;
 }
+
 .hide-xs {
   display: block;
 }
+
 .box-btn-buy-sell {
   position: relative;
 }
+
 .box-btn-buy-sell .col-2 {
   position: static;
 }
@@ -3528,6 +3460,7 @@ export default {
   margin-bottom: 2px;
   padding: 2px 5px;
 }
+
 .plotlineChart .time {
   display: inline-block;
   background-color: #00b6ff;

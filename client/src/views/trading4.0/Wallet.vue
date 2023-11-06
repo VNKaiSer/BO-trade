@@ -4,23 +4,18 @@
       <div class="w-full h-48 subBanner">
         <div class="container flex items-center h-full info">
           <div class="relative flex flex-col justify-center">
-            <p class="text-lg">Tổng tài sản (USD)</p>
+            <p class="text-lg">Tổng tài sản (USD)</p> 
             <p>
               <span
                 class="mr-2 price"
                 v-if="getSetSys.typeCurrUseSys == 'usdt'"
               >
-                {{ formatPrice(balanceForUser * getSetSys.quotePriceUSDT, 2) }}
+                {{ formatPrice(
+                                balanceUSDT * getSetSys.quotePriceUSDT,
+                                2
+                              ) }}
               </span>
-              <span class="mr-2 price" v-if="getSetSys.typeCurrUseSys == 'btc'">
-                {{ formatPrice(balanceForUser * getSetSys.quotePriceBTC, 2) }}
-              </span>
-              <span class="mr-2 price" v-if="getSetSys.typeCurrUseSys == 'eth'">
-                {{ formatPrice(balanceForUser * getSetSys.quotePriceETH, 2) }}
-              </span>
-              <span
-                :class="`icon ${getSetSys.typeCurrUseSys} inline-block`"
-              ></span>
+
               <!--<span class="text-lg basePrice">~ ${{ formatPrice(balanceUser, 2) }}</span> -->
             </p>
           </div>

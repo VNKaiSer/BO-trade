@@ -7,6 +7,7 @@ const axios = require("axios");
 const WebSocket = require("ws");
 const cors = require("cors");
 const { updatePriceWinLose } = require("./../api/trans_user");
+const helperCoin = require("./helpper/apiBinance");
 
 const BET_MAX = config.BET_MAX;
 var PRICE_BUY_LIVE = 0,
@@ -139,6 +140,11 @@ wss.on("connection", function (ws) {
       const statusBet = randomWinLost();
       HandlingProcessingGameTrade40(statusBet, data.data, ws);
     }
+    if (data.type === "getPriceOP") {
+      helperCoin.getPricecoin("BTC").then((res) => {
+        ws.send(JSON.stringify({ type: "priceOP", data: res }));
+      });
+    }
   });
 });
 
@@ -215,7 +221,17 @@ function BetBUY(ws, data) {
             uid;
           //console.log('MKT BET BUY: ' + accMarketing);
           updateBalanceUser(data, (err, result) => {
-            ws.send(JSON.stringify({ type: "checkBet", data: "ok" }));
+            console.log(data);
+            let priceOpen = getPriceOP(data);
+            console.log(priceOpen);
+
+            ws.send(
+              JSON.stringify({
+                type: "checkBet",
+                data: "ok",
+                priceOP: priceOpen,
+              })
+            );
           });
 
           //SendNotifyTele(uid, typeAccount, 'BUY', betAmount)
@@ -234,6 +250,12 @@ function BetBUY(ws, data) {
       });
     });
   }
+}
+function getPriceOP(data) {
+  (async () => {
+    let price = await helperCoin.getPricecoin(data.coinBet);
+    return price;
+  })();
 }
 
 function BetSELL(ws, data) {
@@ -374,7 +396,9 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
       amountShow,
       money,
       email,
-      accMarketingBuy
+      accMarketingBuy,
+      data.op,
+      helperCoin.caculatorClosePrice(data)
     );
   } else {
     let obj = {
@@ -402,7 +426,9 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
       money,
       money,
       email,
-      accMarketingBuy
+      accMarketingBuy,
+      data.op,
+      helperCoin.caculatorClosePrice(data.op)
     );
   }
 }
@@ -416,7 +442,9 @@ function SaveHistory(
   amountWL,
   amountBet,
   email,
-  marketing
+  marketing,
+  op,
+  cp
 ) {
   let obj = {
     uid: uid,
@@ -426,8 +454,8 @@ function SaveHistory(
     amount_win: wl == "win" ? Number(amountWL) : 0,
     amount_lose: wl == "win" ? 0 : Number(amountWL),
     amount_bet: amountBet,
-    open: 0,
-    close: 0,
+    open: op,
+    close: cp,
     session: 0,
     email: email,
     mkt: 0,

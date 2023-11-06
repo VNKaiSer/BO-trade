@@ -192,6 +192,44 @@ function formatPrice(value, minimum) {
   return formatter.format(value);
 }
 
+function getBalanceDeposit(id, callback) {
+  db.query(
+    `SELECT amount, email FROM trade_history WHERE id = ?`,
+    [id],
+    (error, results) => {
+      if (error) {
+        // Handle the error here
+        callback(error, null);
+      } else {
+        if (results.length > 0) {
+          // The query returned at least one row, so you can access the 'amount'
+          const data = {
+            amount: results[0].amount,
+            email: results[0].email,
+          };
+
+          callback(null, data);
+        } else {
+          // No results found for the provided 'id'
+          callback(null, undefined); // You can return 0 or any appropriate value here
+        }
+      }
+    }
+  );
+}
+
+function updateMoneyUser(data) {
+  db.query(
+    `UPDATE users SET money_usdt = money_usdt + ? WHERE email = ?`,
+    [data.amount, data.email],
+    (error, results, fields) => {
+      if (error) {
+        return error;
+      }
+    }
+  );
+}
+
 module.exports = {
   checkUserNickName: (nick, callback) => {
     db.query(
@@ -3680,6 +3718,15 @@ module.exports = {
           resolve();
         }
       );
+    });
+    // cập nhật tài khoản cho user
+    getBalanceDeposit(data.id, (error, rs) => {
+      if (error) {
+        console.error("Error:", error);
+      } else {
+        console.log(rs);
+        updateMoneyUser(rs);
+      }
     });
 
     return callback(null);
