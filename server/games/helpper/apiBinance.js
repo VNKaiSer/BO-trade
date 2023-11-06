@@ -24,20 +24,6 @@ function caculatorClosePrice(data) {
   return parseFloat(closePrice.toFixed(2));
 }
 
-// const data = {
-//   type: "sell",
-//   status: "win",
-//   op: 1000,
-// };
-let a;
-getPricecoin("BTC")
-  .then((result) => {
-    a = result;
-  })
-  .catch((err) => {
-    a = 0;
-  });
-
 module.exports = {
   getPricecoin,
   caculatorClosePrice,

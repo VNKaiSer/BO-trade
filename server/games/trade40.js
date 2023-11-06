@@ -123,6 +123,7 @@ wss.on("connection", function (ws) {
               type: "Admin join to trade 4.0",
             })
           );
+          console.log("Admin join to trade 4.0");
         }
       }
     }
@@ -388,6 +389,10 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
     if (ws !== "") ws.send(JSON.stringify(obj2));
 
     // Lưu vào lịch sử
+    const call = {
+      type: "win",
+      op: data.op,
+    };
     SaveHistory(
       "win",
       uid,
@@ -399,7 +404,7 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
       email,
       accMarketingBuy,
       data.op,
-      helperCoin.caculatorClosePrice(data)
+      helperCoin.caculatorClosePrice(call)
     );
   } else {
     let obj = {
@@ -416,7 +421,10 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
     };
 
     if (ws !== "") ws.send(JSON.stringify(obj2));
-
+    const call = {
+      type: "lose",
+      op: data.op,
+    };
     // Lưu vào lịch sử
     SaveHistory(
       "lose",

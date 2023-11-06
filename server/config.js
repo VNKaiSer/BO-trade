@@ -45,7 +45,7 @@ module.exports = {
 
   DATA_HOST: "localhost",
   DATA_USER: "root",
-  DATA_PASS: "1",
+  DATA_PASS: "root",
   DATA_DB: "bovip",
   DATA_PORT: 3306,
 
