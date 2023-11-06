@@ -9,19 +9,30 @@ async function getPricecoin(symbol) {
   return price[symbol];
 }
 
-function caculatorClosePrice(data) {
-  const priceChange = Math.random() * 0.01;
-  let closePrice = 0;
-  if (data.type == "buy" && data.status == "win") {
-    closePrice = data.op * (1 + priceChange);
-  } else if (data.type == "buy" && data.status == "lose") {
-    closePrice = data.op * (1 - priceChange);
-  } else if (data.type == "sell" && data.status == "win") {
-    closePrice = data.op * (1 - priceChange);
-  } else if (data.type == "sell" && data.status == "lose") {
-    closePrice = data.op * (1 + priceChange);
+async function caculatorClosePrice(data) {
+  try {
+    const result = await getPricecoin(data.coinBet);
+    const priceChange = Math.random() * 0.01;
+    let closePrice = 0;
+    if (data.type == "buy" && data.status == "win") {
+      closePrice = result * (1 + priceChange);
+    } else if (data.type == "buy" && data.status == "lose") {
+      closePrice = result * (1 - priceChange);
+    } else if (data.type == "sell" && data.status == "win") {
+      closePrice = result * (1 - priceChange);
+    } else if (data.type == "sell" && data.status == "lose") {
+      closePrice = result * (1 + priceChange);
+    }
+    const rs = {
+      open: result,
+      close: closePrice.toFixed(2),
+    };
+    console.log(rs);
+    return rs;
+  } catch (err) {
+    console.error(err);
+    throw err; // Chuyển lỗi tiếp theo để xử lý ở mức cao hơn
   }
-  return parseFloat(closePrice.toFixed(2));
 }
 
 module.exports = {

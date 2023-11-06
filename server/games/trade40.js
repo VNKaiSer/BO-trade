@@ -391,27 +391,45 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
     // Lưu vào lịch sử
     const call = {
       type: "win",
-      op: data.op,
+      coinBet: data.coinBet,
     };
-    SaveHistory(
-      "win",
-      uid,
-      type,
-      action,
-      data.coinBet,
-      amountShow,
-      money,
-      email,
-      accMarketingBuy,
-      data.op,
-      helperCoin.caculatorClosePrice(call)
-    );
+    (async () => {
+      try {
+        const result = await helperCoin.caculatorClosePrice({
+          coinBet: data.coinBet,
+          type: data.type,
+          status: "win",
+        });
+        SaveHistory(
+          "win",
+          uid,
+          type,
+          action,
+          data.coinBet,
+          amountShow,
+          money,
+          email,
+          accMarketingBuy,
+          result.open,
+          result.close
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   } else {
+    let amount = (money / 100) * rateNhaThuong; // Money của BUY
+
+    let amountShow = Number(amount); // là số tiền nhận được
+    let addMo = amountShow + Number(money);
+
     let obj = {
-      lose: Number(money),
+      balance: addMo,
+      win: amountShow,
       upID: uid,
       email: email,
     };
+
     updateAmountLose(obj, (err, result) => {});
     updatePriceWinLose(obj, "l");
 
@@ -423,22 +441,32 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
     if (ws !== "") ws.send(JSON.stringify(obj2));
     const call = {
       type: "lose",
-      op: data.op,
+      coinBet: data.coinBet,
     };
-    // Lưu vào lịch sử
-    SaveHistory(
-      "lose",
-      uid,
-      type,
-      action,
-      data.coinBet,
-      money,
-      money,
-      email,
-      accMarketingBuy,
-      data.op,
-      helperCoin.caculatorClosePrice(data.op)
-    );
+    (async () => {
+      try {
+        const result = await helperCoin.caculatorClosePrice({
+          coinBet: data.coinBet,
+          type: data.type,
+          status: "lose",
+        });
+        SaveHistory(
+          "lose",
+          uid,
+          type,
+          action,
+          data.coinBet,
+          amountShow,
+          money,
+          email,
+          accMarketingBuy,
+          result.open,
+          result.close
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   }
 }
 
