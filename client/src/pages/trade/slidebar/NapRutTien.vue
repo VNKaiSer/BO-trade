@@ -373,7 +373,7 @@
                 class="depos deposit_widthdraw_box"
                 :class="{ block: !activeNRT }"
               >
-                <div class="relative form-group">
+                <div class="relative mt-1 form-group">
                   <h4 class="colorSecondary2">Giá trị USDT</h4>
                   <input
                     type="number"
@@ -390,58 +390,46 @@
                   </button>
                 </div>
                 <div class="relative form-group">
-                  <h4 class="colorSecondary2">
-                    {{
-                      isActiveSelectTransNB
-                        ? "Biệt danh người nhận"
-                        : "Tên Ngân Hàng *"
-                    }}
-                  </h4>
+                  <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
                   <input
                     type="text"
-                    v-model="adddressWithDrawal"
-                    :placeholder="`${
-                      isActiveSelectTransNB
-                        ? 'Nhập biệt danh người nhận'
-                        : 'Tên Ngân Hàng *'
-                    }`"
+                    placeholder="Tên Ngân Hàng"
                     class="form-control"
                   />
                 </div>
                 <div class="relative form-group">
-                  <h4 class="colorSecondary2">
-                    {{
-                      isActiveSelectTransNB
-                        ? "Ghi chú (không bắt buộc)"
-                        : "Số Tài Khoản *"
-                    }}
-                  </h4>
+                  <h4 class="colorSecondary2">Chi nhánh ngân hàng</h4>
                   <input
                     type="text"
-                    v-model="noteRut"
-                    :placeholder="`${
-                      isActiveSelectTransNB
-                        ? 'Nhập ghi chú của bạn'
-                        : 'Nhập số tài khoản của bạn *'
-                    }`"
+                    placeholder="Nhập chi nhánh ngân hàng của bạn"
+                    class="form-control"
+                  />
+                </div>
+                <div class="relative form-group">
+                  <h4 class="colorSecondary2">Số tài khoản</h4>
+                  <input
+                    type="text"
+                    placeholder="Nhập số tài khoản của bạn"
                     class="form-control"
                   />
                 </div>
 
-                <div
-                  :class="`${
-                    isActiveSelectTransNB ? 'd-none' : 'form-group relative'
-                  }`"
-                >
-                  <h4 class="colorSecondary2">Chủ Tài Khoản *</h4>
+                <div class="relative form-group">
+                  <h4 class="colorSecondary2">Chủ tài khoản</h4>
                   <input
                     type="text"
-                    v-model="ChuTkRut"
-                    placeholder="Nhập Tên Chủ Tài Khoản"
+                    placeholder="Nhập tên chủ tài khoản"
                     class="form-control"
                   />
                 </div>
-
+                <div class="relative form-group">
+                  <h4 class="colorSecondary2">Ghi chú ( không bắt buộc)</h4>
+                  <input
+                    type="text"
+                    placeholder="Nhập ghi chú của bạn"
+                    class="form-control"
+                  />
+                </div>
                 <div v-if="!pop2FAokPay">
                   <div class="text-center address">
                     <!-- <small class="colorRed enable2fa" v-if="!getData.c2fa">Bạn phải bật 2FA để yêu cầu rút tiền</small> -->
@@ -453,7 +441,7 @@
                     >
                   </div>
                 </div>
-                <div v-else>
+                <!-- <div v-else>
                   <span class="font-bold">Hướng dẫn:</span> Mở telegram và nhắn
                   tin cho Bot DONALDTRADE với cú pháp CODE2FA để lấy OTP
                   <div class="relative form-group">
@@ -473,7 +461,7 @@
                       >
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
