@@ -10,10 +10,7 @@
                 class="mr-2 price"
                 v-if="getSetSys.typeCurrUseSys == 'usdt'"
               >
-                {{ formatPrice(
-                                balanceUSDT * getSetSys.quotePriceUSDT,
-                                2
-                              ) }}
+                {{ formatPrice(balanceUSDT * getSetSys.quotePriceUSDT,2)  }}
               </span>
 
               <!--<span class="text-lg basePrice">~ ${{ formatPrice(balanceUser, 2) }}</span> -->
