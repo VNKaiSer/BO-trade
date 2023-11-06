@@ -1,7 +1,7 @@
 // en, de, fr, pt
 export default {
   vi: {
-    Trade: "Giao dịch",
+    // Trade: "Giao dịch",
     Trade1: "Giao dịch 4.0",
     Help: "Trợ giúp",
     Shopping: "Mua sắm",
@@ -19,7 +19,7 @@ export default {
     Command: "Lệnh",
   },
   en: {
-    Trade: "Trade",
+    // Trade: "Trade",
     Help: "Help",
     Shopping: "Shopping",
     Setting: "Setting",

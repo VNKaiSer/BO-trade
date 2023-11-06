@@ -101,15 +101,15 @@ const router = new Router({
             title: "Đặt lại mật khẩu",
           },
         },
-        {
-          path: "/trading",
-          name: "client-index",
-          component: () => import("../../views/trading/Index.vue"),
-          meta: {
-            title: "Giao dịch",
-            requiresAuth: true,
-          },
-        },
+        // {
+        //   path: "/trading",
+        //   name: "client-index",
+        //   component: () => import("../../views/trading/Index.vue"),
+        //   meta: {
+        //     title: "Giao dịch",
+        //     requiresAuth: true,
+        //   },
+        // },
         {
           path: "/trading4.0",
           name: "client-index1",

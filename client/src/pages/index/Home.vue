@@ -1,151 +1,382 @@
 <template>
-    <div style="background-color: #111;">
-       <div class="fill-row-loading">
-            <div class="vs-con-loading__container loading-example" id="loading-radius" :class="{'activeLoading': activeLoading}"></div>
+  <div style="background-color: #111">
+    <div class="fill-row-loading">
+      <div
+        class="vs-con-loading__container loading-example"
+        id="loading-radius"
+        :class="{ activeLoading: activeLoading }"
+      ></div>
+    </div>
+    <header class="header">
+      <div class="header-bg">
+        <video
+          playsinline=""
+          autoplay=""
+          muted=""
+          loop=""
+          class="header-bg-video"
+        >
+          <source
+            :src="require('@/assets/images/sky/header-bg.mp4')"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      <div class="container">
+        <div class="header__menu">
+          <a class="header__logo logo_url_params" href="#" aria-label="BO">
+            <img
+              width="200"
+              :src="require('@/assets/images/logo/logo.png')"
+              alt="BO"
+            />
+          </a>
+          <a
+            class="header__logo_mb logo_url_params"
+            href="#"
+            aria-label="Trade"
+          >
+            <img
+              width="200"
+              :src="require('@/assets/images/logo/logo.png')"
+              alt="BO"
+            />
+          </a>
+
+          <div class="header__btn">
+            <vs-button
+              class="pl-4 pr-4 ml-4 font-bold"
+              color="#F72D48"
+              icon-pack="feather"
+              @click="LoginUrl"
+              style="width: 110px; height: 48px"
+              >Đăng nhập</vs-button
+            >
+            <vs-button
+              class="pl-4 pr-4 ml-4 font-bold"
+              color="transparent"
+              icon-pack="feather"
+              style="border: 1px solid #fff; width: 110px; height: 48px"
+              @click="RegisterUrl"
+              >Đăng ký</vs-button
+            >
+          </div>
         </div>
-        <header class="header">
-            <div class="header-bg">
-                <video playsinline="" autoplay="" muted="" loop="" class="header-bg-video">
-                    <source :src="require('@/assets/images/sky/header-bg.mp4')" type="video/mp4">
-                </video>
-            </div>
-            <div class="container">
-                <div class="header__menu">
-                    <a class="header__logo logo_url_params" href="#" aria-label="BO">
-                        <img width="200" :src="require('@/assets/images/logo/logo.png')" alt="BO">
-
-                    </a>
-                    <a class="header__logo_mb logo_url_params" href="#" aria-label="Trade">
-                        <img width="200" :src="require('@/assets/images/logo/logo.png')" alt="BO">
-
-                    </a>
-
-                    <div class="header__btn">
-                        <vs-button
-                            class="ml-4 font-bold pl-4 pr-4"
-                            color="#F72D48"
-                            icon-pack="feather"
-                            @click="LoginUrl"
-                            style="width: 110px; height: 48px;"
-                        >Đăng nhập</vs-button>
-                        <vs-button
-                            class="ml-4 font-bold pl-4 pr-4"
-                            color="transparent"
-                            icon-pack="feather"
-                            style="border: 1px solid #fff; width: 110px; height: 48px;"
-                            @click="RegisterUrl"
-                        >Đăng ký</vs-button>
-                    </div>
-                </div>
-                <div class="header__content text-center">
-                    <h1 class="h1 text-center">Thiết lập<span class="text--red"> Tài khoản miễn phí </span>ngay</h1>
-                    <vs-button class="w-64 h-16" color="success" type="gradient" @click="LoginUrl">Bắt đầu giao dịch</vs-button>
-                    <!--<div class="forms forms_1 forms--dark text-center">
+        <div class="text-center header__content">
+          <h1 class="text-center h1">
+            Thiết lập<span class="text--red"> Tài khoản miễn phí </span>ngay
+          </h1>
+          <vs-button
+            class="w-64 h-16"
+            color="success"
+            type="gradient"
+            @click="LoginUrl"
+            >Bắt đầu giao dịch</vs-button
+          >
+          <!--<div class="text-center forms forms_1 forms--dark">
                         <vs-button class="h-16 text-2xl" color="rgb(62, 201, 214)" type="filled" @click="LoginUrl">Bắt đầu giao dịch</vs-button>
                     </div>-->
-                </div>
+        </div>
+      </div>
+    </header>
+    <div class="text-center trade section-padding">
+      <div class="container">
+        <h2 class="mb-6 h5">
+          <span class="text--red">DONALDTRADE</span> là nền tảng giao dịch hàng
+          đầu thế giới với mong muốn cung cấp trải nghiệm giao dịch đặc biệt cho
+          khách hàng.
+        </h2>
+        <ul class="trade__list">
+          <li class="trade__item">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M56.9034 17.338C58.1515 17.7321 59 18.8899 59 20.1987L59 45.9767C59 52.8389 55.4818 59.2221 49.6799 62.8865L40 69.0001L30.3201 62.8865C24.5182 59.2221 21 52.8389 21 45.9767L21 20.1987C21 18.8899 21.8485 17.7321 23.0966 17.338L39.3977 12.1902C39.7897 12.0665 40.2103 12.0665 40.6023 12.1902L56.9034 17.338Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M58.96 12.53C61.9467 13.4011 64 16.1389 64 19.25L64 46.1438C64 54.7636 59.5595 62.7753 52.25 67.3438L40 75L27.75 67.3438C20.4405 62.7753 16 54.7636 16 46.1438L16 19.25C16 16.1389 18.0533 13.4011 21.04 12.53L39.16 7.245C39.7086 7.085 40.2914 7.085 40.84 7.245L58.96 12.53Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M40 49.256V46.3914"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M40 31.3027V29.2542"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M44.2176 32.0056H40.0077C40.0077 32.0056 34.931 32.0043 35.001 35.6059C35.0709 39.2074 40.0077 38.9237 40.0077 38.9237C40.0077 38.9237 45.0033 38.8425 44.9756 42.3696C44.948 45.8968 40.0077 45.8382 40.0077 45.8382H35.6636"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+
+            <div class="trade__content">
+              <p class="h3">Giao dịch không rủi ro</p>
+              <p class="h-24 trade__text">
+                Học hỏi thông qua sử dụng tài khoản DEMO miễn phí với $1000.
+              </p>
             </div>
-            
-        </header>
-        <div class="trade section-padding text-center">
-            <div class="container">
-                <h2 class="h5 mb-6"><span class="text--red">DONALDTRADE</span> là nền tảng giao dịch hàng đầu thế giới với mong muốn cung cấp trải nghiệm giao dịch đặc biệt cho khách hàng.</h2>
-                <ul class="trade__list">
-                    <li class="trade__item">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M56.9034 17.338C58.1515 17.7321 59 18.8899 59 20.1987L59 45.9767C59 52.8389 55.4818 59.2221 49.6799 62.8865L40 69.0001L30.3201 62.8865C24.5182 59.2221 21 52.8389 21 45.9767L21 20.1987C21 18.8899 21.8485 17.7321 23.0966 17.338L39.3977 12.1902C39.7897 12.0665 40.2103 12.0665 40.6023 12.1902L56.9034 17.338Z" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M58.96 12.53C61.9467 13.4011 64 16.1389 64 19.25L64 46.1438C64 54.7636 59.5595 62.7753 52.25 67.3438L40 75L27.75 67.3438C20.4405 62.7753 16 54.7636 16 46.1438L16 19.25C16 16.1389 18.0533 13.4011 21.04 12.53L39.16 7.245C39.7086 7.085 40.2914 7.085 40.84 7.245L58.96 12.53Z" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M40 49.256V46.3914" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M40 31.3027V29.2542" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M44.2176 32.0056H40.0077C40.0077 32.0056 34.931 32.0043 35.001 35.6059C35.0709 39.2074 40.0077 38.9237 40.0077 38.9237C40.0077 38.9237 45.0033 38.8425 44.9756 42.3696C44.948 45.8968 40.0077 45.8382 40.0077 45.8382H35.6636" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
+          </li>
+          <li class="trade__item">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M69 27.3442V53C69 54.6569 67.6569 56 66 56H14C12.3431 56 11 54.6569 11 53V18"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M59.8702 12H10C8.34315 12 7 13.3431 7 15L7 16C7 17.1046 7.89543 18 9 18H57.8411"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M19.0188 45.9793L28.9321 34.9676L40 39.9585L49.6861 27.9904L60.0145 22.3333"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M68.5 27C73.7467 27 78 22.7467 78 17.5C78 12.2533 73.7467 8 68.5 8C63.2533 8 59 12.2533 59 17.5C59 22.7467 63.2533 27 68.5 27Z"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M37 56V59.4511C37 59.793 36.8254 60.1112 36.5369 60.2947L20.7944 70.3127C19.1063 71.3869 19.8672 74 21.8681 74H24.3945C24.7893 74 25.1753 73.8831 25.5039 73.6641L39.4453 64.3698C39.7812 64.1459 40.2188 64.1459 40.5547 64.3698L54.4962 73.6641C54.8247 73.8831 55.2107 74 55.6056 74H58.1319C60.1328 74 60.8937 71.3869 59.2057 70.3127L43.4632 60.2947C43.1747 60.1112 43 59.793 43 59.4511V56"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M43 66V70C43 71.1046 42.1046 72 41 72H39C37.8954 72 37 71.1046 37 70V66"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M68.6 22.6102V21.1096"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M68.6 13.2061V12.1331"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M70.6088 13.5742H68.5039C68.5039 13.5742 65.9655 13.5735 66.0005 15.4601C66.0354 17.3466 68.5039 17.198 68.5039 17.198C68.5039 17.198 71.0016 17.1554 70.9878 19.003C70.974 20.8506 68.5039 20.8199 68.5039 20.8199H66.3318"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+            </svg>
 
-                        <div class="trade__content">
-                            <p class="h3">
-                                Giao dịch không rủi ro </p>
-                            <p class="trade__text h-24">
-                                Học hỏi thông qua sử dụng tài khoản DEMO miễn phí với $1000. </p>
-                        </div>
-                    </li>
-                    <li class="trade__item">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M69 27.3442V53C69 54.6569 67.6569 56 66 56H14C12.3431 56 11 54.6569 11 53V18" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M59.8702 12H10C8.34315 12 7 13.3431 7 15L7 16C7 17.1046 7.89543 18 9 18H57.8411" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M19.0188 45.9793L28.9321 34.9676L40 39.9585L49.6861 27.9904L60.0145 22.3333" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M68.5 27C73.7467 27 78 22.7467 78 17.5C78 12.2533 73.7467 8 68.5 8C63.2533 8 59 12.2533 59 17.5C59 22.7467 63.2533 27 68.5 27Z" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M37 56V59.4511C37 59.793 36.8254 60.1112 36.5369 60.2947L20.7944 70.3127C19.1063 71.3869 19.8672 74 21.8681 74H24.3945C24.7893 74 25.1753 73.8831 25.5039 73.6641L39.4453 64.3698C39.7812 64.1459 40.2188 64.1459 40.5547 64.3698L54.4962 73.6641C54.8247 73.8831 55.2107 74 55.6056 74H58.1319C60.1328 74 60.8937 71.3869 59.2057 70.3127L43.4632 60.2947C43.1747 60.1112 43 59.793 43 59.4511V56" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M43 66V70C43 71.1046 42.1046 72 41 72H39C37.8954 72 37 71.1046 37 70V66" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M68.6 22.6102V21.1096" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M68.6 13.2061V12.1331" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M70.6088 13.5742H68.5039C68.5039 13.5742 65.9655 13.5735 66.0005 15.4601C66.0354 17.3466 68.5039 17.198 68.5039 17.198C68.5039 17.198 71.0016 17.1554 70.9878 19.003C70.974 20.8506 68.5039 20.8199 68.5039 20.8199H66.3318" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
+            <div class="trade__content">
+              <p class="h3">Tăng tính hiệu quả</p>
+              <p class="h-24 trade__text">
+                Sử dụng chiến thuật giao dịch sẵn có do các chuyên gia phát
+                triển.
+              </p>
+            </div>
+          </li>
+          <li class="trade__item">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 34H22C23.6569 34 25 35.3431 25 37V50C25 51.6569 23.6569 53 22 53H18V34Z"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M62 34H58C56.3431 34 55 35.3431 55 37V50C55 51.6569 56.3431 53 58 53H62V34Z"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M18 53C18 61.8671 31.6335 66.676 31.6335 66.676"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M62 34V34C66.4183 34 70 37.5817 70 42V45C70 49.4183 66.4183 53 62 53V53V34Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M18 34V34C13.5817 34 10 37.5817 10 42V45C10 49.4183 13.5817 53 18 53V53V34Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M35.5 70C37.433 70 39 68.433 39 66.5C39 64.567 37.433 63 35.5 63C33.567 63 32 64.567 32 66.5C32 68.433 33.567 70 35.5 70Z"
+                stroke="#0094FF"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M18 52V34C18 19.6406 25.6406 11 40 11C54.3594 11 62 19.6406 62 34V52"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              ></path>
+            </svg>
 
-                        <div class="trade__content">
-                            <p class="h3">
-                                Tăng tính hiệu quả </p>
-                            <p class="trade__text h-24">
-                                Sử dụng chiến thuật giao dịch sẵn có do các chuyên gia phát triển. </p>
-                        </div>
-                    </li>
-                    <li class="trade__item">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 34H22C23.6569 34 25 35.3431 25 37V50C25 51.6569 23.6569 53 22 53H18V34Z" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M62 34H58C56.3431 34 55 35.3431 55 37V50C55 51.6569 56.3431 53 58 53H62V34Z" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M18 53C18 61.8671 31.6335 66.676 31.6335 66.676" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M62 34V34C66.4183 34 70 37.5817 70 42V45C70 49.4183 66.4183 53 62 53V53V34Z" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 34V34C13.5817 34 10 37.5817 10 42V45C10 49.4183 13.5817 53 18 53V53V34Z" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M35.5 70C37.433 70 39 68.433 39 66.5C39 64.567 37.433 63 35.5 63C33.567 63 32 64.567 32 66.5C32 68.433 33.567 70 35.5 70Z" stroke="#0094FF" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M18 52V34C18 19.6406 25.6406 11 40 11C54.3594 11 62 19.6406 62 34V52" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
-
-                        <div class="trade__content">
-                            <p class="h3">
-                                Trải nghiệm Dịch vụ Hỗ trợ </p>
-                            <p class="trade__text h-24">
-                                Chúng tôi sẽ trả lời tất cả thắc mắc của bạn 24/7. Chúng tôi có nhân viên nói tiếng Việt. </p>
-                        </div>
-                    </li>
+            <div class="trade__content">
+              <p class="h3">Trải nghiệm Dịch vụ Hỗ trợ</p>
+              <p class="h-24 trade__text">
+                Chúng tôi sẽ trả lời tất cả thắc mắc của bạn 24/7. Chúng tôi có
+                nhân viên nói tiếng Việt.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="regime section-padding">
+      <div class="container">
+        <h2 class="text-center h2">Giao dịch trong chế độ tiện lợi với bạn</h2>
+        <div class="regime__container">
+          <div class="regime__left">
+            <div class="regime__content">
+              <img
+                class="content__img"
+                width="120"
+                height="120"
+                :src="require('@/assets/images/sky/home/mode1.png')"
+                alt="fixed time"
+              />
+              <div class="content__text">
+                <ul class="content__list">
+                  <li class="content__item content__item-1">
+                    Giao dịch mở nhanh
+                  </li>
+                  <li class="content__item content__item-2">
+                    Tỷ suất lợi nhuận cố định
+                  </li>
                 </ul>
+                <vs-button
+                  class="w-full h-16"
+                  color="rgb(255, 255, 255)"
+                  type="border"
+                  @click="LoginUrl"
+                  >Hãy thử ngay</vs-button
+                >
+              </div>
             </div>
-        </div>
-        <div class="regime section-padding">
-            <div class="container">
-                <h2 class="h2 text-center">Giao dịch trong chế độ tiện lợi với bạn</h2>
-                <div class="regime__container">
-                    <div class="regime__left">
-                        <div class="regime__content">
-                            <img class="content__img" width="120" height="120" :src="require('@/assets/images/sky/home/mode1.png')" alt="fixed time">
-                            <div class="content__text">
-                                <ul class="content__list">
-                                    <li class="content__item content__item-1">Giao dịch mở nhanh</li>
-                                    <li class="content__item content__item-2">Tỷ suất lợi nhuận cố định</li>
-                                </ul>
-                                <vs-button class="w-full h-16" color="rgb(255, 255, 255)" type="border" @click="LoginUrl">Hãy thử ngay</vs-button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="regime__right regime__right">
-                        <div class="regime__content">
-                            <img class="content__img" width="120" height="120" :src="require('@/assets/images/sky/home/mode2.png')" alt="fx">
-                            <div class="content__text">
-                                <ul class="content__list">
-                                    <li class="content__item content__item-3">Giá minh bạch</li>
-                                    <li class="content__item content__item-4">Thiết lập giao dịch mở rộng</li>
-                                </ul>
-                                <vs-button class="w-full h-16" color="rgb(255, 255, 255)" type="border" @click="LoginUrl">Hãy thử ngay</vs-button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="regime__right">
+            <div class="regime__content">
+              <img
+                class="content__img"
+                width="120"
+                height="120"
+                :src="require('@/assets/images/sky/home/mode2.png')"
+                alt="fx"
+              />
+              <div class="content__text">
+                <ul class="content__list">
+                  <li class="content__item content__item-3">Giá minh bạch</li>
+                  <li class="content__item content__item-4">
+                    Thiết lập giao dịch mở rộng
+                  </li>
+                </ul>
+                <vs-button
+                  class="w-full h-16"
+                  color="rgb(255, 255, 255)"
+                  type="border"
+                  @click="LoginUrl"
+                  >Hãy thử ngay</vs-button
+                >
+              </div>
             </div>
+          </div>
         </div>
-        <div class="payments text-center">
-            <div class="container">
-                <h2 class="h2">Sử dụng phương thức tiện lợi để nạp tiền và <span class="text--red">rút lợi nhuận về</span> mà không mất phí hoa hồng</h2>
-                <p class="subtitle">Không phí hoa hồng. Sử dụng các phương thức thanh toán tin cậy.</p>
-                <div class="payments__container">
-                    <svg style="width: 425px;" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41421" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(.787893 0 0 .787893 96.4821 140.204)"><circle cx="66.665" cy="75.893" fill="#26a17b" r="62.2"/><g fill-rule="nonzero"><path d="m73.295 81.633v-.01c-.43.03-2.65.16-7.59.16-3.95 0-6.72-.11-7.7-.16v.01c-15.19-.67-26.52-3.31-26.52-6.48 0-3.16 11.34-5.81 26.52-6.48v10.33c.99.07 3.84.24 7.77.24 4.72 0 7.08-.2 7.52-.24v-10.32c15.16.68 26.46 3.32 26.46 6.48s-11.31 5.8-26.46 6.48m0-14.03v-9.24h21.15v-14.09h-57.58v14.09h21.15v9.24c-17.19.79-30.11 4.19-30.11 8.27s12.93 7.48 30.11 8.28v29.62h15.29v-29.62c17.16-.79 30.06-4.19 30.06-8.27 0-4.07-12.9-7.48-30.06-8.27" fill="#fff"/><path d="m181.7 48.133v14.94h14.52v11.21h-14.62v22.73c0 5.02 2.77 7.47 6.83 7.47 2.03 0 4.38-.64 6.3-1.6l3.63 11.1c-3.73 1.49-6.83 2.13-10.78 2.24-11.42.43-18.89-6.08-18.89-19.21v-22.73h-9.82v-11.21h9.82v-13.55zm250.33 14.24.96 6.08c4.06-6.51 9.5-7.47 14.84-7.47 5.44 0 10.67 2.13 13.55 5.01l-5.87 11.31c-2.67-2.24-5.12-3.42-9.39-3.42-6.83 0-13.13 3.63-13.13 13.34v27.75h-13.02v-52.62zm-31.91 20.17c-.85-6.83-6.19-10.25-13.66-10.25-7.04 0-12.81 3.42-14.73 10.25zm-28.6 10.78c.85 6.51 6.51 11.21 15.69 11.21 4.8 0 11.1-1.82 14.09-4.91l8.32 8.22c-5.55 5.76-14.62 8.54-22.63 8.54-18.14 0-28.93-11.21-28.93-28.07 0-16.01 10.89-27.54 27.97-27.54 17.61 0 28.61 10.89 26.58 32.55zm-57.42-53.05v29.24c4.7-6.08 10.46-7.9 16.44-7.9 14.94 0 21.56 10.14 21.56 25.62v27.75h-13.02v-27.64c0-9.61-5.02-13.66-11.96-13.66-7.69 0-13.02 6.51-13.02 14.41v26.9h-13.02v-74.71zm-34.58 7.26v14.94h14.52v11.21h-14.62v22.73c0 5.02 2.78 7.47 6.83 7.47 2.03 0 4.38-.64 6.3-1.6l3.63 11.1c-3.73 1.49-6.83 2.13-10.78 2.24-11.42.43-18.89-6.09-18.89-19.21v-22.73h-9.82v-11.21h9.82v-13.55zm-35.97 35.01c-.85-6.83-6.19-10.25-13.66-10.25-7.04 0-12.81 3.42-14.73 10.25zm-28.6 10.78c.85 6.51 6.51 11.21 15.69 11.21 4.8 0 11.1-1.82 14.09-4.91l8.32 8.22c-5.55 5.76-14.62 8.54-22.63 8.54-18.15 0-28.93-11.21-28.93-28.07 0-16.01 10.89-27.54 27.96-27.54 17.61 0 28.6 10.89 26.58 32.55z" fill="#5b5a5d"/></g></g></svg>
-                    <!--<svg viewBox="0 0 70 45" xmlns="http://www.w3.org/2000/svg" height="45" class="payment-icon payment-icon--visa" width="70">
+      </div>
+    </div>
+    <div class="text-center payments">
+      <div class="container">
+        <h2 class="h2">
+          Sử dụng phương thức tiện lợi để nạp tiền và
+          <span class="text--red">rút lợi nhuận về</span> mà không mất phí hoa
+          hồng
+        </h2>
+        <p class="subtitle">
+          Không phí hoa hồng. Sử dụng các phương thức thanh toán tin cậy.
+        </p>
+        <div class="payments__container">
+          <svg
+            style="width: 425px"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            stroke-linejoin="round"
+            stroke-miterlimit="1.41421"
+            viewBox="0 0 560 400"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g transform="matrix(.787893 0 0 .787893 96.4821 140.204)">
+              <circle cx="66.665" cy="75.893" fill="#26a17b" r="62.2" />
+              <g fill-rule="nonzero">
+                <path
+                  d="m73.295 81.633v-.01c-.43.03-2.65.16-7.59.16-3.95 0-6.72-.11-7.7-.16v.01c-15.19-.67-26.52-3.31-26.52-6.48 0-3.16 11.34-5.81 26.52-6.48v10.33c.99.07 3.84.24 7.77.24 4.72 0 7.08-.2 7.52-.24v-10.32c15.16.68 26.46 3.32 26.46 6.48s-11.31 5.8-26.46 6.48m0-14.03v-9.24h21.15v-14.09h-57.58v14.09h21.15v9.24c-17.19.79-30.11 4.19-30.11 8.27s12.93 7.48 30.11 8.28v29.62h15.29v-29.62c17.16-.79 30.06-4.19 30.06-8.27 0-4.07-12.9-7.48-30.06-8.27"
+                  fill="#fff"
+                />
+                <path
+                  d="m181.7 48.133v14.94h14.52v11.21h-14.62v22.73c0 5.02 2.77 7.47 6.83 7.47 2.03 0 4.38-.64 6.3-1.6l3.63 11.1c-3.73 1.49-6.83 2.13-10.78 2.24-11.42.43-18.89-6.08-18.89-19.21v-22.73h-9.82v-11.21h9.82v-13.55zm250.33 14.24.96 6.08c4.06-6.51 9.5-7.47 14.84-7.47 5.44 0 10.67 2.13 13.55 5.01l-5.87 11.31c-2.67-2.24-5.12-3.42-9.39-3.42-6.83 0-13.13 3.63-13.13 13.34v27.75h-13.02v-52.62zm-31.91 20.17c-.85-6.83-6.19-10.25-13.66-10.25-7.04 0-12.81 3.42-14.73 10.25zm-28.6 10.78c.85 6.51 6.51 11.21 15.69 11.21 4.8 0 11.1-1.82 14.09-4.91l8.32 8.22c-5.55 5.76-14.62 8.54-22.63 8.54-18.14 0-28.93-11.21-28.93-28.07 0-16.01 10.89-27.54 27.97-27.54 17.61 0 28.61 10.89 26.58 32.55zm-57.42-53.05v29.24c4.7-6.08 10.46-7.9 16.44-7.9 14.94 0 21.56 10.14 21.56 25.62v27.75h-13.02v-27.64c0-9.61-5.02-13.66-11.96-13.66-7.69 0-13.02 6.51-13.02 14.41v26.9h-13.02v-74.71zm-34.58 7.26v14.94h14.52v11.21h-14.62v22.73c0 5.02 2.78 7.47 6.83 7.47 2.03 0 4.38-.64 6.3-1.6l3.63 11.1c-3.73 1.49-6.83 2.13-10.78 2.24-11.42.43-18.89-6.09-18.89-19.21v-22.73h-9.82v-11.21h9.82v-13.55zm-35.97 35.01c-.85-6.83-6.19-10.25-13.66-10.25-7.04 0-12.81 3.42-14.73 10.25zm-28.6 10.78c.85 6.51 6.51 11.21 15.69 11.21 4.8 0 11.1-1.82 14.09-4.91l8.32 8.22c-5.55 5.76-14.62 8.54-22.63 8.54-18.15 0-28.93-11.21-28.93-28.07 0-16.01 10.89-27.54 27.96-27.54 17.61 0 28.6 10.89 26.58 32.55z"
+                  fill="#5b5a5d"
+                />
+              </g>
+            </g>
+          </svg>
+          <!--<svg viewBox="0 0 70 45" xmlns="http://www.w3.org/2000/svg" height="45" class="payment-icon payment-icon--visa" width="70">
                         <g fill="none">
                             <path fill="#FFF" d="M0 0h69.971v44.445H0z"></path>
                             <path fill="#F7B600" d="M1.166 37.221h67.639v6.058H1.166z"></path>
@@ -285,170 +516,313 @@
                             </g>
                         </g>
                     </svg> -->
-                </div>
-            </div>
         </div>
-        <div class="registration section-padding">
-            <div class="container" id="registration">
-                
-                <h2 class="h2 text-center">Sàn giao dịch đẳng cấp thế giới dành cho mọi người <span class="text--red">DONALDTRADE</span></h2>
-                <p class="subtitle text-center">Giao dịch phi rủi ro khi sử dụng tài khoản demo.</p>
-                <div class="container-bg">
-                    
-                </div>
-            </div>
-        </div>
-        <footer class="footer footer_v2">
-            <div class="container">
-                <div class="footer__container">
-                    <a class="get__info-logo logo_url_params" href="#" aria-label="OB">
-                        <img width="150" :src="require('@/assets/images/logo/logo.png')" alt="OB">
-                    </a>
-                    <ul class="get__social">
-                        <li class="social__item">
-                            <a class="href_url_params" href="#" title="Blog">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0H4ZM7.73224 17.3414L9.68624 14.7804C9.73224 14.7214 9.72224 14.6384 9.66624 14.5874C8.76624 13.7774 8.27524 12.5244 8.60024 11.1544C8.89824 9.89744 9.92024 8.87744 11.1812 8.59144C13.4702 8.07344 15.5002 9.79944 15.5002 11.9994C15.5002 13.0304 15.0442 13.9474 14.3342 14.5874C14.2772 14.6384 14.2672 14.7214 14.3132 14.7814L16.2672 17.3414C16.3192 17.4094 16.4202 17.4224 16.4862 17.3664C17.9672 16.1284 18.9302 14.2904 18.9962 12.2244C19.1182 8.38944 15.9522 5.06244 12.1162 5.00044C8.19724 4.93744 5.00024 8.09444 5.00024 11.9994C5.00024 14.1564 5.97824 16.0834 7.51324 17.3664C7.57924 17.4224 7.68024 17.4094 7.73224 17.3414ZM11.8827 13.902L7.93466 19.01C7.85966 19.108 7.92866 19.25 8.05266 19.25H15.9467C16.0707 19.25 16.1407 19.108 16.0657 19.01L12.1167 13.902C12.0577 13.825 11.9427 13.825 11.8827 13.902Z" fill="#5B728C"></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="social__item">
-                            <a class="href_url_params" href="#" title="Instagram">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19.818 0H4C2.5 0 0 1 0 4.14V20c0 2 1.5 4 4 4h15.832C22.551 24 24 22 24 19.947V4c0-1.5-1.106-4-4.182-4zM12 18.667a6.667 6.667 0 11.002-13.335A6.667 6.667 0 0112 18.667zm8-13.334a1.334 1.334 0 11.001-2.667A1.334 1.334 0 0120 5.333z" fill="#5B728C"></path>
-                                    <path d="M12 8a4 4 0 100 8 4 4 0 000-8z" fill="#5B728C"></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="social__item">
-                            <a class="href_url_params" href="#" title="YouTube">
-                                <svg width="27" height="19" viewBox="0 0 27 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M26.7399 3.80679C26.6606 2.91743 26.2722 2.08458 25.6429 1.45443C25.0136 0.824289 24.1836 0.437128 23.2986 0.360919C21.1823 0.184382 18.0455 0 14.1752 0C9.51427 0 5.99598 0.191425 3.7214 0.370935C2.83226 0.442742 1.99706 0.828408 1.36356 1.45969C0.73006 2.09098 0.339107 2.92719 0.259875 3.82036C0.120636 5.29314 0 7.23824 0 9.55741C0 11.8188 0.119637 13.7296 0.258228 15.184C0.338251 16.0764 0.729534 16.9116 1.36291 17.542C1.99629 18.1724 2.83097 18.5574 3.71941 18.6289C5.99392 18.8084 9.51287 19 14.1752 19C18.0455 19 21.1823 18.8156 23.2986 18.639C24.1836 18.5628 25.0136 18.1757 25.6429 17.5456C26.2722 16.9154 26.6606 16.0826 26.7399 15.1932C26.8792 13.7282 27 11.7961 27 9.5C27 7.20386 26.8792 5.27185 26.7399 3.80679ZM10.4975 13.4883V5.51166L18.3249 9.5L10.4975 13.4883Z" fill="#5B728C"></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="social__item">
-                            <a class="href_url_params" href="#" title="Facebook">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14.2222 0H1.77778C0.8 0 0 0.8 0 1.77778V14.2222C0 15.2009 0.8 16 1.77778 16H8V9.77778H6.22222V7.57778H8V5.75556C8 3.832 9.07733 2.48089 11.3476 2.48089L12.9502 2.48267V4.79822H11.8862C11.0027 4.79822 10.6667 5.46133 10.6667 6.07644V7.57867H12.9493L12.4444 9.77778H10.6667V16H14.2222C15.2 16 16 15.2009 16 14.2222V1.77778C16 0.8 15.2 0 14.2222 0Z" fill="#5b728c"></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="social__item">
-                            <a class="href_url_params" href="#" title="Twitter">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21.6 0H2.4C1.08 0 0 1.08 0 2.4V21.6C0 22.92 1.08 24 2.4 24H21.6C22.92 24 24 22.92 24 21.6V2.4C24 1.08 22.92 0 21.6 0ZM18.84 8.76C18.72 14.28 15.24 18.12 9.96 18.36C7.8 18.48 6.24 17.76 4.8 16.92C6.36 17.16 8.4 16.56 9.48 15.6C7.92 15.48 6.96 14.64 6.48 13.32C6.96 13.44 7.44 13.32 7.8 13.32C6.36 12.84 5.4 12 5.28 10.08C5.64 10.32 6.12 10.44 6.6 10.44C5.52 9.84 4.8 7.56 5.64 6.12C7.2 7.8 9.12 9.24 12.24 9.48C11.4 6.12 15.96 4.32 17.76 6.6C18.6 6.48 19.2 6.12 19.8 5.88C19.56 6.72 19.08 7.2 18.48 7.68C19.08 7.56 19.68 7.44 20.16 7.2C20.04 7.8 19.44 8.28 18.84 8.76Z" fill="#5B728C"></path>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="text__number">18+</p>
-
-                    <div class="box-footer">
-                        <div class="footer">Giao dịch do Trang web này cung cấp chỉ có thể được thực hiện bởi người trưởng thành có đủ năng lực. Các giao dịch với sản phẩm tài chính do Trang web này cung cấp có liên quan đến những rủi ro lớn; vì thế, việc giao dịch có thể rất rủi ro. Nếu bạn thực hiện các Giao dịch với sản phẩm tài chính do Trang web này cung cấp, bạn có thể chịu những khoản thua lỗ lớn và thậm chí mất tất cả tiền trong tài khoản của mình. Trước khi bạn quyết định bắt đầu thực hiện Giao dịch với sản phẩm tài chính do Trang web này cung cấp, bạn phải xem xét kỹ Thỏa thuận Dịch vụ và thông tin trong thông báo Rủi ro. Trang web này thuộc về và được quản lý bởi Saledo Global LLC, địa chỉ đăng ký tại: Tầng 1, Tòa nhà First St. Vincent Bank Ltd, P.O. Box 1574, James Street, Kingstown, St. Vincent &amp; the Grenadines. Đại lý là VISEPOINT LIMITED; số đăng ký: C 94716, đăng ký tại: ACT - BARON COURT, ĐƯỜNG KARLU GALEA, Thành phố/Vùng VICTORIA (GOZO) VCT 2604, Quốc gia MALTA.</div>
-                    </div>
-                </div>
-                <ul class="regulation-info regulation-info_vi">
-                    <li class="regulation-item">
-                        <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
-                            <span class="cursor-pointer flex items-center i18n-locale">
-                                <img class="h-4 w-5" :src="i18n_locale_img" :alt="$i18n.locale" />
-                                <span class="hidden sm:block ml-2">{{ getCurrentLocaleData.lang }}</span>
-                            </span>
-                            <vs-dropdown-menu class="w-48 i18n-dropdown vx-navbar-dropdown">
-                                <vs-dropdown-item @click="updateLocale('vi')"><img class="h-4 w-5 mr-1" src="@/assets/images/flags/vi.png" alt="vi" /> &nbsp;Tiếng Việt</vs-dropdown-item>
-                                <vs-dropdown-item @click="updateLocale('en')"><img class="h-4 w-5 mr-1" src="@/assets/images/flags/en.png" alt="en" /> &nbsp;English</vs-dropdown-item>
-                                <vs-dropdown-item @click="updateLocale('fr')"><img class="h-4 w-5 mr-1" src="@/assets/images/flags/fr.png" alt="fr" /> &nbsp;French</vs-dropdown-item>
-                                <vs-dropdown-item @click="updateLocale('de')"><img class="h-4 w-5 mr-1" src="@/assets/images/flags/de.png" alt="de" /> &nbsp;German</vs-dropdown-item>
-                                <vs-dropdown-item @click="updateLocale('pt')"><img class="h-4 w-5 mr-1" src="@/assets/images/flags/pt.png" alt="pt" /> &nbsp;Portuguese</vs-dropdown-item>
-                            </vs-dropdown-menu>
-                        </vs-dropdown>
-                    </li>
-                    <li class="regulation-item">
-                        <svg class="finacom-icon" fill="#fff" width="32" height="32" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M128,247 C193.721885,247 247,193.721885 247,128 C247,62.2781148 193.721885,9 128,9 C62.2781148,9 9,62.2781148 9,128 C9,193.721885 62.2781148,247 128,247 Z M128,256 C57.307552,256 0,198.692448 0,128 C0,57.307552 57.307552,0 128,0 C198.692448,0 256,57.307552 256,128 C256,198.692448 198.692448,256 128,256 Z M125.044403,40.6006632 C126.865282,39.797765 129.821356,39.7971701 131.63652,40.5947386 L212.445958,76.1017603 C216.08884,77.7024139 215.822096,79 211.845587,79 L45.1556019,79 C41.1811435,79 40.9149999,77.6966736 44.5503313,76.0937109 L125.044403,40.6006632 Z M51,180.446006 C51,179.647399 51.6531334,179 52.4382808,179 L203.561719,179 C204.35606,179 205,179.647258 205,180.446006 L205,186.553994 C205,187.352601 204.346867,188 203.561719,188 L52.4382808,188 C51.6439402,188 51,187.352742 51,186.553994 L51,180.446006 Z M42,185.446006 C42,184.647399 42.653629,184 43.4397018,184 L211.560298,184 C212.355424,184 213,184.647258 213,185.446006 L213,191.553994 C213,192.352601 212.346371,193 211.560298,193 L43.4397018,193 C42.6445764,193 42,192.352742 42,191.553994 L42,185.446006 Z M173,90 L193,90 L193,187 L173,187 L173,90 Z M100,90 L120,90 L120,187 L100,187 L100,90 Z M137,90 L157,90 L157,187 L137,187 L137,90 Z M64,90 L84,90 L84,187 L64,187 L64,90 Z M60,85.1578312 C60,83.9660939 60.9638234,83 62.1506204,83 L85.8493796,83 C87.0371344,83 88,83.9767864 88,85.1578312 L88,96.8421688 C88,98.0339061 87.0361766,99 85.8493796,99 L62.1506204,99 C60.9628656,99 60,98.0232136 60,96.8421688 L60,85.1578312 Z M54,75.1696534 C54,73.9713869 54.9580494,73 56.1633063,73 L198.836694,73 C200.031455,73 201,73.9736992 201,75.1696534 L201,92.8303466 C201,94.0286131 200.041951,95 198.836694,95 L56.1633063,95 C54.9685452,95 54,94.0263008 54,92.8303466 L54,75.1696534 Z M97,85.1578312 C97,83.9660939 97.9638234,83 99.1506204,83 L122.84938,83 C124.037134,83 125,83.9767864 125,85.1578312 L125,96.8421688 C125,98.0339061 124.036177,99 122.84938,99 L99.1506204,99 C97.9628656,99 97,98.0232136 97,96.8421688 L97,85.1578312 Z M133,85.1578312 C133,83.9660939 133.963823,83 135.15062,83 L158.84938,83 C160.037134,83 161,83.9767864 161,85.1578312 L161,96.8421688 C161,98.0339061 160.036177,99 158.84938,99 L135.15062,99 C133.962866,99 133,98.0232136 133,96.8421688 L133,85.1578312 Z M169,85.1578312 C169,83.9660939 169.963823,83 171.15062,83 L194.84938,83 C196.037134,83 197,83.9767864 197,85.1578312 L197,96.8421688 C197,98.0339061 196.036177,99 194.84938,99 L171.15062,99 C169.962866,99 169,98.0232136 169,96.8421688 L169,85.1578312 Z"></path>
-                        </svg>
-                        <p class="regulation-text">Do Ủy ban Tài chính (Financial Commission) quản lý và chứng nhận</p>
-                    </li>
-                    <li class="regulation-item">
-                        <svg class="europe-bank-icon" fill="#fff" width="32" height="32" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M127.510565,36.92632 L114.216305,43.9155263 L116.755283,29.1121498 L106,18.6283404 L120.863435,16.4685569 L127.510565,3 L134.157695,16.4685569 L149.02113,18.6283404 L138.265848,29.1121498 L140.804826,43.9155263 L127.510565,36.92632 Z M127.510565,245.92632 L114.216305,252.915526 L116.755283,238.11215 L106,227.62834 L120.863435,225.468557 L127.510565,212 L134.157695,225.468557 L149.02113,227.62834 L138.265848,238.11215 L140.804826,252.915526 L127.510565,245.92632 Z M36.92632,128.489435 L43.9155263,141.783695 L29.1121498,139.244717 L18.6283404,150 L16.4685569,135.136565 L3,128.489435 L16.4685569,121.842305 L18.6283404,106.97887 L29.1121498,117.734152 L43.9155263,115.195174 L36.92632,128.489435 Z M245.92632,128.489435 L252.915526,141.783695 L238.11215,139.244717 L227.62834,150 L225.468557,135.136565 L212,128.489435 L225.468557,121.842305 L227.62834,106.97887 L238.11215,117.734152 L252.915526,115.195174 L245.92632,128.489435 Z M173.112977,48.8831621 L158.105207,48.2888621 L167.705714,36.7382509 L163.633271,22.2813643 L177.585275,27.8426544 L190.076137,19.5021071 L189.098442,34.4897846 L200.890663,43.7919295 L186.33441,47.4935335 L181.131541,61.5831225 L173.112977,48.8831621 Z M68.612977,229.882472 L53.6052066,229.288172 L63.2057141,217.73756 L59.1332709,203.280674 L73.085275,208.841964 L85.576137,200.501416 L84.5984422,215.489094 L96.3906627,224.791239 L81.83441,228.492843 L76.6315411,242.582432 L68.612977,229.882472 Z M206.627403,82.039297 L193.927443,74.0207329 L208.017032,68.817864 L211.718636,54.2616113 L221.020781,66.0538318 L236.008458,65.076137 L227.667911,77.566999 L233.229201,91.5190031 L218.772314,87.4465599 L207.221703,97.0470674 L206.627403,82.039297 Z M25.6280937,186.539297 L12.9281333,178.520733 L27.0177223,173.317864 L30.7193263,158.761611 L40.0214712,170.553832 L55.0091487,169.576137 L46.6686014,182.066999 L52.2298914,196.019003 L37.7730048,191.94656 L26.2223936,201.547067 L25.6280937,186.539297 Z M207.116838,173.112977 L207.711138,158.105207 L219.261749,167.705714 L233.718636,163.633271 L228.157346,177.585275 L236.497893,190.076137 L221.510215,189.098442 L212.208071,200.890663 L208.506466,186.33441 L194.416877,181.131541 L207.116838,173.112977 Z M26.1175285,68.612977 L26.7118285,53.6052066 L38.2624397,63.2057141 L52.7193263,59.1332709 L47.1580362,73.085275 L55.4985835,85.576137 L40.510906,84.5984422 L31.2087611,96.3906627 L27.5071571,81.83441 L13.4175681,76.6315411 L26.1175285,68.612977 Z M173.960703,206.627403 L181.979267,193.927443 L187.182136,208.017032 L201.738389,211.718636 L189.946168,221.020781 L190.923863,236.008458 L178.433001,227.667911 L164.480997,233.229201 L168.55344,218.772314 L158.952933,207.221703 L173.960703,206.627403 Z M69.460703,25.6280937 L77.4792671,12.9281333 L82.682136,27.0177223 L97.2383887,30.7193263 L85.4461682,40.0214712 L86.423863,55.0091487 L73.933001,46.6686014 L59.9809969,52.2298914 L64.0534401,37.7730048 L54.4529326,26.2223936 L69.460703,25.6280937 Z"></path>
-                        </svg>
-                        <p class="regulation-text">Tiền nạp vào tài khoản được gửi trong&nbsp;một ngân hàng tại châu Âu</p>
-                    </li>
-                    <li class="regulation-item">
-                        <svg class="ssl-icon" width="32" height="32" viewBox="0 0 256 256" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M28.6914802,33.5653533 C28.6914802,26.7162882 34.0797479,19.8387797 40.7558322,18.327822 C40.7558322,18.327822 78.0957401,8.09307192 127.5,8.09307192 C176.90426,8.09307192 214.244168,18.327822 214.244168,18.327822 C220.907125,19.8942131 226.30852,26.7076886 226.30852,33.5653533 L226.30852,162.417349 C226.30852,194.060638 201.741104,227.118833 171.450262,236.250491 L127.5,249.5 L83.549738,236.250491 C53.2523588,227.116862 28.6914802,194.060924 28.6914802,162.417349 L28.6914802,33.5653533 Z M168.852544,227.633539 C195.344756,219.647038 217.30852,190.088131 217.30852,162.417349 L217.30852,33.5653533 C217.30852,30.8875195 214.783852,27.7000532 212.184513,27.0889761 C211.82318,26.9961958 211.710153,26.9658628 211.527524,26.9179192 C211.203304,26.8328051 210.812568,26.7325657 210.356876,26.618447 C209.030332,26.2862411 207.462483,25.9134161 205.665812,25.5099295 C200.488908,24.3473285 194.544849,23.1810214 187.933797,22.0904308 C169.004646,18.9677879 148.590844,17.0930719 127.5,17.0930719 C106.409156,17.0930719 85.995354,18.9677879 67.066203,22.0904308 C60.4551513,23.1810214 54.5110923,24.3473285 49.334188,25.5099295 C47.5375167,25.9134161 45.9696684,26.2862411 44.6431238,26.618447 C44.1874319,26.7325657 43.7966965,26.8328051 43.4724755,26.9179192 C43.2898467,26.9658628 42.9398298,27.061154 42.9398298,27.061154 C40.2137924,27.6781215 37.6914802,30.8742626 37.6914802,33.5653533 L37.6914802,162.417349 C37.6914802,190.090783 59.6509732,219.645751 86.1474559,227.633539 L127.5,240.099924 L168.852544,227.633539 Z M45,40.9063672 C45,37.9241804 47.3483168,34.9160099 50.2451756,34.2253096 C50.2451756,34.2253096 86.25,24.5930719 127.5,24.5930719 C168.75,24.5930719 204.766348,34.2279941 204.766348,34.2279941 C207.656814,34.9341709 210,37.9298311 210,40.9063672 L210,162.330498 C210,185.688671 192.022428,210.589669 169.852636,217.946221 L127.5,232 L85.1473641,217.946221 C62.9745872,210.588678 45,185.685928 45,162.330498 L45,40.9063672 Z M166.211946,103 L155.411946,103 L155.411946,145 L181.451946,145 L181.451946,135.34 L166.211946,135.34 L166.211946,103 Z M124.031946,132.16 L113.651946,132.16 C113.411946,150.64 147.611946,150.34 147.611946,132.7 C147.611946,122.2 139.451946,120.94 131.111946,120.04 C127.331946,119.62 124.211946,118.96 124.451946,115.78 C124.811946,110.8 136.091946,110.32 136.091946,115.9 L146.291946,115.9 C146.531946,97.78 113.891946,97.78 114.251946,115.9 C114.371946,125.02 120.371946,128.14 129.491946,128.8 C133.691946,129.04 137.171946,129.7 137.171946,132.64 C137.171946,137.56 124.031946,137.5 124.031946,132.16 Z M85.1519459,132.16 L74.7719459,132.16 C74.5319459,150.64 108.731946,150.34 108.731946,132.7 C108.731946,122.2 100.571946,120.94 92.2319459,120.04 C88.4519459,119.62 85.3319459,118.96 85.5719459,115.78 C85.9319459,110.8 97.2119459,110.32 97.2119459,115.9 L107.411946,115.9 C107.651946,97.78 75.0119459,97.78 75.3719459,115.9 C75.4919459,125.02 81.4919459,128.14 90.6119459,128.8 C94.8119459,129.04 98.2919459,129.7 98.2919459,132.64 C98.2919459,137.56 85.1519459,137.5 85.1519459,132.16 Z"></path>
-                        </svg>
-                        <p class="regulation-text">Kết nối được bảo mật theo Chứng thư số SSL mã hóa 256 bit</p>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-        <log-reg-for-get/>
+      </div>
     </div>
+    <div class="registration section-padding">
+      <div class="container" id="registration">
+        <h2 class="text-center h2">
+          Sàn giao dịch đẳng cấp thế giới dành cho mọi người
+          <span class="text--red">DONALDTRADE</span>
+        </h2>
+        <p class="text-center subtitle">
+          Giao dịch phi rủi ro khi sử dụng tài khoản demo.
+        </p>
+        <div class="container-bg"></div>
+      </div>
+    </div>
+    <footer class="footer footer_v2">
+      <div class="container">
+        <div class="footer__container">
+          <a class="get__info-logo logo_url_params" href="#" aria-label="OB">
+            <img
+              width="150"
+              :src="require('@/assets/images/logo/logo.png')"
+              alt="OB"
+            />
+          </a>
+          <ul class="get__social">
+            <li class="social__item">
+              <a class="href_url_params" href="#" title="Blog">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M4 0C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0H4ZM7.73224 17.3414L9.68624 14.7804C9.73224 14.7214 9.72224 14.6384 9.66624 14.5874C8.76624 13.7774 8.27524 12.5244 8.60024 11.1544C8.89824 9.89744 9.92024 8.87744 11.1812 8.59144C13.4702 8.07344 15.5002 9.79944 15.5002 11.9994C15.5002 13.0304 15.0442 13.9474 14.3342 14.5874C14.2772 14.6384 14.2672 14.7214 14.3132 14.7814L16.2672 17.3414C16.3192 17.4094 16.4202 17.4224 16.4862 17.3664C17.9672 16.1284 18.9302 14.2904 18.9962 12.2244C19.1182 8.38944 15.9522 5.06244 12.1162 5.00044C8.19724 4.93744 5.00024 8.09444 5.00024 11.9994C5.00024 14.1564 5.97824 16.0834 7.51324 17.3664C7.57924 17.4224 7.68024 17.4094 7.73224 17.3414ZM11.8827 13.902L7.93466 19.01C7.85966 19.108 7.92866 19.25 8.05266 19.25H15.9467C16.0707 19.25 16.1407 19.108 16.0657 19.01L12.1167 13.902C12.0577 13.825 11.9427 13.825 11.8827 13.902Z"
+                    fill="#5B728C"
+                  ></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="href_url_params" href="#" title="Instagram">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.818 0H4C2.5 0 0 1 0 4.14V20c0 2 1.5 4 4 4h15.832C22.551 24 24 22 24 19.947V4c0-1.5-1.106-4-4.182-4zM12 18.667a6.667 6.667 0 11.002-13.335A6.667 6.667 0 0112 18.667zm8-13.334a1.334 1.334 0 11.001-2.667A1.334 1.334 0 0120 5.333z"
+                    fill="#5B728C"
+                  ></path>
+                  <path
+                    d="M12 8a4 4 0 100 8 4 4 0 000-8z"
+                    fill="#5B728C"
+                  ></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="href_url_params" href="#" title="YouTube">
+                <svg
+                  width="27"
+                  height="19"
+                  viewBox="0 0 27 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M26.7399 3.80679C26.6606 2.91743 26.2722 2.08458 25.6429 1.45443C25.0136 0.824289 24.1836 0.437128 23.2986 0.360919C21.1823 0.184382 18.0455 0 14.1752 0C9.51427 0 5.99598 0.191425 3.7214 0.370935C2.83226 0.442742 1.99706 0.828408 1.36356 1.45969C0.73006 2.09098 0.339107 2.92719 0.259875 3.82036C0.120636 5.29314 0 7.23824 0 9.55741C0 11.8188 0.119637 13.7296 0.258228 15.184C0.338251 16.0764 0.729534 16.9116 1.36291 17.542C1.99629 18.1724 2.83097 18.5574 3.71941 18.6289C5.99392 18.8084 9.51287 19 14.1752 19C18.0455 19 21.1823 18.8156 23.2986 18.639C24.1836 18.5628 25.0136 18.1757 25.6429 17.5456C26.2722 16.9154 26.6606 16.0826 26.7399 15.1932C26.8792 13.7282 27 11.7961 27 9.5C27 7.20386 26.8792 5.27185 26.7399 3.80679ZM10.4975 13.4883V5.51166L18.3249 9.5L10.4975 13.4883Z"
+                    fill="#5B728C"
+                  ></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="href_url_params" href="#" title="Facebook">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.2222 0H1.77778C0.8 0 0 0.8 0 1.77778V14.2222C0 15.2009 0.8 16 1.77778 16H8V9.77778H6.22222V7.57778H8V5.75556C8 3.832 9.07733 2.48089 11.3476 2.48089L12.9502 2.48267V4.79822H11.8862C11.0027 4.79822 10.6667 5.46133 10.6667 6.07644V7.57867H12.9493L12.4444 9.77778H10.6667V16H14.2222C15.2 16 16 15.2009 16 14.2222V1.77778C16 0.8 15.2 0 14.2222 0Z"
+                    fill="#5b728c"
+                  ></path>
+                </svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="href_url_params" href="#" title="Twitter">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21.6 0H2.4C1.08 0 0 1.08 0 2.4V21.6C0 22.92 1.08 24 2.4 24H21.6C22.92 24 24 22.92 24 21.6V2.4C24 1.08 22.92 0 21.6 0ZM18.84 8.76C18.72 14.28 15.24 18.12 9.96 18.36C7.8 18.48 6.24 17.76 4.8 16.92C6.36 17.16 8.4 16.56 9.48 15.6C7.92 15.48 6.96 14.64 6.48 13.32C6.96 13.44 7.44 13.32 7.8 13.32C6.36 12.84 5.4 12 5.28 10.08C5.64 10.32 6.12 10.44 6.6 10.44C5.52 9.84 4.8 7.56 5.64 6.12C7.2 7.8 9.12 9.24 12.24 9.48C11.4 6.12 15.96 4.32 17.76 6.6C18.6 6.48 19.2 6.12 19.8 5.88C19.56 6.72 19.08 7.2 18.48 7.68C19.08 7.56 19.68 7.44 20.16 7.2C20.04 7.8 19.44 8.28 18.84 8.76Z"
+                    fill="#5B728C"
+                  ></path>
+                </svg>
+              </a>
+            </li>
+          </ul>
+          <p class="text__number">18+</p>
+
+          <div class="box-footer">
+            <div class="footer">
+              Giao dịch do Trang web này cung cấp chỉ có thể được thực hiện bởi
+              người trưởng thành có đủ năng lực. Các giao dịch với sản phẩm tài
+              chính do Trang web này cung cấp có liên quan đến những rủi ro lớn;
+              vì thế, việc giao dịch có thể rất rủi ro. Nếu bạn thực hiện các
+              Giao dịch với sản phẩm tài chính do Trang web này cung cấp, bạn có
+              thể chịu những khoản thua lỗ lớn và thậm chí mất tất cả tiền trong
+              tài khoản của mình. Trước khi bạn quyết định bắt đầu thực hiện
+              Giao dịch với sản phẩm tài chính do Trang web này cung cấp, bạn
+              phải xem xét kỹ Thỏa thuận Dịch vụ và thông tin trong thông báo
+              Rủi ro. Trang web này thuộc về và được quản lý bởi Saledo Global
+              LLC, địa chỉ đăng ký tại: Tầng 1, Tòa nhà First St. Vincent Bank
+              Ltd, P.O. Box 1574, James Street, Kingstown, St. Vincent &amp; the
+              Grenadines. Đại lý là VISEPOINT LIMITED; số đăng ký: C 94716, đăng
+              ký tại: ACT - BARON COURT, ĐƯỜNG KARLU GALEA, Thành phố/Vùng
+              VICTORIA (GOZO) VCT 2604, Quốc gia MALTA.
+            </div>
+          </div>
+        </div>
+        <ul class="regulation-info regulation-info_vi">
+          <li class="regulation-item">
+            <vs-dropdown
+              vs-custom-content
+              vs-trigger-click
+              class="cursor-pointer"
+            >
+              <span class="flex items-center cursor-pointer i18n-locale">
+                <img
+                  class="w-5 h-4"
+                  :src="i18n_locale_img"
+                  :alt="$i18n.locale"
+                />
+                <span class="hidden ml-2 sm:block">{{
+                  getCurrentLocaleData.lang
+                }}</span>
+              </span>
+              <vs-dropdown-menu class="w-48 i18n-dropdown vx-navbar-dropdown">
+                <vs-dropdown-item @click="updateLocale('vi')"
+                  ><img
+                    class="w-5 h-4 mr-1"
+                    src="@/assets/images/flags/vi.png"
+                    alt="vi"
+                  />
+                  &nbsp;Tiếng Việt</vs-dropdown-item
+                >
+                <vs-dropdown-item @click="updateLocale('en')"
+                  ><img
+                    class="w-5 h-4 mr-1"
+                    src="@/assets/images/flags/en.png"
+                    alt="en"
+                  />
+                  &nbsp;English</vs-dropdown-item
+                >
+                <vs-dropdown-item @click="updateLocale('fr')"
+                  ><img
+                    class="w-5 h-4 mr-1"
+                    src="@/assets/images/flags/fr.png"
+                    alt="fr"
+                  />
+                  &nbsp;French</vs-dropdown-item
+                >
+                <vs-dropdown-item @click="updateLocale('de')"
+                  ><img
+                    class="w-5 h-4 mr-1"
+                    src="@/assets/images/flags/de.png"
+                    alt="de"
+                  />
+                  &nbsp;German</vs-dropdown-item
+                >
+                <vs-dropdown-item @click="updateLocale('pt')"
+                  ><img
+                    class="w-5 h-4 mr-1"
+                    src="@/assets/images/flags/pt.png"
+                    alt="pt"
+                  />
+                  &nbsp;Portuguese</vs-dropdown-item
+                >
+              </vs-dropdown-menu>
+            </vs-dropdown>
+          </li>
+          <li class="regulation-item">
+            <svg
+              class="finacom-icon"
+              fill="#fff"
+              width="32"
+              height="32"
+              viewBox="0 0 256 256"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128,247 C193.721885,247 247,193.721885 247,128 C247,62.2781148 193.721885,9 128,9 C62.2781148,9 9,62.2781148 9,128 C9,193.721885 62.2781148,247 128,247 Z M128,256 C57.307552,256 0,198.692448 0,128 C0,57.307552 57.307552,0 128,0 C198.692448,0 256,57.307552 256,128 C256,198.692448 198.692448,256 128,256 Z M125.044403,40.6006632 C126.865282,39.797765 129.821356,39.7971701 131.63652,40.5947386 L212.445958,76.1017603 C216.08884,77.7024139 215.822096,79 211.845587,79 L45.1556019,79 C41.1811435,79 40.9149999,77.6966736 44.5503313,76.0937109 L125.044403,40.6006632 Z M51,180.446006 C51,179.647399 51.6531334,179 52.4382808,179 L203.561719,179 C204.35606,179 205,179.647258 205,180.446006 L205,186.553994 C205,187.352601 204.346867,188 203.561719,188 L52.4382808,188 C51.6439402,188 51,187.352742 51,186.553994 L51,180.446006 Z M42,185.446006 C42,184.647399 42.653629,184 43.4397018,184 L211.560298,184 C212.355424,184 213,184.647258 213,185.446006 L213,191.553994 C213,192.352601 212.346371,193 211.560298,193 L43.4397018,193 C42.6445764,193 42,192.352742 42,191.553994 L42,185.446006 Z M173,90 L193,90 L193,187 L173,187 L173,90 Z M100,90 L120,90 L120,187 L100,187 L100,90 Z M137,90 L157,90 L157,187 L137,187 L137,90 Z M64,90 L84,90 L84,187 L64,187 L64,90 Z M60,85.1578312 C60,83.9660939 60.9638234,83 62.1506204,83 L85.8493796,83 C87.0371344,83 88,83.9767864 88,85.1578312 L88,96.8421688 C88,98.0339061 87.0361766,99 85.8493796,99 L62.1506204,99 C60.9628656,99 60,98.0232136 60,96.8421688 L60,85.1578312 Z M54,75.1696534 C54,73.9713869 54.9580494,73 56.1633063,73 L198.836694,73 C200.031455,73 201,73.9736992 201,75.1696534 L201,92.8303466 C201,94.0286131 200.041951,95 198.836694,95 L56.1633063,95 C54.9685452,95 54,94.0263008 54,92.8303466 L54,75.1696534 Z M97,85.1578312 C97,83.9660939 97.9638234,83 99.1506204,83 L122.84938,83 C124.037134,83 125,83.9767864 125,85.1578312 L125,96.8421688 C125,98.0339061 124.036177,99 122.84938,99 L99.1506204,99 C97.9628656,99 97,98.0232136 97,96.8421688 L97,85.1578312 Z M133,85.1578312 C133,83.9660939 133.963823,83 135.15062,83 L158.84938,83 C160.037134,83 161,83.9767864 161,85.1578312 L161,96.8421688 C161,98.0339061 160.036177,99 158.84938,99 L135.15062,99 C133.962866,99 133,98.0232136 133,96.8421688 L133,85.1578312 Z M169,85.1578312 C169,83.9660939 169.963823,83 171.15062,83 L194.84938,83 C196.037134,83 197,83.9767864 197,85.1578312 L197,96.8421688 C197,98.0339061 196.036177,99 194.84938,99 L171.15062,99 C169.962866,99 169,98.0232136 169,96.8421688 L169,85.1578312 Z"
+              ></path>
+            </svg>
+            <p class="regulation-text">
+              Do Ủy ban Tài chính (Financial Commission) quản lý và chứng nhận
+            </p>
+          </li>
+          <li class="regulation-item">
+            <svg
+              class="europe-bank-icon"
+              fill="#fff"
+              width="32"
+              height="32"
+              viewBox="0 0 256 256"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M127.510565,36.92632 L114.216305,43.9155263 L116.755283,29.1121498 L106,18.6283404 L120.863435,16.4685569 L127.510565,3 L134.157695,16.4685569 L149.02113,18.6283404 L138.265848,29.1121498 L140.804826,43.9155263 L127.510565,36.92632 Z M127.510565,245.92632 L114.216305,252.915526 L116.755283,238.11215 L106,227.62834 L120.863435,225.468557 L127.510565,212 L134.157695,225.468557 L149.02113,227.62834 L138.265848,238.11215 L140.804826,252.915526 L127.510565,245.92632 Z M36.92632,128.489435 L43.9155263,141.783695 L29.1121498,139.244717 L18.6283404,150 L16.4685569,135.136565 L3,128.489435 L16.4685569,121.842305 L18.6283404,106.97887 L29.1121498,117.734152 L43.9155263,115.195174 L36.92632,128.489435 Z M245.92632,128.489435 L252.915526,141.783695 L238.11215,139.244717 L227.62834,150 L225.468557,135.136565 L212,128.489435 L225.468557,121.842305 L227.62834,106.97887 L238.11215,117.734152 L252.915526,115.195174 L245.92632,128.489435 Z M173.112977,48.8831621 L158.105207,48.2888621 L167.705714,36.7382509 L163.633271,22.2813643 L177.585275,27.8426544 L190.076137,19.5021071 L189.098442,34.4897846 L200.890663,43.7919295 L186.33441,47.4935335 L181.131541,61.5831225 L173.112977,48.8831621 Z M68.612977,229.882472 L53.6052066,229.288172 L63.2057141,217.73756 L59.1332709,203.280674 L73.085275,208.841964 L85.576137,200.501416 L84.5984422,215.489094 L96.3906627,224.791239 L81.83441,228.492843 L76.6315411,242.582432 L68.612977,229.882472 Z M206.627403,82.039297 L193.927443,74.0207329 L208.017032,68.817864 L211.718636,54.2616113 L221.020781,66.0538318 L236.008458,65.076137 L227.667911,77.566999 L233.229201,91.5190031 L218.772314,87.4465599 L207.221703,97.0470674 L206.627403,82.039297 Z M25.6280937,186.539297 L12.9281333,178.520733 L27.0177223,173.317864 L30.7193263,158.761611 L40.0214712,170.553832 L55.0091487,169.576137 L46.6686014,182.066999 L52.2298914,196.019003 L37.7730048,191.94656 L26.2223936,201.547067 L25.6280937,186.539297 Z M207.116838,173.112977 L207.711138,158.105207 L219.261749,167.705714 L233.718636,163.633271 L228.157346,177.585275 L236.497893,190.076137 L221.510215,189.098442 L212.208071,200.890663 L208.506466,186.33441 L194.416877,181.131541 L207.116838,173.112977 Z M26.1175285,68.612977 L26.7118285,53.6052066 L38.2624397,63.2057141 L52.7193263,59.1332709 L47.1580362,73.085275 L55.4985835,85.576137 L40.510906,84.5984422 L31.2087611,96.3906627 L27.5071571,81.83441 L13.4175681,76.6315411 L26.1175285,68.612977 Z M173.960703,206.627403 L181.979267,193.927443 L187.182136,208.017032 L201.738389,211.718636 L189.946168,221.020781 L190.923863,236.008458 L178.433001,227.667911 L164.480997,233.229201 L168.55344,218.772314 L158.952933,207.221703 L173.960703,206.627403 Z M69.460703,25.6280937 L77.4792671,12.9281333 L82.682136,27.0177223 L97.2383887,30.7193263 L85.4461682,40.0214712 L86.423863,55.0091487 L73.933001,46.6686014 L59.9809969,52.2298914 L64.0534401,37.7730048 L54.4529326,26.2223936 L69.460703,25.6280937 Z"
+              ></path>
+            </svg>
+            <p class="regulation-text">
+              Tiền nạp vào tài khoản được gửi trong&nbsp;một ngân hàng tại châu
+              Âu
+            </p>
+          </li>
+          <li class="regulation-item">
+            <svg
+              class="ssl-icon"
+              width="32"
+              height="32"
+              viewBox="0 0 256 256"
+              fill="#fff"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M28.6914802,33.5653533 C28.6914802,26.7162882 34.0797479,19.8387797 40.7558322,18.327822 C40.7558322,18.327822 78.0957401,8.09307192 127.5,8.09307192 C176.90426,8.09307192 214.244168,18.327822 214.244168,18.327822 C220.907125,19.8942131 226.30852,26.7076886 226.30852,33.5653533 L226.30852,162.417349 C226.30852,194.060638 201.741104,227.118833 171.450262,236.250491 L127.5,249.5 L83.549738,236.250491 C53.2523588,227.116862 28.6914802,194.060924 28.6914802,162.417349 L28.6914802,33.5653533 Z M168.852544,227.633539 C195.344756,219.647038 217.30852,190.088131 217.30852,162.417349 L217.30852,33.5653533 C217.30852,30.8875195 214.783852,27.7000532 212.184513,27.0889761 C211.82318,26.9961958 211.710153,26.9658628 211.527524,26.9179192 C211.203304,26.8328051 210.812568,26.7325657 210.356876,26.618447 C209.030332,26.2862411 207.462483,25.9134161 205.665812,25.5099295 C200.488908,24.3473285 194.544849,23.1810214 187.933797,22.0904308 C169.004646,18.9677879 148.590844,17.0930719 127.5,17.0930719 C106.409156,17.0930719 85.995354,18.9677879 67.066203,22.0904308 C60.4551513,23.1810214 54.5110923,24.3473285 49.334188,25.5099295 C47.5375167,25.9134161 45.9696684,26.2862411 44.6431238,26.618447 C44.1874319,26.7325657 43.7966965,26.8328051 43.4724755,26.9179192 C43.2898467,26.9658628 42.9398298,27.061154 42.9398298,27.061154 C40.2137924,27.6781215 37.6914802,30.8742626 37.6914802,33.5653533 L37.6914802,162.417349 C37.6914802,190.090783 59.6509732,219.645751 86.1474559,227.633539 L127.5,240.099924 L168.852544,227.633539 Z M45,40.9063672 C45,37.9241804 47.3483168,34.9160099 50.2451756,34.2253096 C50.2451756,34.2253096 86.25,24.5930719 127.5,24.5930719 C168.75,24.5930719 204.766348,34.2279941 204.766348,34.2279941 C207.656814,34.9341709 210,37.9298311 210,40.9063672 L210,162.330498 C210,185.688671 192.022428,210.589669 169.852636,217.946221 L127.5,232 L85.1473641,217.946221 C62.9745872,210.588678 45,185.685928 45,162.330498 L45,40.9063672 Z M166.211946,103 L155.411946,103 L155.411946,145 L181.451946,145 L181.451946,135.34 L166.211946,135.34 L166.211946,103 Z M124.031946,132.16 L113.651946,132.16 C113.411946,150.64 147.611946,150.34 147.611946,132.7 C147.611946,122.2 139.451946,120.94 131.111946,120.04 C127.331946,119.62 124.211946,118.96 124.451946,115.78 C124.811946,110.8 136.091946,110.32 136.091946,115.9 L146.291946,115.9 C146.531946,97.78 113.891946,97.78 114.251946,115.9 C114.371946,125.02 120.371946,128.14 129.491946,128.8 C133.691946,129.04 137.171946,129.7 137.171946,132.64 C137.171946,137.56 124.031946,137.5 124.031946,132.16 Z M85.1519459,132.16 L74.7719459,132.16 C74.5319459,150.64 108.731946,150.34 108.731946,132.7 C108.731946,122.2 100.571946,120.94 92.2319459,120.04 C88.4519459,119.62 85.3319459,118.96 85.5719459,115.78 C85.9319459,110.8 97.2119459,110.32 97.2119459,115.9 L107.411946,115.9 C107.651946,97.78 75.0119459,97.78 75.3719459,115.9 C75.4919459,125.02 81.4919459,128.14 90.6119459,128.8 C94.8119459,129.04 98.2919459,129.7 98.2919459,132.64 C98.2919459,137.56 85.1519459,137.5 85.1519459,132.16 Z"
+              ></path>
+            </svg>
+            <p class="regulation-text">
+              Kết nối được bảo mật theo Chứng thư số SSL mã hóa 256 bit
+            </p>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <log-reg-for-get />
+  </div>
 </template>
 
 <script>
-
-import LogRegForGet from '@/pages/user/LogRegForGet'
+import LogRegForGet from "@/pages/user/LogRegForGet";
 //import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   components: {
     LogRegForGet,
   },
-  data () {
+  data() {
     return {
-      activeLoading: false
-    }
+      activeLoading: false,
+    };
   },
   computed: {
     i18n_locale_img() {
-      return require(`@/assets/images/flags/${this.$i18n.locale}.png`)
+      return require(`@/assets/images/flags/${this.$i18n.locale}.png`);
     },
     getCurrentLocaleData() {
-        const locale = this.$i18n.locale;
-        if (locale == "vi")      return { flag: "vi", lang: 'Tiếng Việt'    }
-        else if (locale == "en") return { flag: "us", lang: 'English'    }
-        else if (locale == "pt") return { flag: "br", lang: 'Portuguese' }
-        else if (locale == "fr") return { flag: "fr", lang: 'French'     }
-        else if (locale == "de") return { flag: "de", lang: 'German'     }
+      const locale = this.$i18n.locale;
+      if (locale == "vi") return { flag: "vi", lang: "Tiếng Việt" };
+      else if (locale == "en") return { flag: "us", lang: "English" };
+      else if (locale == "pt") return { flag: "br", lang: "Portuguese" };
+      else if (locale == "fr") return { flag: "fr", lang: "French" };
+      else if (locale == "de") return { flag: "de", lang: "German" };
     },
-    
   },
   methods: {
-        updateLocale(locale) {
-            this.$i18n.locale = locale;
-        },
-        LoginUrl(){
-            this.$router.push({ path: '/login' });
-        },
+    updateLocale(locale) {
+      this.$i18n.locale = locale;
+    },
+    LoginUrl() {
+      this.$router.push({ path: "/login" });
+    },
 
-        RegisterUrl(){
-            this.$router.push({ path: '/register' });
-        },
+    RegisterUrl() {
+      this.$router.push({ path: "/register" });
+    },
 
-        onWindowLoad() {
-
-            let path = this.$router.currentRoute.path
-            let checkTK = localStorage.hasOwnProperty('tokenUser')
-            if(path == '/' && checkTK){
-                this.$router.push({ path: '/trading' });
-            }
-            //this.activeLoading = false
-            //this.$vs.loading.close()
-
-        },
+    onWindowLoad() {
+      let path = this.$router.currentRoute.path;
+      let checkTK = localStorage.hasOwnProperty("tokenUser");
+      if (path == "/" && checkTK) {
+        this.$router.push({ path: "/trading4.0" });
+      }
+      //this.activeLoading = false
+      //this.$vs.loading.close()
+    },
   },
   created() {
+    window.addEventListener("load", this.onWindowLoad);
 
-        
-    
-      
-      window.addEventListener("load", this.onWindowLoad);
-
-      //this.activeLoading = true
+    //this.activeLoading = true
     //   this.$vs.loading({
     //     type: 'radius',
     //     background: '#111',
@@ -464,402 +838,727 @@ export default {
     //       }
     //   })
   },
-}
+};
 </script>
 
 <style scoped>
-
 .header__logo_mb {
-    display: block;
+  display: block;
 }
 
 .section-padding {
-    padding: 64px 0;
+  padding: 64px 0;
 }
 
 .trade {
-    position: relative;
-    z-index: 1;
-    -webkit-box-shadow: 0 -16px 56px -8px #111;
-    box-shadow: 0 -16px 56px -8px #111;
+  position: relative;
+  z-index: 1;
+  -webkit-box-shadow: 0 -16px 56px -8px #111;
+  box-shadow: 0 -16px 56px -8px #111;
 }
 
 .header__btn .button {
-    height: 40px;
-    padding: 0;
-    width: 48px;
+  height: 40px;
+  padding: 0;
+  width: 48px;
 }
 
 .button--transparent {
-    color: #fff;
-    background: 0 0;
-    border: 1px solid #fff;
+  color: #fff;
+  background: 0 0;
+  border: 1px solid #fff;
 }
 
 .header__menu {
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    margin-bottom: 104px;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 104px;
 }
 
 .header__btn {
-    display: flex;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row nowrap;
-    flex-flow: row nowrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  display: flex;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.header__btn, 
+.header__btn,
 .payments__container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    -webkit-box-orient: horizontal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: horizontal;
 }
 
 .header__logo {
-    display: none;
+  display: none;
 }
 
 .header-bg {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 264%;
-    left: -112%;
-    background-image: url('~@/assets/images/sky/video-poster.jpg');
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 264%;
+  left: -112%;
+  background-image: url("~@/assets/images/sky/video-poster.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  z-index: -1;
 }
 
-
 .header-bg-video {
-    position: absolute;
-    width: 100%;
-    z-index: -1;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
 }
 
 .header__btn .button__icon {
-    height: 16px;
+  height: 16px;
 }
 
 .header .h1 {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .header {
-    padding: 16px 0 160px;
-    overflow: hidden;
+  padding: 16px 0 160px;
+  overflow: hidden;
 }
 
 .header::after {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 102%;
-    background: -o-linear-gradient(271.63deg,rgba(17,17,17,.4) 2.72%,#111 98.62%);
-    background: linear-gradient(178.37deg,rgba(17,17,17,.4) 2.72%,#111 98.62%);
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 102%;
+  background: -o-linear-gradient(
+    271.63deg,
+    rgba(17, 17, 17, 0.4) 2.72%,
+    #111 98.62%
+  );
+  background: linear-gradient(
+    178.37deg,
+    rgba(17, 17, 17, 0.4) 2.72%,
+    #111 98.62%
+  );
+  z-index: -1;
 }
 
 .content__item::before,
-.header::after{
-    content: '';
+.header::after {
+  content: "";
 }
 
 .h1 {
-    color: #fff;
-    font-size: 32px;
-    line-height: 40px;
+  color: #fff;
+  font-size: 32px;
+  line-height: 40px;
 }
 
 .text--blue {
-    color: #0094FF;
+  color: #0094ff;
 }
 
 .text--red {
-    color: #fa2843;
+  color: #fa2843;
 }
 
 .h2 {
-    color: #fff;
-    margin: 0 0 16px;
-    font-size: 32px;
-    line-height: 40px;
+  color: #fff;
+  margin: 0 0 16px;
+  font-size: 32px;
+  line-height: 40px;
 }
 
 .trade .h2 {
-    max-width: 800px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 56px;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 56px;
 }
 
 .trade__list {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
 }
-.trade__content, .trade__item, .trade__list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.trade__content,
+.trade__item,
+.trade__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .trade__item {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-bottom: 40px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .trade__item svg {
-    margin-bottom: 16px;
-    width: 80px;
+  margin-bottom: 16px;
+  width: 80px;
 }
 
 .h3 {
-    color: #fff;
-    margin-bottom: 8px;
+  color: #fff;
+  margin-bottom: 8px;
 }
 
-.h3, .subtitle {
-    font-size: 16px;
-    line-height: 24px;
+.h3,
+.subtitle {
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.h1, .h2, .h3 {
-    font-weight: 700;
+.h1,
+.h2,
+.h3 {
+  font-weight: 700;
 }
 
 .trade__text {
-    color: #696A6D;
-    text-align: center;
+  color: #696a6d;
+  text-align: center;
 }
 
 .section-padding {
-    padding: 64px 0;
+  padding: 64px 0;
 }
 
 .regime .h2 {
-    max-width: 840px;
-    margin: 0 auto 64px;
+  max-width: 840px;
+  margin: 0 auto 64px;
 }
 
-.regime__container, .regime__content {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    -webkit-box-direction: normal;
+.regime__container,
+.regime__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-direction: normal;
 }
 
 .regime__container {
-    display: flex;
-    max-width: 320px;
-    margin: 0 auto;
-    -webkit-box-orient: vertical;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  display: flex;
+  max-width: 320px;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .regime__left {
-    margin-bottom: 64px;
+  margin-bottom: 64px;
 }
-.regime__left, .regime__right {
-    max-width: 440px;
-    width: 100%;
+.regime__left,
+.regime__right {
+  max-width: 440px;
+  width: 100%;
 }
 
 .regime__content {
-    height: 100%;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .content__text {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column;
-    flex-flow: column;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
 
-.content__img, 
+.content__img,
 .content__list {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .content__item:nth-child(odd) {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 .content__item {
-    position: relative;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #fff;
-    padding-left: 32px;
+  position: relative;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  padding-left: 32px;
 }
 
 .content__item::before {
-    position: absolute;
-    top: calc(50% - 8px);
-    left: 0;
-    width: 16px;
-    height: 16px;
-    background-repeat: no-repeat;
-    background-size: contain;
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .content__item-1::before {
-    background-image: url('~@/assets/images/sky/home/icon1.svg');
+  background-image: url("~@/assets/images/sky/home/icon1.svg");
 }
 
 .content__item-2::before {
-    background-image: url('~@/assets/images/sky/home/icon2.svg');
+  background-image: url("~@/assets/images/sky/home/icon2.svg");
 }
 
 .content__item-3::before {
-    background-image: url('~@/assets/images/sky/home/icon3.svg');
+  background-image: url("~@/assets/images/sky/home/icon3.svg");
 }
 
 .content__item-4::before {
-    background-image: url('~@/assets/images/sky/home/icon4.svg');
+  background-image: url("~@/assets/images/sky/home/icon4.svg");
 }
 
-.wrapper_v2 .content__item-3::before, 
+.wrapper_v2 .content__item-3::before,
 .wrapper_v4 .content__item-3::before {
-    background-image: url('~@/assets/images/sky/home/icon5.svg');
+  background-image: url("~@/assets/images/sky/home/icon5.svg");
 }
 
 .payments {
-    padding: 64px 0;
+  padding: 64px 0;
 }
 
 .payments .h2 {
-    max-width: 1024px;
-    margin-right: auto;
-    margin-left: auto;
+  max-width: 1024px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .payments__container {
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
 }
 
 .payments__container svg {
-    margin: 0 12px 24px;
+  margin: 0 12px 24px;
 }
 
 .registration .h2 {
-    max-width: 840px;
-    margin-right: auto;
-    margin-left: auto;
+  max-width: 840px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .registration .forms {
-    min-height: 100px;
-    max-width: 328px;
-    margin: 0 auto;
-    padding: 24px 16px 16px;
+  min-height: 100px;
+  max-width: 328px;
+  margin: 0 auto;
+  padding: 24px 16px 16px;
 }
-
 
 .footer {
-    color: #696A6D;
-    padding-top: 0;
-    padding-top: 64px;
+  color: #696a6d;
+  padding-top: 0;
+  padding-top: 64px;
 }
 
-.footer, .header {
-    position: relative;
-    z-index: 1;
+.footer,
+.header {
+  position: relative;
+  z-index: 1;
 }
 
 .footer .container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    padding-bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  padding-bottom: 40px;
 }
 
 .footer__container {
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
-    background: 0 0;
-    padding-top: 0;
-    margin-left: 0;
-    padding-left: 0;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  background: 0 0;
+  padding-top: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .footer .get__info-logo {
-    display: block;
-    margin-left: 0;
-    margin-bottom: 42px;
+  display: block;
+  margin-left: 0;
+  margin-bottom: 42px;
 }
 
 .footer .get__social {
-    width: auto;
-    margin-left: 0;
-    margin-bottom: 32px;
-    max-width: 320px;
+  width: auto;
+  margin-left: 0;
+  margin-bottom: 32px;
+  max-width: 320px;
 }
 .get__social {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 288px;
+  width: 100%;
+  margin: 0 auto 56px;
+}
+
+.footer .social__item {
+  margin-right: 32px;
+}
+
+.get__social .social__item svg {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.footer .footer {
+  padding-top: 0;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.regulation-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 288px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.footer .regulation-info {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+.regulation-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: var(--regulation-text-color);
+  font-size: 10px;
+  line-height: 16px;
+  margin-bottom: 32px;
+  max-width: 288px;
+}
+
+.regulation-item:first-child {
+  margin-left: 0;
+}
+
+.regulation-item svg {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+.regulation-item p {
+  text-align: left;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  .regulation-info {
+    max-width: 224px;
+  }
+
+  .footer .footer {
+    margin-bottom: 40px;
+  }
+
+  .footer .get__social {
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
+    order: 3;
+    margin-bottom: 0;
+  }
+
+  .footer .get__info-logo {
+    margin-bottom: 24px;
+  }
+
+  .footer__container {
+    max-width: 60.4%;
+  }
+
+  .footer .container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 1144px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 56px;
+  }
+
+  .registration .container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .registration .forms {
+    padding: 24px;
+  }
+
+  .registration .container-bg:before {
+    position: absolute;
+    width: 100%;
+    height: 176%;
+    content: "";
+    background-image: url("~@/assets/images/sky/home/rega-bg.png");
+    background-size: 1438px 1340px;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: -28%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: -1;
+  }
+
+  .registration .container-bg {
+    position: relative;
+  }
+
+  .registration .h2 {
+    padding: 0 16px;
+  }
+
+  .payments__container svg {
+    margin: 0 20px 40px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .payments {
+    padding: 80px 0 40px;
+  }
+  .content__text {
+    width: auto;
+  }
+
+  .content__img {
+    margin-bottom: 0;
+    margin-right: 40px;
+  }
+
+  .regime__content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .regime__left {
+    margin-bottom: 80px;
+  }
+
+  .regime__container {
+    max-width: 454px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .regime .h2 {
+    margin-bottom: 80px;
+  }
+  .section-padding {
+    padding: 40px 0;
+  }
+
+  .header-bg {
+    left: -24%;
+    width: 134%;
+  }
+  .header__menu {
+    margin-bottom: 96px;
+  }
+  .header__btn .button {
+    width: auto;
+    padding: 0 32px;
+  }
+  .header__btn .button__icon {
+    margin-right: 8px;
+  }
+  .header .h1 {
+    margin-bottom: 48px;
+  }
+  .header {
+    padding: 40px 0 80px;
+  }
+  .h1 {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 64px;
+  }
+  .section-padding {
+    padding: 80px 0;
+  }
+  .h2 {
+    font-size: 56px;
+    line-height: 64px;
+  }
+  .trade__content,
+  .trade__item,
+  .trade__list {
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+  }
+  .trade__item {
+    margin-bottom: 72px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+  }
+  .trade__item svg {
+    margin-bottom: 0;
+    margin-right: 40px;
+  }
+  .trade__text {
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .header__logo_mb {
+    display: none;
+  }
+
+  .footer__container {
+    max-width: 70%;
+  }
+
+  .footer .container {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .subtitle {
+    margin-bottom: 64px;
+  }
+  .regime__content {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .regime__left {
+    margin-bottom: 0;
+  }
+
+  .regime__container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    max-width: 988px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  .header__menu {
+    margin-bottom: 168px;
+  }
+  .header__logo {
+    display: block;
+  }
+  .header {
+    /*padding-bottom: 244px;*/
+  }
+  .h1 {
+    font-size: 72px;
+    line-height: 80px;
+  }
+  .trade__list {
+    max-width: 1120px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-flow: row nowrap;
@@ -867,348 +1566,33 @@ export default {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+  .trade__content,
+  .trade__item,
+  .trade__list {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    max-width: 288px;
-    width: 100%;
-    margin: 0 auto 56px;
-}
-
-.footer .social__item {
-    margin-right: 32px;
-}
-
-.get__social .social__item svg {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-}
-
-.footer .footer {
-    padding-top: 0;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 16px;
-    margin-bottom: 32px;
-    text-align: left;
-}
-
-.regulation-info {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    max-width: 288px;
-    -webkit-box-orient: horizontal;
+  }
+  .trade__item {
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+    max-width: 280px;
+    margin-bottom: 0;
+  }
+  .trade__item svg {
+    margin-bottom: 16px;
+    margin-right: 0;
+  }
+  .trade__text {
+    text-align: center;
+  }
 }
-
-.footer .regulation-info {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
+@media only screen and (max-width: 490px) {
+  .header__btn {
+    zoom: 0.7;
+  }
 }
-
-.regulation-item {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    color: var(--regulation-text-color);
-    font-size: 10px;
-    line-height: 16px;
-    margin-bottom: 32px;
-    max-width: 288px;
-}
-
-.regulation-item:first-child {
-    margin-left: 0;
-}
-
-.regulation-item svg {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 16px;
-}
-
-
-
-.regulation-item p {
-    text-align: left;
-    font-size: 10px;
-    line-height: 16px;
-}
-
-@media only screen and (min-width: 768px){
-
-    .regulation-info {
-        max-width: 224px;
-    }
-
-    .footer .footer {
-        margin-bottom: 40px;
-    }
-
-    .footer .get__social {
-        -webkit-box-ordinal-group: 4;
-        -ms-flex-order: 3;
-        order: 3;
-        margin-bottom: 0;
-    }
-
-    .footer .get__info-logo {
-        margin-bottom: 24px;
-    }
-
-    .footer__container {
-        max-width: 60.4%;
-    }
-
-
-    .footer .container {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        max-width: 1144px;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        padding-bottom: 56px;
-    }
-
-    .registration .container {
-        padding: 0;
-        max-width: 100%;
-    }
-
-    .registration .forms {
-        padding: 24px;
-    }
-
-    .registration .container-bg:before {
-        position: absolute;
-        width: 100%;
-        height: 176%;
-        content: '';
-        background-image: url('~@/assets/images/sky/home/rega-bg.png');
-        background-size: 1438px 1340px;
-        background-repeat: no-repeat;
-        background-position: center;
-        top: -28%;
-        left: 0;
-        right: 0;
-        margin: auto;
-        z-index: -1;
-    }
-
-    .registration .container-bg {
-        position: relative;
-    }
-
-    .registration .h2 {
-        padding: 0 16px;
-    }
-
-    .payments__container svg {
-        margin: 0 20px 40px;
-    }
-
-    .subtitle {
-        font-size: 24px;
-        line-height: 32px;
-    }
-
-    .payments {
-        padding: 80px 0 40px;
-    }
-    .content__text {
-        width: auto;
-    }
-
-    .content__img {
-        margin-bottom: 0;
-        margin-right: 40px;
-    }
-
-    .regime__content {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-    }
-
-    .regime__left {
-        margin-bottom: 80px;
-    }
-
-    .regime__container {
-        max-width: 454px;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-
-    .regime .h2 {
-        margin-bottom: 80px;
-    }
-    .section-padding {
-        padding: 40px 0;
-    }
-
-    .header-bg {
-        left: -24%;
-        width: 134%;
-    }
-    .header__menu {
-        margin-bottom: 96px;
-    }
-    .header__btn .button {
-        width: auto;
-        padding: 0 32px;
-    }
-    .header__btn .button__icon {
-        margin-right: 8px;
-    }
-    .header .h1 {
-        margin-bottom: 48px;
-    }
-    .header {
-        padding: 40px 0 80px;
-    }
-    .h1 {
-        font-weight: 700;
-        font-size: 56px;
-        line-height: 64px;
-    }
-    .section-padding {
-        padding: 80px 0;
-    }
-    .h2 {
-        font-size: 56px;
-        line-height: 64px;
-    }
-    .trade__content, .trade__item, .trade__list {
-        -webkit-box-align: baseline;
-        -ms-flex-align: baseline;
-        align-items: baseline;
-    }
-    .trade__item {
-        margin-bottom: 72px;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-    }
-    .trade__item svg {
-        margin-bottom: 0;
-        margin-right: 40px;
-    }
-    .trade__text {
-        text-align: left;
-    }
-}
-
-@media only screen and (min-width: 1024px){
-
-    .header__logo_mb {
-        display: none;
-    }
-
-    .footer__container {
-        max-width: 70%;
-    }
-
-    .footer .container {
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
-    .subtitle {
-        margin-bottom: 64px;
-    }
-    .regime__content {
-        -webkit-box-align: start;
-        -ms-flex-align: start;
-        align-items: flex-start;
-    }
-
-    .regime__left {
-        margin-bottom: 0;
-    }
-
-    .regime__container {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        max-width: 988px;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-    }
-    .header__menu {
-        margin-bottom: 168px;
-    }
-    .header__logo {
-        display: block;
-    }
-    .header {
-        /*padding-bottom: 244px;*/
-    }
-    .h1 {
-        font-size: 72px;
-        line-height: 80px;
-    }
-    .trade__list {
-        max-width: 1120px;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-    }
-    .trade__content, .trade__item, .trade__list {
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    .trade__item {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: column wrap;
-        flex-flow: column wrap;
-        max-width: 280px;
-        margin-bottom: 0;
-    }
-    .trade__item svg {
-        margin-bottom: 16px;
-        margin-right: 0;
-    }
-    .trade__text {
-        text-align: center;
-    }
-}
-@media only screen and (max-width: 490px){
-    .header__btn{
-        zoom: 0.7;
-    }
-}
-
-
 </style>

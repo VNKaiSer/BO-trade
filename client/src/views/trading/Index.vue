@@ -1227,7 +1227,7 @@
                   <!---->
                 </div>
                 <p class="titleWin">Bạn đã thua!</p>
-                <span class="text-4xl font-bold message_money"
+                <span class="text-4xl font-bold gt32 message_money"
                   >-{{ moneyLost }}$</span
                 >
               </div>
@@ -3061,6 +3061,9 @@ export default {
 </script>
 
 <style scoped>
+.gt32 {
+  color: red;
+}
 .mbTextCountdown {
   width: 150px;
   top: -35px;
