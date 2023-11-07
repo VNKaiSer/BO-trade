@@ -257,7 +257,7 @@
             </div>
           </div>
           <div class="flex items-center gap-3 mb-1">
-            <div class="flex items-center justify-between gap-3 mt-2">
+            <div class="flex items-center justify-between mt-2 mr-10">
               <p class="mt-2">Coin:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
@@ -379,13 +379,13 @@
               </vs-button>
               <div class="flex m-2">
                 <div class="relative" style="margin: 0 auto">
-                  <div
+                  <!-- <div
                     class="absolute mbTextCountdown"
                     :class="{ 'text-danger': !isBet }"
                   >
                     {{ textTimeDown }}
-                  </div>
-                  <div class="circle red">
+                  </div> -->
+                  <!-- <div class="circle red">
                     <svg
                       width="45"
                       viewBox="0 0 220 220"
@@ -410,12 +410,12 @@
                         </g>
                       </g>
                     </svg>
-                  </div>
-                  <div class="controlls">
+                  </div> -->
+                  <!-- <div class="controlls">
                     <div class="display-remain-time timer_counter second">
                       {{ seconDown }}
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <vs-button

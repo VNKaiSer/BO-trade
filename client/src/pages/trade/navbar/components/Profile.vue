@@ -100,13 +100,152 @@
       class="ml-3 mr-3 cursor-pointer con-img msetting"
       @click="popupActiveCaiDat = true"
     >
-      <feather-icon
-        icon="SettingsIcon"
-        svgClasses="w-5 h-5"
-        class="block h-5 text-center"
-      />
-      <span>Cài Đặt</span>
+      <a
+        href.prevent
+        @click="popupActiveCaiDat = true"
+        class="cursor-pointer nav-link"
+      >
+        <span class="mb-2">
+          <feather-icon
+            style="color: #fff"
+            icon="SettingsIcon"
+            svgClasses="w-5 h-5"
+            class="block h-5 text-center"
+        /></span>
+        <span class="textLink">{{ $t("Settings") || "Settings" }}</span>
+      </a>
     </div>
+    <vs-popup class="setting" title="Cài Đặt" :active.sync="popupActiveCaiDat">
+      <div class="relative flex flex-col wrap">
+        <div class="flex mb-3 line line-language-pc line-pc align-center">
+          <div class="flex flex-1 type align-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="19"
+              height="19"
+              viewBox="0 0 19 19"
+            >
+              <g id="globe" transform="translate(-0.324 -0.324)" opacity="0.5">
+                <line
+                  id="Line_1450"
+                  data-name="Line 1450"
+                  y2="18"
+                  transform="translate(9.824 0.824)"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-miterlimit="10"
+                  stroke-width="1"
+                ></line>
+                <line
+                  id="Line_1451"
+                  data-name="Line 1451"
+                  x2="18"
+                  transform="translate(0.824 9.824)"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-miterlimit="10"
+                  stroke-width="1"
+                ></line>
+                <ellipse
+                  id="Ellipse_1795"
+                  data-name="Ellipse 1795"
+                  cx="5.042"
+                  cy="8.824"
+                  rx="5.042"
+                  ry="8.824"
+                  transform="translate(4.782 1)"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-linecap="square"
+                  stroke-miterlimit="10"
+                  stroke-width="1"
+                ></ellipse>
+                <line
+                  id="Line_1452"
+                  data-name="Line 1452"
+                  x2="14.931"
+                  transform="translate(2.359 5.118)"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-miterlimit="10"
+                  stroke-width="1"
+                ></line>
+                <line
+                  id="Line_1453"
+                  data-name="Line 1453"
+                  x2="14.931"
+                  transform="translate(2.359 14.53)"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-miterlimit="10"
+                  stroke-width="1"
+                ></line>
+                <circle
+                  id="Ellipse_1796"
+                  data-name="Ellipse 1796"
+                  cx="9"
+                  cy="9"
+                  r="9"
+                  transform="translate(0.824 0.824)"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-linecap="square"
+                  stroke-miterlimit="10"
+                  stroke-width="1"
+                ></circle>
+              </g>
+            </svg>
+            <span class="white">Ngôn ngữ</span>
+          </div>
+          <div class="flex flex-1 control align-center">
+            <i18n />
+          </div>
+        </div>
+        <div class="flex mb-3 line align-center">
+          <div class="flex flex-1 type align-center">
+            <svg
+              version="1.1"
+              width="19"
+              height="19"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 19 19"
+              xml:space="preserve"
+            >
+              <g id="sound" transform="translate(0.5 -0.5)">
+                <g id="Path_30736" fill="#887F9E">
+                  <path
+                    d="M13.7,19.3c-0.2,0-0.4-0.1-0.6-0.2l-6.9-4.6H0.5c-0.6,0-1-0.4-1-1V6.3c0-0.6,0.4-1,1-1h5.7l6.9-4.6c0.3-0.2,0.7-0.2,1,0c0.3,0.2,0.5,0.5,0.5,0.9v16.8c0,0.4-0.2,0.7-0.5,0.9C14,19.3,13.9,19.3,13.7,19.3z M1.5,12.5h5c0.2,0,0.4,0.1,0.6,0.2l5.6,3.8V3.4L7.1,7.1C6.9,7.2,6.7,7.3,6.5,7.3h-5V12.5z"
+                    class="st0"
+                  ></path>
+                </g>
+                <g id="Path_30737" fill="#887F9E">
+                  <path
+                    d="M16.8,15.1c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4c0,0,0,0,0,0c1.9-2,1.9-5.1-0.1-7c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0c2.8,2.7,2.8,7.1,0.1,9.9c0,0-0.1,0.1-0.1,0.1C17.2,15,17,15.1,16.8,15.1z"
+                    class="st0"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+            <span class="white">Âm thanh</span>
+          </div>
+          <div class="flex flex-1 control align-center">
+            <div class="flex toggleButtonWrapper">
+              <span class="uppercase white">Off</span>
+              <vs-switch
+                color="success"
+                style="border: 1px solid #4e4e4e; min-width: 60px"
+                v-model="switchAmThanh"
+                @change="OnOffSound"
+              />
+              <span class="uppercase white">On</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </vs-popup>
     <div
       class="ml-3 mr-3 cursor-pointer con-img mhoso"
       @click.stop="viewHoSo()"
@@ -906,7 +1045,7 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
 }
-
+/*
 .setting .wrap .line .type svg,
 .setting .wrap .line .control svg {
   margin-right: 5px;
@@ -919,7 +1058,7 @@ export default {
 
 .setting .wrap .line {
   padding: 15px;
-}
+} */
 
 .qDeposit .allIn {
   position: absolute;

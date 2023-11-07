@@ -332,7 +332,7 @@
       <div class="mobileA nav-item">
         <a
           href.prevent
-          @click="popupActiveCaiDat = false"
+          @click="popupActiveCaiDat = true"
           class="cursor-pointer nav-link"
         >
           <span class="mb-2">
@@ -538,7 +538,7 @@ export default {
     return {
       blObj: getData,
       switchAmThanh: true,
-      popupActiveCaiDat: true,
+      popupActiveCaiDat: false,
       addSidebarHisOrder: false,
       // Data Sidebar
       addNewDataSidebar: false,
