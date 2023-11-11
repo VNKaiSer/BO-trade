@@ -270,9 +270,9 @@ export default {
   verifiedUser(obj) {
     return ApiAdmin().post("api/users/verifiedUser", obj);
   },
-  verifiedMoney(obj) {
-    return ApiAdmin().post("api/users/verifiedMoney", obj);
-  },
+  // verifiedMoney(obj) {
+  //   return ApiAdmin().post("api/users/verifiedMoney", obj);
+  // },
 
   getListAgency() {
     return ApiAdmin().get("api/users/getAgency");
@@ -461,5 +461,8 @@ export default {
   },
   verifiedMoney(obj) {
     return ApiAdmin().post("api/users/verifyBankingUser", obj);
+  },
+  updateTradeHisById(obj) {
+    return ApiAdmin().patch("api/trades/updateTradeHisById", obj);
   },
 };

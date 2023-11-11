@@ -14,6 +14,7 @@ const {
   totalAddMoney,
   doneRefuseWithdrawal,
   getAllDepositWaithForConfirm,
+  updateTradeHisById,
 } = require("./trade.controller");
 const router = require("express");
 const app = router();
@@ -62,5 +63,7 @@ app.post("/getShowDT", checkToken, getShowDT);
 app.get("/historyAllAddMoney", checkToken, historyAllAddMoney);
 
 app.get("/totalAddMoney", checkToken, totalAddMoney);
+
+app.patch("/updateTradeHisById", checkToken, updateTradeHisById);
 
 module.exports = app;

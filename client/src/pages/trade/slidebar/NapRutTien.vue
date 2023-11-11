@@ -610,20 +610,15 @@ export default {
           icon: "icon-x-circle",
         });
       }
-
-      // mặc định rút nội bộ
-
       let obj = {
         amS: amount,
         nick: getData.displayName,
         gc: this.noteRut,
       };
-      console.log("Rút tiền");
 
       AuthenticationService.withdrawalUsdtBSC(obj).then((res) => {
         this.balanceUSDT = this.formatPrice(Number(this.balanceUSDT) - 0, 2);
         this.getAmount = this.balanceUSDT;
-        console.log("Rút tiền");
         if (res.data.success == 1) {
           getData.balance -= 0;
           getData.balanceUSDT -= 0;
@@ -813,6 +808,18 @@ export default {
       if (amount < 20) {
         return this.$vs.notify({
           text: `Số tiền rút tối thiểu là $20.`,
+          color: "danger",
+          position: "top-right",
+          iconPack: "feather",
+          icon: "icon-x-circle",
+        });
+      }
+      let numUSDT = parseFloat(this.balanceUSDT.replace(",", ""));
+
+      if (amount > numUSDT) {
+        console.log(typeof this.balanceUSDT);
+        return this.$vs.notify({
+          text: `Bạn không đủ tiền để rút.`,
           color: "danger",
           position: "top-right",
           iconPack: "feather",

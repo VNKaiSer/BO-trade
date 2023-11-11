@@ -14,6 +14,7 @@ const {
   totalAddMoney,
   doneRefuseWithdrawal,
   getAllDepositWaithForConfirm,
+  updateTradeHisById,
 } = require("./trade.service");
 
 const config = require("./../../config");
@@ -224,6 +225,20 @@ module.exports = {
       return res.json({
         success: 1,
         data: results,
+      });
+    });
+  },
+
+  updateTradeHisById: (req, res) => {
+    const data = req.body;
+    updateTradeHisById(data, (err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      return res.json({
+        success: 1,
+        message: "Update success",
       });
     });
   },
