@@ -1550,7 +1550,10 @@ export default {
         classIcon: icon,
         op: priceOpen,
         timeBet: timeBet,
+        timeEndBet: timeGet + timeBet * 1000,
       };
+
+      console.log(itp);
 
       this.betOpen.l.bet[0].items.push(itp);
 

@@ -106,7 +106,7 @@
                     <div class="flex justify-between bet-time">
                       <span class="colorGray">Kết Phiên</span>
                       <span class="text-sm font-bold">{{
-                        startCountdown(oknha)
+                        fromatTimzoneH(oknha.timeEndBet)
                       }}</span>
                     </div>
                   </div>
@@ -233,7 +233,7 @@ export default {
       // Data Sidebar
       SidebarHSSetting: false,
       sidebarDataSetting: {},
-      countdown: 120,
+      timeBet: 60,
       settings: {
         // perfectscrollbar settings
         maxScrollbarLength: 60,
@@ -328,19 +328,22 @@ export default {
     toggleDataSidebar(val = false) {
       this.SidebarHSSetting = val;
     },
-    startCountdown(data) {
+    countdown() {
       const countdownInterval = setInterval(() => {
-        if (data > 0) {
-          data--;
+        if (this.timeBet > 0) {
+          this.timeBet--;
         } else {
-          clearInterval(data);
-          data = 0;
+          clearInterval(countdownInterval);
+          this.timeBet = 0;
         }
       }, 1000);
     },
   },
   components: {
     VuePerfectScrollbar,
+  },
+  mounted() {
+    this.countdown();
   },
 };
 </script>
