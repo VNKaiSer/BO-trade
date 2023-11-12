@@ -10,7 +10,7 @@
     <template>
       <div class="vx-row">
         <div class="w-full vx-col lg:w-1/2">
-          <p>Người chơi</p>
+          <!-- <p>Người chơi</p>
           <p class="mb-4">
             Người chơi Cược BUY:
             <span class="mr-4 text-danger" style="font-size: 20px"
@@ -20,7 +20,7 @@
             <span class="text-danger" style="font-size: 20px"
               >$ {{ price_play_sell }}</span
             >
-          </p>
+          </p> -->
           <table class="tbv">
             <tr>
               <th>Email</th>
@@ -28,6 +28,7 @@
               <th>Mua/Bán</th>
               <th>Số Tiền Cược</th>
               <th>Phiên</th>
+              <th>Thắng/Thua</th>
             </tr>
             <tr :data="tr" :key="indextr" v-for="(tr, indextr) in productsFake">
               <template v-if="tr.mkt == 0">
@@ -65,6 +66,7 @@
                   <!-- ghi chú: td của phiên. nhớ sửa col sv thành phiên -->
                   <p class="bet-type">{{ tr.sv }}</p>
                 </td>
+                
               </template>
             </tr>
           </table>

@@ -13,7 +13,7 @@
       style="border-radius: 3px; padding: 0.375rem 0.75rem"
     >
       <vs-dropdown vs-custom-content vs-trigger-click>
-        <div class="text-left cursor-pointer" style="font-weight: bold">
+       <div class="text-left cursor-pointer" style="font-weight: bold">
           <p class="text-sm" style="color: #c1c1c1">
             {{ isAcc ? "Tài khoản Thực" : "Tài khoản Demo" }}
           </p>

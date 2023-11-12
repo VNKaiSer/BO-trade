@@ -10,9 +10,9 @@
 
     <template>
         <div class="vx-row">
-          <div class="vx-col w-full lg:w-1/3">
+          <div class="w-full vx-col lg:w-1/3">
               <p class="mb-4">
-                  Thời gian còn lại: <span class=" mr-4" style="color: #d65b00; font-weight: bold;">{{ countDown }}s</span> 
+                  Thời gian còn lại: <span class="mr-4 " style="color: #d65b00; font-weight: bold;">{{ countDown }}s</span>
                   Trạng thái đặt cược: <b :class="{'text-success': typeOder == 'Mở', 'text-danger': typeOder == 'Đóng'}" style="font-weight: bold;">{{ typeOder }}</b>
                   <!-- d63200 // đóng -->
               </p>
@@ -36,27 +36,27 @@
                  <b>
                     Nếu {{AMOUNTBECAU_MIN}} BOT sẽ kích hoạt bẻ cầu cho đến khi hết LỖ
                 </b>
-                <div class="vx-col w-full lg:w-1/2">
+                <div class="w-full vx-col lg:w-1/2">
                   <vs-input type="number" class="mb-4" color="success" v-model="AMOUNTBECAU_MIN" />
                 </div>
-                <div class="vx-col w-full lg:w-1/2 text-center">
+                <div class="w-full text-center vx-col lg:w-1/2">
                   <vs-button @click="sbAmountBeCauMin" class="h-12 font-bold" color="success" type="relief">Đồng ý</vs-button>
                 </div>
                 <b>
                     Nếu BUY hoặc SELL lớn hơn {{AMOUNTBECAU_MAX}} sẽ kích hoạt bẻ cầu
                 </b>
-                <div class="vx-col w-full lg:w-1/2">
+                <div class="w-full vx-col lg:w-1/2">
                   <vs-input type="number" class="mb-4" color="success" v-model="AMOUNTBECAU_MAX" />
                 </div>
-                <div class="vx-col w-full lg:w-1/2 text-center">
+                <div class="w-full text-center vx-col lg:w-1/2">
                   <vs-button @click="sbAmountBeCauMax" class="h-12 font-bold" color="success" type="relief">Đồng ý</vs-button>
                 </div>
 
               </div>
-               
-              
+
+
           </div>
-          <div class="vx-col w-full lg:w-2/3">
+          <div class="w-full vx-col lg:w-2/3">
                 <p class="mb-4 mr-4">
                     Chức năng:
                 </p>
@@ -71,21 +71,21 @@
                 1: THẮNG ( TÍCH 70% ) tổng tiền mỗi phiên sao cho "đủ số giá trị NHẬP bên dưới" dành QUỸ sau. Để cân bằng THẮNG THUA không lỗ<br>
                 2: THUA mà hệ thống đã trả nếu đủ 1,000 $ thì sẽ bắt đầu gỡ lại!<br>
                 <b><i> BUY hoặc SELL bên nào ít sẽ THẮNG</i> </b> <br>( Chúng ta đã ăn phí 5% mỗi cuộc giao dịch )
-                </p>  
+                </p>
                 <p class="flex items-center">
                   <vs-input type="number" class="mb-4" color="success" label-placeholder="Là số tiền tối thiểu" v-model="PriceBOT" />
                   <vs-button @click="SubmitBOTPrice" class="h-12 font-bold" color="danger" type="relief"> Đồng ý
                   </vs-button> *** Để giá trị 0 là TẮT
-                </P> 
+                </P>
                 <p>
                     <vs-checkbox v-model="checkOnOffBOT" @click="changeBOTOnOff">( BOT Cược tiền ảo)</vs-checkbox>
                     <br>
                     <br>
-                    
+
                 </p>-->
                 <p>
-                    <!--<span class="font-bold mb-4">=====Chỉ được phép mở 1 trong 3 chức năng phía dưới======</span>-->
-                    <span class="font-bold mb-4">( GỠ TIỀN NẾU ÂM PHIÊN HIỆN TẠI )</span>
+                    <!--<span class="mb-4 font-bold">=====Chỉ được phép mở 1 trong 3 chức năng phía dưới======</span>-->
+                    <span class="mb-4 font-bold">( GỠ TIỀN NẾU ÂM PHIÊN HIỆN TẠI )</span>
                     <!--<vs-checkbox v-model="checkOnOffBOTGoTien" @click="changeBOTGoTienOnOff">( GỠ TIỀN NẾU ÂM PHIÊN HIỆN TẠI )</vs-checkbox>-->
                     <br>
                     <b>
@@ -94,7 +94,7 @@
                         PHIÊN hiện tại nếu âm tiền, sẽ tự kích hoạt gỡ tiền sao cho hết âm tiền cho các PHIÊN sau ( Được TẮT / MỞ tự động )
                     <br>
                     <br>
-                   
+
 
                      <!--<vs-checkbox v-model="checkOnOffAnGian" @click="changeBetOnOff">( CƯỢC thấp WIN )</vs-checkbox> -->
 
@@ -105,13 +105,13 @@
                         Chú ý:
                     </b>
                         Nếu chọn Có: Tổng của TIỀN CƯỢC bên MUA / BÁN ( nếu thấp hơn sẽ THẮNG, nhiều hơn sẽ THUA )
-                    </span> --> 
+                    </span> -->
                 </p>
                 <p>
                     <span>
-                        -- Đồng <IconCrypto style="width: 20px" coinname="btc" color="color" format="svg" /> 
+                        -- Đồng <IconCrypto style="width: 20px" coinname="btc" color="color" format="svg" />
                     </span>
-                    <ul class="centerx mb-4 mr-4" style="margin-left: 30px; line-height: 35px;">
+                    <ul class="mb-4 mr-4 centerx" style="margin-left: 30px; line-height: 35px;">
                         <li>
                             <vs-radio v-model="radioBC" class="ml-4" vs-value="buy" @change="changeMode('buy')">MUA</vs-radio>
                             <vs-radio v-model="radioBC" class="ml-4" vs-value="sell" @change="changeMode('sell')">BÁN</vs-radio>
@@ -125,11 +125,11 @@
                             </span>
                         </li>
                     </ul>
-                </p> 
+                </p>
           </div>
 
-          <div class="vx-col w-full lg:w-1/2">
-              <p>Marketing</p> 
+          <div class="w-full vx-col lg:w-1/2">
+              <p>Marketing</p>
               <p class="mb-4">
                   Marketing Cược BUY: <span class="mr-4 text-danger" style="font-size: 20px">$ {{ price_buy_mkt }}</span><br>
                   Marketing Cược SELL: <span class="text-danger" style="font-size: 20px">$  {{ price_sell_mkt }}</span>
@@ -147,28 +147,28 @@
                     <td><p class="bet-type">{{ tr.sv }}</p></td>
                     <td>
                       <p class="bet-buy_sell" v-if="tr.bet == 'buy'">
-                          <span class="text-success mr-2">MUA</span>
+                          <span class="mr-2 text-success">MUA</span>
                           <feather-icon icon="TrendingUpIcon" svgClasses="w-5 h-5"/>
                       </p>
                       <p class="bet-buy_sell" v-else>
-                        <span class="text-danger mr-2">BÁN</span>
+                        <span class="mr-2 text-danger">BÁN</span>
                         <feather-icon icon="TrendingDownIcon" svgClasses="w-5 h-5"/>
                       </p>
                     </td>
                     <td>
                       <p class="bet-amount">
-                          <IconCrypto style="width: 20px" coinname="usdt" color="color" format="svg" /> 
+                          <IconCrypto style="width: 20px" coinname="usdt" color="color" format="svg" />
                           <font class="ml-2" color="#006c27">{{ formatPrice(tr.amount, 2) }}</font>
                       </p>
                     </td>
                   </template>
-                  
+
                 </tr>
 
               </table>
           </div>
-          <div class="vx-col w-full lg:w-1/2">
-              <p>Người chơi</p> 
+          <div class="w-full vx-col lg:w-1/2">
+              <p>Người chơi</p>
               <p class="mb-4">
                   Người chơi Cược BUY: <span class="mr-4 text-danger" style="font-size: 20px">$ {{ price_play_buy }}</span><br>
                   Người chơi Cược SELL: <span class="text-danger" style="font-size: 20px">$  {{ price_play_sell }}</span>
@@ -186,32 +186,32 @@
                     <td><p class="bet-type">{{ tr.sv }}</p></td>
                     <td>
                       <p class="bet-buy_sell" v-if="tr.bet == 'buy'">
-                          <span class="text-success mr-2">MUA</span>
+                          <span class="mr-2 text-success">MUA</span>
                           <feather-icon icon="TrendingUpIcon" svgClasses="w-5 h-5"/>
                       </p>
                       <p class="bet-buy_sell" v-else>
-                        <span class="text-danger mr-2">BÁN</span>
+                        <span class="mr-2 text-danger">BÁN</span>
                         <feather-icon icon="TrendingDownIcon" svgClasses="w-5 h-5"/>
                       </p>
                     </td>
                     <td>
                       <p class="bet-amount">
-                          <IconCrypto style="width: 20px" coinname="usdt" color="color" format="svg" /> 
+                          <IconCrypto style="width: 20px" coinname="usdt" color="color" format="svg" />
                           <font class="ml-2" color="#006c27">{{ formatPrice(tr.amount, 2) }}</font>
                       </p>
                     </td>
                   </template>
-                  
+
                 </tr>
 
               </table>
           </div>
         </div>
-        
-        
+
+
     </template>
 
-    
+
   </div>
 </template>
 
@@ -228,11 +228,11 @@ export default {
       AMOUNTBECAU_MAX: 400,
       PriceBOT: 0,
       checkOnOffBOT: true,
-      checkOnOffAnGian: false,  
+      checkOnOffAnGian: false,
       checkOnOffBOTGoTien: false,
       radioBC: '',
-      productsFake: [ 
-          // {e: 'admin@gmail.com', uid: 'DS9OR0KGJS', sv: 'BTC/USDT', bet: 'buy', amount: '10' } 
+      productsFake: [
+          // {e: 'admin@gmail.com', uid: 'DS9OR0KGJS', sv: 'BTC/USDT', bet: 'buy', amount: '10' }
         ],
       itemsPerPage: 10,
       isMounted: false,
@@ -266,7 +266,7 @@ export default {
     }
   },
   watch:{
-  
+
   },
   methods: {
 
@@ -291,7 +291,7 @@ export default {
                 icon:'icon-message-square'});
     },
 
-    changeBOTOnOff(){   
+    changeBOTOnOff(){
 
         this.sendMessage({type: 'editGL', data: {type: 'BOT'}})
 
@@ -304,7 +304,7 @@ export default {
                 iconPack: 'feather',
                 icon:'icon-message-square'});
         }else{
-            
+
             return this.$vs.notify({
                 text:'BOT đã được BẬT',
                 color:'success',
@@ -312,16 +312,16 @@ export default {
                 iconPack: 'feather',
                 icon:'icon-message-square'});
         }
-        
+
     },
 
     changeBetOnOff(){
         this.radioBC = 'off'
-        
+
         this.checkOnOffBOTGoTien = false;
 
         if(this.checkOnOffAnGian){
-   
+
             this.sendMessage({type: 'editGL', data: {type: 'BTC_OFF'}})
 
             return this.$vs.notify({
@@ -340,7 +340,7 @@ export default {
                 iconPack: 'feather',
                 icon:'icon-message-square'});
         }
-        
+
     },
 
     reloadAmTien(){
@@ -348,22 +348,22 @@ export default {
     },
 
     changeMode(val){
-      this.checkOnOffAnGian = false  
+      this.checkOnOffAnGian = false
 
       if(val == 'buy'){
         this.sendMessage({type: 'editGL', data: {type: 'BTC_BUY'}})
         val = 'MUA'
-      } 
+      }
       if(val == 'sell'){
         this.sendMessage({type: 'editGL', data: {type: 'BTC_SELL'}})
         val = 'BÁN'
-      } 
+      }
       if(val == 'off'){
         this.sendMessage({type: 'editGL', data: {type: 'BTC_OFF'}})
-        val = 'TẮT' 
-      }  
+        val = 'TẮT'
+      }
 
-  
+
       return this.$vs.notify({
             text:'Đã thay đổi thành '+val,
             color:'success',
@@ -426,22 +426,22 @@ export default {
       }else{
           this.checkOnOffBOT = false
       }
-  
-      
+
+
     },
 
-    
+
 
     changeBOTGoTienOnOff(){
 
-        
+
         this.checkOnOffAnGian = false;
         this.radioBC = 'off'
 
         this.sendMessage({type: 'editGL', data: {type: 'BOT_GO_TIEN'}})
 
         if(this.checkOnOffBOTGoTien){
- 
+
             return this.$vs.notify({
                 text:'BOT gỡ tiền đã được TẮT',
                 color:'success',
@@ -449,7 +449,7 @@ export default {
                 iconPack: 'feather',
                 icon:'icon-message-square'});
         }else{
-            
+
             return this.$vs.notify({
                 text:'BOT gỡ tiền đã được BẬT',
                 color:'success',
@@ -472,7 +472,7 @@ export default {
     // }
 
     //this.$store.registerModule('dataList', this.productsFake);
-    
+
     //this.$store.dispatch("dataList/fetchDataListItems")
     //console.log(this.productsFake);
     //console.log(this.$store.state.dataList);
@@ -498,7 +498,7 @@ export default {
             if(dl.candleClose == 0){
               _this.price_buy = 0;
               _this.price_sell = 0;
-              
+
             }
         }
 
@@ -516,14 +516,14 @@ export default {
           _this.price_buy_mkt = _this.formatPrice(data.mktBUY, 2);
           _this.price_sell_mkt = _this.formatPrice(data.mktSELL, 2);
           _this.price_total_mkt = _this.formatPrice(data.mktBUY + data.mktSELL, 2);
-          
+
           let tt = ( data.price_buy + data.price_sell ) - (data.mktBUY + data.mktSELL);
 
 
           _this.price_play_buy = _this.formatPrice(data.price_buy - data.mktBUY, 2);
           _this.price_play_sell = _this.formatPrice(data.price_sell - data.mktSELL, 2);
           _this.price_total = _this.formatPrice(tt, 2);
-         
+
         }
     }
 
