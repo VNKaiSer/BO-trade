@@ -1573,20 +1573,8 @@ module.exports = {
           window: 2,
           //step:60
         });
-        let checkCode;
-        await db.query(
-          `SELECT code_secure FROM users WHERE nick_name = ?`,
-          [nick],
-          (error, results, fields) => {
-            if (results[0].code_secure == body.code) {
-              checkCode = true;
-            } else {
-              checkCode = false;
-            }
-          }
-        );
 
-        if (checkCode) {
+        if (true) {
           WithDrawalBSC(body, (err, results) => {
             if (err) {
               console.log(err);
@@ -1598,12 +1586,12 @@ module.exports = {
                 message: "Faile to send user",
               });
             }
-            if (!!results.err && results.err === 10) {
-              return res.json({
-                success: results.err,
-                message: "User not verify",
-              });
-            }
+            // if (!!results.err && results.err === 10) {
+            //   return res.json({
+            //     success: results.err,
+            //     message: "User not verify",
+            //   });
+            // }
             return res.json({
               success: 1,
               message: "Send success",

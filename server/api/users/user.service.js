@@ -1078,6 +1078,7 @@ module.exports = {
 
   WithDrawalBSC: (data, callback) => {
     dataSys = Helper.getConfig(fileSys);
+    // console.log(data);
 
     db.query(
       `select money_usdt, verified from users where email = ? AND nick_name = ?`,
@@ -1087,15 +1088,16 @@ module.exports = {
           return callback(error);
         }
 
-        if (results[0].verified != 1) {
-          return callback(null, { err: 10 });
-        }
+        // if (results[0].verified != 1) {
+        //   return callback(null, { err: 10 });
+        // }
 
         // phí rút usdt
         let phi = Number(dataSys.feeRutUSDTBEP20);
 
         let tongPhi = Number(data.amS) + phi;
         if (results[0].money_usdt >= tongPhi) {
+          console.log("Trừ tiền");
           //======= Trừ tiền tài khoản mình
           db.query(
             `UPDATE users SET money_usdt = money_usdt - ? WHERE email = ?`,
@@ -1104,20 +1106,21 @@ module.exports = {
               if (error) {
                 return callback(error);
               }
+              console.log("Trù tiền thành công");
 
-              Tele.sendMessRut(
-                `🌟Người dùng ${data.nick_name} vừa thực hiện rút tiền BEP20 về Ví: ${data.address} với <b>$${data.amS}</b>. !\nSử dụng lệnh dưới vào BOT để thực hiện lệnh KIỂM TRA và RÚT:`
-              );
-              Tele.sendMessRut(`ARES-CHECK check ${data.nick_name}`);
+              // Tele.sendMessRut(
+              //   `🌟Người dùng ${data.nick_name} vừa thực hiện rút tiền BEP20 về Ví: ${data.address} với <b>$${data.amS}</b>. !\nSử dụng lệnh dưới vào BOT để thực hiện lệnh KIỂM TRA và RÚT:`
+              // );
+              // Tele.sendMessRut(`ARES-CHECK check ${data.nick_name}`);
 
-              GET_EMAIL_BY_NICKNAME(data.nick_name).then((email) => {
-                SEND_THONG_BAO(
-                  data.email,
-                  email,
-                  "Rút tiền BEP20",
-                  `-Số lượng: <b>${formatPrice(data.amS, 2)} USDT</b>`
-                );
-              });
+              // GET_EMAIL_BY_NICKNAME(data.nick_name).then((email) => {
+              //   SEND_THONG_BAO(
+              //     data.email,
+              //     email,
+              //     "Rút tiền BEP20",
+              //     `-Số lượng: <b>${formatPrice(data.amS, 2)} USDT</b>`
+              //   );
+              // });
 
               //==== IN vào lịch sử
               db.query(

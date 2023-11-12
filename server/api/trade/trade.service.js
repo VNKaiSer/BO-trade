@@ -336,4 +336,17 @@ module.exports = {
       }
     );
   },
+
+  updateTradeHisById: (data, callback) => {
+    db.query(
+      `update trade_history set status= 1 where id = ?`,
+      [data.id],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error);
+        }
+        return callback(null, results);
+      }
+    );
+  },
 };

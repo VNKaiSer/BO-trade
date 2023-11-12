@@ -601,111 +601,45 @@ export default {
         });
       }
 
-      if (amount < getSetSys.minWithdrawalPaypal) {
+      if (amount < 20) {
         return this.$vs.notify({
-          text: `Số tiền rút tối thiểu là $${getSetSys.minWithdrawalPaypal}.`,
+          text: `Số tiền rút tối thiểu là $20.`,
           color: "danger",
           position: "top-right",
           iconPack: "feather",
           icon: "icon-x-circle",
         });
       }
-
-      // mặc định rút nội bộ
-
       let obj = {
         amS: amount,
         nick: getData.displayName,
         gc: this.noteRut,
       };
 
-      if (this.isActiveSelectTransPaypal) {
-        // rút Nội bộ
+      AuthenticationService.withdrawalUsdtBSC(obj).then((res) => {
+        this.balanceUSDT = this.formatPrice(Number(this.balanceUSDT) - 0, 2);
+        this.getAmount = this.balanceUSDT;
+        if (res.data.success == 1) {
+          getData.balance -= 0;
+          getData.balanceUSDT -= 0;
 
-        let phi = getSetSys.feeRutPaypalNoiBo;
-        let tongphi = amount + Number(phi);
-
-        // kiểm tra số tiền gốc = số tiền nhập hay không
-        if (this.getAmount < tongphi) {
           return this.$vs.notify({
-            text: "Số dư không đủ.",
-            color: "danger",
-            position: "top-right",
+            text: "Rút tiền thành công.",
             iconPack: "feather",
-            icon: "icon-x-circle",
+            icon: "icon-check",
+            color: "success",
+            position: "top-right",
+          });
+        } else {
+          return this.$vs.notify({
+            text: "Lỗi hệ thống.",
+            iconPack: "feather",
+            icon: "icon-check",
+            color: "success",
+            position: "top-right",
           });
         }
-
-        AuthenticationService.withdrawalPaypalNoiBo(obj).then((res) => {
-          let d = res.data;
-
-          if (d.success == 3 || d.success == 4) {
-            localStorage.removeItem("token");
-            this.$router.push("/login").catch(() => {});
-            return;
-          }
-
-          if (res.data.success) {
-            return this.$vs.notify({
-              text: "Rút tiền thành công.",
-              iconPack: "feather",
-              icon: "icon-check",
-              color: "success",
-              position: "top-right",
-            });
-          } else {
-            return this.$vs.notify({
-              text: "Số dư không đủ.",
-              color: "danger",
-              position: "top-right",
-              iconPack: "feather",
-              icon: "icon-x-circle",
-            });
-          }
-        });
-      } else {
-        let phi = getSetSys.feeRutPaypalAcc;
-        let tongphi = amount + phi;
-
-        // kiểm tra số tiền gốc = số tiền nhập hay không
-        if (this.getAmount < tongphi) {
-          return this.$vs.notify({
-            text: "Số dư không đủ.",
-            color: "danger",
-            position: "top-right",
-            iconPack: "feather",
-            icon: "icon-x-circle",
-          });
-        }
-
-        AuthenticationService.withdrawalPaypalAccount(obj).then((res) => {
-          let d = res.data;
-
-          if (d.success == 3 || d.success == 4) {
-            localStorage.removeItem("token");
-            this.$router.push("/login").catch(() => {});
-            return;
-          }
-
-          if (res.data.success) {
-            return this.$vs.notify({
-              text: "Rút tiền thành công.",
-              iconPack: "feather",
-              icon: "icon-check",
-              color: "success",
-              position: "top-right",
-            });
-          } else {
-            return this.$vs.notify({
-              text: "Số dư không đủ.",
-              color: "danger",
-              position: "top-right",
-              iconPack: "feather",
-              icon: "icon-x-circle",
-            });
-          }
-        });
-      }
+      });
     },
 
     CopyAddress() {
@@ -871,9 +805,21 @@ export default {
         });
       }
 
-      if (amount < getSetSys.minWithdrawalUSDT) {
+      if (amount < 20) {
         return this.$vs.notify({
-          text: `Số tiền rút tối thiểu là $${getSetSys.minWithdrawalUSDT}.`,
+          text: `Số tiền rút tối thiểu là $20.`,
+          color: "danger",
+          position: "top-right",
+          iconPack: "feather",
+          icon: "icon-x-circle",
+        });
+      }
+      let numUSDT = parseFloat(this.balanceUSDT.replace(",", ""));
+
+      if (amount > numUSDT) {
+        console.log(typeof this.balanceUSDT);
+        return this.$vs.notify({
+          text: `Bạn không đủ tiền để rút.`,
           color: "danger",
           position: "top-right",
           iconPack: "feather",
@@ -881,7 +827,35 @@ export default {
         });
       }
 
-      this.pop2FAokPay = true;
+      let obj = {
+        amS: amount,
+        nick: getData.displayName,
+        gc: this.noteRut,
+        address: this.adddressWithDrawal,
+        nw: "",
+        code: this.code2FA,
+        chutk: this.ChuTkRut,
+      };
+      let phi = getSetSys.feeRutUSDTNoiBo;
+      let tongphi = amount + Number(phi);
+
+      AuthenticationService.withdrawalUsdtBSC(obj).then((res) => {
+        this.balanceUSDT = this.formatPrice(Number(this.balanceUSDT) - 0, 2);
+        this.getAmount = this.balanceUSDT;
+
+        if (res.data.success == 1) {
+          getData.balance -= tongphi;
+          getData.balanceUSDT -= tongphi;
+
+          return this.$vs.notify({
+            text: "Rút tiền thành công.",
+            iconPack: "feather",
+            icon: "icon-check",
+            color: "success",
+            position: "top-right",
+          });
+        }
+      });
     },
 
     WithdrawalOKPay() {
