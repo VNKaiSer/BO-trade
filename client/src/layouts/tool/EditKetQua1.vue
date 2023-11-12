@@ -28,7 +28,8 @@
               <th>Mua/Bán</th>
               <th>Số Tiền Cược</th>
               <th>Phiên</th>
-              <th>Thắng/Thua</th>
+              <th>Thắng</th>
+              <th>Thua</th>
             </tr>
             <tr :data="tr" :key="indextr" v-for="(tr, indextr) in productsFake">
               <template v-if="tr.mkt == 0">
@@ -66,7 +67,30 @@
                   <!-- ghi chú: td của phiên. nhớ sửa col sv thành phiên -->
                   <p class="bet-type">{{ tr.sv }}</p>
                 </td>
-                
+                <vs-td class="text-center whitespace-no-wrap">
+                  <vx-tooltip style="float: left" text="Thắng">
+                    <vs-button
+                      color="#00ff37"
+                      type=" loading-corners"
+                      icon-pack="feather"
+                      icon="icon-check"
+                      >Thắng</vs-button
+                    >
+                  </vx-tooltip>
+                  <span style="color: #00ff37">Thắng</span>
+                </vs-td>
+                <vs-td class="text-center whitespace-no-wrap">
+                  <vx-tooltip style="float: left" text="Thua">
+                    <vs-button
+                      color="#ff6f6f"
+                      type="line"
+                      icon-pack="feather"
+                      icon="icon-check"
+                      >Thua</vs-button
+                    >
+                  </vx-tooltip>
+                  <span style="color: #ff6f6f">Thua</span>
+                </vs-td>
               </template>
             </tr>
           </table>

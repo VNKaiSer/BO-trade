@@ -277,7 +277,6 @@ import AuthenticationService from "@/services/AuthenticationService";
 import moment from "moment";
 import Vue from "vue";
 
-
 export default {
   components: {
     vSelect,
@@ -369,15 +368,15 @@ export default {
       AuthenticationService.verifiedMoney(obj).then((resq) => {
         if (resq.data.success) {
           return this.$vs.notify({
-            text: val ? "Nạp tiền thành công" : "Hủy nạp tiền thành công",
-            color: "success",
+            text: "Nạp tiền thất bại",
+            color: "danger",
             iconPack: "feather",
             icon: "icon-check",
           });
         } else {
           return this.$vs.notify({
-            text: "Nạp tiền thất bại",
-            color: "danger",
+            text: val ? "Nạp tiền thành công" : "Hủy nạp tiền thành công",
+            color: "success",
             iconPack: "feather",
             icon: "icon-alert-circle",
           });

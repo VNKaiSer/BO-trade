@@ -42,10 +42,9 @@
           >
         </p>
       </div>
+      <!-- multiple v-model="selectedUser" -->
       <vs-table
         ref="table"
-        multiple
-        v-model="selectedUser"
         pagination
         :max-items="itemsPerPage"
         search
@@ -292,9 +291,7 @@
                     >Xác nhận</vs-button
                   >
                 </vx-tooltip>
-                <span v-else-if="tr.status == 1" style="color: #00ff37"
-                  >Đã xác nhận</span
-                >
+                <span v-else style="color: #00ff37">Xác nhận</span>
               </vs-td>
 
               <!--<vx-tooltip v-if="tr.delete_status == 0" style="float: left" color="danger" text="Xóa">
@@ -357,7 +354,7 @@ export default {
           currency: "BTC",
           amount: 100.0,
           note: "ok nha",
-          status: 1,
+          status: 0,
           created_at: "00:00:00 02-04-2021",
         },
         {
@@ -369,7 +366,7 @@ export default {
           currency: "ETH",
           amount: 100.0,
           note: "",
-          status: 1,
+          status: 0,
           created_at: "00:00:00 02-04-2021",
         },
         {
@@ -381,7 +378,7 @@ export default {
           currency: "USDT",
           amount: 100.0,
           note: "",
-          status: 1,
+          status: 0,
           created_at: "00:00:00 02-04-2021",
         },
       ],

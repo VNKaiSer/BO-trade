@@ -376,6 +376,7 @@
                 <div class="relative mt-1 form-group">
                   <h4 class="colorSecondary2">Giá trị USDT</h4>
                   <input
+                    required="amount"
                     type="number"
                     v-model="amount"
                     decimal="true"
@@ -392,6 +393,7 @@
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
                   <input
+                    required="bankk"
                     type="text"
                     placeholder="Tên Ngân Hàng"
                     class="form-control"
@@ -408,6 +410,7 @@
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Số tài khoản</h4>
                   <input
+                    required="stk"
                     type="text"
                     placeholder="Nhập số tài khoản của bạn"
                     class="form-control"
@@ -417,6 +420,7 @@
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Chủ tài khoản</h4>
                   <input
+                    required="chutaikhoan"
                     type="text"
                     placeholder="Nhập tên chủ tài khoản"
                     class="form-control"
@@ -852,6 +856,14 @@ export default {
             iconPack: "feather",
             icon: "icon-check",
             color: "success",
+            position: "top-right",
+          });
+        } else {
+          return this.$vs.notify({
+            text: "Có gì đó sai sai vui lòng thử lại",
+            iconPack: "feather",
+            icon: "icon-alert-circle",
+            color: "danger",
             position: "top-right",
           });
         }
