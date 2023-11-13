@@ -30,6 +30,7 @@ let {
   updateAmountLose,
   insertBetOrder,
   getMaretingAcc,
+  updateBetResult,
 } = require("./../games/service.trade");
 const WIN_STATUS = 1;
 const LOSE_STATUS = 0;
@@ -499,6 +500,15 @@ function SaveHistory(
   };
 
   insertBetOrder(obj, (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+  });
+}
+
+function updateResultBet() {
+  updateBetResult(data, (err, result) => {
     if (err) {
       console.log(err);
       return;
