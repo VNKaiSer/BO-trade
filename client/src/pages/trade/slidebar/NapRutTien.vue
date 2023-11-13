@@ -392,12 +392,72 @@
                 </div>
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
-                  <input
-                    required="bankk"
-                    type="text"
-                    placeholder="Tên Ngân Hàng"
+                  <select
+                    id="nganHang"
+                    name="nganHang"
                     class="form-control"
-                  />
+                    style="width: 100%; background-color: #041022"
+                  >
+                    <option value="vietinbank" class="opp">
+                      Ngân hàng Công thương Việt Nam (VietinBank)
+                    </option>
+                    <option value="vietcombank" class="opp">
+                      Ngân hàng Ngoại thương Việt Nam (Vietcombank)
+                    </option>
+                    <option value="bidv" class="opp">
+                      Ngân hàng Đầu tư và Phát triển Việt Nam (BIDV)
+                    </option>
+                    <option value="techcombank" class="opp">
+                      Ngân hàng Techcombank
+                    </option>
+                    <option value="acb" class="opp">
+                      Ngân hàng TMCP Á Châu (ACB)
+                    </option>
+                    <option value="mbbank" class="opp">
+                      Ngân hàng TMCP Quân đội (MBBank)
+                    </option>
+                    <option value="pvcombank" class="opp">
+                      Ngân hàng Dầu khí Toàn Cầu (PVcomBank)
+                    </option>
+                    <option value="agribank" class="opp">
+                      Ngân hàng Thương mại Cổ phần Nông nghiệp và Phát triển
+                      Nông thôn Việt Nam (Agribank)
+                    </option>
+                    <option value="sacombank" class="opp">
+                      Ngân hàng Sài Gòn Thương Tín (Sacombank)
+                    </option>
+                    <option value="eximbank" class="opp">
+                      Ngân hàng Xuất Nhập khẩu Việt Nam (Eximbank)
+                    </option>
+                    <option value="vib" class="opp">
+                      Ngân hàng Quốc tế (VIB)
+                    </option>
+                    <option value="shb" class="opp">
+                      Ngân hàng Thương mại Cổ phần Sài Gòn - Hà Nội (SHB)
+                    </option>
+                    <option value="hdbank" class="opp">
+                      Ngân hàng Phát triển Thành phố Hồ Chí Minh (HDBank)
+                    </option>
+                    <option value="tpbank" class="opp">
+                      Ngân hàng Tiên Phong (TPBank)
+                    </option>
+                    <option value="nab" class="opp">
+                      Ngân hàng TMCP Nam Á (NAB)
+                    </option>
+                    <option value="agribank" class="opp">
+                      Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam
+                      (Agribank)
+                    </option>
+                    <option value="ab" class="opp">
+                      Ngân hàng An Bình (ABBank)
+                    </option>
+                    <option value="msb" class="opp">
+                      Ngân hàng Hàng Hải (MSB)
+                    </option>
+                    <option value="pg" class="opp">
+                      Ngân hàng Xăng dầu Petrolimex (PG Bank)
+                    </option>
+                  </select>
                 </div>
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Chi nhánh ngân hàng</h4>
@@ -1215,6 +1275,13 @@ export default {
 </script>
 
 <style scoped>
+#nganHang,
+.opp {
+  font-size: 14px;
+  color: #c2c6dc;
+  width: 100%;
+}
+
 .boxSelectUnit.cbx .listUnits .itemSelectUnit .info {
   line-height: 30px;
   width: 100%;
