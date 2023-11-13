@@ -399,64 +399,38 @@
                     v-model="namebank"
                   >
                     <option value="vietinbank" class="opp">
-                      Ngân hàng Công thương Việt Nam (VietinBank)
+                      Ngân hàng VietinBank
                     </option>
                     <option value="vietcombank" class="opp">
-                      Ngân hàng Ngoại thương Việt Nam (Vietcombank)
+                      Ngân hàng Vietcombank
                     </option>
-                    <option value="bidv" class="opp">
-                      Ngân hàng Đầu tư và Phát triển Việt Nam (BIDV)
-                    </option>
+                    <option value="bidv" class="opp">Ngân hàng BIDV</option>
                     <option value="techcombank" class="opp">
                       Ngân hàng Techcombank
                     </option>
-                    <option value="acb" class="opp">
-                      Ngân hàng TMCP Á Châu (ACB)
-                    </option>
-                    <option value="mbbank" class="opp">
-                      Ngân hàng TMCP Quân đội (MBBank)
-                    </option>
+                    <option value="acb" class="opp">Ngân hàng ACB</option>
+                    <option value="mbbank" class="opp">Ngân hàng MBBank</option>
                     <option value="pvcombank" class="opp">
-                      Ngân hàng Dầu khí Toàn Cầu (PVcomBank)
+                      Ngân hàng PVcomBank
                     </option>
                     <option value="agribank" class="opp">
-                      Ngân hàng Thương mại Cổ phần Nông nghiệp và Phát triển
-                      Nông thôn Việt Nam (Agribank)
+                      Ngân hàng Agribank
                     </option>
                     <option value="sacombank" class="opp">
-                      Ngân hàng Sài Gòn Thương Tín (Sacombank)
+                      Ngân hàng Sacombank
                     </option>
                     <option value="eximbank" class="opp">
-                      Ngân hàng Xuất Nhập khẩu Việt Nam (Eximbank)
+                      Ngân hàng Eximbank
                     </option>
-                    <option value="vib" class="opp">
-                      Ngân hàng Quốc tế (VIB)
-                    </option>
-                    <option value="shb" class="opp">
-                      Ngân hàng Thương mại Cổ phần Sài Gòn - Hà Nội (SHB)
-                    </option>
-                    <option value="hdbank" class="opp">
-                      Ngân hàng Phát triển Thành phố Hồ Chí Minh (HDBank)
-                    </option>
-                    <option value="tpbank" class="opp">
-                      Ngân hàng Tiên Phong (TPBank)
-                    </option>
-                    <option value="nab" class="opp">
-                      Ngân hàng TMCP Nam Á (NAB)
-                    </option>
-                    <option value="agribank" class="opp">
-                      Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam
-                      (Agribank)
-                    </option>
-                    <option value="ab" class="opp">
-                      Ngân hàng An Bình (ABBank)
-                    </option>
-                    <option value="msb" class="opp">
-                      Ngân hàng Hàng Hải (MSB)
-                    </option>
-                    <option value="pg" class="opp">
-                      Ngân hàng Xăng dầu Petrolimex (PG Bank)
-                    </option>
+                    <option value="vib" class="opp">Ngân hàng VIB</option>
+                    <option value="shb" class="opp">Ngân hàng SHB</option>
+                    <option value="hdbank" class="opp">Ngân hàng HDBank</option>
+                    <option value="tpbank" class="opp">Ngân hàng TPBank</option>
+                    <option value="nab" class="opp">Ngân hàng NAB</option>
+
+                    <option value="ab" class="opp">Ngân hàng ABBank</option>
+                    <option value="msb" class="opp">Ngân hàng MSB</option>
+                    <option value="pg" class="opp">Ngân hàng PG Bank</option>
                   </select>
                 </div>
                 <div class="relative form-group">
