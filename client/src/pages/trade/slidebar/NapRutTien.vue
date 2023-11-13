@@ -393,7 +393,7 @@
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
                   <input
-                    required="bankk"
+                    v-model="namebank"
                     type="text"
                     placeholder="Tên Ngân Hàng"
                     class="form-control"
@@ -410,6 +410,7 @@
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Số tài khoản</h4>
                   <input
+                    v-model="stk"
                     required="stk"
                     type="text"
                     placeholder="Nhập số tài khoản của bạn"
@@ -420,6 +421,7 @@
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Chủ tài khoản</h4>
                   <input
+                    v-model="chutk"
                     required="chutaikhoan"
                     type="text"
                     placeholder="Nhập tên chủ tài khoản"
@@ -834,11 +836,8 @@ export default {
       let obj = {
         amS: amount,
         nick: getData.displayName,
-        gc: this.noteRut,
+        gc: this.namebank + " - " + this.stk + " - " + this.chutk,
         address: this.adddressWithDrawal,
-        nw: "",
-        code: this.code2FA,
-        chutk: this.ChuTkRut,
       };
       let phi = getSetSys.feeRutUSDTNoiBo;
       let tongphi = amount + Number(phi);
