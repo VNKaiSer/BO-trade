@@ -397,6 +397,7 @@
                     name="nganHang"
                     class="form-control"
                     style="width: 100%; background-color: #041022"
+                    v-model="namebank"
                   >
                     <option value="vietinbank" class="opp">
                       Ngân hàng Công thương Việt Nam (VietinBank)
