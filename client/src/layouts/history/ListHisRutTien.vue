@@ -170,7 +170,6 @@
           <vs-th sort-key="status">Trạng thái</vs-th>
           <vs-th sort-key="datecreate">Thời gian</vs-th>
           <vs-th>Tác vụ</vs-th>
-          <vs-th>Tác vụ</vs-th>
         </template>
 
         <template slot-scope="{ data }">
@@ -234,38 +233,6 @@
               </vs-td>
 
               <vs-td class="text-center whitespace-no-wrap">
-                <vx-tooltip
-                  v-if="
-                    (tr.status == 0 && tr.network == 'bep20') ||
-                    (tr.status == 0 && tr.network == 'erc20') ||
-                    (tr.status == -1 && tr.network == 'bep20') ||
-                    (tr.status == -1 && tr.network == 'erc20')
-                  "
-                  style="float: left"
-                  color="danger"
-                  text="Từ chối"
-                >
-                  <vs-button
-                    :disabled="clickRefuseDone"
-                    color="red"
-                    type="line"
-                    icon-pack="feather"
-                    icon="icon-check"
-                    @click.stop="
-                      doneRefuseWithdra(
-                        tr.id,
-                        indextr,
-                        tr.amount,
-                        tr.email,
-                        tr.fee_withdraw
-                      )
-                    "
-                    >Từ chối</vs-button
-                  >
-                </vx-tooltip>
-                <span v-else style="color: #ff6f6f">Từ chối</span>
-              </vs-td>
-              <vs-td class="text-center whitespace-no-wrap">
                 <vs-button
                   type="filled"
                   @click="
@@ -277,7 +244,7 @@
                       tr.fee_withdraw
                     )
                   "
-                  >Xác nhận</vs-button
+                  ><span>Xác nhận</span></vs-button
                 >
               </vs-td>
             </vs-tr>
