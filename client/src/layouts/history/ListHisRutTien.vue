@@ -266,40 +266,20 @@
                 <span v-else style="color: #ff6f6f">Từ chối</span>
               </vs-td>
               <vs-td class="text-center whitespace-no-wrap">
-                <vx-tooltip
-                  v-if="tr.status == 1 && tr.network == 'bep20'"
-                  style="float: left"
-                  color="success"
-                  text="Xác Nhận"
+                <vs-button
+                  type="filled"
+                  @click="
+                    doneRefuseWithdra(
+                      tr.id,
+                      indextr,
+                      tr.amount,
+                      tr.email,
+                      tr.fee_withdraw
+                    )
+                  "
+                  >Xác nhận</vs-button
                 >
-                  <!-- :disabled="clickRefuseDone" -->
-
-                  <vs-button
-                    color="#00ff37"
-                    type="line"
-                    icon-pack="feather"
-                    icon="icon-check"
-                    @click.stop="
-                      doneRefuseWithdra(
-                        tr.id,
-                        indextr,
-                        tr.amount,
-                        tr.email,
-                        tr.fee_withdraw
-                      )
-                    "
-                    >Xác nhận</vs-button
-                  >
-                </vx-tooltip>
-                <span v-else style="color: #00ff37">Xác nhận</span>
               </vs-td>
-
-              <!--<vx-tooltip v-if="tr.delete_status == 0" style="float: left" color="danger" text="Xóa">
-                          <vs-button color="dark" type="line" icon-pack="feather" icon="icon-trash" @click.stop="deleteWithdra(tr.id, indextr, 1)"></vs-button>
-                      </vx-tooltip>
-                      <vx-tooltip v-else style="float: left" color="warning" text="Thu hồi">
-                          <vs-button color="dark" type="line" icon-pack="feather" icon="icon-arrow-up-left" @click.stop="deleteWithdra(tr.id, indextr, 0)"></vs-button>
-                      </vx-tooltip>-->
             </vs-tr>
           </tbody>
         </template>
@@ -442,6 +422,7 @@ export default {
     },
 
     doneRefuseWithdra(id, index, amount, email, fee) {
+      console.log("Chạy ra rồi nè");
       let obj = {
         id: id,
         amount: amount,
@@ -449,17 +430,13 @@ export default {
         fee: fee,
       };
 
-      AuthenticationService.doneRefuseWithDrawalByID(obj).then((resp) => {
-        let d = resp.data;
-        if (d.success == 1) {
-          this.productsFake[index].status = 2;
-          return this.$vs.notify({
-            text: "Đã hoàn trả lại số tiền",
-            color: "success",
-            iconPack: "feather",
-            icon: "icon-check",
-          });
-        }
+      AuthenticationService.verifiedMoney(obj).then((resp) => {
+        return this.$vs.notify({
+          text: "Xác thực thành công",
+          color: "success",
+          iconPack: "feather",
+          icon: "icon-check",
+        });
       });
     },
 

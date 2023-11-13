@@ -363,6 +363,10 @@ export default {
     return ApiAdmin().post("api/users/getListCmsHis", obj);
   },
 
+  verifiedWithdrawal(obj) {
+    return ApiAdmin().post("api/users/verifiedWithdrawal", obj);
+  },
+
   //================
   //================
   //================

@@ -613,8 +613,8 @@ module.exports = {
   activeUser: (data, callback) => {
     console.log(data);
     db.query(
-      `update users set active = ?, code_secure = ? where id = ?`,
-      [data.verified, makeid(4), data.id],
+      `update users set active = ?, code_secure = ?, verified = ? where id = ?`,
+      [data.verified, makeid(4), data.verified, data.id],
       (error, results, fields) => {
         if (error) {
           return callback(error);
