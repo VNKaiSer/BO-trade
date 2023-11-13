@@ -596,7 +596,7 @@ export default {
   },
   methods: {
     enterMaxAmount() {
-      this.amount = this.getAmount;
+      this.amount = this.balanceUSDT;
     },
 
     DepositPaypal() {
