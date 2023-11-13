@@ -392,10 +392,8 @@
                 </div>
                 <div class="relative form-group">
                   <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
-                  <input
-                    v-model="namebank"
-                    type="text"
-                    placeholder="Tên Ngân Hàng"
+                  <select
+                    id="nganHang"
                     class="form-control"
                     style="width: 100%; background-color: #041022"
                     v-model="namebank"
