@@ -394,7 +394,6 @@
                   <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
                   <select
                     id="nganHang"
-                    name="nganHang"
                     class="form-control"
                     style="width: 100%; background-color: #041022"
                     v-model="namebank"
