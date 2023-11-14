@@ -171,16 +171,16 @@ function handleSendKQ(data, ws) {
 
   getResultBet(data.data.idBet, (err, rs) => {
     const wl = rs.wl;
-    async () => {
+    (async () => {
       try {
         const result = await helperCoin.caculatorClosePrice({
-          coinBet: data.coinBet,
-          type: data.type,
+          coinBet: data.data.coinBet,
+          type: data.data.type,
           status: "win",
         });
         updateResultBet({
           id: data.data.idBet,
-          amount_win: amount_win,
+          amount_win: amountShow + data.data.betAmount,
           amount_lose: 0,
           open: result.open,
           close: result.close,
@@ -188,7 +188,7 @@ function handleSendKQ(data, ws) {
       } catch (error) {
         console.error(error);
       }
-    };
+    })();
     if (wl == "win") {
       updatePriceWinLose(obj, "w");
       updateAmountWin(obj, (err, result) => {});
@@ -204,24 +204,26 @@ function handleSendKQ(data, ws) {
     } else {
       updateAmountLose(obj, (err, result) => {});
       updatePriceWinLose(obj, "l");
-      async () => {
+
+      (async () => {
         try {
           const result = await helperCoin.caculatorClosePrice({
-            coinBet: data.coinBet,
-            type: data.type,
-            status: "win",
+            coinBet: data.data.coinBet,
+            type: data.data.type,
+            status: "lose",
           });
+          console.log(result);
           updateResultBet({
             id: data.data.idBet,
             amount_win: 0,
-            amount_lose: data.betAmount,
+            amount_lose: data.data.betAmount,
             open: result.open,
             close: result.close,
           });
         } catch (error) {
           console.error(error);
         }
-      };
+      })();
       let obj2 = {
         type: "kq",
         data: {
@@ -563,6 +565,10 @@ function updateResultBet(data) {
   updateBetResult(data, (err, result) => {
     if (err) {
       console.log(err);
+      return;
+    }
+    if (result) {
+      console.log(result);
       return;
     }
   });

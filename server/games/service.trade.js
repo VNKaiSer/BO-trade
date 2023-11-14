@@ -391,9 +391,8 @@ module.exports = {
 
   updateBetResult: (data, callback) => {
     db.query(
-      `UPDATE bet_history SET amount_win = ?, amount_lose = ?, open = ?, close = ?
-      WHERE betId = ? 
-            VALUES (?,?,?,?,?)`,
+      `UPDATE bet_history SET amount_win = ?, amount_lose = ?, open = ?, close = ?, status = 1
+      WHERE betId = ?`,
       [data.amount_win, data.amount_lose, data.open, data.close, data.id],
       (error, results, fields) => {
         if (error) {
