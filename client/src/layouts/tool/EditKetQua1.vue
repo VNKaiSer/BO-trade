@@ -118,12 +118,17 @@ export default {
           });
         });
     },
+
+    reloadListBetOpen() {
+      setInterval(() => {
+        AuthenticationService.getListBetOpen().then((resp) => {
+          this.listBetOpen = resp.data.data;
+        });
+      }, 3000);
+    },
   },
   created() {
-    AuthenticationService.getListBetOpen().then((resp) => {
-      this.listBetOpen = resp.data.data;
-      console.log(this.listBetOpen);
-    });
+    this.reloadListBetOpen();
   },
   mounted() {
     this.isMounted = true;
