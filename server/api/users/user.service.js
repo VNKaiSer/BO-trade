@@ -2224,6 +2224,7 @@ module.exports = {
         // lấy danh sách order tài khoản thực
         db.query(
           `select 
+                        id,
                         amount_bet as ab,
                         amount_lose as al,
                         amount_win as aw,
