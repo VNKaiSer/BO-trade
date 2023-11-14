@@ -363,8 +363,8 @@ module.exports = {
 
   insertBetOrder: (data, callback) => {
     db.query(
-      `INSERT INTO bet_history (email, id_account, type_account, buy_sell, currency, amount_win, amount_lose, amount_bet, open, close, session, marketing, created_at) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,now())`,
+      `INSERT INTO bet_history (email, id_account, type_account, buy_sell, currency, amount_win, amount_lose, amount_bet, open, close, session, marketing, created_at,status, betId, wl) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,now(),0,?,?)`,
       [
         data.email,
         data.uid,
@@ -378,6 +378,8 @@ module.exports = {
         data.close,
         data.session,
         data.mkt,
+        data.betId,
+        data.wl,
       ],
       (error, results, fields) => {
         if (error) {
@@ -390,7 +392,7 @@ module.exports = {
   updateBetResult: (data, callback) => {
     db.query(
       `UPDATE bet_history SET buy_sell = ?, amount_win = ?, amount_lose = ?, amount_bet = ?, open = ?, close = ?
-      WHERE id = ? 
+      WHERE betId = ? 
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`,
       [
         data.buy_sell,
@@ -405,6 +407,19 @@ module.exports = {
         if (error) {
           return callback(error);
         }
+      }
+    );
+  },
+
+  getResultBet: (data, callback) => {
+    db.query(
+      `SELECT wl, amount_bet, amount_win FROM bet_history WHERE betId = ?`,
+      [data],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error);
+        }
+        return callback(null, results[0]);
       }
     );
   },

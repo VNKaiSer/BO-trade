@@ -65,6 +65,7 @@ const {
   depositBank,
   getDepositBankingCount,
   verifyBankingUser,
+  getListBetOpen,
 } = require("./user.service");
 
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
@@ -1908,6 +1909,19 @@ module.exports = {
           });
         });
       }
+    });
+  },
+
+  getListBetOpen: (req, res) => {
+    getListBetOpen((err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      return res.json({
+        success: 1,
+        data: results,
+      });
     });
   },
 

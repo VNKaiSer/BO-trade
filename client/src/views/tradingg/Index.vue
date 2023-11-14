@@ -1491,6 +1491,7 @@ export default {
         uidAcc = uidDemo;
       }
       // đoạn này gửi đi này
+      const idBet = new Date().getTime() + uidAcc;
       let obj = {
         email: email,
         uid: uidAcc,
@@ -1500,7 +1501,9 @@ export default {
         betAmount: gAmount,
         type: v,
         coinBet: this.coinBet,
+        idBet: idBet,
         mkt: getData.mkt,
+        timeBet: timeBet,
       };
 
       let ss = this.$store.session;
@@ -1551,9 +1554,8 @@ export default {
         op: priceOpen,
         timeBet: timeBet,
         timeEndBet: timeGet + timeBet * 1000,
+        idBet: idBet,
       };
-
-      console.log(itp);
 
       this.betOpen.l.bet[0].items.push(itp);
 
@@ -1563,16 +1565,26 @@ export default {
 
       this.clearBAmount();
 
+      // setTimeout(() => {
+      //   this.sendMessage({ type: "getKq", data: obj });
+      //   localStorage.removeItem("stateOpen");
+      //   this.betOpen.l.bet[0].items = this.betOpen.l.bet[0].items.filter(
+      //     (item) => item.time !== itp.time
+      //   );
+      //   localStorage.setItem("stateOpen", JSON.stringify(this.betOpen));
+      //   getData.Notify = this.betOpen.l.bet[0].items.length;
+      // }, 1 * 1000);
+
+      this.sendMessage({ type: "getKq", data: obj });
       setTimeout(() => {
-        this.sendMessage({ type: "getKq", data: obj });
         localStorage.removeItem("stateOpen");
+
         this.betOpen.l.bet[0].items = this.betOpen.l.bet[0].items.filter(
           (item) => item.time !== itp.time
         );
         localStorage.setItem("stateOpen", JSON.stringify(this.betOpen));
         getData.Notify = this.betOpen.l.bet[0].items.length;
-      }, this.timeBet * 1000);
-
+      }, timeBet * 1000);
       // },2000)
 
       // if(v === 'buy'){

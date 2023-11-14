@@ -31,67 +31,22 @@
               <th>Thắng</th>
               <th>Thua</th>
             </tr>
-            <tr :data="tr" :key="indextr" v-for="(tr, indextr) in productsFake">
-              <template v-if="tr.mkt == 0">
-                <td>{{ tr.e }}</td>
-                <td>
-                  <p class="bet-type">{{ tr.sv }}</p>
-                </td>
-                <td>
-                  <p class="bet-buy_sell" v-if="tr.bet == 'buy'">
-                    <span class="mr-2 text-success">MUA</span>
-                    <feather-icon icon="TrendingUpIcon" svgClasses="w-5 h-5" />
-                  </p>
-                  <p class="bet-buy_sell" v-else>
-                    <span class="mr-2 text-danger">BÁN</span>
-                    <feather-icon
-                      icon="TrendingDownIcon"
-                      svgClasses="w-5 h-5"
-                    />
-                  </p>
-                </td>
-                <td>
-                  <p class="bet-amount">
-                    <IconCrypto
-                      style="width: 20px"
-                      coinname="usdt"
-                      color="color"
-                      format="svg"
-                    />
-                    <font class="ml-2" color="#006c27">{{
-                      formatPrice(tr.amount, 2)
-                    }}</font>
-                  </p>
-                </td>
-                <td>
-                  <!-- ghi chú: td của phiên. nhớ sửa col sv thành phiên -->
-                  <p class="bet-type">{{ tr.sv }}</p>
-                </td>
-                <vs-td class="text-center whitespace-no-wrap">
-                  <vx-tooltip style="float: left" text="Thắng">
-                    <vs-button
-                      color="#00ff37"
-                      type=" loading-corners"
-                      icon-pack="feather"
-                      icon="icon-check"
-                      >Thắng</vs-button
-                    >
-                  </vx-tooltip>
-                  <span style="color: #00ff37">Thắng</span>
-                </vs-td>
-                <vs-td class="text-center whitespace-no-wrap">
-                  <vx-tooltip style="float: left" text="Thua">
-                    <vs-button
-                      color="#ff6f6f"
-                      type="line"
-                      icon-pack="feather"
-                      icon="icon-check"
-                      >Thua</vs-button
-                    >
-                  </vx-tooltip>
-                  <span style="color: #ff6f6f">Thua</span>
-                </vs-td>
-              </template>
+            <tr :data="tr" :key="indextr" v-for="(tr, indextr) in listBetOpen">
+              <td>{{ tr.email }}</td>
+              <td>{{ tr.currency }}</td>
+              <td>{{ tr.buy_sell }}</td>
+              <td>{{ tr.amount_bet }}</td>
+              <td>{{ tr.session }}</td>
+              <vs-td>
+                <button @click="actionBeCau({ action: 'win', data: tr })">
+                  Thắng
+                </button>
+              </vs-td>
+              <vs-td>
+                <button @click="actionBeCau({ action: 'lose', data: tr })">
+                  Thua
+                </button>
+              </vs-td>
             </tr>
           </table>
         </div>
@@ -101,7 +56,7 @@
 </template>
 
 <script>
-import SETTINGS from "../../../settings.json";
+import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
   components: {},
@@ -117,6 +72,7 @@ export default {
       productsFake: [
         // {e: 'admin@gmail.com', uid: 'DS9OR0KGJS', sv: 'BTC/USDT', bet: 'buy', amount: '10' }
       ],
+      listBetOpen: [],
       itemsPerPage: 10,
       isMounted: false,
 
@@ -134,289 +90,24 @@ export default {
       price_play_sell: 0,
     };
   },
-  computed: {
-    currentPage() {
-      if (this.isMounted) {
-        return this.$refs.table.currentx;
-      }
-      return 0;
-    },
-    products() {
-      return this.productsFake;
-    },
-    queriedItems() {
-      return this.$refs.table
-        ? this.$refs.table.queriedResults.length
-        : this.productsFake.length;
-    },
-  },
+  computed: {},
   watch: {},
   methods: {
-    sbAmountBeCauMin() {
-      this.sendMessage({
-        type: "editGL",
-        data: {
-          type: "WRITE_AMOUNT_NEGA_AMOUNT_BREAK_BRIDGE",
-          AMOUNT: this.AMOUNTBECAU_MIN,
-        },
-      });
+    actionBeCau(val) {
       return this.$vs.notify({
-        text: "Đã thay đổi thành " + this.AMOUNTBECAU_MIN,
+        text: "Đã bẻ cầu thành " + val.action,
         color: "success",
         position: "top-center",
         iconPack: "feather",
         icon: "icon-message-square",
-      });
-    },
-
-    sbAmountBeCauMax() {
-      this.sendMessage({
-        type: "editGL",
-        data: {
-          type: "WRITE_AMOUNT_MAX_BREAK_BRIDGE",
-          AMOUNT: this.AMOUNTBECAU_MAX,
-        },
-      });
-      return this.$vs.notify({
-        text: "Đã thay đổi thành " + this.AMOUNTBECAU_MAX,
-        color: "success",
-        position: "top-center",
-        iconPack: "feather",
-        icon: "icon-message-square",
-      });
-    },
-
-    changeBOTOnOff() {
-      this.sendMessage({ type: "editGL", data: { type: "BOT" } });
-
-      if (this.checkOnOffBOT) {
-        return this.$vs.notify({
-          text: "BOT đã được TẮT",
-          color: "success",
-          position: "top-center",
-          iconPack: "feather",
-          icon: "icon-message-square",
-        });
-      } else {
-        return this.$vs.notify({
-          text: "BOT đã được BẬT",
-          color: "success",
-          position: "top-center",
-          iconPack: "feather",
-          icon: "icon-message-square",
-        });
-      }
-    },
-
-    changeBetOnOff() {
-      this.radioBC = "off";
-
-      this.checkOnOffBOTGoTien = false;
-
-      if (this.checkOnOffAnGian) {
-        this.sendMessage({ type: "editGL", data: { type: "BTC_OFF" } });
-
-        return this.$vs.notify({
-          text: "Đã thay đổi thành TẮT",
-          color: "success",
-          position: "top-center",
-          iconPack: "feather",
-          icon: "icon-message-square",
-        });
-      } else {
-        this.sendMessage({ type: "editGL", data: { type: "BTC_LESS" } });
-
-        return this.$vs.notify({
-          text: "Đã thay đổi thành BẬT",
-          color: "success",
-          position: "top-center",
-          iconPack: "feather",
-          icon: "icon-message-square",
-        });
-      }
-    },
-
-    reloadAmTien() {
-      this.sendMessage({ type: "editGL", data: { type: "GO_TIEN_OFF" } });
-    },
-
-    changeMode(val) {
-      this.checkOnOffAnGian = false;
-
-      if (val == "buy") {
-        this.sendMessage({ type: "editGL", data: { type: "BTC_BUY" } });
-        val = "MUA";
-      }
-      if (val == "sell") {
-        this.sendMessage({ type: "editGL", data: { type: "BTC_SELL" } });
-        val = "BÁN";
-      }
-      if (val == "off") {
-        this.sendMessage({ type: "editGL", data: { type: "BTC_OFF" } });
-        val = "TẮT";
-      }
-
-      return this.$vs.notify({
-        text: "Đã thay đổi thành " + val,
-        color: "success",
-        position: "top-center",
-        iconPack: "feather",
-        icon: "icon-message-square",
-      });
-    },
-
-    formatPrice(value, minimum) {
-      var formatter = new Intl.NumberFormat("en-US", {
-        //style: 'currency',
-        //currency: '',
-        minimumFractionDigits: minimum,
-      });
-      return formatter.format(value);
-    },
-
-    // getAmountDecimal(type, money){
-    //   let cur = '$'
-    //   let coin = type.toUpperCase()
-    //   if(coin == 'BTC') return cur+money.toFixed(6)
-    //   if(coin == 'ETH') return cur+money.toFixed(4)
-    //   return cur+money.toFixed(2)
-    // },
-
-    toggleDataSidebar(val = false) {
-      this.addNewDataSidebar = val;
-    },
-
-    sendMessage(message) {
-      this.connection.send(JSON.stringify(message));
-    },
-
-    changeRadioGetSV(dl) {
-      this.radioBC = "";
-
-      if (dl.BTC.BUY) {
-        this.radioBC = "buy";
-      } else if (dl.BTC.SELL) {
-        this.radioBC = "sell";
-      } else if (!dl.BTC.BUY && !dl.BTC.SELL) {
-        this.radioBC = "off";
-      }
-
-      if (dl.LESS_WIN) {
-        this.checkOnOffAnGian = true;
-      } else {
-        this.checkOnOffAnGian = false;
-      }
-
-      if (dl.PRICE_FUND_ON_OFF) {
-        this.checkOnOffBOTGoTien = true;
-      } else {
-        this.checkOnOffBOTGoTien = false;
-      }
-
-      if (dl.BOT) {
-        this.checkOnOffBOT = true;
-      } else {
-        this.checkOnOffBOT = false;
-      }
-    },
-
-    changeBOTGoTienOnOff() {
-      this.checkOnOffAnGian = false;
-      this.radioBC = "off";
-
-      this.sendMessage({ type: "editGL", data: { type: "BOT_GO_TIEN" } });
-
-      if (this.checkOnOffBOTGoTien) {
-        return this.$vs.notify({
-          text: "BOT gỡ tiền đã được TẮT",
-          color: "success",
-          position: "top-center",
-          iconPack: "feather",
-          icon: "icon-message-square",
-        });
-      } else {
-        return this.$vs.notify({
-          text: "BOT gỡ tiền đã được BẬT",
-          color: "success",
-          position: "top-center",
-          iconPack: "feather",
-          icon: "icon-message-square",
-        });
-      }
-    },
-
-    sendInfoAdmin() {
-      this.sendMessage({
-        type: "accountDetail",
-        data: { uid: "ADMIN_BO", email: "ad999999@gmail.com" },
       });
     },
   },
   created() {
-    // if(!moduleDataList.isRegistered) {
-    //   this.$store.registerModule('dataList', moduleDataList)
-    //   moduleDataList.isRegistered = true
-    // }
-
-    //this.$store.registerModule('dataList', this.productsFake);
-
-    //this.$store.dispatch("dataList/fetchDataListItems")
-    //console.log(this.productsFake);
-    //console.log(this.$store.state.dataList);
-    var _this = this;
-    this.connection = new WebSocket(SETTINGS.BASE_URL_SOCKET);
-
-    this.connection.onopen = function () {
-      _this.sendInfoAdmin();
-      console.log("Successfully connected to the echo websocket server...");
-    };
-
-    this.connection.onmessage = function (event) {
-      let data = JSON.parse(event.data);
-      let dl = data.data;
-
-      if (data.type === "allData") {
-        _this.countDown = dl.candleClose;
-        _this.typeOder = dl.type == "order" ? "Mở" : "Đóng";
-
-        // reset lại số tiền = 0 khi thời gian = 0;
-        if (dl.candleClose == 0) {
-          _this.price_buy = 0;
-          _this.price_sell = 0;
-        }
-      }
-
-      if (data.type === "getTruck") {
-        _this.changeRadioGetSV(dl);
-        _this.AMOUNTBECAU_MIN = data.min_am_go;
-        _this.AMOUNTBECAU_MAX = data.max_amount_be;
-      }
-
-      if (data.type === "truck") {
-        _this.productsFake = dl;
-        _this.price_buy = _this.formatPrice(data.price_buy, 2);
-        _this.price_sell = _this.formatPrice(data.price_sell, 2);
-        _this.price_buy_mkt = _this.formatPrice(data.mktBUY, 2);
-        _this.price_sell_mkt = _this.formatPrice(data.mktSELL, 2);
-        _this.price_total_mkt = _this.formatPrice(
-          data.mktBUY + data.mktSELL,
-          2
-        );
-
-        let tt =
-          data.price_buy + data.price_sell - (data.mktBUY + data.mktSELL);
-
-        _this.price_play_buy = _this.formatPrice(
-          data.price_buy - data.mktBUY,
-          2
-        );
-        _this.price_play_sell = _this.formatPrice(
-          data.price_sell - data.mktSELL,
-          2
-        );
-        _this.price_total = _this.formatPrice(tt, 2);
-      }
-    };
+    AuthenticationService.getListBetOpen().then((resp) => {
+      this.listBetOpen = resp.data.data;
+      console.log(this.listBetOpen);
+    });
   },
   mounted() {
     this.isMounted = true;

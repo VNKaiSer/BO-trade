@@ -469,4 +469,7 @@ export default {
   updateTradeHisById(obj) {
     return ApiAdmin().patch("api/trades/updateTradeHisById", obj);
   },
+  getListBetOpen() {
+    return ApiAdmin().get("api/users/history-bet-open");
+  },
 };

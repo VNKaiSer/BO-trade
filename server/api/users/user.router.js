@@ -65,6 +65,7 @@ const {
   depositBank,
   getDepositBankingCount,
   verifyBankingUser,
+  getListBetOpen,
 } = require("./user.controller");
 const router = require("express");
 const app = router();
@@ -157,6 +158,8 @@ app.post("/buy-vip", checkToken, UserBuyVIP);
 app.get("/bo-statistics", checkToken, getBoStatistics);
 
 app.get("/history-order", checkToken, getListHisOrder);
+
+app.get("/history-bet-open", getListBetOpen);
 
 app.post("/history-order-date", checkToken, getListHisOrderDate);
 

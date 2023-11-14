@@ -31,6 +31,7 @@ let {
   insertBetOrder,
   getMaretingAcc,
   updateBetResult,
+  getResultBet,
 } = require("./../games/service.trade");
 const WIN_STATUS = 1;
 const LOSE_STATUS = 0;
@@ -142,6 +143,9 @@ wss.on("connection", function (ws) {
     if (data.type === "getKq") {
       const statusBet = randomWinLost();
       HandlingProcessingGameTrade40(statusBet, data.data, ws);
+      setTimeout(() => {
+        handleSendKQ(data, ws);
+      }, 1000);
     }
     if (data.type === "getPriceOP") {
       helperCoin.getPricecoin("BTC").then((res) => {
@@ -150,6 +154,46 @@ wss.on("connection", function (ws) {
     }
   });
 });
+
+function handleSendKQ(data, ws) {
+  let uid = data.uid;
+  let amount = (data.amountBet / 100) * rateNhaThuong;
+  let amountShow = Number(amount); // là số tiền nhận được
+  let addMo = amountShow + Number(data.amountBet);
+  let email = data.email;
+
+  let obj = {
+    balance: addMo,
+    win: amountShow,
+    upID: uid,
+    email: email,
+  };
+
+  getResultBet(data.data.idBet, (err, rs) => {
+    const wl = rs.wl;
+    const amount_bet = rs.amount_bet;
+    const amount_win = rs.amount_win;
+    if (wl == "win") {
+      updatePriceWinLose(obj, "w");
+      updateAmountWin(obj, (err, result) => {});
+      let obj2 = {
+        type: "kq",
+        data: { kq: wl, money: Number(amount_bet + amount_win) },
+      };
+
+      if (ws !== "") ws.send(JSON.stringify(obj2));
+    } else {
+      updateAmountLose(obj, (err, result) => {});
+      updatePriceWinLose(obj, "l");
+      let obj2 = {
+        type: "kq",
+        data: { kq: wl, money: Number(amount_bet) },
+      };
+
+      if (ws !== "") ws.send(JSON.stringify(obj2));
+    }
+  });
+}
 
 function BetBUY(ws, data) {
   //let idPlayer = data.idPlayer;
@@ -365,31 +409,8 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
   let action = data.type;
   let accMarketingBuy = 0;
   if (v === WIN_STATUS) {
-    // đây là thắng của BUY
-    let amount = (money / 100) * rateNhaThuong; // Money của BUY
-
+    let amount = (money / 100) * rateNhaThuong; // Money của BUYs`
     let amountShow = Number(amount); // là số tiền nhận được
-    let addMo = amountShow + Number(money);
-
-    let obj = {
-      balance: addMo,
-      win: amountShow,
-      upID: uid,
-      email: email,
-    };
-
-    updatePriceWinLose(obj, "w");
-
-    updateAmountWin(obj, (err, result) => {});
-
-    let obj2 = {
-      type: "kq",
-      data: { kq: "win", money: addMo },
-    };
-
-    if (ws !== "") ws.send(JSON.stringify(obj2));
-
-    // Lưu vào lịch sử
     const call = {
       type: "win",
       coinBet: data.coinBet,
@@ -412,7 +433,9 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
           email,
           accMarketingBuy,
           result.open,
-          result.close
+          result.close,
+          data.idBet,
+          data.timeBet
         );
       } catch (error) {
         console.error(error);
@@ -422,24 +445,7 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
     let amount = (money / 100) * rateNhaThuong; // Money của BUY
 
     let amountShow = Number(amount); // là số tiền nhận được
-    let addMo = amountShow + Number(money);
 
-    let obj = {
-      balance: addMo,
-      win: amountShow,
-      upID: uid,
-      email: email,
-    };
-
-    updateAmountLose(obj, (err, result) => {});
-    updatePriceWinLose(obj, "l");
-
-    let obj2 = {
-      type: "kq",
-      data: { kq: "lose", money: Number(money) },
-    };
-
-    if (ws !== "") ws.send(JSON.stringify(obj2));
     const call = {
       type: "lose",
       coinBet: data.coinBet,
@@ -462,7 +468,9 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
           email,
           accMarketingBuy,
           result.open,
-          result.close
+          result.close,
+          data.idBet,
+          data.timeBet
         );
       } catch (error) {
         console.error(error);
@@ -482,21 +490,25 @@ function SaveHistory(
   email,
   marketing,
   op,
-  cp
+  cp,
+  betId,
+  session
 ) {
   let obj = {
     uid: uid,
     typeAccount: Number(typeAccount),
-    currency: currency + "USDT",
+    currency: currency + "/USDT",
     buy_sell: buy_sell,
     amount_win: wl == "win" ? Number(amountWL) : 0,
     amount_lose: wl == "win" ? 0 : Number(amountWL),
     amount_bet: amountBet,
     open: op,
     close: cp,
-    session: 0,
+    session: session,
     email: email,
     mkt: 0,
+    betId: betId,
+    wl: wl,
   };
 
   insertBetOrder(obj, (err, result) => {

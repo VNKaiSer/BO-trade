@@ -2246,6 +2246,20 @@ module.exports = {
     );
   },
 
+  getListBetOpen: (callback) => {
+    console.log("getListBetOpen");
+    // lấy danh sách order tài khoản thực
+    db.query(
+      `SELECT email, currency,buy_sell, amount_bet, session FROM bet_history WHERE status = 0`,
+      [],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error);
+        }
+        return callback(null, results);
+      }
+    );
+  },
   getListHisOrderDate: (data, callback) => {
     // lấy tài khoản thực của email
     db.query(
