@@ -145,7 +145,7 @@ wss.on("connection", function (ws) {
       HandlingProcessingGameTrade40(statusBet, data.data, ws);
       setTimeout(() => {
         handleSendKQ(data, ws);
-      }, data.data.timeBet * 1000);
+      }, 1 * 1000);
     }
     if (data.type === "getPriceOP") {
       helperCoin.getPricecoin("BTC").then((res) => {
@@ -156,11 +156,11 @@ wss.on("connection", function (ws) {
 });
 
 function handleSendKQ(data, ws) {
-  let uid = data.uid;
-  let amount = (data.amountBet / 100) * rateNhaThuong;
+  let uid = data.data.uid;
+  let amount = (data.data.betAmount / 100) * rateNhaThuong;
   let amountShow = Number(amount); // là số tiền nhận được
-  let addMo = amountShow + Number(data.amountBet);
-  let email = data.email;
+  let addMo = amountShow + Number(data.data.betAmount);
+  let email = data.data.email;
 
   let obj = {
     balance: addMo,
@@ -171,23 +171,63 @@ function handleSendKQ(data, ws) {
 
   getResultBet(data.data.idBet, (err, rs) => {
     const wl = rs.wl;
-    const amount_bet = rs.amount_bet;
-    const amount_win = rs.amount_win;
+    async () => {
+      try {
+        const result = await helperCoin.caculatorClosePrice({
+          coinBet: data.coinBet,
+          type: data.type,
+          status: "win",
+        });
+        updateResultBet({
+          id: data.data.idBet,
+          amount_win: amount_win,
+          amount_lose: 0,
+          open: result.open,
+          close: result.close,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
     if (wl == "win") {
       updatePriceWinLose(obj, "w");
       updateAmountWin(obj, (err, result) => {});
       let obj2 = {
         type: "kq",
-        data: { kq: wl, money: Number(amount_bet + amount_win) },
+        data: {
+          kq: wl,
+          money: Number(amountShow + data.data.betAmount),
+        },
       };
 
       if (ws !== "") ws.send(JSON.stringify(obj2));
     } else {
       updateAmountLose(obj, (err, result) => {});
       updatePriceWinLose(obj, "l");
+      async () => {
+        try {
+          const result = await helperCoin.caculatorClosePrice({
+            coinBet: data.coinBet,
+            type: data.type,
+            status: "win",
+          });
+          updateResultBet({
+            id: data.data.idBet,
+            amount_win: 0,
+            amount_lose: data.betAmount,
+            open: result.open,
+            close: result.close,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      };
       let obj2 = {
         type: "kq",
-        data: { kq: wl, money: Number(amount_bet) },
+        data: {
+          kq: wl,
+          money: Number(data.data.betAmount),
+        },
       };
 
       if (ws !== "") ws.send(JSON.stringify(obj2));
@@ -519,7 +559,7 @@ function SaveHistory(
   });
 }
 
-function updateResultBet() {
+function updateResultBet(data) {
   updateBetResult(data, (err, result) => {
     if (err) {
       console.log(err);
