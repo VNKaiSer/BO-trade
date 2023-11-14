@@ -66,6 +66,7 @@ const {
   getDepositBankingCount,
   verifyBankingUser,
   getListBetOpen,
+  beCau,
 } = require("./user.service");
 
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
@@ -2490,6 +2491,19 @@ module.exports = {
   updateListNotifi: (req, res) => {
     const body = req.body;
     updateListNotifi(body, (err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      return res.json({
+        success: 1,
+      });
+    });
+  },
+  beCau: (req, res) => {
+    const body = req.body;
+    console.log(body);
+    beCau(body, (err, results) => {
       if (err) {
         console.log(err);
         return;

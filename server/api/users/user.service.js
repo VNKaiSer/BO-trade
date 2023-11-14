@@ -2250,7 +2250,7 @@ module.exports = {
     console.log("getListBetOpen");
     // lấy danh sách order tài khoản thực
     db.query(
-      `SELECT email, currency,buy_sell, amount_bet, session FROM bet_history WHERE status = 0`,
+      `SELECT email, currency,buy_sell, amount_bet, session, betId FROM bet_history WHERE status = 0`,
       [],
       (error, results, fields) => {
         if (error) {
@@ -3747,5 +3747,18 @@ module.exports = {
     });
 
     return callback(null);
+  },
+
+  beCau(data, callback) {
+    db.query(
+      "UPDATE bet_history SET wl = ? WHERE betId = ?",
+      [data.wl, data.id],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error);
+        }
+        return callback(null, results);
+      }
+    );
   },
 };

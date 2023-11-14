@@ -94,13 +94,29 @@ export default {
   watch: {},
   methods: {
     actionBeCau(val) {
-      return this.$vs.notify({
-        text: "Đã bẻ cầu thành " + val.action,
-        color: "success",
-        position: "top-center",
-        iconPack: "feather",
-        icon: "icon-message-square",
-      });
+      console.log(val);
+      AuthenticationService.beCau({
+        id: val.data.betId,
+        wl: val.action,
+      })
+        .then((result) => {
+          return this.$vs.notify({
+            text: "Đã bẻ cầu thành " + val.action,
+            color: "success",
+            position: "top-center",
+            iconPack: "feather",
+            icon: "icon-message-square",
+          });
+        })
+        .catch((err) => {
+          return this.$vs.notify({
+            text: "Lỗi hệ thống",
+            color: "success",
+            position: "top-center",
+            iconPack: "feather",
+            icon: "icon-message-square",
+          });
+        });
     },
   },
   created() {

@@ -66,6 +66,7 @@ const {
   getDepositBankingCount,
   verifyBankingUser,
   getListBetOpen,
+  beCau,
 } = require("./user.controller");
 const router = require("express");
 const app = router();
@@ -217,4 +218,5 @@ app.get("/getDepositBankingCount", checkToken, getDepositBankingCount);
 
 app.post("/verifyBankingUser", checkToken, verifyBankingUser);
 
+app.post("/beCau", beCau);
 module.exports = app;

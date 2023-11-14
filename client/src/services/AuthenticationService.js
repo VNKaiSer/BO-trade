@@ -289,6 +289,9 @@ export default {
   minusMoneyMember(obj) {
     return ApiAdmin().post("api/users/minusMoneyMember", obj);
   },
+  beCau(obj) {
+    return ApiAdmin().post("api/users/beCau", obj);
+  },
 
   getRateCommission() {
     return ApiAdmin().get("api/setup/getRateCommission");
