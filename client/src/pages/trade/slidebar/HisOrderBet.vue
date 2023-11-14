@@ -32,6 +32,9 @@
       class="scroll-area--data-list-add-new"
     >
       <div class="p-4 tablist">
+        <div id="timeer">
+          <p>Thời gian hiện tại: {{ time }}</p>
+        </div>
         <vs-tabs alignment="fixed">
           <vs-tab
             label="MỞ"
@@ -220,6 +223,7 @@ export default {
   },
   data() {
     return {
+      time: "",
       isCloseTab: true,
       isOpenTab: false,
 
@@ -270,6 +274,19 @@ export default {
     },
   },
   methods: {
+    updateTime() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      this.time = `${this.formatTime(hours)}:${this.formatTime(
+        minutes
+      )}:${this.formatTime(seconds)}`;
+    },
+    formatTime(value) {
+      return value < 10 ? `0${value}` : value;
+    },
     fromatTimzoneD(value) {
       if (value) {
         return moment(new Date(value)).format("DD/MM/YYYY");
@@ -343,6 +360,12 @@ export default {
     VuePerfectScrollbar,
   },
   mounted() {
+    setInterval(() => {
+      this.updateTime(); // Cập nhật thời gian mỗi giây
+    }, 1000);
+
+    // Hiển thị thời gian lúc ban đầu
+    this.updateTime();
     this.countdown();
   },
 };
