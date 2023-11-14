@@ -145,7 +145,7 @@ wss.on("connection", function (ws) {
       HandlingProcessingGameTrade40(statusBet, data.data, ws);
       setTimeout(() => {
         handleSendKQ(data, ws);
-      }, 1 * 1000);
+      }, data.data.timeBet * 1000);
     }
     if (data.type === "getPriceOP") {
       helperCoin.getPricecoin("BTC").then((res) => {
