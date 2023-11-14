@@ -33,7 +33,7 @@
     >
       <div class="p-4 tablist">
         <div id="timeer">
-          <p>Thời gian hiện tại: {{ time }}</p>
+          <p class="mt-2">Thời gian hiện tại: {{ time }}</p>
         </div>
         <vs-tabs alignment="fixed">
           <vs-tab
