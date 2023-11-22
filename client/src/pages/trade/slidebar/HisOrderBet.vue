@@ -33,15 +33,15 @@
     >
       <div class="p-4 tablist">
         <div id="timeer">
-          <p class="mt-2">Thời gian hiện tại: {{ time }}</p>
+          <p class="mt-2">{{ $t("TimeNow") || "TimeNow" }}: {{ time }}</p>
         </div>
         <vs-tabs alignment="fixed">
           <vs-tab
-            label="MỞ"
+            :label="$t('Open') || 'Open'"
             @click="getListBET(), (isCloseTab = true), (isOpenTab = false)"
           ></vs-tab>
           <vs-tab
-            label="ĐÓNG"
+            :label="$t('Close') || 'Close'"
             @click="getListOrder(), (isCloseTab = false), (isOpenTab = true)"
           ></vs-tab>
           <div
@@ -59,7 +59,7 @@
                   class="imageLandScape"
                 />
                 <p class="mt-3 text-sm text-center color-grey">
-                  Bạn chưa có lệnh nào đang mở
+                  {{ $t("CLL") || "CLL" }}
                 </p>
               </div>
               <div v-else class="flex flex-col justify-center">
@@ -97,17 +97,21 @@
                       <span>${{ formatPrice(oknha.amt, 2) }}</span>
                     </div>
                     <div class="flex justify-between bet-time">
-                      <span class="colorGray">Thời gian</span>
+                      <span class="colorGray">{{ $t("Time") || "Time" }}</span>
                       <span class="text-sm font-bold">{{
                         fromatTimzoneH(oknha.time)
                       }}</span>
                     </div>
                     <div class="flex justify-between bet-time">
-                      <span class="colorGray">Phiên</span>
+                      <span class="colorGray">{{
+                        $t("Session") || "Session"
+                      }}</span>
                       <span class="text-sm font-bold">{{ oknha.timeBet }}</span>
                     </div>
                     <div class="flex justify-between bet-time">
-                      <span class="colorGray">Kết Phiên</span>
+                      <span class="colorGray">{{
+                        $t("EndSession") || "EndSession"
+                      }}</span>
                       <span class="text-sm font-bold">{{
                         fromatTimzoneH(oknha.timeEndBet)
                       }}</span>
@@ -132,7 +136,7 @@
                   class="imageLandScape"
                 />
                 <p class="mt-3 text-sm text-center color-grey">
-                  Bạn chưa có lệnh đóng nào
+                  {{ $t("CLLS") || "CLLS" }}
                 </p>
               </div>
               <div v-else class="flex flex-col justify-center">

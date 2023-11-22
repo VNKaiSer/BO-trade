@@ -13,7 +13,7 @@
         />
         &nbsp;Tiếng Việt</vs-dropdown-item
       >
-      <!-- <vs-dropdown-item @click="updateLocale('en')"
+      <vs-dropdown-item @click="updateLocale('en')"
         ><img
           class="w-5 h-4 mr-1"
           src="@/assets/images/flags/en.png"
@@ -44,7 +44,7 @@
           alt="pt"
         />
         &nbsp;Portuguese</vs-dropdown-item
-      > -->
+      >
       <vs-dropdown-item @click="updateLocale('cn')"
         ><img
           class="w-5 h-4 mr-1"

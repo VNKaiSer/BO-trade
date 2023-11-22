@@ -799,10 +799,10 @@ export default {
     getCurrentLocaleData() {
       const locale = this.$i18n.locale;
       if (locale == "vi") return { flag: "vi", lang: "Tiếng Việt" };
-      // else if (locale == "en") return { flag: "us", lang: "English" };
-      // else if (locale == "pt") return { flag: "br", lang: "Portuguese" };
-      // else if (locale == "fr") return { flag: "fr", lang: "French" };
-      // else if (locale == "de") return { flag: "de", lang: "German" };
+      else if (locale == "en") return { flag: "us", lang: "English" };
+      else if (locale == "pt") return { flag: "br", lang: "Portuguese" };
+      else if (locale == "fr") return { flag: "fr", lang: "French" };
+      else if (locale == "de") return { flag: "de", lang: "German" };
       else if (locale == "cn") return { flag: "cn", lang: "China" };
     },
   },

@@ -317,71 +317,12 @@
                     color="success"
                     class="w-full"
                     type="filled"
-                    @click="submitFormReg"
+                    @click="submitFormReg32"
                     >Đăng ký</vs-button
                   >
                 </div>
               </div>
             </div>
-            <div v-if="isSubmitReg">
-              <h2 class="mb-5 font-weight-bold font-24 colorSecondary">
-                KÍCH HOẠT TÀI KHOẢN
-              </h2>
-              <p class="colorSecondary">
-                Để được kích hoạt tài khoản:
-                <a :href="`mailto:${emailReg}`" class="colorBlue4">{{
-                  emailReg
-                }}</a
-                ><br /><br />
-                - B1: Tải ứng dụng Telegram về trên App Store (IOS) hoặc CH Play
-                (Android).<br />
-                - B2: Nếu đã có ứng dụng (Bỏ qua Bước 1) Nhấp vào nút KÍCH HOẠT
-                bên dưới 👇🏻 để mở App Telegram.<br />
-                - B3: Làm theo hướng dẫn của admin.<br />
-              </p>
-              <!-- <p class="colorSecondary">
-                               Một liên kết xác nhận đã được gửi tới
-                                Vui lòng xác nhận email: <a :href="`mailto:${emailReg}`" class="colorBlue4">{{ emailReg }}</a> qua TELEGRAM BOT để kích hoạt tài khoản<a target="_blank" href="https://t.me/ares_idefibo_bot">NHẤP VÀO ĐÂY</a>
-                            </p> -->
-              <br />
-              <br />
-              <p class="colorSecondary">
-                Tài khoản của bạn đang đợi để admin duyệt
-                <!-- <a :href="`mailto:${emailReg}`" class="colorBlue4">{{
-                  emailReg
-                }}</a> -->
-                Vui lòng Nhấp vào nút KÍCH HOẠT bên dưới 👇🏻 để được kích hoạt.
-
-                <!-- Nếu không nhận được email xin vui lòng dùng TELEGRAM BOT để kích hoạt tài khoản: <a target="_blank" href="https://t.me/ares_idefibo_bot">Nhấp vào đây</a>-->
-              </p>
-              <br />
-              <br />
-              <p>
-                <button
-                  class="w-full mt-4 btn btn-resendemail"
-                  @click="openSite"
-                >
-                  NHẤP VÀO ĐÂY 🤝KÍCH HOẠT🤝
-                </button>
-                <!-- <button
-                  id="button-with-loading"
-                  class="w-full mt-4 btn btn-resendemail vs-con-loading__container"
-                  :disabled="disSendMail"
-                  @click="reSendMail"
-                >
-                  {{ ssDownSend }}
-                </button> -->
-              </p>
-              <p class="colorSecondary"></p>
-            </div>
-          </div>
-          <div slot="footer">
-            <p class="mb-2 colorGray bottomText">
-              Có tài khoản {{ domain }}?
-              <router-link to="/login" class="cursor-pointer">
-                Đăng nhập vào Tài khoản của bạn.</router-link
-              >
-            </p>
           </div>
         </div>
       </div>
@@ -958,6 +899,19 @@ export default {
     },
   },
   methods: {
+    submitFormReg32() {
+      this.$router.push("/login");
+      this.showSuccessNotification();
+    },
+    showSuccessNotification() {
+      this.$vs.notify({
+        title: "Đăng ký thành công",
+        text: "Chúng tôi đã gửi một liên kết kích hoạt đến tài khoản của bạn.",
+        iconPack: "feather",
+        icon: "icon-check",
+        color: "success",
+      });
+    },
     replaceAll(str, find, replace) {
       return str.replace(new RegExp(find, "g"), replace);
     },

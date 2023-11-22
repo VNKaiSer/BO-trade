@@ -12,30 +12,30 @@
     <template>
         <!-- <p>Sắp tới sẽ cập nhận liên quan tới hệ thống</p> -->
         <div class="vx-row">
-          <div class="vx-col w-full mb-base">
+          <div class="w-full vx-col mb-base">
               <p class="mb-4" style="text-decoration: overline;">
                 <span style="text-decoration: overline;">[THIẾT LẬP MIN RÚT / NẠP]:</span>
               </p>
                 <div class="vx-row">
-                    <div class="vx-col centerx mb-4 sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
+                    <div class="mb-4 vx-col centerx sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min nạp Paypal" v-model="settingJson.min_d_paypal"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min rút Paypal" v-model="settingJson.min_w_paypal"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút Paypal Nội Bộ" v-model="settingJson.fee_w_paypal_nb"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút Paypal Địa chỉ" v-model="settingJson.fee_w_paypal_acc"/>
                   </div>
-                  <!-- <div class="vx-col centerx mb-4 sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
+                  <!-- <div class="mb-4 vx-col centerx sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min nạp BTC" v-model="settingJson.min_d_btc"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min rút BTC" v-model="settingJson.min_w_btc"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút BTC Nội bộ" v-model="settingJson.fee_w_btc_nb"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút BTC Địa chỉ" v-model="settingJson.fee_w_btc_acc"/>
                   </div>
-                  <div class="vx-col centerx mb-4 sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
+                  <div class="mb-4 vx-col centerx sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min nạp ETH" v-model="settingJson.min_d_eth"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min rút ETH" v-model="settingJson.min_w_eth"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút ETH Nội bộ" v-model="settingJson.fee_w_eth_nb"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút ETH ERC20" v-model="settingJson.fee_w_eth_ERC20"/>
                   </div> -->
-                  <div class="vx-col centerx mb-4 sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
+                  <div class="mb-4 vx-col centerx sm:w-1/2 md:w-1/4 lg:w-3/12 xl:w-3/12">
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min nạp USDT" v-model="settingJson.min_d_usdt"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Min rút USDT" v-model="settingJson.min_w_usdt"/>
                     <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Phí rút USDT Nội bộ" v-model="settingJson.fee_w_usdt_nb"/>
@@ -45,12 +45,12 @@
                 </div>
           </div>
 
-          <div class="vx-col w-full md:w-1/2 lg:w-6/12 xl:w-6/12 mb-base">
+          <div class="w-full vx-col md:w-1/2 lg:w-6/12 xl:w-6/12 mb-base">
               <p class="mb-4">
                 <span style="text-decoration: overline;">[THIẾT LẬP VÍ]:</span>
               </p>
               <div class="vx-row">
-                  <div class="vx-col w-full centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
+                  <div class="w-full vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
                       <p class="mb-4">Mặc định Ví sử dụng:</p>
                         <ul class="centerx">
                           <li class="mb-4">
@@ -65,28 +65,28 @@
                         </ul>
                         <p><i>Ghi chú: Ví sử dụng mặc định dùng để giao dịch tiền tệ giữa Tài Khoản thực và các Ví phụ khác</i></p>
                   </div>
-                  <div class="vx-col w-full centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
+                  <div class="w-full vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
                     <p class="mb-4">Hiển thị Ví thanh toán:</p>
                     <ul class="centerx">
-                      <li class="mb-4 relative">
+                      <li class="relative mb-4">
                         <vs-checkbox v-model="settingJson.show_wallet_usdt" @change="changeWallet('usdt',$event)">Ví USDT</vs-checkbox>
                         <div class="absolute" style="top: 0; right: 0">
                           <IconCrypto style="width: 20px" coinname="USDT" color="color" format="svg" />
                         </div>
                       </li>
-                      <!-- <li class="mb-4 relative">
+                      <!-- <li class="relative mb-4">
                         <vs-checkbox disabled="disabled" v-model="settingJson.show_wallet_btc" @change="changeWallet('btc',$event)">Ví BTC</vs-checkbox>
                         <div class="absolute" style="top: 0; right: 0">
                           <IconCrypto style="width: 20px" coinname="BTC" color="color" format="svg" />
                         </div>
                       </li>
-                      <li class="mb-4 relative">
+                      <li class="relative mb-4">
                         <vs-checkbox disabled="disabled" v-model="settingJson.show_wallet_eth" @change="changeWallet('eth',$event)">Ví ETH</vs-checkbox>
                         <div class="absolute" style="top: 0; right: 0">
                           <IconCrypto style="width: 20px" coinname="ETH" color="color" format="svg" />
                         </div>
                       </li> -->
-                      <li class="mb-4 relative">
+                      <li class="relative mb-4">
                         <vs-checkbox v-model="settingJson.show_wallet_paypal" @change="changeWallet('paypal',$event)">Ví PAYPAL</vs-checkbox>
                         <div class="absolute" style="top: 0; right: 0">
                           <img width="20" :src="require('@/assets/images/sky/icon_bank/paypal-mini.png')">
@@ -98,7 +98,7 @@
               </div>
           </div>
 
-          <div class="vx-col w-full md:w-1/2 lg:w-6/12 xl:w-6/12 mb-base">
+          <div class="w-full vx-col md:w-1/2 lg:w-6/12 xl:w-6/12 mb-base">
               <p class="mb-4">
                 <span style="text-decoration: overline;">[THIẾT LẬP QUOTE USD đồng COIN]: </span><i>( Mặc định Auto Update )</i>
               </p>
@@ -106,26 +106,26 @@
                   <div class="vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
                       <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" label-placeholder="Auto Update Seconds" v-model="settingJson.timeLoopUpdateQuote"/>
                       <p class="m-2 mb-4"><i>Chú ý: Thời gian được tính bằng (giây)</i></p>
-                      <div class="m-2 block">
+                      <div class="block m-2">
                          <vs-switch v-model="checkOnOffAutoQuote" @change="checkOnOffAutoQuote = !checkOnOffAutoQuote">
                           <span slot="on">Bật</span>
                           <span slot="off">Tắt</span>
                         </vs-switch>
                       </div>
                       <p class="m-2"><i>Chú ý: Bật / tắt Auto cập nhật USD Quote</i></p>
-                  </div>  
+                  </div>
                   <div class="vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
                       <p class="mb-4">Quote USD:</p>
-                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_BTC, 6)} BTC`" v-model="settingJson.quote_USD_BTC"/> 
-                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_ETH, 4)} ETH`" v-model="settingJson.quote_USD_ETH"/> 
-                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_USDT, 2)} USDT`" v-model="settingJson.quote_USD_USDT"/> 
-                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_PAYPAL, 2)} PAYPAL`" v-model="settingJson.quote_USD_PAYPAL"/>  
+                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_BTC, 6)} BTC`" v-model="settingJson.quote_USD_BTC"/>
+                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_ETH, 4)} ETH`" v-model="settingJson.quote_USD_ETH"/>
+                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_USDT, 2)} USDT`" v-model="settingJson.quote_USD_USDT"/>
+                      <vs-input type="number" style="display: inline-block;" class="m-2 mb-4" :label-placeholder="`1 USD = ${formatPrice(1 / settingJson.quote_USD_PAYPAL, 2)} PAYPAL`" v-model="settingJson.quote_USD_PAYPAL"/>
                       <p><i>Chú ý: Paypal mặc định là 1</i></p>
                   </div>
               </div>
           </div>
 
-          <div class="vx-col w-full mb-base">
+          <div class="w-full vx-col mb-base">
               <div class="vx-row">
                   <div class="vx-col centerx md:w-1/2 lg:w-6/12 xl:w-6/12">
                       <p class="mb-4">
@@ -188,18 +188,18 @@
                   </div>
               </div>
           </div>
-              
-        
+
+
           <vs-button class="w-full" color="success" type="filled" @click="clickSubmitSetting">Cập nhật</vs-button>
-        </div> 
-         
-        
+        </div>
+
+
     </template>
 
 
-    
 
-    
+
+
   </div>
 </template>
 
@@ -217,7 +217,7 @@ export default {
       checkOnOffAutoQuote: true,
       radioBC: 'payeer',
       settingJson: {
-      
+
         min_d_paypal: 5,
         min_d_btc: 0.001,
         min_d_eth: 0.02,
@@ -248,7 +248,7 @@ export default {
         show_wallet_btc: false,
         show_wallet_eth: false,
         show_wallet_usdt: false,
-          
+
         timeLoopUpdateQuote: 30, // thời gian mỗi giây cập nhập giá USD sấp sĩ coin
         quote_USD_USDT: 1,
         quote_USD_BTC: 1,
@@ -287,7 +287,7 @@ export default {
       }else{
           return true
       }
-       
+
     }
   },
   methods: {
@@ -319,7 +319,7 @@ export default {
             case 'w':
               this.settingJson.teleActiveWithdraw = o
               break
-        }  
+        }
       },
 
       changeWallet(val, event){
@@ -456,7 +456,7 @@ export default {
             }, 5000);
           }
 
-          
+
 
         }
 
@@ -476,7 +476,7 @@ export default {
 
             let data = JSON.parse(event.data)
             let dl = data.data
-   
+
             if(data.type === 'getDataSys'){
 
                 _this.settingJson.min_d_paypal = dl.minDepositPaypal
@@ -508,7 +508,7 @@ export default {
                 _this.settingJson.show_wallet_btc = dl.isActiveWalletBTC
                 _this.settingJson.show_wallet_eth = dl.isActiveWalletETH
                 _this.settingJson.show_wallet_usdt = dl.isActiveWalletUSDT
-                
+
                 _this.settingJson.timeLoopUpdateQuote = dl.timeLoop
                 _this.checkOnOffAutoQuote = dl.autoQuoteSet
 
@@ -544,16 +544,16 @@ export default {
     // }
 
     //this.$store.registerModule('dataList', this.productsFake);
-    
+
     //this.$store.dispatch("dataList/fetchDataListItems")
     //console.log(this.productsFake);
     //console.log(this.$store.state.dataList);
-    
+
 
   },
   mounted() {
     this.isMounted = true;
-    
+
     this.connectSever()
   }
 }

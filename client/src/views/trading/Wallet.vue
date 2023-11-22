@@ -215,7 +215,7 @@
                           </li>
                           <li class="item" v-if="dataHisWallet.length == 0">
                             <div class="w-full text-center">
-                              <span>Không có dữ liệu</span>
+                              <span>{{ $t("NoData") || "NoData" }}</span>
                             </div>
                           </li>
                           <li
@@ -271,12 +271,12 @@
                                 <span
                                   class="deitalType transfer_in"
                                   v-if="tr.type_key == 'rt'"
-                                  >Rút tiền</span
+                                  >{{ $t("Withdrawal") || "Withdrawal" }}</span
                                 >
                                 <span
                                   class="deitalType transfer_in"
                                   v-if="tr.type_key == 'nt'"
-                                  >Nạp tiền
+                                  >{{ $t("Recharge") || "Recharge" }}
                                   {{ tr.paypal_order_id ? "Paypal" : "" }}</span
                                 >
                                 <span
@@ -286,17 +286,21 @@
                                     tr.type_key == 'ctsa' ||
                                     tr.type_key == 'ctas'
                                   "
-                                  >Chuyển tiền</span
+                                  >{{
+                                    $t("TransferMoney") || "TransferMoney"
+                                  }}</span
                                 >
                                 <span
                                   class="deitalType transfer_in"
                                   v-if="tr.type_key == 'nn'"
-                                  >Nạp nhanh</span
+                                  >{{
+                                    $t("FastLoading") || "FastLoading"
+                                  }}</span
                                 >
                                 <span
                                   class="deitalType transfer_in"
                                   v-if="tr.type_key == 'mv'"
-                                  >Mua VIP</span
+                                  >{{ $t("BuyVIP") || "BuyVIP" }}</span
                                 >
                               </div>
                               <div class="block-col" style="flex: 2 1 0%">
@@ -323,7 +327,7 @@
                                       svgClasses="w-4 h-4"
                                     />
                                   </span>
-                                  Hoàn tất
+                                  {{ $t("Done") || "Done" }}
                                 </span>
                                 <span v-if="!tr.status">
                                   <span class="red">
@@ -332,7 +336,7 @@
                                       svgClasses="w-4 h-4"
                                     />
                                   </span>
-                                  Đợi
+                                  {{ $t("Wait") || "Wait" }}
                                 </span>
                               </div>
                             </div>
@@ -355,22 +359,22 @@
                           <li class="box-result-header">
                             <div class="flex" style="padding: 0 1.5rem">
                               <div class="block-col time">
-                                <span>Thời gian</span>
+                                <span>{{ $t("Time") || "Time" }}</span>
                               </div>
                               <div class="text-right block-col amount">
-                                <span>Giá trị</span>
+                                <span>{{ $t("Value") || "Value" }}</span>
                               </div>
                               <div class="block-col type">
-                                <span>Loại</span>
+                                <span>{{ $t("Type") || "Type" }}</span>
                               </div>
                               <div class="block-col" style="flex: 2 1 0%">
-                                <span>Txid/Mô tả</span>
+                                <span>{{ $t("Describe") || "Describe" }}</span>
                               </div>
                               <div class="block-col note">
-                                <span>Ghi chú</span>
+                                <span>{{ $t("Note") || "Note" }}</span>
                               </div>
                               <div class="block-col status">
-                                <span>Tình trạng</span>
+                                <span>{{ $t("Status") || "Status" }}</span>
                               </div>
                             </div>
                           </li>
@@ -379,7 +383,7 @@
                             v-if="dataHisWalletHoaHong.length == 0"
                           >
                             <div class="w-full text-center">
-                              <span>Không có dữ liệu</span>
+                              <span>{{ $t("NoData") || "NoData" }}</span>
                             </div>
                           </li>
                           <li
@@ -408,23 +412,23 @@
                               <div class="block-col type">
                                 <span class="deitalType trading_commission">{{
                                   tr.vip_commission > 0
-                                    ? "Mua VIP"
-                                    : "Giao dịch"
+                                    ? $t("BuyVIP")
+                                    : $t("Trade")
                                 }}</span>
                               </div>
                               <div class="block-col" style="flex: 2 1 0%">
                                 <p class="text-left">
                                   <span class="item-txid-desc">{{
                                     tr.vip_commission > 0
-                                      ? "Hoa Hồng VIP"
-                                      : "Hoa Hồng Giao dịch"
+                                      ? $t("VIPRoses")
+                                      : $t("TradingCommission")
                                   }}</span>
                                 </p>
                               </div>
                               <div class="block-col note">
                                 <span>{{
                                   tr.vip_commission > 0
-                                    ? tr.ref_id + " đã mua VIP"
+                                    ? tr.ref_id + $t("BoughtVIP")
                                     : "-"
                                 }}</span>
                               </div>
@@ -436,7 +440,7 @@
                                       svgClasses="w-4 h-4"
                                     />
                                   </span>
-                                  Hoàn tất
+                                  {{ $t("Done") || "Done" }}
                                 </span>
                                 <span v-else-if="tr.status == 0">
                                   <span class="red">
@@ -445,7 +449,7 @@
                                       svgClasses="w-4 h-4"
                                     />
                                   </span>
-                                  Đợi
+                                  {{ $t("Wait") || "Wait" }}
                                 </span>
                                 <span v-else>
                                   <span class="red">
@@ -454,7 +458,7 @@
                                       svgClasses="w-4 h-4"
                                     />
                                   </span>
-                                  Hủy
+                                  {{ $t("Cancel") || "Cancel" }}
                                 </span>
                               </div>
                             </div>
@@ -482,9 +486,9 @@
                     <div
                       class="flex flex-col items-center justify-center content"
                     >
-                      <span class="text-lg font-bold color-gray sm:mb-3"
-                        >Tài khoản Thực</span
-                      >
+                      <span class="text-lg font-bold color-gray sm:mb-3">{{
+                        $t("RealAccount") || "RealAccount"
+                      }}</span>
                       <span class="flex items-center mb-2 price mb:sm-3">
                         <span class="text-3xl font-bold"
                           >${{ formatPrice(blObj.blLive, 2) }}</span
@@ -496,7 +500,9 @@
                         class="w-9/12 cursor-pointer btn button wbtn btn-large btn-radius"
                       >
                         <span class="iconSubmit iconSubmitLive"></span>
-                        <span>Chuyển Tiền</span>
+                        <span>{{
+                          $t("TransferMoney") || "TransferMoney"
+                        }}</span>
                       </button>
                     </div>
                   </div>
@@ -506,9 +512,9 @@
                     <div
                       class="flex flex-col items-center justify-center content"
                     >
-                      <span class="text-lg font-bold color-gray sm:mb-3"
-                        >Tài khoản Demo</span
-                      >
+                      <span class="text-lg font-bold color-gray sm:mb-3">{{
+                        $t("DemoAccount") || "DemoAccount"
+                      }}</span>
                       <span class="flex items-center mb-2 price mb:sm-3">
                         <span class="text-3xl font-bold"
                           >${{ formatPrice(blObj.blDemo, 2) }}</span
@@ -520,7 +526,9 @@
                         class="w-9/12 cursor-pointer btn button wbtn btn-large btn-radius"
                       >
                         <span class="iconSubmit iconSubmitDemo"></span>
-                        <span>Nạp lại</span>
+                        <span>{{
+                          $t("RechargeAgain") || "RechargeAgain"
+                        }}</span>
                       </button>
                     </div>
                   </div>
@@ -531,7 +539,9 @@
                   <div class="wrapBalance">
                     <div class="boxBalance">
                       <div class="history">
-                        <h4 class="mb-3 history-title">Lịch sử giao dịch</h4>
+                        <h4 class="mb-3 history-title">
+                          {{ $t("History") || "History" }}
+                        </h4>
                         <div class="history-body">
                           <div class="history-content">
                             <div class="box-result">
@@ -539,22 +549,26 @@
                                 <li class="box-result-header">
                                   <div class="flex" style="padding: 0 1.5rem">
                                     <div class="block-col time">
-                                      <span>Thời gian</span>
+                                      <span>{{ $t("Time") || "Time" }}</span>
                                     </div>
                                     <div class="text-right block-col amount">
-                                      <span>Giá trị</span>
+                                      <span>{{ $t("Value") || "Value" }}</span>
                                     </div>
                                     <div class="block-col type">
-                                      <span>Loại</span>
+                                      <span>{{ $t("Type") || "Type" }}</span>
                                     </div>
                                     <div class="block-col" style="flex: 2 1 0%">
-                                      <span>Txid/Mô tả</span>
+                                      <span>{{
+                                        $t("Describe") || "Describe"
+                                      }}</span>
                                     </div>
                                     <!-- <div class="block-col note">
                                                                         <span>Ghi chú</span>
                                                                     </div> -->
                                     <div class="block-col status">
-                                      <span>Tình trạng</span>
+                                      <span>{{
+                                        $t("Status") || "Status"
+                                      }}</span>
                                     </div>
                                   </div>
                                 </li>
@@ -563,7 +577,7 @@
                                   v-if="dataHisWalletWGD.length == 0"
                                 >
                                   <div class="w-full text-center">
-                                    <span>Không có dữ liệu</span>
+                                    <span>{{ $t("NoData") || "NoData" }}</span>
                                   </div>
                                 </li>
                                 <li
@@ -592,12 +606,14 @@
                                       <span
                                         class="deitalType transfer_in"
                                         v-if="tr.type_key == 'ctas'"
-                                        >Chuyển ra</span
+                                        >{{
+                                          $t("MovedOut") || "MovedOut"
+                                        }}</span
                                       >
                                       <span
                                         class="deitalType transfer_in"
                                         v-else
-                                        >Chuyển vào</span
+                                        >{{ $t("MovedIn") || "MovedIn" }}</span
                                       >
                                     </div>
                                     <div class="block-col" style="flex: 2 1 0%">
@@ -608,7 +624,8 @@
                                           >Ra: {{ tr.to_u }}</span
                                         >
                                         <span class="item-txid-desc" v-else
-                                          >Vào: {{ tr.to_u }}</span
+                                          >{{ $t("Enter") || "Enter" }}
+                                          {{ tr.to_u }}</span
                                         >
                                       </p>
                                     </div>
@@ -620,7 +637,7 @@
                                             svgClasses="w-4 h-4"
                                           />
                                         </span>
-                                        Hoàn tất
+                                        {{ $t("Done") || "Done" }}
                                       </span>
                                       <span v-if="!tr.status">
                                         <span class="red">
@@ -629,7 +646,7 @@
                                             svgClasses="w-4 h-4"
                                           />
                                         </span>
-                                        Đợi
+                                        {{ $t("Wait") || "Wait" }}
                                       </span>
                                     </div>
                                   </div>
@@ -657,7 +674,7 @@
     </div>
     <vs-popup
       class="text-center"
-      title="Chuyển tiền"
+      :title="$t('TransferMoney') || 'TransferMoney'"
       :active.sync="popupTransferActive"
     >
       <div class="flex header">
@@ -740,7 +757,7 @@
         <div class="relative w-3/4 mb-3 inputGroup">
           <vs-input
             class="w-full text-left inputx"
-            placeholder="Nhập số tiền"
+            :placeholder="$t('EnterTheAmount') || 'EnterTheAmount'"
             v-model="enterAmount"
           />
           <div class="input-append">
@@ -749,7 +766,7 @@
               class="cursor-pointer btn"
               @click="enterAllMoney"
             >
-              Tất cả
+              {{ $t("All") || "All" }}
             </button>
           </div>
         </div>
@@ -757,56 +774,56 @@
           @click="clickTransMoney"
           color="rgb(62, 201, 214)"
           type="filled"
-          >Chuyển Tiền</vs-button
+          >{{ $t("TransferMoney") || "TransferMoney" }}</vs-button
         >
       </div>
     </vs-popup>
 
     <vs-popup
       class="text-center"
-      title="Thông tin"
+      :title="$t('Information') || 'Information'"
       :active.sync="popupBillActive"
     >
       <div
         class="flex justify-between mb-2 text-white"
         style="border-bottom: 1px solid #213f62; padding-bottom: 5px"
       >
-        <span>Thời gian:</span>
+        <span>{{ $t("Time") || "Time" }}:</span>
         <span>{{ timeShow }}</span>
       </div>
       <div
         class="flex justify-between mb-2 text-white"
         style="border-bottom: 1px solid #213f62; padding-bottom: 5px"
       >
-        <span>Giá trị:</span>
+        <span>{{ $t("Value") || "Value" }}:</span>
         <span>{{ valueShow }}</span>
       </div>
       <div
         class="flex justify-between mb-2 text-white"
         style="border-bottom: 1px solid #213f62; padding-bottom: 5px"
       >
-        <span>Loại:</span>
+        <span>{{ $t("Type") || "Type" }}:</span>
         <span>{{ typeShow }}</span>
       </div>
       <div
         class="flex justify-between mb-2 text-white"
         style="border-bottom: 1px solid #213f62; padding-bottom: 5px"
       >
-        <span>Mô tả:</span>
+        <span>{{ $t("Describe") || "Describe" }}:</span>
         <span>{{ descriptShow }}</span>
       </div>
       <div
         class="flex justify-between mb-2 text-white"
         style="border-bottom: 1px solid #213f62; padding-bottom: 5px"
       >
-        <span>Ghi chú:</span>
+        <span>{{ $t("Note") || "Note" }}:</span>
         <span>{{ noteShow }}</span>
       </div>
       <div
         class="flex justify-between mb-2 text-white"
         style="border-bottom: 1px solid #213f62; padding-bottom: 5px"
       >
-        <span>Trạng thái:</span>
+        <span>{{ $t("Status") || "Status" }}:</span>
         <span>{{ statusShow }}</span>
       </div>
     </vs-popup>
