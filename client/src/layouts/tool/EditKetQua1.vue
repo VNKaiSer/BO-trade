@@ -32,18 +32,39 @@
               <th>Thua</th>
             </tr>
             <tr :data="tr" :key="indextr" v-for="(tr, indextr) in listBetOpen">
+              <!-- thêm class td-check -->
               <td>{{ tr.email }}</td>
               <td>{{ tr.currency }}</td>
               <td>{{ tr.buy_sell }}</td>
               <td>{{ tr.amount_bet }}</td>
               <td>{{ tr.session }}</td>
               <vs-td>
-                <button @click="actionBeCau({ action: 'win', data: tr })">
+                <button
+                  style="
+                    padding: 5px;
+                    border-radius: 5px;
+                    outline: none;
+                    border: none;
+                    color: azure;
+                    background-color: #48c54d;
+                  "
+                  @click="actionBeCau({ action: 'win', data: tr })"
+                >
                   Thắng
                 </button>
               </vs-td>
               <vs-td>
-                <button @click="actionBeCau({ action: 'lose', data: tr })">
+                <button
+                  style="
+                    padding: 5px;
+                    border-radius: 5px;
+                    outline: none;
+                    border: none;
+                    color: azure;
+                    background-color: #e74c3c;
+                  "
+                  @click="actionBeCau({ action: 'lose', data: tr })"
+                >
                   Thua
                 </button>
               </vs-td>
@@ -183,8 +204,8 @@ export default {
     .vs-table--header {
       display: flex;
       flex-wrap: wrap;
-      margin-left: 1.5rem;
-      margin-right: 1.5rem;
+      /* margin-left: 1.5rem;
+      margin-right: 1.5rem; */
       > span {
         display: flex;
         flex-grow: 1;
@@ -192,7 +213,7 @@ export default {
 
       .vs-table--search {
         padding-top: 0;
-
+        /* sửa padding với giảm font-size */
         .vs-table--search-input {
           padding: 0.9rem 2.5rem;
           font-size: 1rem;
@@ -211,7 +232,7 @@ export default {
     .vs-table {
       border-collapse: separate;
       border-spacing: 0 1.3rem;
-      padding: 0 1rem;
+      padding: 0 0.8rem;
 
       tr {
         box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
@@ -271,9 +292,17 @@ export default {
 .tbv th {
   border: 1px solid #dddddd;
   text-align: left;
+  /* sửa */
   padding: 8px;
+  /* thêm fz */
 }
 .tbv tr:nth-child(even) {
   background-color: #dddddd;
+}
+@media only screen and (max-width: 600px) {
+  th,
+  td {
+    font-size: 12px;
+  }
 }
 </style>
