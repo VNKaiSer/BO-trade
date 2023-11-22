@@ -11,16 +11,35 @@
       <div class="vx-row">
         <div class="w-full vx-col sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2">
           <div class="mb-4 centerx labelx">
-            <vs-input style="width: 100%" label="Chủ Tài Khoản" />
+            <vs-input
+              v-model="bank_owner"
+              style="width: 100%"
+              label="Chủ Tài Khoản"
+            />
           </div>
           <div class="mb-4 centerx labelx">
-            <vs-input type="text" style="width: 100%" label="Tên ngân hàng" />
+            <vs-input
+              v-model="bank_tell"
+              type="text"
+              style="width: 100%"
+              label="Tên ngân hàng"
+            />
           </div>
           <div class="mb-4 centerx labelx">
-            <vs-input type="text" style="width: 100%" label="Số tài khoản" />
+            <vs-input
+              v-model="bank_number"
+              type="text"
+              style="width: 100%"
+              label="Số tài khoản"
+            />
           </div>
           <div class="mb-4 centerx labelx">
-            <vs-input type="text" style="width: 100%" label="Nội dung mẫu" />
+            <vs-input
+              v-model="bank_desc"
+              type="text"
+              style="width: 100%"
+              label="Nội dung mẫu"
+            />
           </div>
           <!-- <div class="mb-4 centerx labelx">
             <vs-input
@@ -57,7 +76,12 @@
         </div>
       </div>
 
-      <vs-button type="filled" class="block mt-5 mb-12">Xác Nhận</vs-button>
+      <vs-button
+        @click="actionChangeBank()"
+        type="filled"
+        class="block mt-5 mb-12"
+        >Xác Nhận</vs-button
+      >
     </template>
     <template>
       <div class="vx-row">
@@ -71,10 +95,10 @@
             </tr>
             <tr>
               <!-- thêm class td-check -->
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ bank_owner }}</td>
+              <td>{{ bank_tell }}</td>
+              <td>{{ bank_number }}</td>
+              <td>{{ bank_desc }}</td>
             </tr>
           </table>
         </div>
@@ -84,52 +108,34 @@
 </template>
 
 <script>
-// import AuthenticationService from "@/services/AuthenticationService";
+import AuthenticationService from "@/services/AuthenticationService";
+const fs = require("fs");
 
 export default {
   components: {},
   data() {
     return {
-      AMOUNTBECAU_MIN: -30,
-      AMOUNTBECAU_MAX: 400,
-      PriceBOT: 0,
-      checkOnOffBOT: true,
-      checkOnOffAnGian: false,
-      checkOnOffBOTGoTien: false,
-      radioBC: "",
-      productsFake: [
-        // {e: 'admin@gmail.com', uid: 'DS9OR0KGJS', sv: 'BTC/USDT', bet: 'buy', amount: '10' }
-      ],
-      listBetOpen: [],
-      itemsPerPage: 10,
-      isMounted: false,
-
-      countDown: 0,
-      typeOder: "Mở",
-
-      price_buy: 0,
-      price_sell: 0,
-      price_buy_mkt: 0,
-      price_sell_mkt: 0,
-      price_total_mkt: 0,
-      price_total: 0,
-
-      price_play_buy: 0,
-      price_play_sell: 0,
+      bank_tell: "",
+      bank_number: "",
+      bank_owner: "",
+      bank_desc: "",
     };
   },
   computed: {},
   watch: {},
   methods: {
-    actionBeCau(val) {
-      console.log(val);
-      AuthenticationService.beCau({
-        id: val.data.betId,
-        wl: val.action,
-      })
+    actionChangeBank() {
+      const dataToSave = {
+        bank_tell: this.bank_tell,
+        bank_number: this.bank_number,
+        bank_owner: this.bank_owner,
+        bank_desc: this.bank_desc,
+      };
+
+      AuthenticationService.updateBankingAdmin(dataToSave)
         .then((result) => {
           return this.$vs.notify({
-            text: "Đã bẻ cầu thành " + val.action,
+            text: "Cập nhật tài khoản thành công",
             color: "success",
             position: "top-center",
             iconPack: "feather",
@@ -138,25 +144,24 @@ export default {
         })
         .catch((err) => {
           return this.$vs.notify({
-            text: "Lỗi hệ thống",
-            color: "success",
+            text: "Lỗi hệ thống rồi" + err,
+            color: "danger",
             position: "top-center",
             iconPack: "feather",
             icon: "icon-message-square",
           });
         });
     },
-
-    reloadListBetOpen() {
-      setInterval(() => {
-        AuthenticationService.getListBetOpen().then((resp) => {
-          this.listBetOpen = resp.data.data;
-        });
-      }, 3000);
-    },
   },
   created() {
-    this.reloadListBetOpen();
+    AuthenticationService.getBankingAdmin()
+      .then((result) => {
+        this.bank_tell = result.data.bank_tell;
+        this.bank_number = result.data.bank_number;
+        this.bank_owner = result.data.bank_owner;
+        this.bank_desc = result.data.bank_desc;
+      })
+      .catch((err) => {});
   },
   mounted() {
     this.isMounted = true;

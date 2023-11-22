@@ -312,7 +312,7 @@
                         <span>Để thanh toán bạn vui lòng chuyển tiền theo</span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Nội dung: Username_SotienNap</span>
+                        <span>Nội dung: {{ bank_desc }}</span>
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span
@@ -320,13 +320,13 @@
                         >
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Chủ Tài Khoản: NGUYEN THI PHUONG NGA </span>
+                        <span>Chủ Tài Khoản: {{ bank_owner }} </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Ngân hàng: TECHCOMBANK </span>
+                        <span>Ngân hàng: {{ bank_tell }} </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Số tài khoản: 5115112005</span>
+                        <span>Số tài khoản: {{ bank_number }}</span>
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span
@@ -543,7 +543,7 @@ export default {
       chutk: "",
 
       adddressWithDrawal: "",
-
+      bankingAdmin: "",
       getData: getData,
       getSetSys: getSetSys,
       activeNRT: true,
@@ -566,6 +566,10 @@ export default {
 
       colorLoading: "#fff",
       ssDownSend: "Kiểm tra",
+      bank_tell: "",
+      bank_number: "",
+      bank_owner: "",
+      bank_desc: "",
     };
   },
   methods: {
@@ -1242,7 +1246,14 @@ export default {
     this.getAddressF("USDT");
 
     // lấy số tiền cái ví
-    this.getBalanceWallet();
+    AuthenticationService.getBankingAdmin()
+      .then((result) => {
+        this.bank_tell = result.data.bank_tell;
+        this.bank_number = result.data.bank_number;
+        this.bank_owner = result.data.bank_owner;
+        this.bank_desc = result.data.bank_desc;
+      })
+      .catch((err) => {});
   },
 };
 </script>
