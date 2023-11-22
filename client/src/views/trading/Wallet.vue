@@ -4,7 +4,9 @@
       <div class="w-full h-48 subBanner">
         <div class="container flex items-center h-full info">
           <div class="relative flex flex-col justify-center">
-            <p class="text-lg">Tổng tài sản (USD)</p>
+            <p class="text-lg">
+              {{ $t("TotalBalance") || "TotalBalance" }} (USD)
+            </p>
             <p>
               <span
                 class="mr-2 price"
@@ -30,11 +32,11 @@
         <div class="container">
           <vs-tabs>
             <vs-tab
-              label="Ví chính"
+              v-bind:label="$t('MainWallet') || 'MainWallet'"
               @click="getListHisTrade(), (showVC = true), (showVGD = false)"
             ></vs-tab>
             <vs-tab
-              label="Ví giao dịch"
+              v-bind:label="$t('MainWallet1') || 'MainWallet1'"
               @click="getListHisTradeWGD(), (showVGD = true), (showVC = false)"
             ></vs-tab>
           </vs-tabs>
@@ -44,7 +46,7 @@
                 class="flex flex-col items-baseline justify-between lg:flex-row"
               >
                 <h4 class="mb-3 text-2xl font-bold color-white">
-                  Tài khoản chính:
+                  {{ $t("MainAccount") || "MainAccount" }}
                 </h4>
                 <!-- <h6 class="mb-0 italic colorGray"><span >Giá trị ước tính: {{ giaTriUocTinh }} USD</span></h6> -->
               </div>
@@ -96,7 +98,7 @@
                               (getSetSys.isDepositOpen = true),
                               (getSetSys.isWithdraOpen = false)
                           "
-                          >Nạp Tiền</a
+                          >{{ $t("Recharge") || "Recharge" }}</a
                         >
                       </div>
                       <div>
@@ -111,7 +113,7 @@
                               (getSetSys.isDepositOpen = false),
                               (getSetSys.isWithdraOpen = true)
                           "
-                          >Rút Tiền</a
+                          >{{ $t("Withdrawal") || "Withdrawal" }}</a
                         >
                       </div>
                       <!--<div>
@@ -123,7 +125,9 @@
                 </div>
               </div>
               <div class="history lg:mb-4">
-                <h4 class="mb-3 history-title">Lịch sử giao dịch</h4>
+                <h4 class="mb-3 history-title">
+                  {{ $t("History") || "History" }}
+                </h4>
                 <div
                   class="relative history-body"
                   :class="{ 'ld-loading': isLoading }"
@@ -174,7 +178,7 @@
                     >
                     </vs-tab>
                     <vs-tab
-                      label="Hoa Hồng"
+                      v-bind:label="$t('Rose') || 'Rose'"
                       @click="
                         getListHisTradeHH(),
                           (showHisHH = true),
@@ -190,22 +194,22 @@
                           <li class="box-result-header">
                             <div class="flex" style="padding: 0 1.5rem">
                               <div class="block-col time">
-                                <span>Thời gian</span>
+                                <span>{{ $t("Time") || "Time" }}</span>
                               </div>
                               <div class="text-right block-col amount">
-                                <span>Giá trị</span>
+                                <span>{{ $t("Value") || "Value" }}</span>
                               </div>
                               <div class="block-col type">
-                                <span>Loại</span>
+                                <span>{{ $t("Type") || "Type" }}</span>
                               </div>
                               <div class="block-col" style="flex: 2 1 0%">
-                                <span>Txid/Mô tả</span>
+                                <span>{{ $t("Describe") || "Describe" }}</span>
                               </div>
                               <div class="block-col note">
-                                <span>Ghi chú</span>
+                                <span>{{ $t("Note") || "Note" }}</span>
                               </div>
                               <div class="block-col status">
-                                <span>Tình trạng</span>
+                                <span>{{ $t("Note") || "Note" }}</span>
                               </div>
                             </div>
                           </li>
