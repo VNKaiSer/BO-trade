@@ -198,7 +198,7 @@
               {{ $t("Profit") || "Profit" }}
             </div>
             <div class="text-center">
-              <span class="mb-2 profitPercent color-light-blue">95%</span>
+              <span class="mb-2 profitPercent color-light-blue">10%</span>
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
