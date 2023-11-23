@@ -850,7 +850,7 @@
           <div class="mb-10 lg:relative">
             <div class="mt-2 mb-2 text-center">Lợi nhuận</div>
             <div class="text-center">
-              <span class="mb-2 profitPercent color-light-blue">95%</span>
+              <span class="mb-2 profitPercent color-light-blue">10%</span>
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -1124,7 +1124,7 @@
                 <div class="relative">
                   <div class="mt-2 mb-2 text-center">
                     Lợi nhuận
-                    <span class="mb-2 profitPercent color-light-blue">95%</span>
+                    <span class="mb-2 profitPercent color-light-blue">10%</span>
                     <span class="text-3xl font-bold profitValue color-green"
                       >+${{ loiNhuan }}</span
                     >
@@ -2004,7 +2004,7 @@ export default {
       balanceForuser: 0,
       showMobileMenu: false,
       betAmount: 10,
-      loiNhuan: 19.5,
+      loiNhuan: 1.0,
       optionsOs: gaugeMeterOs,
       optionsSu: gaugeMeterSu,
       optionsMa: gaugeMeterMa,
