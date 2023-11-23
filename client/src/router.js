@@ -208,8 +208,6 @@ const router = new Router({
           },
         },
 
-
-
         // kết thúc danh sách lịch sử
 
         // blog
@@ -285,23 +283,10 @@ const router = new Router({
             rule: "editor",
           },
         },
-        // {
-        //   path: "/tool/data-tool/edit-bet",
-        //   name: "tool-edit-bet",
-        //   component: () => import("./layouts/tool/EditKetQua.vue"),
-        //   meta: {
-        //     breadcrumb: [
-        //       { title: "Trang chủ", url: "/" },
-        //       { title: "Công cụ chỉnh sửa trò chơi", active: true },
-        //     ],
-        //     pageTitle: "Bẻ cầu",
-        //     rule: "editor",
-        //   },
-        // },
         {
-          path: "/tool/data-tool/edit-bet1",
-          name: "tool-edit-bet1",
-          component: () => import("./layouts/tool/EditKetQua1.vue"),
+          path: "/tool/data-tool/edit-bet",
+          name: "tool-edit-bet",
+          component: () => import("./layouts/tool/EditKetQua.vue"),
           meta: {
             breadcrumb: [
               { title: "Trang chủ", url: "/" },
@@ -311,6 +296,19 @@ const router = new Router({
             rule: "editor",
           },
         },
+        // {
+        //   path: "/tool/data-tool/edit-bet1",
+        //   name: "tool-edit-bet1",
+        //   component: () => import("./layouts/tool/EditKetQua1.vue"),
+        //   meta: {
+        //     breadcrumb: [
+        //       { title: "Trang chủ", url: "/" },
+        //       { title: "Công cụ chỉnh sửa trò chơi", active: true },
+        //     ],
+        //     pageTitle: "Bẻ cầu",
+        //     rule: "editor",
+        //   },
+        // },
         {
           path: "/tool/data-tool/edit-bet2",
           name: "tool-edit-bet2",

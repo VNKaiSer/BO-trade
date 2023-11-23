@@ -102,7 +102,7 @@
                         fromatTimzoneH(oknha.time)
                       }}</span>
                     </div>
-                    <div class="flex justify-between bet-time">
+                    <!-- <div class="flex justify-between bet-time">
                       <span class="colorGray">{{
                         $t("Session") || "Session"
                       }}</span>
@@ -115,7 +115,7 @@
                       <span class="text-sm font-bold">{{
                         fromatTimzoneH(oknha.timeEndBet)
                       }}</span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

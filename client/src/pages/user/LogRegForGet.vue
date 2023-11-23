@@ -901,7 +901,9 @@ export default {
   methods: {
     submitFormReg32() {
       this.$router.push("/login");
-      this.showSuccessNotification();
+      setTimeout(() => {
+        this.showSuccessNotification();
+      }, 500);
     },
     showSuccessNotification() {
       this.$vs.notify({
@@ -1217,7 +1219,7 @@ export default {
           // localStorage.removeItem('isLog')
           console.log("INFO", dt);
 
-          this.$router.push("/tradingg").catch(() => {});
+          this.$router.push("/trading").catch(() => {});
         }
       });
     },

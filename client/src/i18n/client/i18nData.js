@@ -1,9 +1,9 @@
 // en, de, fr, pt
 export default {
   vi: {
-    Bank:"Change Ngân Hàng",
-    // Trade: "Giao dịch",
-    Trade: "Giao dịch 4.0",
+    Bank: "Change Ngân Hàng",
+    Trade: "Giao dịch",
+    // Trade: "Giao dịch 4.0",
     Help: "Trợ giúp",
     Shopping: "Mua sắm",
     Setting: "Thiết lập",
