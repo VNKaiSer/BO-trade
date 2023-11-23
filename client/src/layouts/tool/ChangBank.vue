@@ -156,10 +156,11 @@ export default {
   created() {
     AuthenticationService.getBankingAdmin()
       .then((result) => {
-        this.bank_tell = result.data.bank_tell;
-        this.bank_number = result.data.bank_number;
-        this.bank_owner = result.data.bank_owner;
-        this.bank_desc = result.data.bank_desc;
+        const data = result.data.data[0];
+        this.bank_tell = data.banking_tell;
+        this.bank_number = data.banking_number;
+        this.bank_owner = data.banking_owner;
+        this.bank_desc = data.banking_desc;
       })
       .catch((err) => {});
   },

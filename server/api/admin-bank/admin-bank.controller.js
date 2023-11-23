@@ -1,13 +1,34 @@
-const { getBankingAdmin, updateBankingAdmin } = require("./admin-bank.service");
+const {
+  getBankingAdmin,
+  insertBankingAdmin,
+  deActiveBankingAdmin,
+} = require("./admin-bank.service");
 
 module.exports = {
   getBankingAdmin: (req, res) => {
-    const data = getBankingAdmin();
-    return res.json(data);
+    getBankingAdmin((err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      return res.json({ success: 1, data: results });
+    });
   },
 
   updateBankingAdmin: (req, res) => {
-    const data = updateBankingAdmin(req.body);
-    return res.json(data);
+    const data = req.body;
+    deActiveBankingAdmin((err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      insertBankingAdmin(data, (err, results) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        return res.json({ success: 1 });
+      });
+    });
   },
 };

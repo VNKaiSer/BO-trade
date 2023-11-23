@@ -4,6 +4,7 @@ const config = require("./../config");
 module.exports = {
   checkToken: (req, res, next) => {
     let token = req.get("authorization");
+    console.log(token);
     if (token) {
       //token = token.slice(7);
       token = token.split(" ")[1];
