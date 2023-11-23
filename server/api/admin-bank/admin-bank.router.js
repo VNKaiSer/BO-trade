@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/bankingAdmin", checkToken, getBankingAdmin);
+app.get("/bankingAdmin", getBankingAdmin);
 
 app.post("/bankingAdmin", checkToken, updateBankingAdmin);
 
