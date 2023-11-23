@@ -10,9 +10,9 @@ global["ARESTele"] = TelegramAll;
 require("./src/app"); // chạy http
 require("./games/trade"); // chạy game
 require("./auth/sys_settings"); // chạy thiết lập hệ thống
-require("./auth/mess"); // chạy BOT Telegram
+// require("./auth/mess"); // chạy BOT Telegram
 require("./src/nap"); // chạy BOT Nạp
-require("./auth/notifi"); // chạy thông báo
+// require("./auth/notifi"); // chạy thông báo
 require("./games/trade40");
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;

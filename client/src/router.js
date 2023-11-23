@@ -208,6 +208,8 @@ const router = new Router({
           },
         },
 
+
+
         // kết thúc danh sách lịch sử
 
         // blog
@@ -306,6 +308,19 @@ const router = new Router({
               { title: "Công cụ chỉnh sửa trò chơi", active: true },
             ],
             pageTitle: "Bẻ cầu",
+            rule: "editor",
+          },
+        },
+        {
+          path: "/tool/data-tool/edit-bet2",
+          name: "tool-edit-bet2",
+          component: () => import("./layouts/tool/ChangBank.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Trang chủ", url: "/" },
+              { title: "Công cụ chỉnh sửa ngân hàng", active: true },
+            ],
+            pageTitle: "Change Ngân Hàng",
             rule: "editor",
           },
         },

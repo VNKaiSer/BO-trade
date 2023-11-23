@@ -23,7 +23,7 @@ module.exports = {
   IS_PLAY_SPOT: true, // mặc địng false -> FUTURES, Sử dụng BINANCE SPOT ( check được sàn ) hoặc FUTURE ( không bào giờ bảo trì, không check được sàn )
 
   SO_GIAY_DEM_NGUOC: 30,
-  RATE_NHA_THUONG: 95,
+  RATE_NHA_THUONG: 10,
   BET_MAX: 1,
 
   BINANCE_APIKEY:

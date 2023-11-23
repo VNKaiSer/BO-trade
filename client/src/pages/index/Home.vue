@@ -710,6 +710,14 @@
                   &nbsp;Portuguese</vs-dropdown-item
                 >
               </vs-dropdown-menu>
+              <vs-dropdown-item @click="updateLocale('cn')"
+                ><img
+                  class="w-5 h-4 mr-1"
+                  src="@/assets/images/flags/pt.png"
+                  alt="pt"
+                />
+                &nbsp;China</vs-dropdown-item
+              >
             </vs-dropdown>
           </li>
           <li class="regulation-item">
@@ -795,6 +803,7 @@ export default {
       else if (locale == "pt") return { flag: "br", lang: "Portuguese" };
       else if (locale == "fr") return { flag: "fr", lang: "French" };
       else if (locale == "de") return { flag: "de", lang: "German" };
+      else if (locale == "cn") return { flag: "cn", lang: "China" };
     },
   },
   methods: {

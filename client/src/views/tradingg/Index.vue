@@ -56,7 +56,7 @@
         <div class="block pc">
           <div class="mb-6">
             <div class="flex items-center justify-between gap-3 mt-2">
-              <p class="mt-2">Coin:</p>
+              <p class="mt-2">{{ $t("Coin") || "Coin" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="coinBet"
@@ -83,10 +83,43 @@
                 <option class="w-full h-8 cursor-pointer bpF" value="DOGE">
                   DOGE
                 </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="LTC">
+                  LTC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="DOT">
+                  DOT
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="LINK">
+                  LINK
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="UNI">
+                  UNI
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XLM">
+                  XLM
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="SOL">
+                  SOL
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="MATIC">
+                  MATIC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XMR">
+                  XMR
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="AVAX">
+                  AVAX
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="CAKE">
+                  CAKE
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="ATOM">
+                  ATOM
+                </option>
               </select>
             </div>
             <div class="flex items-center justify-between gap-1">
-              <p>Thời Gian:</p>
+              <p>{{ $t("Time") || "Time" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
@@ -105,7 +138,7 @@
                 </option>
               </select>
             </div>
-            <div class="mt-2 mb-2">Tiền cược</div>
+            <div class="mt-2 mb-2">{{ $t("Bet") || "Bet" }}</div>
             <div class="relative">
               <vs-input
                 @keyup="nhapBetAmount"
@@ -152,16 +185,20 @@
                 >
               </div>
               <div class="w-full p-1 mt-2 text-center vx-col md:w-4/12">
-                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(0)"
-                  >All</span
+                <span
+                  class="w-full h-8 cursor-pointer bpF"
+                  @click="clickCT(0)"
+                  >{{ $t("All") || "All" }}</span
                 >
               </div>
             </div>
           </div>
           <div class="mb-6 lg:relative">
-            <div class="mt-2 mb-2 text-center">Lợi nhuận</div>
+            <div class="mt-2 mb-2 text-center">
+              {{ $t("Profit") || "Profit" }}
+            </div>
             <div class="text-center">
-              <span class="mb-2 profitPercent color-light-blue">95%</span>
+              <span class="mb-2 profitPercent color-light-blue">10%</span>
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -216,7 +253,7 @@
               color="success"
               type="relief"
             >
-              MUA
+              {{ $t("BUY") || "BUY" }}
               <feather-icon
                 style="top: 5px"
                 icon="TrendingUpIcon"
@@ -230,7 +267,7 @@
               color="danger"
               type="relief"
             >
-              BÁN
+              {{ $t("SELL") || "SELL" }}
               <feather-icon
                 style="top: 5px"
                 icon="TrendingDownIcon"
@@ -258,7 +295,7 @@
           </div>
           <div class="flex items-center gap-3 mb-1">
             <div class="flex items-center justify-between mt-2 mr-10">
-              <p class="mt-2">Coin:</p>
+              <p class="mt-2">{{ $t("Coin") || "Coin" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 name=""
@@ -291,7 +328,7 @@
               </select>
             </div>
             <div class="flex items-center justify-between gap-1">
-              <p>Thời Gian:</p>
+              <p>{{ $t("Time") || "Time" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
@@ -313,8 +350,8 @@
           </div>
           <div class="relative">
             <div class="mt-2 mb-2 text-center">
-              Lợi nhuận
-              <span class="mb-2 profitPercent color-light-blue">95%</span>
+              {{ $t("Profit") || "Profit" }}
+              <span class="mb-2 profitPercent color-light-blue">10%</span>
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -370,7 +407,7 @@
                 color="danger"
                 type="relief"
               >
-                BÁN
+                {{ $t("SELL") || "SELL" }}
                 <feather-icon
                   style="top: 5px"
                   icon="TrendingDownIcon"
@@ -425,7 +462,7 @@
                 color="success"
                 type="relief"
               >
-                MUA
+                {{ $t("BUY") || "BUY" }}
                 <feather-icon
                   style="top: 5px"
                   icon="TrendingUpIcon"
@@ -489,8 +526,8 @@
                 </div>
                 <div class="relative">
                   <div class="mt-2 mb-2 text-center">
-                    Lợi nhuận
-                    <span class="mb-2 profitPercent color-light-blue">95%</span>
+                    {{ $t("Profit") || "Profit" }}
+                    <span class="mb-2 profitPercent color-light-blue">10%</span>
                     <span class="text-3xl font-bold profitValue color-green"
                       >+${{ loiNhuan }}</span
                     >
@@ -509,7 +546,9 @@
                     <td @click="writeBetAmountKey(1)">1</td>
                     <td @click="writeBetAmountKey(2)">2</td>
                     <td @click="writeBetAmountKey(3)">3</td>
-                    <td rowspan="2" @click="clickCT(0)"><span>Tất cả</span></td>
+                    <td rowspan="2" @click="clickCT(0)">
+                      <span>{{ $t("All") || "All" }}</span>
+                    </td>
                   </tr>
                   <tr>
                     <td @click="writeBetAmountKey(4)">4</td>
@@ -521,7 +560,7 @@
                     <td @click="writeBetAmountKey(8)">8</td>
                     <td @click="writeBetAmountKey(9)">9</td>
                     <td rowspan="2" @click="showMobileMenu = !showMobileMenu">
-                      Hoàn tất
+                      {{ $t("Done") || "Done" }}
                     </td>
                   </tr>
                   <tr>
@@ -561,7 +600,9 @@
                 <div class="flex items-center">
                   <!---->
                 </div>
-                <p class="titleWin">Xin chúc mừng!</p>
+                <p class="titleWin">
+                  {{ $t("Congratulations") || "Congratulations" }}!
+                </p>
                 <span class="text-4xl font-bold message_money"
                   >+{{ moneyWin }}$</span
                 >
@@ -592,7 +633,7 @@
                 <div class="flex items-center">
                   <!---->
                 </div>
-                <p class="titleWin">Bạn đã thua!</p>
+                <p class="titleWin">{{ $t("YouLost") || "YouLost" }}!</p>
                 <span class="text-4xl font-bold ght2 message_money1"
                   >-{{ moneyLost }}$</span
                 >
@@ -1375,7 +1416,7 @@ export default {
       balanceForuser: 0,
       showMobileMenu: false,
       betAmount: 10,
-      loiNhuan: 19.5,
+      loiNhuan: 11.0,
       optionsOs: gaugeMeterOs,
       optionsSu: gaugeMeterSu,
       optionsMa: gaugeMeterMa,
@@ -1701,8 +1742,8 @@ export default {
 
     tinhloinhuan(m) {
       let lb = Number(m);
-      lb = lb + (lb * 95) / 100;
-      // tính lợi nhuận 95%
+      lb = lb + (lb * 10) / 100;
+      // tính lợi nhuận 10%
       this.loiNhuan = this.formatPrice(lb, 2);
     },
 

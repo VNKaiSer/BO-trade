@@ -1,11 +1,7 @@
 const {
-  getUSDTAddress,
-  getBTCAddress,
-  getETHAddress,
   getBankingAdmin,
-  insertBankingAdmin,
-  activeBankingAdmin,
-} = require("./wallet.controller");
+  updateBankingAdmin,
+} = require("./admin-bank.controller");
 const router = require("express");
 const app = router();
 const { checkToken } = require("../../auth/token_validation");
@@ -20,11 +16,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/USDT/address", checkToken, getUSDTAddress);
-app.get("/BTC/address", checkToken, getBTCAddress);
-app.get("/ETH/address", checkToken, getETHAddress);
 app.get("/bankingAdmin", checkToken, getBankingAdmin);
-app.post("/bankingAdmin", checkToken, insertBankingAdmin);
-app.patch("/bankingAdmin", checkToken, activeBankingAdmin);
+
+app.post("/bankingAdmin", checkToken, updateBankingAdmin);
 
 module.exports = app;
