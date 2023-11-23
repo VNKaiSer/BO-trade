@@ -202,7 +202,20 @@ function handleSendKQ(data, ws) {
 
       if (ws !== "") ws.send(JSON.stringify(obj2));
     } else {
-      updateAmountLose(obj, (err, result) => {});
+      let objl = {
+        balance: data.data.betAmount - amountShow,
+        lose: amountShow,
+        upID: uid,
+        email: email,
+      };
+
+      updateAmountLose(objl, (err, result) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log(result);
+      });
       updatePriceWinLose(obj, "l");
 
       (async () => {
@@ -216,7 +229,7 @@ function handleSendKQ(data, ws) {
           updateResultBet({
             id: data.data.idBet,
             amount_win: 0,
-            amount_lose: data.data.betAmount,
+            amount_lose: amountShow,
             open: result.open,
             close: result.close,
           });
@@ -228,7 +241,8 @@ function handleSendKQ(data, ws) {
         type: "kq",
         data: {
           kq: wl,
-          money: Number(data.data.betAmount),
+          money: Number(amountShow),
+          amount_bet: data.data.betAmount,
         },
       };
 
@@ -490,7 +504,7 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
 
     const call = {
       type: "lose",
-      coinBet: data.coinBet,
+      coinBet: amountShow,
     };
     (async () => {
       try {
@@ -504,7 +518,7 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
           uid,
           type,
           action,
-          data.coinBet,
+          amount,
           amountShow,
           money,
           email,

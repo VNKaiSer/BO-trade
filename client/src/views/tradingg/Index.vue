@@ -2323,7 +2323,7 @@ export default {
             let mn = dl.money;
             this.playAudio("lose");
             if (getData.isAccount) {
-              getData.blLive = getData.blLive + mn;
+              getData.blLive = getData.blLive + dl.amount_bet - mn;
             } else {
               getData.blDemo = getData.blDemo + mn;
             }
