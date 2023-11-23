@@ -489,6 +489,6 @@ export default {
   },
 
   getBankingAdmin() {
-    return ApiAdmin().get("api/admin-bank/bankingAdmin");
+    return Api().get("api/admin-bank/bankingAdmin");
   },
 };

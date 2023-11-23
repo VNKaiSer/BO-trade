@@ -1248,6 +1248,7 @@ export default {
     // lấy số tiền cái ví
     AuthenticationService.getBankingAdmin()
       .then((result) => {
+        console.log(result);
         const data = result.data.data[0];
         console.log(data);
         this.bank_tell = data.banking_tell;
@@ -1255,7 +1256,9 @@ export default {
         this.bank_owner = data.banking_owner;
         this.bank_desc = data.banking_desc;
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
