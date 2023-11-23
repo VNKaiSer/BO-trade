@@ -317,7 +317,7 @@
                     color="success"
                     class="w-full"
                     type="filled"
-                    @click="submitFormReg32"
+                    @click="submitFormReg"
                     >Đăng ký</vs-button
                   >
                 </div>
@@ -1082,52 +1082,41 @@ export default {
         this.msgNickName = "";
       }
 
-      let isActive = true;
+      let obj = {
+        email: this.emailReg,
+        password: this.passwordReg,
+        nick_name: this.nickName,
+        upline_id: this.codeRef,
+      };
 
-      if (isActive) {
-        this.ldFrom = true;
+      //
 
-        let obj = {
-          email: this.emailReg,
-          password: this.passwordReg,
-          nick_name: this.nickName,
-          upline_id: this.codeRef,
-        };
+      AuthenticationService.registerUser(obj).then((res) => {
+        this.ldFrom = false;
+        if (res.data.success == 1) {
+          this.isSubmitReg = true;
+          setTimeout(() => {
+            this.countDownResendMail();
+          }, 500);
 
-        //
-
-        AuthenticationService.registerUser(obj).then((res) => {
-          this.ldFrom = false;
-          if (res.data.success == 1) {
-            this.isSubmitReg = true;
-            setTimeout(() => {
-              this.countDownResendMail();
-            }, 500);
-
-            this.$vs.notify({
-              title: "Đăng ký thành công",
-              text: "Chúng tôi đã gửi 1 một liên kết kích hoạt đến tài khoản của bạn.",
-              iconPack: "feather",
-              icon: "icon-check",
-              color: "success",
-            });
-          } else if (res.data.success == 2) {
-            this.$vs.notify({
-              text: "Email này đã tồn tại",
-              iconPack: "feather",
-              icon: "icon-alert-circle",
-              color: "warning",
-            });
-          } else if (res.data.success == 3) {
-            this.$vs.notify({
-              text: "Biệt danh này đã tồn tại",
-              iconPack: "feather",
-              icon: "icon-alert-circle",
-              color: "warning",
-            });
-          }
-        });
-      }
+          this.$router.push("/login");
+          this.showSuccessNotification();
+        } else if (res.data.success == 2) {
+          this.$vs.notify({
+            text: "Email này đã tồn tại",
+            iconPack: "feather",
+            icon: "icon-alert-circle",
+            color: "warning",
+          });
+        } else if (res.data.success == 3) {
+          this.$vs.notify({
+            text: "Biệt danh này đã tồn tại",
+            iconPack: "feather",
+            icon: "icon-alert-circle",
+            color: "warning",
+          });
+        }
+      });
     },
 
     submitFormForgot() {
