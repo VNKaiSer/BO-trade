@@ -35,6 +35,11 @@ let {
 } = require("./../games/service.trade");
 const WIN_STATUS = 1;
 const LOSE_STATUS = 0;
+const fs = require("fs");
+const options = {
+  key: fs.readFileSync("./certs/donaldtrade_online_privkey.key"),
+  cert: fs.readFileSync("./certs/donaldtrade_online_certificate.crt"),
+};
 
 app.use(
   cors({
@@ -46,13 +51,14 @@ app.use(
 // use https
 
 var httpServer = null;
+httpServer = require("https").createServer(options, app);
 
-if (!config.USE_SSL) {
-  httpServer = require("http").createServer(app);
-} else {
-  let options = Helper.ssl;
-  httpServer = require("https").createServer(options, app);
-}
+// if (!config.USE_SSL) {
+//   httpServer = require("http").createServer(app);
+// } else {
+//   let options = Helper.ssl;
+//   httpServer = require("https").createServer(options, app);
+// }
 
 const wss = new WebSocket.Server({
   server: httpServer,
