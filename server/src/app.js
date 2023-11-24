@@ -22,6 +22,11 @@ const bodyParser = require("body-parser");
 const Bank = require("../auth/pay/bank");
 const cors = require("cors");
 require("dotenv").config();
+const fs = require("fs");
+const options = {
+  key: fs.readFileSync("./certs/donaldtrade_online_privkey.key"),
+  cert: fs.readFileSync("./certs/donaldtrade_online_certificate.crt"),
+};
 const app = express();
 
 app.use(bodyParser.json());
@@ -72,6 +77,10 @@ app.get("/status", (req, res) => {
     message: `Hello ${req.body.email} !`,
   });
 });
+const server = require("https").createServer(options, app);
 
-app.listen(process.env.PORT || 80);
-console.log("- Web start port " + process.env.PORT);
+server.listen(process.env.PORT || 443, () => {
+  console.log("- Web start port " + (process.env.PORT || 443));
+});
+// app.listen(process.env.PORT || 80);
+// console.log("- Web start port " + process.env.PORT);
