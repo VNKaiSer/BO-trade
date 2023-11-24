@@ -313,29 +313,59 @@
                 name=""
                 id=""
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="BTC">
                   BTC
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="ETH">
                   ETH
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="USDT">
                   USDT
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="BNB">
                   BNB
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="XRP">
                   XRP
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="ADA">
                   ADA
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="DOGE">
                   DOGE
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="LTC">
                   LTC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="DOT">
+                  DOT
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="LINK">
+                  LINK
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="UNI">
+                  UNI
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XLM">
+                  XLM
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="SOL">
+                  SOL
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="MATIC">
+                  MATIC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XMR">
+                  XMR
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="AVAX">
+                  AVAX
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="CAKE">
+                  CAKE
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="ATOM">
+                  ATOM
                 </option>
               </select>
             </div>
@@ -345,17 +375,29 @@
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
               >
+                <option class="w-full h-8 cursor-pointer bpF" value="30">
+                  30s
+                </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  60s
+                  1m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  120s
+                  2m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  180s
+                  3m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  300s
+                  5m
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="600">
+                  10m
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="1800">
+                  30m
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="3600">
+                  1h
                 </option>
               </select>
             </div>
