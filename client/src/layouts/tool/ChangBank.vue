@@ -41,6 +41,14 @@
               label="Nội dung mẫu"
             />
           </div>
+          <div class="mb-4 centerx labelx">
+            <vs-input
+              v-model="exchangeVNDUSDT"
+              type="text"
+              style="width: 100%"
+              label="Tỉ giá VND/USDT"
+            />
+          </div>
           <!-- <div class="mb-4 centerx labelx">
             <vs-input
               type="number"
@@ -92,6 +100,7 @@
               <th>Tên ngân hàng</th>
               <th>Số tài khoản</th>
               <th>Nội dung mẫu</th>
+              <th>Tỉ giá VND/USDT</th>
             </tr>
             <tr>
               <!-- thêm class td-check -->
@@ -99,6 +108,7 @@
               <td>{{ bank_tell }}</td>
               <td>{{ bank_number }}</td>
               <td>{{ bank_desc }}</td>
+              <td>{{ exchangeVNDUSDT }}</td>
             </tr>
           </table>
         </div>
@@ -119,6 +129,7 @@ export default {
       bank_number: "",
       bank_owner: "",
       bank_desc: "",
+      exchangeVNDUSDT: "",
     };
   },
   computed: {},
@@ -130,6 +141,7 @@ export default {
         bank_number: this.bank_number,
         bank_owner: this.bank_owner,
         bank_desc: this.bank_desc,
+        exchangeVNDUSDT: this.exchangeVNDUSDT,
       };
 
       AuthenticationService.updateBankingAdmin(dataToSave)
@@ -161,6 +173,7 @@ export default {
         this.bank_number = data.banking_number;
         this.bank_owner = data.banking_owner;
         this.bank_desc = data.banking_desc;
+        this.exchangeVNDUSDT = data.exchangeVNDUSDT;
       })
       .catch((err) => {});
   },
