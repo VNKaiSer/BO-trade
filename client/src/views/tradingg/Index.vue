@@ -124,26 +124,29 @@
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
               >
+                <option class="w-full h-8 cursor-pointer bpF" value="30">
+                  30s
+                </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  60s
+                  1m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  120s
+                  2m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  180s
+                  3m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  300s
+                  5m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="600">
-                  10p
+                  10m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="1800">
-                  30p
+                  30m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="3600">
-                  60p
+                  1h
                 </option>
               </select>
             </div>
@@ -1408,8 +1411,8 @@ export default {
       textTitleSu: "NEUTRAL",
 
       // trade 4.0
-      timeBet: 60,
-      coinBet: "ETH",
+      timeBet: 30,
+      coinBet: "BTC",
 
       moneyWin: 0,
       isWinPop: false,
