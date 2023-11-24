@@ -136,6 +136,15 @@
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
                   300s
                 </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="600">
+                  10p
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="1800">
+                  30p
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="3600">
+                  60p
+                </option>
               </select>
             </div>
             <div class="mt-2 mb-2">{{ $t("Bet") || "Bet" }}</div>

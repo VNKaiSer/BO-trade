@@ -244,6 +244,7 @@
                     <div class="relative form-group">
                       <input
                         type="number"
+                        @input="updateAmountMessage"
                         v-model="amount_bank"
                         decimal="true"
                         :placeholder="`  Nhập Số Tiền Nạp`"
@@ -309,6 +310,12 @@
                                         </div> -->
                     <div class="relative">
                       <h4 class="mb-1 text-center">
+                        <span
+                          >Số tiền bạn cần thanh toán:
+                          {{ this.formatPrice(amoutMustBanking) }}VND</span
+                        >
+                      </h4>
+                      <h4 class="mb-1 text-center">
                         <span>Để thanh toán bạn vui lòng chuyển tiền theo</span>
                       </h4>
                       <h4 class="mb-1 text-center">
@@ -353,7 +360,8 @@
                     <div class="text-center md:w-full">
                       <div class="address">
                         <span class="noted"
-                          >Nạp tối thiểu là 15 USDT (1USDT = 24.000đ)</span
+                          >Nạp tối thiểu là 10 USDT (1USDT =
+                          {{ exchangeVNDUSDT }})</span
                         >
                         <!-- <span class="noted">** Để giảm tải máy chủ, vui lòng khi nạp tiền rồi nhấp vào kiểm tra, hệ thống sẽ kiểm tra trong vòng 2 phút, nếu USDT chưa vào tài khoản thì xin nhấp KIỂM TRA lại. Vui lòng không Spam tránh việc khóa tài khoản!</span> -->
                         <vs-button
@@ -570,11 +578,16 @@ export default {
       bank_number: "",
       bank_owner: "",
       bank_desc: "",
+      exchangeVNDUSDT: "",
+      amoutMustBanking: 0,
     };
   },
   methods: {
     enterMaxAmount() {
       this.amount = this.balanceUSDT;
+    },
+    updateAmountMessage() {
+      this.amoutMustBanking = this.amount_bank * this.exchangeVNDUSDT;
     },
 
     DepositPaypal() {
@@ -713,9 +726,9 @@ export default {
         });
       }
 
-      if (amount < 5) {
+      if (amount < 10) {
         return seft.$vs.notify({
-          text: "Số tiền nạp tối thiểu là $5.",
+          text: "Số tiền nạp tối thiểu là $10.",
           color: "danger",
           position: "top-right",
           iconPack: "feather",
@@ -1255,6 +1268,7 @@ export default {
         this.bank_number = data.banking_number;
         this.bank_owner = data.banking_owner;
         this.bank_desc = data.banking_desc;
+        this.exchangeVNDUSDT = data.exchangeVNDUSDT;
       })
       .catch((err) => {
         console.log(err);
