@@ -1259,6 +1259,9 @@ export default {
     this.getAddressF("USDT");
 
     // lấy số tiền cái ví
+    this.getBalanceWallet();
+
+    // lấy thông tin ngân hàng
     AuthenticationService.getBankingAdmin()
       .then((result) => {
         console.log(result);
