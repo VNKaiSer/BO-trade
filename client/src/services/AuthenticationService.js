@@ -29,7 +29,7 @@ export default {
   },
 
   changePassword2(obj) {
-    return Api().patch("api/users/change-password-is", obj);
+    return Api().post("api/users/change-password-is", obj);
   },
 
   getInfoUser() {
@@ -232,7 +232,10 @@ export default {
   },
 
   changePassAdmin(obj) {
-    return ApiAdmin().post("api/users/changPassAd", obj);
+    return Api().post("api/users/changPassAd", obj);
+  },
+  changePassUser(obj) {
+    return Api().post("api/users/changPassAd", obj);
   },
 
   createUser(obj) {

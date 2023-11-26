@@ -1,0 +1,13 @@
+{
+  "name": "BO-trade",
+  "scripts": {
+    "start:client" : "cd client && yarn serve",
+    "start:server": "cd server && node server.js",
+    "start": "concurrently \"yarn start:server \" \"yarn start:client \""
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/VNKaiSer/BO-trade.git",
+  "author": "VNKaiser <tandatvok16@gmail.com>",
+  "license": "MIT"
+}
