@@ -312,7 +312,7 @@
                                 <span>{{ tr.note ? tr.note : "-" }}</span>
                               </div>
                               <div class="text-center block-col status">
-                                <span v-if="tr.status">
+                                <span v-if="tr.status == 1">
                                   <span class="green">
                                     <feather-icon
                                       icon="CheckIcon"
@@ -321,7 +321,16 @@
                                   </span>
                                   Hoàn tất
                                 </span>
-                                <span v-if="!tr.status">
+                                <span v-if="tr.status == -1">
+                                  <span class="red">
+                                    <feather-icon
+                                      icon="AlertCircleIcon"
+                                      svgClasses="w-4 h-4"
+                                    />
+                                  </span>
+                                  Từ chối
+                                </span>
+                                <span v-if="tr.status == 0">
                                   <span class="red">
                                     <feather-icon
                                       icon="AlertCircleIcon"

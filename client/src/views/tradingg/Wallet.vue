@@ -303,7 +303,7 @@
                                 <span>{{ tr.note ? tr.note : "-" }}</span>
                               </div>
                               <div class="text-center block-col status">
-                                <span v-if="tr.status">
+                                <span v-if="tr.status == 1">
                                   <span class="green">
                                     <feather-icon
                                       icon="CheckIcon"
@@ -312,7 +312,16 @@
                                   </span>
                                   Hoàn tất
                                 </span>
-                                <span v-if="!tr.status">
+                                <span v-else-if="tr.status == -1">
+                                  <span class="red">
+                                    <feather-icon
+                                      icon="AlertCircleIcon"
+                                      svgClasses="w-4 h-4"
+                                    />
+                                  </span>
+                                  Từ chối
+                                </span>
+                                <span v-else-if="tr.status == 0">
                                   <span class="red">
                                     <feather-icon
                                       icon="AlertCircleIcon"
@@ -433,6 +442,15 @@
                                     />
                                   </span>
                                   Đợi
+                                </span>
+                                <span v-else-if="tr.status == -1">
+                                  <span class="red">
+                                    <feather-icon
+                                      icon="AlertCircleIcon"
+                                      svgClasses="w-4 h-4"
+                                    />
+                                  </span>
+                                  Từ chối
                                 </span>
                                 <span v-else>
                                   <span class="red">
@@ -1123,6 +1141,7 @@ export default {
       this.isLoading = true;
       AuthenticationService.getListHisTradeWallet().then((res) => {
         if (res.data.success) {
+          console.log(res.data.data);
           this.isLoading = false;
           this.dataHisWallet = res.data.data;
           let c = (res.data.count / 10).toString();

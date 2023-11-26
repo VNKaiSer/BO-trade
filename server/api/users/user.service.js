@@ -3730,8 +3730,8 @@ module.exports = {
     console.log(data);
     await new Promise((resolve, reject) => {
       db.query(
-        `UPDATE trade_history SET status = 1 WHERE id = ?`,
-        [data.id],
+        `UPDATE trade_history SET status = ? WHERE id = ?`,
+        [data.status,data.id],
         (error, results, fields) => {
           resolve();
         }
@@ -3743,7 +3743,9 @@ module.exports = {
         console.error("Error:", error);
       } else {
         console.log(rs);
-        updateMoneyUser(rs);
+        if (data.type == "nt") {
+          updateMoneyUser(rs);
+        }
       }
     });
 

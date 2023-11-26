@@ -236,15 +236,30 @@
                 <vs-button
                   type="filled"
                   @click="
-                    doneRefuseWithdra(
+                    doneRefuseWithdral(
                       tr.id,
                       indextr,
                       tr.amount,
                       tr.email,
-                      tr.fee_withdraw
+                      0,
+                      'accept'
                     )
                   "
                   ><span>Xác nhận</span></vs-button
+                >
+                <vs-button
+                  type="filled"
+                  @click="
+                    doneRefuseWithdral(
+                      tr.id,
+                      indextr,
+                      tr.amount,
+                      tr.email,
+                      0,
+                      'nt'
+                    )
+                  "
+                  ><span>Từ chối</span></vs-button
                 >
               </vs-td>
             </vs-tr>
@@ -388,13 +403,15 @@ export default {
       });
     },
 
-    doneRefuseWithdra(id, index, amount, email, fee) {
+    doneRefuseWithdral(id, index, amount, email, fee, type) {
       console.log("Chạy ra rồi nè");
       let obj = {
         id: id,
         amount: amount,
         email: email,
         fee: fee,
+        type: type,
+        status: type == "nt" ? -1 : 1,
       };
 
       AuthenticationService.verifiedMoney(obj).then((resp) => {
