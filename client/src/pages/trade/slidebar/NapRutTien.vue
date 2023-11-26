@@ -390,85 +390,93 @@
                     Tối đa
                   </button>
                 </div>
-                <div class="relative form-group">
-                  <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
-                  <select
-                    id="nganHang"
-                    class="form-control"
-                    style="width: 100%; background-color: #041022"
-                    v-model="namebank"
-                  >
-                    <option value="vietinbank" class="opp">
-                      Ngân hàng VietinBank
-                    </option>
-                    <option value="vietcombank" class="opp">
-                      Ngân hàng Vietcombank
-                    </option>
-                    <option value="bidv" class="opp">Ngân hàng BIDV</option>
-                    <option value="techcombank" class="opp">
-                      Ngân hàng Techcombank
-                    </option>
-                    <option value="acb" class="opp">Ngân hàng ACB</option>
-                    <option value="mbbank" class="opp">Ngân hàng MBBank</option>
-                    <option value="pvcombank" class="opp">
-                      Ngân hàng PVcomBank
-                    </option>
-                    <option value="agribank" class="opp">
-                      Ngân hàng Agribank
-                    </option>
-                    <option value="sacombank" class="opp">
-                      Ngân hàng Sacombank
-                    </option>
-                    <option value="eximbank" class="opp">
-                      Ngân hàng Eximbank
-                    </option>
-                    <option value="vib" class="opp">Ngân hàng VIB</option>
-                    <option value="shb" class="opp">Ngân hàng SHB</option>
-                    <option value="hdbank" class="opp">Ngân hàng HDBank</option>
-                    <option value="tpbank" class="opp">Ngân hàng TPBank</option>
-                    <option value="nab" class="opp">Ngân hàng NAB</option>
+                <div v-if="checkBackInfor == 0">
+                  <div class="relative form-group">
+                    <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
+                    <select
+                      id="nganHang"
+                      class="form-control"
+                      style="width: 100%; background-color: #041022"
+                      v-model="namebank"
+                    >
+                      <option value="vietinbank" class="opp">
+                        Ngân hàng VietinBank
+                      </option>
+                      <option value="vietcombank" class="opp">
+                        Ngân hàng Vietcombank
+                      </option>
+                      <option value="bidv" class="opp">Ngân hàng BIDV</option>
+                      <option value="techcombank" class="opp">
+                        Ngân hàng Techcombank
+                      </option>
+                      <option value="acb" class="opp">Ngân hàng ACB</option>
+                      <option value="mbbank" class="opp">
+                        Ngân hàng MBBank
+                      </option>
+                      <option value="pvcombank" class="opp">
+                        Ngân hàng PVcomBank
+                      </option>
+                      <option value="agribank" class="opp">
+                        Ngân hàng Agribank
+                      </option>
+                      <option value="sacombank" class="opp">
+                        Ngân hàng Sacombank
+                      </option>
+                      <option value="eximbank" class="opp">
+                        Ngân hàng Eximbank
+                      </option>
+                      <option value="vib" class="opp">Ngân hàng VIB</option>
+                      <option value="shb" class="opp">Ngân hàng SHB</option>
+                      <option value="hdbank" class="opp">
+                        Ngân hàng HDBank
+                      </option>
+                      <option value="tpbank" class="opp">
+                        Ngân hàng TPBank
+                      </option>
+                      <option value="nab" class="opp">Ngân hàng NAB</option>
 
-                    <option value="ab" class="opp">Ngân hàng ABBank</option>
-                    <option value="msb" class="opp">Ngân hàng MSB</option>
-                    <option value="pg" class="opp">Ngân hàng PG Bank</option>
-                  </select>
-                </div>
-                <div class="relative form-group">
-                  <h4 class="colorSecondary2">Chi nhánh ngân hàng</h4>
-                  <input
-                    type="text"
-                    placeholder="Nhập chi nhánh ngân hàng của bạn"
-                    class="form-control"
-                  />
-                </div>
-                <div class="relative form-group">
-                  <h4 class="colorSecondary2">Số tài khoản</h4>
-                  <input
-                    v-model="stk"
-                    required="stk"
-                    type="text"
-                    placeholder="Nhập số tài khoản của bạn"
-                    class="form-control"
-                  />
-                </div>
+                      <option value="ab" class="opp">Ngân hàng ABBank</option>
+                      <option value="msb" class="opp">Ngân hàng MSB</option>
+                      <option value="pg" class="opp">Ngân hàng PG Bank</option>
+                    </select>
+                  </div>
+                  <div class="relative form-group">
+                    <h4 class="colorSecondary2">Chi nhánh ngân hàng</h4>
+                    <input
+                      type="text"
+                      placeholder="Nhập chi nhánh ngân hàng của bạn"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="relative form-group">
+                    <h4 class="colorSecondary2">Số tài khoản</h4>
+                    <input
+                      v-model="stk"
+                      required="stk"
+                      type="text"
+                      placeholder="Nhập số tài khoản của bạn"
+                      class="form-control"
+                    />
+                  </div>
 
-                <div class="relative form-group">
-                  <h4 class="colorSecondary2">Chủ tài khoản</h4>
-                  <input
-                    v-model="chutk"
-                    required="chutaikhoan"
-                    type="text"
-                    placeholder="Nhập tên chủ tài khoản"
-                    class="form-control"
-                  />
-                </div>
-                <div class="relative form-group">
-                  <h4 class="colorSecondary2">Ghi chú ( không bắt buộc)</h4>
-                  <input
-                    type="text"
-                    placeholder="Nhập ghi chú của bạn"
-                    class="form-control"
-                  />
+                  <div class="relative form-group">
+                    <h4 class="colorSecondary2">Chủ tài khoản</h4>
+                    <input
+                      v-model="chutk"
+                      required="chutaikhoan"
+                      type="text"
+                      placeholder="Nhập tên chủ tài khoản"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="relative form-group">
+                    <h4 class="colorSecondary2">Ghi chú ( không bắt buộc)</h4>
+                    <input
+                      type="text"
+                      placeholder="Nhập ghi chú của bạn"
+                      class="form-control"
+                    />
+                  </div>
                 </div>
                 <div v-if="!pop2FAokPay">
                   <div class="text-center address">
@@ -566,6 +574,7 @@ export default {
 
       colorLoading: "#fff",
       ssDownSend: "Kiểm tra",
+      checkBackInfor: 0,
     };
   },
   methods: {
@@ -1243,6 +1252,15 @@ export default {
 
     // lấy số tiền cái ví
     this.getBalanceWallet();
+    AuthenticationService.checkUserUpdateBank({
+      email: getData.email,
+    })
+      .then((result) => {
+        this.checkBackInfor = result.data.completed_profile;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

@@ -1100,7 +1100,7 @@ module.exports = {
           console.log("Trừ tiền");
           //======= Trừ tiền tài khoản mình
           db.query(
-            `UPDATE users SET money_usdt = money_usdt - ? WHERE email = ?`,
+            `UPDATE users SET money_usdt = money_usdt - ?, completed_profile = 1  WHERE email = ?`,
             [tongPhi, data.email],
             (error, results, fields) => {
               if (error) {
@@ -3731,7 +3731,7 @@ module.exports = {
     await new Promise((resolve, reject) => {
       db.query(
         `UPDATE trade_history SET status = ? WHERE id = ?`,
-        [data.status,data.id],
+        [data.status, data.id],
         (error, results, fields) => {
           resolve();
         }
@@ -3761,6 +3761,20 @@ module.exports = {
           return callback(error);
         }
         return callback(null, results);
+      }
+    );
+  },
+
+  checkUserUpdateBank(data, callback) {
+    db.query(
+      "SELECT completed_profile FROM users WHERE email = ?",
+      [data.email],
+      (error, results, fields) => {
+        if (error) {
+          return callback(error);
+        }
+        console.log(results[0].completed_profile);
+        return callback(null, results[0]);
       }
     );
   },

@@ -207,6 +207,10 @@ export default {
     return Api().post("api/users/updateListNotifi", obj);
   },
 
+  checkUserUpdateBank(obj) {
+    return Api().post("api/users/checkUserUpdateBank", obj);
+  },
+
   //=========== END USER
 
   //========== MEMBER
