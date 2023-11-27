@@ -359,6 +359,7 @@ export default {
       const obj = {
         id: id,
         status: 1,
+        type : 'nt'
       };
       if (val) {
         this.productsFake[index].status = 1;

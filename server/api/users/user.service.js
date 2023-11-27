@@ -3745,7 +3745,7 @@ module.exports = {
         console.log(rs);
         if (data.type == "nt") {
           updateMoneyUser(rs);
-        }
+        } 
       }
     });
 
