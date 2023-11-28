@@ -333,11 +333,8 @@
                   emailReg
                 }}</a
                 ><br /><br />
-                - B1: Tải ứng dụng Telegram về trên App Store (IOS) hoặc CH Play
-                (Android).<br />
-                - B2: Nếu đã có ứng dụng (Bỏ qua Bước 1) Nhấp vào nút KÍCH HOẠT
-                bên dưới 👇🏻 để mở App Telegram.<br />
-                - B3: Làm theo hướng dẫn của admin.<br />
+                Hãy nhấn vào line chat liên hệ với admin để kích hoạt tài khoản
+                của bạn
               </p>
               <!-- <p class="colorSecondary">
                                Một liên kết xác nhận đã được gửi tới
@@ -350,19 +347,18 @@
                 <!-- <a :href="`mailto:${emailReg}`" class="colorBlue4">{{
                   emailReg
                 }}</a> -->
-                Vui lòng Nhấp vào nút KÍCH HOẠT bên dưới 👇🏻 để được kích hoạt.
 
                 <!-- Nếu không nhận được email xin vui lòng dùng TELEGRAM BOT để kích hoạt tài khoản: <a target="_blank" href="https://t.me/ares_idefibo_bot">Nhấp vào đây</a>-->
               </p>
               <br />
               <br />
               <p>
-                <button
+                <!-- <button
                   class="w-full mt-4 btn btn-resendemail"
                   @click="openSite"
                 >
                   NHẤP VÀO ĐÂY 🤝KÍCH HOẠT🤝
-                </button>
+                </button> -->
                 <!-- <button
                   id="button-with-loading"
                   class="w-full mt-4 btn btn-resendemail vs-con-loading__container"
