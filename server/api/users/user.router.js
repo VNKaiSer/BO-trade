@@ -88,9 +88,9 @@ app.post("/forgot-password", forgotPassAccount);
 
 app.post("/resend-confirmation-email", resendConfirmationAccount);
 
-app.patch("/change-password", updateUserPasswordByEmailClient);
+app.post("/change-password", updateUserPasswordByEmailClient);
 
-app.patch("/change-password-is", updateUserPasswordByEmailClient2);
+app.post("/change-password-is", updateUserPasswordByEmailClient2);
 
 app.post("/create", checkToken, createUser);
 

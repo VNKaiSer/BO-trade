@@ -82,7 +82,8 @@
         </div>
 
         <h3 class="mb-3" style="font-weight: blod">
-          <feather-icon icon="UserIcon"></feather-icon> {{ $t("TTCN") || "TTCN" }}
+          <feather-icon icon="UserIcon"></feather-icon>
+          {{ $t("TTCN") || "TTCN" }}
         </h3>
 
         <div class="vx-vx-row">
@@ -117,7 +118,8 @@
 
       <div class="p-4">
         <h3 class="mb-3" style="font-weight: blod">
-          <feather-icon icon="UserCheckIcon"></feather-icon> {{ $t("XMTK") || "XMTK" }}
+          <feather-icon icon="UserCheckIcon"></feather-icon>
+          {{ $t("XMTK") || "XMTK" }}
         </h3>
         <span class="mt-5 d-flex" style="font-size: 12px">
           {{ $t("TTTG") || "TTTG" }}
@@ -154,9 +156,9 @@
           >{{ $t("D") || "D" }}</vs-button
         >
         <p class="clearfix"></p>
-        <span class="d-flex" style="font-size: 12px; margin-bottom: 5px"
-          >{{ $t("LKO") || "LKO" }}</span
-        >
+        <span class="d-flex" style="font-size: 12px; margin-bottom: 5px">{{
+          $t("LKO") || "LKO"
+        }}</span>
         <p class="clearfix"></p>
         <div class="float-right mt-1">
           <label>{{ $t("BKS") || "BKS" }}</label>
@@ -211,11 +213,10 @@
             />
           </div>
           <div class="w-full mt-5 vx-col">
-            <small class="italic red" v-if="!getDataJson.c2fa"
+            <!-- <small class="italic red" v-if="!getDataJson.c2fa"
               >* Bạn phải bật 2FA để điều chỉnh</small
-            >
+            > -->
             <vs-button
-              v-else
               color="success"
               type="border"
               :disabled="disableChangePass"

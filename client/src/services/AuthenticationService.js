@@ -25,11 +25,11 @@ export default {
   },
 
   changePassword(obj) {
-    return Api().patch("api/users/change-password", obj);
+    return Api().post("api/users/change-password", obj);
   },
 
   changePassword2(obj) {
-    return Api().patch("api/users/change-password-is", obj);
+    return Api().post("api/users/change-password-is", obj);
   },
 
   getInfoUser() {
