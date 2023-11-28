@@ -3714,7 +3714,7 @@ module.exports = {
     let rs = 0;
     await new Promise((resolve, reject) => {
       db.query(
-        `SELECT count(*) AS count FROM trade_history WHERE email = ? and status = -1`,
+        `SELECT count(*) AS count FROM trade_history WHERE email = ? and status = -1 and type = 'nt'`,
         [email],
         (error, results, fields) => {
           rs = results[0].count;

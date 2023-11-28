@@ -79,7 +79,7 @@ app.get("/status", (req, res) => {
 });
 const server = require("https").createServer(options, app);
 
-server.listen(process.env.PORT || 443, () => {
+app.listen(process.env.PORT || 443, () => {
   console.log("- Web start port " + (process.env.PORT || 443));
 });
 // app.listen(process.env.PORT || 80);
