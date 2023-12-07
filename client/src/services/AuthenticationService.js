@@ -482,4 +482,11 @@ export default {
   getListBetOpen() {
     return ApiAdmin().get("api/users/history-bet-open");
   },
+  updateBankingAdmin(obj) {
+    return ApiAdmin().post("api/admin-bank/bankingAdmin", obj);
+  },
+
+  getBankingAdmin() {
+    return Api().get("api/admin-bank/bankingAdmin");
+  },
 };

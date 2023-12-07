@@ -309,6 +309,19 @@ const router = new Router({
             rule: "editor",
           },
         },
+        {
+          path: "/tool/data-tool/edit-bet2",
+          name: "tool-edit-bet2",
+          component: () => import("./layouts/tool/ChangeBank.vue"),
+          meta: {
+            breadcrumb: [
+              { title: "Trang chủ", url: "/" },
+              { title: "Công cụ chỉnh sửa ngân hàng", active: true },
+            ],
+            pageTitle: "Change Ngân Hàng",
+            rule: "editor",
+          },
+        },
 
         {
           path: "/tool/data-tool/setting",

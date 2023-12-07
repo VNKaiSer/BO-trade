@@ -312,7 +312,7 @@
                         <span>Để thanh toán bạn vui lòng chuyển tiền theo</span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Nội dung: Username_SotienNap</span>
+                        <span>Nội dung: {{ bank_desc }}</span>
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span
@@ -320,13 +320,13 @@
                         >
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Chủ Tài Khoản: NGUYEN THI PHUONG NGA </span>
+                        <span>Chủ Tài Khoản: {{ bank_owner }} </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Ngân hàng: TECHCOMBANK </span>
+                        <span>Ngân hàng: {{ bank_tell }} </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Số tài khoản: 5115112005</span>
+                        <span>Số tài khoản: {{ bank_number }}</span>
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span
@@ -540,7 +540,7 @@ export default {
       textTypePay: "USDT",
 
       showSelectTypeC: false,
-
+      bankingAdmin: "",
       getAmount: 0,
 
       amount: "",
@@ -575,6 +575,10 @@ export default {
       colorLoading: "#fff",
       ssDownSend: "Kiểm tra",
       checkBackInfor: 0,
+      bank_tell: "",
+      bank_number: "",
+      bank_owner: "",
+      bank_desc: "",
     };
   },
   methods: {
@@ -1242,6 +1246,7 @@ export default {
       return formatter.format(value);
     },
   },
+
   mounted() {},
   created() {
     // lấy số tiền mặc định của ví
@@ -1252,6 +1257,16 @@ export default {
 
     // lấy số tiền cái ví
     this.getBalanceWallet();
+    AuthenticationService.getBankingAdmin()
+      .then((result) => {
+        const data = result.data.data[0];
+        console.log(data);
+        this.bank_tell = data.banking_tell;
+        this.bank_number = data.banking_number;
+        this.bank_owner = data.banking_owner;
+        this.bank_desc = data.banking_desc;
+      })
+      .catch((err) => {});
     AuthenticationService.checkUserUpdateBank({
       email: getData.email,
     })

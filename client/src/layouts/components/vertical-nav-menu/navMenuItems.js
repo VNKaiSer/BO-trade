@@ -73,6 +73,13 @@ export default [
         slug: "list-agency-account",
         //i18n: "Đại lý",
       },
+      {
+        url: "/tool/data-tool/edit-bet2",
+        name: "Change Ngân Hàng",
+        icon: "UsersIcon",
+        slug: "list-agency-account",
+        //i18n: "Đại lý",
+      },
     ],
   },
   {

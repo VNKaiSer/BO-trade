@@ -8,6 +8,7 @@ const tradeRouter = require("./../api/trade/trade.router");
 const betRouter = require("./../api/bet/bet.router");
 const exChangeRouter = require("./../api/exchange/ex.router");
 const Wallet = require("./../api/wallet/wallet.router");
+const AdminBank = require("./../api/admin-bank/admin-bank.router");
 
 const uploadAvatar = require("./../auth/upload/router");
 
@@ -46,6 +47,7 @@ app.use("/api/auth", uploadAvatar);
 
 app.use("/api/paypal", payPal);
 app.use("/api/bank", Bank);
+app.use("/api/admin-bank", AdminBank);
 
 app.get("/status", (req, res) => {
   let dataSys = Helper.getConfig(fileSys);
