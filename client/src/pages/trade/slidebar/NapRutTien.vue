@@ -1278,6 +1278,7 @@ export default {
         this.bank_number = data.banking_number;
         this.bank_owner = data.banking_owner;
         this.bank_desc = data.banking_desc;
+        this.exchangeVNDUSDT = data.exchangeVNDUSDT;
       })
       .catch((err) => {});
     AuthenticationService.checkUserUpdateBank({
