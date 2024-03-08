@@ -4,7 +4,7 @@
       <div class="w-full h-48 subBanner">
         <div class="container flex items-center h-full info">
           <div class="relative flex flex-col justify-center">
-            <p class="text-lg">Tổng tài sản (USD)</p> 
+            <p class="text-lg">Tổng tài sản (USD)</p>
             <p>
               <span
                 class="mr-2 price"
