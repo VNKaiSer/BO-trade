@@ -143,6 +143,15 @@
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
                   300s
                 </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="1gio">
+                  1 giờ
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="12gio">
+                  12 giờ
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="24gio">
+                  24 giờ
+                </option>
               </select>
             </div>
             <div class="mt-2 mb-2">Tiền cược</div>
