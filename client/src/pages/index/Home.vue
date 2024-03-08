@@ -284,6 +284,30 @@
     <div class="regime section-padding">
       <div class="container">
         <h2 class="text-center h2">Giao dịch trong chế độ tiện lợi với bạn</h2>
+
+        <div style="height: 570px; margin-top: -30px">
+          <iframe
+            style="border: none"
+            width="100%"
+            height="200%"
+            srcdoc='
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+      {
+        "width": 1130,
+        "height": 490,
+        "defaultColumn": "overview",
+        "screener_type": "crypto_mkt",
+        "displayCurrency": "USD",
+        "colorTheme": "dark",
+        "locale": "en"
+      }
+      </script>
+    </div>'
+          ></iframe>
+        </div>
         <div class="regime__container">
           <div class="regime__left">
             <div class="regime__content">

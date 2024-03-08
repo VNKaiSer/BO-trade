@@ -13,6 +13,45 @@
         <div class="h-full">
           <div class="relative chartBox">
             <iframe
+              style="border: none; margin-top: -8px"
+              width="100%"
+              srcdoc='
+    <div class="tradingview-widget-container">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" >
+        {
+          "symbols": [
+            {
+              "proName": "FOREXCOM:SPXUSD",
+              "title": "S&P 500 Index"
+            },
+            {
+              "proName": "FOREXCOM:NSXUSD",
+              "title": "US 100 Cash CFD"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR to USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "Bitcoin"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "Ethereum"
+            }
+          ],
+          "showSymbolLogo": true,
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "en"
+        }
+      </script>
+    </div>'
+            ></iframe>
+
+            <iframe
               class="ht"
               srcdoc='
                             <div class="tradingview-widget-container" style="height:calc(100vh - 16px);width:100%">
@@ -46,7 +85,8 @@
                 </script>
               </div>'
               width="100%"
-              height="100%"
+              height="93%"
+              marginTop="-10px"
               allowfullscreen
             ></iframe>
           </div>
@@ -2490,6 +2530,7 @@ export default {
 <style scoped>
 .ht {
   border-width: 0;
+  margin-top: -106px;
 }
 .ght2 {
   color: red;
