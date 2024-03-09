@@ -99,6 +99,7 @@
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="coinBet"
                 id=""
+                
               >
                 <option class="w-full h-8 cursor-pointer bpF" value="BTC">
                   BTC
@@ -161,30 +162,28 @@
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
+                @change="onTimeBetChange($event)"
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="30">
-                  30s
-                </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  1m
+                  1m - 10%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  2m
+                  2m - 15%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  3m
+                  3m - 20%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  5m
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="600">
-                  10m
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="1800">
-                  30m
+                  5m - 25%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="3600">
-                  1h
+                  1h - 50%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="43200">
+                  12h - 75%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="86400">
+                  24h - 95%
                 </option>
               </select>
             </div>
@@ -248,7 +247,7 @@
               {{ $t("Profit") || "Profit" }}
             </div>
             <div class="text-center">
-              <span class="mb-2 profitPercent color-light-blue">10%</span>
+              <span class="mb-2 profitPercent color-light-blue">{{betAmount}}</span>
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -413,29 +412,26 @@
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="30">
-                  30s
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  1m
+              <option class="w-full h-8 cursor-pointer bpF" value="60">
+                  1m - 10%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  2m
+                  2m - 15%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  3m
+                  3m - 20%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  5m
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="600">
-                  10m
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="1800">
-                  30m
+                  5m - 25%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="3600">
-                  1h
+                  1h - 50%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="43200">
+                  12h - 75%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="86400">
+                  24h - 95%
                 </option>
               </select>
             </div>
@@ -1491,8 +1487,9 @@ export default {
       textTitleSu: "NEUTRAL",
 
       // trade 4.0
-      timeBet: 30,
+      timeBet: 60,
       coinBet: "BTC",
+      profit :10,
 
       moneyWin: 0,
       isWinPop: false,
@@ -1537,6 +1534,8 @@ export default {
     textTimeDown() {
       return getData.textTimeDown;
     },
+    
+    
   },
   watch: {
     "oscillators.meter.numberValue": function () {
@@ -1550,6 +1549,34 @@ export default {
     disabledBet() {
       return (this.isBet = !this.isBet ? true : false);
     },
+    onTimeBetChange(event) {
+      console.log(typeof event.target.value);
+      switch (Number(event.target.value)) {
+        case 60:
+          this.profit = 10;
+          break;
+        case 120:
+          this.profit = 15;
+          break;
+        case 180:
+          this.profit = 20;
+          break;
+        case 300:
+          this.profit = 30;
+          break;
+        case 3600:
+          this.profit = 50;
+          break;
+        case 43200:
+          this.profit = 75;
+          break;
+        case 86400:
+          this.profit = 95;
+          break;
+        }
+        this.tinhloinhuan(this.betAmount);
+      // this.profit = event.target.value;
+    },
     // redrawGaugeMeter: function(t) {
     //     var e = void 0;
     //     (e = "oscillators" === t ? this.gaugeMeterOs : "movingAverages" === t ? this.gaugeMeterMa : this.gaugeMeterSu) && e.series && (e.series[0].points[0].update(this[t].meter.numberValue, !1), e.redraw())
@@ -1557,6 +1584,7 @@ export default {
     sendMessage(message) {
       this.connection.send(JSON.stringify(message));
     },
+    
 
     // convertTextState(t) {
     //     switch (t) {
@@ -1834,7 +1862,7 @@ export default {
 
     tinhloinhuan(m) {
       let lb = Number(m);
-      lb = lb + (lb * 10) / 100;
+      lb = lb + (lb * this.profit) / 100;
       // tính lợi nhuận 10%
       this.loiNhuan = this.formatPrice(lb, 2);
     },
