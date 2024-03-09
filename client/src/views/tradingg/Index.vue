@@ -1574,7 +1574,7 @@ export default {
           this.profit = 95;
           break;
         }
-        this.tinhloinhuan(this.betAmount);
+        this.tinhloinhuan(this.betAmount );
       // this.profit = event.target.value;
     },
     // redrawGaugeMeter: function(t) {
@@ -1665,6 +1665,7 @@ export default {
         idBet: idBet,
         mkt: getData.mkt,
         timeBet: timeBet,
+        profit: this.profit,
       };
 
       let ss = this.$store.session;
@@ -1699,7 +1700,7 @@ export default {
       }
 
       this.sendMessage({ type: "getPriceOP", data: obj });
-      console.log(priceOpen);
+      // console.log(priceOpen);
 
       this.sendMessage({ type: "bet", data: obj });
 
@@ -1737,6 +1738,7 @@ export default {
       // }, 1 * 1000);
 
       this.sendMessage({ type: "getKq", data: obj });
+
       setTimeout(() => {
         localStorage.removeItem("stateOpen");
 
@@ -1745,7 +1747,7 @@ export default {
         );
         localStorage.setItem("stateOpen", JSON.stringify(this.betOpen));
         getData.Notify = this.betOpen.l.bet[0].items.length;
-      }, timeBet * 1000);
+      },  3000);
       // },2000)
 
       // if(v === 'buy'){
@@ -2422,10 +2424,9 @@ export default {
           });
         }
         if (data.type === "kq") {
-          //console.log(dl);
+          console.log(dl);
           if (dl.kq == "win") {
             let mn = dl.money;
-
             this.playAudio("win");
 
             if (getData.isAccount) {
@@ -2440,15 +2441,19 @@ export default {
               this.isWinPop = false;
             }, 2000);
           } else {
+            // console.log(dl.money)
             let mn = dl.money;
+            let lostmn = dl.los;
+            
             this.playAudio("lose");
             if (getData.isAccount) {
-              getData.blLive = getData.blLive + dl.amount_bet - mn;
+              getData.blLive = getData.blLive + mn - lostmn;
             } else {
-              getData.blDemo = getData.blDemo + mn;
+              getData.blDemo = getData.blDemo + dl.amount_bet;
             }
 
             this.moneyLost = this.formatPrice(mn, 2);
+            // console.log("moneyLost", this.moneyLost);
             this.isLostPop = true;
             setTimeout(() => {
               this.isLostPop = false;
@@ -2457,7 +2462,7 @@ export default {
 
           // xóa notice = 0
           // getData.Notify = 0;
-          console.log("Data", data);
+          // console.log("Data", data);
           // this.betOpen.l.bet[0].items = [];
           // console.log('Hiển thị cho vui',localStorage.getItem("stateOpen"));
           // localStorage.removeItem("stateOpen");

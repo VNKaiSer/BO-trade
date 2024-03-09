@@ -145,7 +145,8 @@ wss.on("connection", function (ws) {
       HandlingProcessingGameTrade40(statusBet, data.data, ws);
       setTimeout(() => {
         handleSendKQ(data, ws);
-      }, data.data.timeBet * 1000);
+      // }, data.data.timeBet * 1000);
+    }, 1000);
     }
     if (data.type === "getPriceOP") {
       helperCoin.getPricecoin("BTC").then((res) => {
@@ -165,6 +166,7 @@ function handleSendKQ(data, ws) {
   let obj = {
     balance: addMo,
     win: amountShow,
+    bet : data.data.betAmount,
     upID: uid,
     email: email,
   };
@@ -202,7 +204,10 @@ function handleSendKQ(data, ws) {
 
       if (ws !== "") ws.send(JSON.stringify(obj2));
     } else {
-      updateAmountLose(obj, (err, result) => {});
+      console.log(obj.balance)
+      updateAmountLose(obj, (err, result) => {
+        console.log('Result: ', result);
+      });
       updatePriceWinLose(obj, "l");
 
       (async () => {
@@ -216,7 +221,7 @@ function handleSendKQ(data, ws) {
           updateResultBet({
             id: data.data.idBet,
             amount_win: 0,
-            amount_lose: data.data.betAmount,
+            amount_lose: amountShow ,
             open: result.open,
             close: result.close,
           });
@@ -228,7 +233,8 @@ function handleSendKQ(data, ws) {
         type: "kq",
         data: {
           kq: wl,
-          money: Number(data.data.betAmount),
+          money: Number(data.data.betAmount) ,
+          los: amountShow
         },
       };
 
@@ -437,19 +443,21 @@ function randomWinLost() {
   const randomValue = Math.random();
 
   // Kiểm tra giá trị và trả về 0 hoặc 1 với tỷ lệ 70% và 30%
-  if (randomValue < 0.7) {
+  if (randomValue < 0.1) {
     return LOSE_STATUS;
   } else {
     return WIN_STATUS;
   }
 }
 async function HandlingProcessingGameTrade40(v, data, ws) {
+  console.log(data)
   let money = data.betAmount;
   let uid = data.uid;
   let email = data.email;
   let type = 1;
   let action = data.type;
   let accMarketingBuy = 0;
+  rateNhaThuong = Number(data.profit) * 1.0;
   if (v === WIN_STATUS) {
     let amount = (money / 100) * rateNhaThuong; // Money của BUYs`
     let amountShow = Number(amount); // là số tiền nhận được
@@ -486,7 +494,7 @@ async function HandlingProcessingGameTrade40(v, data, ws) {
   } else {
     let amount = (money / 100) * rateNhaThuong; // Money của BUY
 
-    let amountShow = Number(amount); // là số tiền nhận được
+    let amountShow = amount;
 
     const call = {
       type: "lose",
