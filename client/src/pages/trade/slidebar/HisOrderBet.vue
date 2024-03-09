@@ -33,15 +33,15 @@
     >
       <div class="p-4 tablist">
         <div id="timeer">
-          <p class="mt-2">Thời gian hiện tại: {{ time }}</p>
+          <p class="mt-2">{{ $t("TimeNow") || "TimeNow" }}: {{ time }}</p>
         </div>
         <vs-tabs alignment="fixed">
           <vs-tab
-            label="MỞ"
+            :label="$t('Open') || 'Open'"
             @click="getListBET(), (isCloseTab = true), (isOpenTab = false)"
           ></vs-tab>
           <vs-tab
-            label="ĐÓNG"
+            :label="$t('Close') || 'Close'"
             @click="getListOrder(), (isCloseTab = false), (isOpenTab = true)"
           ></vs-tab>
           <div
@@ -59,7 +59,7 @@
                   class="imageLandScape"
                 />
                 <p class="mt-3 text-sm text-center color-grey">
-                  Bạn chưa có lệnh nào đang mở
+                  {{ $t("CLL") || "CLL" }}
                 </p>
               </div>
               <div v-else class="flex flex-col justify-center">

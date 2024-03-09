@@ -48,7 +48,7 @@
       <vs-dropdown-item @click="updateLocale('cn')"
         ><img
           class="w-5 h-4 mr-1"
-          src="@/assets/images/flags/pt.png"
+          src="@/assets/images/flags/cn.jpg"
           alt="pt"
         />
         &nbsp;China</vs-dropdown-item
