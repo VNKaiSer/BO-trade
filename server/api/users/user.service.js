@@ -2233,7 +2233,7 @@ module.exports = {
                         open as o,
                         created_at as d,
                         session as oss,
-                        currency as cu from bet_history where id_account = ? and type_account = 1 ORDER BY id DESC LIMIT 20`,
+                        currency as cu from bet_history where (id_account = ? and type_account = 1) and status = 1 ORDER BY id DESC LIMIT 20`,
           [uid],
           (error, results, fields) => {
             if (error) {
