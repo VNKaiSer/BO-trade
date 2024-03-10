@@ -2,33 +2,33 @@
   <div id="tool-edit-commisstion" class="data-list-container">
 
     <template>
- 
+
         <div class="vx-row">
 
-            <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-3/12 mb-base">
-                <div class="centerx labelx mb-4">
-                    <vs-button type="filled" @click.prevent="addItem" class="mt-5 block">Thêm Cấp</vs-button>
+            <div class="w-full vx-col sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-3/12 mb-base">
+                <div class="mb-4 centerx labelx">
+                    <vs-button type="filled" @click.prevent="addItem" class="block mt-5">Thêm Cấp</vs-button>
                 </div>  
 
-                <div class="centerx labelx mb-4 relative" v-for="(item, index) in items" :key="item.lvl">
+                <div class="relative mb-4 centerx labelx" v-for="(item, index) in items" :key="item.lvl">
                     <span class="closeItem" @click="deleteItem(index)"></span>
                     <vs-input type="number" class="w-full" icon-pack="feather" icon="icon-x" icon-after :label="`% Cấp ${index + 1}`" vs-placeholder="Nombre" v-model="item.value" />
                     <p><b>$ 10 = {{ (10 / 100) * item.value }}</b></p>
                 </div>
 
-                <div class="centerx labelx mb-4">
-                    <vs-button type="filled" @click.prevent="saveItem" class="mt-5 block">Đồng ý</vs-button>
-                </div>  
-                
+                <div class="mb-4 centerx labelx">
+                    <vs-button type="filled" @click.prevent="saveItem" class="block mt-5">{{ $t("GRSFS") || "GRSFS" }}</vs-button>
+                </div>
+
             </div>
-        
+
         </div>
 
 
-        
-    </template>  
+
+    </template>
   </div>
-  
+
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
         }
     },
     methods: {
-        
+
         deleteItem(index) {
             this.items.splice(index, 1);
         },
@@ -55,7 +55,7 @@ export default {
             this.items.push({
                 id: 1,
                 value: ''
-            });      
+            });
         },
 
         saveItem(){

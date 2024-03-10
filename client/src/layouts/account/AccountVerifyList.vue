@@ -32,7 +32,7 @@
               <div
                 class="flex items-center justify-center w-32 w-full p-4 text-lg font-medium rounded-lg cursor-pointer shadow-drop d-theme-dark-bg"
               >
-                <span class="mr-2">Tác vụ</span>
+                <span class="mr-2">{{ $t("RKEW") || "RKEW" }}</span>
                 <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
               </div>
 
@@ -58,7 +58,7 @@
                       svgClasses="h-4 w-4"
                       class="mr-2"
                     />
-                    <span>In</span>
+                    <span>{{ $t("WEWS") || "WEWS" }}</span>
                   </span>
                 </vs-dropdown-item>
 
@@ -117,11 +117,11 @@
 
         <template slot="thead">
           <vs-th sort-key="email">Email</vs-th>
-          <vs-th sort-key="name">Tên</vs-th>
-          <vs-th sort-key="id_front">CMND mặt trước</vs-th>
-          <vs-th sort-key="id_back">CMND mặt sau</vs-th>
-          <vs-th sort-key="verify">Xác minh</vs-th>
-          <vs-th>Tác vụ</vs-th>
+          <vs-th sort-key="name">{{ $t("UJY") || "UJY" }}</vs-th>
+          <vs-th sort-key="id_front">{{ $t("TWERW") || "TWERW" }}</vs-th>
+          <vs-th sort-key="id_back">{{ $t("QWEWQ") || "QWEWQ" }}</vs-th>
+          <vs-th sort-key="verify">{{ $t("ASDSA") || "ASDSA" }}</vs-th>
+          <vs-th>{{ $t("YUSDF") || "YUSDF" }}</vs-th>
         </template>
 
         <template slot-scope="{ data }">
@@ -129,14 +129,15 @@
             <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
               <vs-td>
                 <p class="font-medium truncate verify-email">
-                  {{ tr.email }}<br />Số căn cước (CMT):
+                  {{ tr.email }}<br />{{ $t("SASAS") || "SASAS" }}
                   {{ tr.so_cmnd ? tr.so_cmnd : "Không rõ" }}
                 </p>
               </vs-td>
 
               <vs-td>
                 <p class="font-medium truncate verify-name">
-                  {{ tr.first_name }}<br />Biệt danh: {{ tr.nick_name }}
+                  {{ tr.first_name }}<br />{{ $t("SADW") || "SADW" }}
+                  {{ tr.nick_name }}
                 </p>
               </vs-td>
 
@@ -178,7 +179,7 @@
                       icon="CheckIcon"
                       svgClasses="w-5 h-5 stroke-current"
                     />
-                    Đồng ý
+                    {{ $t("GRSFS") || "GRSFS" }}
                   </div>
                 </vx-tooltip>
                 <vx-tooltip
@@ -192,7 +193,7 @@
                       icon="XIcon"
                       svgClasses="w-5 h-5 stroke-current"
                     />
-                    Hủy
+                    {{ $t("TYR") || "TYR" }}
                   </div>
                 </vx-tooltip>
               </vs-td>
