@@ -2,10 +2,10 @@
   <div id="tradeHisPage" class="tradeHistory">
     <div class="vx-row">
       <div class="w-full">
-        <div class="headerContent justify-between items-center mb-4">
+        <div class="items-center justify-between mb-4 headerContent">
           <div class="flex justify-between">
-            <h1 class="text-3xl white font-bold capitalize relative">
-              Số liệu B.O
+            <h1 class="relative text-3xl font-bold capitalize white">
+              {{ $t("Data") || "Data" }}
             </h1>
             <!--<a href="#" class="inline-flex items-center white">
                         <span class="btn-eyes"></span>
@@ -14,12 +14,12 @@
           </div>
         </div>
       </div>
-      <div class="vx-col w-full lg:w-1/2 mt-2 lg:pl-0">
+      <div class="w-full mt-2 vx-col lg:w-1/2 lg:pl-0">
         <div class="bostats">
           <div class="wrap-chart">
             <div class="chart-instance">
               <div class="vx-row">
-                <div class="vx-col w-full lg:w-2/3 sm:mb-3 justify-center">
+                <div class="justify-center w-full vx-col lg:w-2/3 sm:mb-3">
                   <!--<vue-apex-charts type="donut" height="250" :options="donutChart.chartOptions" :series="donutChart.series"></vue-apex-charts>
                                 -->
                   <highcharts
@@ -27,24 +27,28 @@
                     :options="optionsDount"
                   ></highcharts>
                 </div>
-                <div class="vx-col w-full lg:w-1/3 mt-3 mb-3">
+                <div class="w-full mt-3 mb-3 vx-col lg:w-1/3">
                   <div class="w-full mb-3 borderRightColor">
-                    <p class="white text-center mt-3 mb-2 name">Tổng vòng</p>
-                    <p class="white text-center value">
+                    <p class="mt-3 mb-2 text-center white name">
+                      {{ $t("Count") || "Count" }}
+                    </p>
+                    <p class="text-center white value">
                       {{ formatPrice(totalOrder, 0) }}
                     </p>
                   </div>
                   <div class="w-full mb-3 borderTopColor">
-                    <p class="white text-center m-3 mb-2 name">Tỷ lệ thắng</p>
-                    <p class="white text-center value">
+                    <p class="m-3 mb-2 text-center white name">
+                      {{ $t("WinRate") || "WinRate" }}
+                    </p>
+                    <p class="text-center white value">
                       {{ win_rate ? win_rate.toFixed(2) : 0 }}%
                     </p>
                   </div>
                   <div class="w-full mb-3 borderTopColor">
-                    <p class="white text-center mt-3 mb-2 name">
-                      Tổng giao dịch
+                    <p class="mt-3 mb-2 text-center white name">
+                      {{ $t("TotalTransaction") || "TotalTransaction" }}
                     </p>
-                    <p class="white text-center value">
+                    <p class="text-center white value">
                       ${{ formatPrice(trades, 2) }}
                     </p>
                   </div>
@@ -54,12 +58,12 @@
           </div>
         </div>
       </div>
-      <div class="vx-col w-full lg:w-1/2 mt-2 lg:pr-0">
+      <div class="w-full mt-2 vx-col lg:w-1/2 lg:pr-0">
         <div class="vx-row">
-          <div class="vx-col w-full xl:w-1/2 mt-2 lg:mt-0">
-            <div class="p-8 userStat profits flex align-middle justify-around">
+          <div class="w-full mt-2 vx-col xl:w-1/2 lg:mt-0">
+            <div class="flex justify-around p-8 align-middle userStat profits">
               <div class="wrap">
-                <div class="icon text-center">
+                <div class="text-center icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="43.525"
@@ -77,8 +81,8 @@
                   </svg>
                 </div>
                 <div class="info">
-                  <p class="name m-0">Lợi nhuận ròng</p>
-                  <p class="value white m-0 d-flex">
+                  <p class="m-0 name">{{ $t("NetProfit") || "NetProfit" }}</p>
+                  <p class="m-0 value white d-flex">
                     <span>$</span>
                     <span>{{ formatPrice(profits, 2) }}</span>
                   </p>
@@ -86,10 +90,10 @@
               </div>
             </div>
           </div>
-          <div class="vx-col w-full xl:w-1/2 mt-2 xl:mt-0">
-            <div class="p-8 userStat revenue flex align-middle justify-around">
+          <div class="w-full mt-2 vx-col xl:w-1/2 xl:mt-0">
+            <div class="flex justify-around p-8 align-middle userStat revenue">
               <div class="wrap">
-                <div class="icon text-center">
+                <div class="text-center icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="49.009"
@@ -122,8 +126,8 @@
                   </svg>
                 </div>
                 <div class="info">
-                  <p class="name m-0">Tổng doanh thu</p>
-                  <p class="value white m-0 d-flex">
+                  <p class="m-0 name">{{ $t("NetProfits") || "NetProfits" }}</p>
+                  <p class="m-0 value white d-flex">
                     <span>$</span>
                     <span>{{ formatPrice(revenue, 2) }}</span>
                   </p>
@@ -131,7 +135,7 @@
               </div>
             </div>
           </div>
-          <div class="vx-col w-full relative mt-2">
+          <div class="relative w-full mt-2 vx-col">
             <vs-progress
               class="bg-red"
               :height="8"
@@ -140,11 +144,11 @@
             ></vs-progress>
             <div class="block">
               <span class="float-left mr-1">MUA</span>
-              <span class="green float-left">
+              <span class="float-left green">
                 {{ up_rate ? up_rate.toFixed(2) : 0 }}%
               </span>
               <span class="float-right ml-1">BÁN</span>
-              <span class="red float-right">
+              <span class="float-right red">
                 <span v-if="up_rate">{{ (100 - up_rate).toFixed(2) }}% </span>
                 <span v-else>0%</span>
               </span>
@@ -153,13 +157,15 @@
         </div>
       </div>
     </div>
-    <div class="vx-row mt-5">
+    <div class="mt-5 vx-row">
       <div
-        class="headerContent w-full flex lg:flex-row flex-col justify-between items-center mb-4"
+        class="flex flex-col items-center justify-between w-full mb-4 headerContent lg:flex-row"
       >
-        <h1 class="text-3xl white font-bold capitalize">Lịch Sử Giao Dịch</h1>
-        <div class="lg:flex items-end">
-          <div class="flex flex-col lg:mr-3 relative">
+        <h1 class="text-3xl font-bold capitalize white">
+          {{ $t("History") || "History" }}
+        </h1>
+        <div class="items-end lg:flex">
+          <div class="relative flex flex-col lg:mr-3">
             <div class="dateRange">
               <datepicker
                 class="customeTradeHistory startDate"
@@ -178,13 +184,13 @@
             color="rgb(62, 201, 214)"
             type="filled"
             @click="getSeachOrderDate()"
-            >Tìm kiếm</vs-button
+            >{{ $t("Search") || "Search" }}</vs-button
           >
         </div>
       </div>
-      <div class="table-responsive tableTradeHis relative">
+      <div class="relative table-responsive tableTradeHis">
         <table
-          class="table table-bordered w-full"
+          class="table w-full table-bordered"
           :class="{ 'ld-loading': isLoading }"
         >
           <div class="loading">
@@ -223,20 +229,20 @@
           </div>
           <thead>
             <tr>
-              <th>OrderID</th>
-              <th>Tài sản</th>
-              <th>Thời gian bắt đầu</th>
-              <th>Lựa chọn</th>
-              <th>Đã chọn</th>
-              <th>Giá mở</th>
-              <th>Giá đóng</th>
-              <th>Giá trị</th>
-              <th>Thanh toán</th>
+              <th>{{ $t("OrderID") || "OrderID" }}</th>
+              <th>{{ $t("Asset") || "Asset" }}</th>
+              <th>{{ $t("Starttime") || "Starttime" }}</th>
+              <th>{{ $t("Select") || "Select" }}</th>
+              <th>{{ $t("Selected") || "Selected" }}</th>
+              <th>{{ $t("OpenPrice") || "OpenPrice" }}</th>
+              <th>{{ $t("ClosingPrice") || "ClosingPrice" }}</th>
+              <th>{{ $t("Value") || "Value" }}</th>
+              <th>{{ $t("Pay") || "Pay" }}</th>
             </tr>
           </thead>
           <tbody v-if="dataHisOrder.length == 0">
             <tr>
-              <td colspan="9" class="text-center">Không có dữ liệu</td>
+              <td colspan="9" class="text-center"><th>{{ $t("ClosingPrice") || "ClosingPrice" }}</th>NoData</td>
             </tr>
           </tbody>
           <tbody v-else>
@@ -247,17 +253,17 @@
               <td class="text-center">
                 {{ tr.cu }}
               </td>
-              <td class="text-center w-32">
+              <td class="w-32 text-center">
                 {{ formatDateOrder(tr.d) }}
               </td>
-              <td class="text-center">{{ tr.oss }} Giây</td>
+              <td class="text-center">{{ tr.oss }} {{ $t("Second") || "Second" }}</td>
               <td class="text-center" v-if="tr.bs == 'buy'">
                 <feather-icon
                   class="text-success"
                   icon="TrendingUpIcon"
                   svgClasses="w-4 h-4"
                 />
-                MUA
+                {{ $t("BUY") || "BUY" }}
               </td>
               <td class="text-center" v-else>
                 <feather-icon
@@ -265,7 +271,7 @@
                   icon="TrendingDownIcon"
                   svgClasses="w-4 h-4"
                 />
-                BÁN
+                {{ $t("SELL") || "SELL" }}
               </td>
               <td class="text-center">${{ tr.o }}</td>
               <td class="text-center">${{ tr.c }}</td>

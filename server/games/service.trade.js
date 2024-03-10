@@ -350,10 +350,11 @@ module.exports = {
 
   updateAmountLose: (data, callback) => {
     db.query(
-      `UPDATE account SET lose = lose + ? WHERE u_id = ?`,
-      [data.lose, data.upID],
+      `UPDATE account SET balance = balance + ?, lose = lose + ? WHERE u_id = ?`,
+      [data.bet - data.win,data.win, data.upID],
       (error, results, fields) => {
         if (error) {
+          console.log(error)
           return callback(error);
         }
         return callback(null, results);

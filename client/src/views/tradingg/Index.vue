@@ -13,6 +13,44 @@
         <div class="h-full">
           <div class="relative chartBox">
             <iframe
+              style="border: none; margin-top: -8px"
+              width="100%"
+              srcdoc='
+    <div class="tradingview-widget-container">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" >
+        {
+          "symbols": [
+            {
+              "proName": "FOREXCOM:SPXUSD",
+              "title": "S&P 500 Index"
+            },
+            {
+              "proName": "FOREXCOM:NSXUSD",
+              "title": "US 100 Cash CFD"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR to USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "Bitcoin"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "Ethereum"
+            }
+          ],
+          "showSymbolLogo": true,
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "en"
+        }
+      </script>
+    </div>'
+            ></iframe>
+            <iframe
               class="ht"
               srcdoc='
                             <div class="tradingview-widget-container" style="height:calc(100vh - 16px);width:100%">
@@ -56,11 +94,12 @@
         <div class="block pc">
           <div class="mb-6">
             <div class="flex items-center justify-between gap-3 mt-2">
-              <p class="mt-2">Coin:</p>
+              <p class="mt-2">{{ $t("Coin") || "Coin" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="coinBet"
                 id=""
+                
               >
                 <option class="w-full h-8 cursor-pointer bpF" value="BTC">
                   BTC
@@ -83,29 +122,72 @@
                 <option class="w-full h-8 cursor-pointer bpF" value="DOGE">
                   DOGE
                 </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="LTC">
+                  LTC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="DOT">
+                  DOT
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="LINK">
+                  LINK
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="UNI">
+                  UNI
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XLM">
+                  XLM
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="SOL">
+                  SOL
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="MATIC">
+                  MATIC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XMR">
+                  XMR
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="AVAX">
+                  AVAX
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="CAKE">
+                  CAKE
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="ATOM">
+                  ATOM
+                </option>
               </select>
             </div>
             <div class="flex items-center justify-between gap-1">
-              <p>Thời Gian:</p>
+              <p>{{ $t("Time") || "Time" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
+                @change="onTimeBetChange($event)"
               >
                 <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  60s
+                  1m - 10%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  120s
+                  2m - 15%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  180s
+                  3m - 20%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  300s
+                  5m - 25%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="3600">
+                  1h - 50%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="43200">
+                  12h - 75%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="86400">
+                  24h - 95%
                 </option>
               </select>
             </div>
-            <div class="mt-2 mb-2">Tiền cược</div>
+            <div class="mt-2 mb-2">{{ $t("Bet") || "Bet" }}</div>
             <div class="relative">
               <vs-input
                 @keyup="nhapBetAmount"
@@ -152,16 +234,20 @@
                 >
               </div>
               <div class="w-full p-1 mt-2 text-center vx-col md:w-4/12">
-                <span class="w-full h-8 cursor-pointer bpF" @click="clickCT(0)"
-                  >All</span
+                <span
+                  class="w-full h-8 cursor-pointer bpF"
+                  @click="clickCT(0)"
+                  >{{ $t("All") || "All" }}</span
                 >
               </div>
             </div>
           </div>
           <div class="mb-6 lg:relative">
-            <div class="mt-2 mb-2 text-center">Lợi nhuận</div>
+            <div class="mt-2 mb-2 text-center">
+              {{ $t("Profit") || "Profit" }} :  {{ profit }}%
+            </div>
             <div class="text-center">
-              <span class="mb-2 profitPercent color-light-blue">95%</span>
+              <!-- <span class="mb-2 profitPercent color-light-blue">{{betAmount}}</span> -->
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -216,7 +302,7 @@
               color="success"
               type="relief"
             >
-              MUA
+              {{ $t("BUY") || "BUY" }}
               <feather-icon
                 style="top: 5px"
                 icon="TrendingUpIcon"
@@ -230,7 +316,7 @@
               color="danger"
               type="relief"
             >
-              BÁN
+              {{ $t("SELL") || "SELL" }}
               <feather-icon
                 style="top: 5px"
                 icon="TrendingDownIcon"
@@ -258,63 +344,102 @@
           </div>
           <div class="flex items-center gap-3 mb-1">
             <div class="flex items-center justify-between mt-2 mr-10">
-              <p class="mt-2">Coin:</p>
+              <p class="mt-2">{{ $t("Coin") || "Coin" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 name=""
                 id=""
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="BTC">
                   BTC
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="ETH">
                   ETH
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="USDT">
                   USDT
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="BNB">
                   BNB
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="XRP">
                   XRP
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="ADA">
                   ADA
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="DOGE">
                   DOGE
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="">
+                <option class="w-full h-8 cursor-pointer bpF" value="LTC">
                   LTC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="DOT">
+                  DOT
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="LINK">
+                  LINK
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="UNI">
+                  UNI
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XLM">
+                  XLM
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="SOL">
+                  SOL
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="MATIC">
+                  MATIC
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="XMR">
+                  XMR
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="AVAX">
+                  AVAX
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="CAKE">
+                  CAKE
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="ATOM">
+                  ATOM
                 </option>
               </select>
             </div>
             <div class="flex items-center justify-between gap-1">
-              <p>Thời Gian:</p>
+              <p>{{ $t("Time") || "Time" }}:</p>
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  60s
+              <option class="w-full h-8 cursor-pointer bpF" value="60">
+                  1m - 10%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  120s
+                  2m - 15%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  180s
+                  3m - 20%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  300s
+                  5m - 25%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="3600">
+                  1h - 50%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="43200">
+                  12h - 75%
+                </option>
+                <option class="w-full h-8 cursor-pointer bpF" value="86400">
+                  24h - 95%
                 </option>
               </select>
             </div>
           </div>
           <div class="relative">
             <div class="mt-2 mb-2 text-center">
-              Lợi nhuận
-              <span class="mb-2 profitPercent color-light-blue">95%</span>
+              {{ $t("Profit") || "Profit" }}
+              <span class="mb-2 profitPercent color-light-blue">10%</span>
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -370,7 +495,7 @@
                 color="danger"
                 type="relief"
               >
-                BÁN
+                {{ $t("SELL") || "SELL" }}
                 <feather-icon
                   style="top: 5px"
                   icon="TrendingDownIcon"
@@ -425,7 +550,7 @@
                 color="success"
                 type="relief"
               >
-                MUA
+                {{ $t("BUY") || "BUY" }}
                 <feather-icon
                   style="top: 5px"
                   icon="TrendingUpIcon"
@@ -489,8 +614,8 @@
                 </div>
                 <div class="relative">
                   <div class="mt-2 mb-2 text-center">
-                    Lợi nhuận
-                    <span class="mb-2 profitPercent color-light-blue">95%</span>
+                    {{ $t("Profit") || "Profit" }}
+                    <span class="mb-2 profitPercent color-light-blue">10%</span>
                     <span class="text-3xl font-bold profitValue color-green"
                       >+${{ loiNhuan }}</span
                     >
@@ -509,7 +634,9 @@
                     <td @click="writeBetAmountKey(1)">1</td>
                     <td @click="writeBetAmountKey(2)">2</td>
                     <td @click="writeBetAmountKey(3)">3</td>
-                    <td rowspan="2" @click="clickCT(0)"><span>Tất cả</span></td>
+                    <td rowspan="2" @click="clickCT(0)">
+                      <span>{{ $t("All") || "All" }}</span>
+                    </td>
                   </tr>
                   <tr>
                     <td @click="writeBetAmountKey(4)">4</td>
@@ -521,7 +648,7 @@
                     <td @click="writeBetAmountKey(8)">8</td>
                     <td @click="writeBetAmountKey(9)">9</td>
                     <td rowspan="2" @click="showMobileMenu = !showMobileMenu">
-                      Hoàn tất
+                      {{ $t("Done") || "Done" }}
                     </td>
                   </tr>
                   <tr>
@@ -561,7 +688,9 @@
                 <div class="flex items-center">
                   <!---->
                 </div>
-                <p class="titleWin">Xin chúc mừng!</p>
+                <p class="titleWin">
+                  {{ $t("Congratulations") || "Congratulations" }}!
+                </p>
                 <span class="text-4xl font-bold message_money"
                   >+{{ moneyWin }}$</span
                 >
@@ -592,7 +721,7 @@
                 <div class="flex items-center">
                   <!---->
                 </div>
-                <p class="titleWin">Bạn đã thua!</p>
+                <p class="titleWin">{{ $t("YouLost") || "YouLost" }}!</p>
                 <span class="text-4xl font-bold ght2 message_money1"
                   >-{{ moneyLost }}$</span
                 >
@@ -1359,7 +1488,8 @@ export default {
 
       // trade 4.0
       timeBet: 60,
-      coinBet: "ETH",
+      coinBet: "BTC",
+      profit :10,
 
       moneyWin: 0,
       isWinPop: false,
@@ -1375,7 +1505,7 @@ export default {
       balanceForuser: 0,
       showMobileMenu: false,
       betAmount: 10,
-      loiNhuan: 19.5,
+      loiNhuan: 11.0,
       optionsOs: gaugeMeterOs,
       optionsSu: gaugeMeterSu,
       optionsMa: gaugeMeterMa,
@@ -1404,6 +1534,8 @@ export default {
     textTimeDown() {
       return getData.textTimeDown;
     },
+    
+    
   },
   watch: {
     "oscillators.meter.numberValue": function () {
@@ -1417,6 +1549,34 @@ export default {
     disabledBet() {
       return (this.isBet = !this.isBet ? true : false);
     },
+    onTimeBetChange(event) {
+      console.log(typeof event.target.value);
+      switch (Number(event.target.value)) {
+        case 60:
+          this.profit = 10;
+          break;
+        case 120:
+          this.profit = 15;
+          break;
+        case 180:
+          this.profit = 20;
+          break;
+        case 300:
+          this.profit = 25;
+          break;
+        case 3600:
+          this.profit = 50;
+          break;
+        case 43200:
+          this.profit = 75;
+          break;
+        case 86400:
+          this.profit = 95;
+          break;
+        }
+        this.tinhloinhuan(this.betAmount );
+      // this.profit = event.target.value;
+    },
     // redrawGaugeMeter: function(t) {
     //     var e = void 0;
     //     (e = "oscillators" === t ? this.gaugeMeterOs : "movingAverages" === t ? this.gaugeMeterMa : this.gaugeMeterSu) && e.series && (e.series[0].points[0].update(this[t].meter.numberValue, !1), e.redraw())
@@ -1424,6 +1584,7 @@ export default {
     sendMessage(message) {
       this.connection.send(JSON.stringify(message));
     },
+    
 
     // convertTextState(t) {
     //     switch (t) {
@@ -1504,6 +1665,7 @@ export default {
         idBet: idBet,
         mkt: getData.mkt,
         timeBet: timeBet,
+        profit: this.profit,
       };
 
       let ss = this.$store.session;
@@ -1538,7 +1700,7 @@ export default {
       }
 
       this.sendMessage({ type: "getPriceOP", data: obj });
-      console.log(priceOpen);
+      // console.log(priceOpen);
 
       this.sendMessage({ type: "bet", data: obj });
 
@@ -1576,6 +1738,7 @@ export default {
       // }, 1 * 1000);
 
       this.sendMessage({ type: "getKq", data: obj });
+
       setTimeout(() => {
         localStorage.removeItem("stateOpen");
 
@@ -1584,7 +1747,7 @@ export default {
         );
         localStorage.setItem("stateOpen", JSON.stringify(this.betOpen));
         getData.Notify = this.betOpen.l.bet[0].items.length;
-      }, timeBet * 1000);
+      }, this.timeBet *  1000);
       // },2000)
 
       // if(v === 'buy'){
@@ -1701,8 +1864,8 @@ export default {
 
     tinhloinhuan(m) {
       let lb = Number(m);
-      lb = lb + (lb * 95) / 100;
-      // tính lợi nhuận 95%
+      lb = lb + (lb * this.profit) / 100;
+      // tính lợi nhuận 10%
       this.loiNhuan = this.formatPrice(lb, 2);
     },
 
@@ -2261,10 +2424,9 @@ export default {
           });
         }
         if (data.type === "kq") {
-          //console.log(dl);
+          console.log(dl);
           if (dl.kq == "win") {
             let mn = dl.money;
-
             this.playAudio("win");
 
             if (getData.isAccount) {
@@ -2279,15 +2441,18 @@ export default {
               this.isWinPop = false;
             }, 2000);
           } else {
+            // console.log(dl.money)
             let mn = dl.money;
+            let lostmn = dl.los;
+            
             this.playAudio("lose");
             if (getData.isAccount) {
-              getData.blLive = getData.blLive + mn;
+              getData.blLive = getData.blLive + mn - lostmn;
             } else {
-              getData.blDemo = getData.blDemo + mn;
+              getData.blDemo = getData.blDemo + dl.amount_bet;
             }
 
-            this.moneyLost = this.formatPrice(mn, 2);
+            this.moneyLost = this.formatPrice(lostmn, 2);
             this.isLostPop = true;
             setTimeout(() => {
               this.isLostPop = false;
@@ -2296,7 +2461,7 @@ export default {
 
           // xóa notice = 0
           // getData.Notify = 0;
-          console.log("Data", data);
+          // console.log("Data", data);
           // this.betOpen.l.bet[0].items = [];
           // console.log('Hiển thị cho vui',localStorage.getItem("stateOpen"));
           // localStorage.removeItem("stateOpen");
@@ -2490,6 +2655,7 @@ export default {
 <style scoped>
 .ht {
   border-width: 0;
+  margin-top: -106px;
 }
 .ght2 {
   color: red;
