@@ -3,7 +3,7 @@
   Description: Add New Data - Sidebar component
   Item Name:
   Author: Ares DN
-  Author URL: 
+  Author URL:
 ========================================================================================== -->
 
 <template>
@@ -17,8 +17,8 @@
     spacer
     v-model="isSidebarActiveLocal"
   >
-    <div class="mt-6 flex items-center justify-between px-6">
-      <h4>HỒ SƠ</h4>
+    <div class="flex items-center justify-between px-6 mt-6">
+      <h4>{{ $t("Profile") || "Profile" }}</h4>
       <feather-icon
         icon="XIcon"
         @click.stop="isSidebarActiveLocal = false"
@@ -32,8 +32,8 @@
       class="scroll-area--data-list-add-new"
     >
       <div class="p-4">
-        <div class="vx-vx-row mb-3">
-          <div class="vx-col w-full">
+        <div class="mb-3 vx-vx-row">
+          <div class="w-full vx-col">
             <div class="flex flex-wrap items-center mb-base">
               <vs-avatar
                 v-if="!avatar"
@@ -65,104 +65,103 @@
                 >
               </div>
             </div>
-            <!--<div class="flex items-start flex-col sm:flex-vx-row">
-                    
+            <!--<div class="flex flex-col items-start sm:flex-vx-row">
+
                 <div>
-                  <p class="text-lg font-medium mb-2 mt-4 sm:mt-0"></p>
+                  <p class="mt-4 mb-2 text-lg font-medium sm:mt-0"></p>
                   <input type="file" class="hidden" ref="update_avatar_input" accept="image/*">
 
-                  <vs-button class="mt-4 mr-4 mb-4">Thay đổi</vs-button>
+                  <vs-button class="mt-4 mb-4 mr-4">Thay đổi</vs-button>
                   <p>Mã bảo mật: {{ num_secury }}
                   </p>
                   <span class="italic" style="font-size: 10px;">Vui lòng giữ mã này an toàn để khôi phục mật khẩu</span>
-                  <vs-button type="border" class="mr-4" @click="$refs.update_avatar_input.click()">Change Avatar</vs-button> 
+                  <vs-button type="border" class="mr-4" @click="$refs.update_avatar_input.click()">Change Avatar</vs-button>
                 </div>
               </div>-->
           </div>
         </div>
 
         <h3 class="mb-3" style="font-weight: blod">
-          <feather-icon icon="UserIcon"></feather-icon> Thông tin cá nhân
+          <feather-icon icon="UserIcon"></feather-icon>
+          {{ $t("TTCN") || "TTCN" }}
         </h3>
 
         <div class="vx-vx-row">
-          <div class="vx-col w-full">
+          <div class="w-full vx-col">
             <vs-input
               label="Email"
               v-model="email"
-              class="mt-2 w-full"
+              class="w-full mt-2"
               disabled="disabled"
             />
           </div>
 
-          <div class="vx-col w-full">
+          <div class="w-full vx-col">
             <vs-input
-              label="Biệt danh"
+              :label="$t('BD') || 'BD'"
               v-model="nickName"
-              class="mt-2 w-full"
+              class="w-full mt-2"
               disabled="disabled"
             />
           </div>
 
-          <!-- <div class="vx-col lg:w-1/2 w-full">
-                  <vs-input label="Họ" maxlength="8" v-model="frist_n" class="mt-2 w-full" />
+          <!-- <div class="w-full vx-col lg:w-1/2">
+                  <vs-input label="Họ" maxlength="8" v-model="frist_n" class="w-full mt-2" />
               </div>
 
-              <div class="vx-col lg:w-1/2 w-full">
-                  <vs-input label="Tên" maxlength="8" v-model="last_n" class="mt-2 w-full" />
-                 
+              <div class="w-full vx-col lg:w-1/2">
+                  <vs-input label="Tên" maxlength="8" v-model="last_n" class="w-full mt-2" />
+
               </div> -->
         </div>
       </div>
 
       <div class="p-4">
         <h3 class="mb-3" style="font-weight: blod">
-          <feather-icon icon="UserCheckIcon"></feather-icon> Xác minh tài khoản
+          <feather-icon icon="UserCheckIcon"></feather-icon>
+          {{ $t("XMTK") || "XMTK" }}
         </h3>
-        <span class="d-flex mt-5" style="font-size: 12px">
-          Để đảm bảo an toàn cho tài sản của bạn, chúng tôi cần xác minh danh
-          tính. Hãy điền thông tin thật chính xác, khi đã hoàn tất xác minh danh
-          tính thì thông tin sẽ không chỉnh sửa được nữa.
+        <span class="mt-5 d-flex" style="font-size: 12px">
+          {{ $t("TTTG") || "TTTG" }}
         </span>
         <p class="clearfix"></p>
         <vs-button
           v-if="getDataJson.verify == 0"
           color="warning"
           type="border"
-          class="mb-2 mt-2 float-right"
+          class="float-right mt-2 mb-2"
           @click.stop="showHoSoSetting()"
-          >Xác nhận</vs-button
+          >{{ $t("XNN") || "XNN" }}</vs-button
         >
-        <span v-else-if="getDataJson.verify == 2" class="lightyellow italic"
-          >* Tài khoản đang được xem xét</span
+        <span v-else-if="getDataJson.verify == 2" class="italic lightyellow"
+          >* {{ $t("TKBDAS") || "TKBDAS" }}</span
         >
-        <span v-else class="green italic">* Tài khoản đã được xác minh</span>
+        <span v-else class="italic green">* {{ $t("GHTS") || "GHTS" }}</span>
       </div>
 
       <p class="clearfix"></p>
       <div class="p-4">
         <h3 class="mb-3" style="font-weight: blod">
-          <feather-icon icon="LockIcon"></feather-icon> Bảo mật
+          <feather-icon icon="LockIcon"></feather-icon> {{ $t("BMM") || "BMM" }}
         </h3>
         <span class="d-flex" style="font-size: 12px; margin-bottom: 5px">
-          Bạn có muốn thay đổi mật khẩu không? Nhấp vào nút phía dưới để thay
-          đổi.
+          {{ $t("GJHK") || "GJHK" }}
         </span>
         <p class="clearfix"></p>
         <vs-button
           color="warning"
           type="border"
-          class="mb-2 float-right"
+          class="float-right mb-2"
           @click="popupActiveChangePass = true"
-          >Đổi</vs-button
+          >{{ $t("D") || "D" }}</vs-button
         >
         <p class="clearfix"></p>
-        <span class="d-flex" style="font-size: 12px; margin-bottom: 5px"
-          >Bắt buộc bật 2FA để rút tiền hoặc cập nhật các bảo mật.</span
-        >
+        <span class="d-flex" style="font-size: 12px; margin-bottom: 5px">{{
+          $t("LKO") || "LKO"
+        }}</span>
         <p class="clearfix"></p>
-        <div class="mt-1 float-right">
-          <label>Bật 2FA</label>
+        <div class="float-right mt-1">
+          <label>{{ $t("BKS") || "BKS" }}</label>
           <vs-switch
             color="success"
             v-model="swi2Fa"
@@ -181,40 +180,42 @@
         :active.sync="popupActiveChangePass"
       >
         <div class="vx-vx-row">
-          <div class="vx-col w-full">
+          <div class="w-full vx-col">
             <vs-input
               type="password"
               label="Mật khẩu cũ"
               maxlength="20"
               v-model="passOld"
               name="passOld"
-              class="mt-2 w-full"
+              class="w-full mt-2"
             />
           </div>
 
-          <div class="vx-col w-full">
+          <div class="w-full vx-col">
             <vs-input
               type="password"
               label="Mật khẩu mới"
               maxlength="20"
               v-model="passNew"
               name="passNew"
-              class="mt-2 w-full"
+              class="w-full mt-2"
             />
           </div>
 
-          <div class="vx-col w-full">
+          <div class="w-full vx-col">
             <vs-input
               type="password"
               label="Nhập lại mật khẩu mới"
               maxlength="20"
               v-model="passRenew"
               name="passReNew"
-              class="mt-2 w-full"
+              class="w-full mt-2"
             />
           </div>
-          <div class="vx-col w-full mt-5">
-            <!-- <small class="red italic" v-if="!getDataJson.c2fa">* Bạn phải bật 2FA để điều chỉnh</small> -->
+          <div class="w-full mt-5 vx-col">
+            <!-- <small class="italic red" v-if="!getDataJson.c2fa"
+              >* Bạn phải bật 2FA để điều chỉnh</small
+            > -->
             <vs-button
               color="success"
               type="border"
@@ -241,7 +242,7 @@
       </vs-prompt>
     </VuePerfectScrollbar>
     <!--<div class="flex flex-wrap items-center p-6" slot="footer">
-        <vs-button class="mt-5 w-full" color="danger" type="border" icon-pack="feather" icon="icon-log-out" @click="logOutUser">Đăng xuất</vs-button>
+        <vs-button class="w-full mt-5" color="danger" type="border" icon-pack="feather" icon="icon-log-out" @click="logOutUser">Đăng xuất</vs-button>
     </div>-->
   </vs-sidebar>
 </template>
@@ -392,8 +393,7 @@ export default {
       };
 
       AuthenticationService.changePassword2(obj).then((res) => {
-        console.log(res);
-        // this.disableChangePass = false;
+        this.disableChangePass = false;
         if (res.data.success == 1) {
           return this.$vs.notify({
             text: "Mật khẩu đã được đổi thành công.",

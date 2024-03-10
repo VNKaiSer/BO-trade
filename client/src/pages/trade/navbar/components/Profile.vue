@@ -13,9 +13,9 @@
       style="border-radius: 3px; padding: 0.375rem 0.75rem"
     >
       <vs-dropdown vs-custom-content vs-trigger-click>
-       <div class="text-left cursor-pointer" style="font-weight: bold">
+        <div class="text-left cursor-pointer" style="font-weight: bold">
           <p class="text-sm" style="color: #c1c1c1">
-            {{ isAcc ? "Tài khoản Thực" : "Tài khoản Demo" }}
+            {{ isAcc ? $t("RealAccount") : $t("DemoAccount") }}
           </p>
           <p>
             <span class="text-money"
@@ -36,7 +36,9 @@
         </div>
         <vs-dropdown-menu class="dropdown-account" style="width: 160px">
           <div class="mb-3 accLive">
-            <span style="font-size: 12px; color: #d6d6d6">Tài khoản Thực</span>
+            <span style="font-size: 12px; color: #d6d6d6">{{
+              $t("RealAccount") || "RealAccount"
+            }}</span>
             <div class="cursor-pointer balance" @click="changeAccount(1)">
               <span style="color: #e8e8e8; font-weight: bold; font-size: 16px"
                 >$ {{ formatPrice(blObj.blLive, 2) }}</span
@@ -55,7 +57,9 @@
           </div>
           <hr style="border-color: #b4c2d2" />
           <div class="mt-3 accDemo">
-            <span style="font-size: 12px; color: #d6d6d6">Tài khoản Demo</span>
+            <span style="font-size: 12px; color: #d6d6d6">{{
+              $t("DemoAccount") || "DemoAccount"
+            }}</span>
             <div class="cursor-pointer balance" @click="changeAccount(0)">
               <span style="color: #e8e8e8; font-weight: bold; font-size: 16px"
                 >$ {{ formatPrice(blObj.blDemo, 2) }}</span
@@ -79,7 +83,7 @@
         icon="icon-dollar-sign"
         type="relief"
         @click="(popupActiveNapNhanh = true), getBalanceWalletClick()"
-        >Nạp Nhanh</vs-button
+        >{{ $t("FastLoading") || "FastLoading" }}</vs-button
       >
       <!-- <vs-button type="line" icon-pack="feather" :color="colorNT" icon="icon-dollar-sign" @click.stop="viewNapTien()">Nạp nhanh</vs-button> -->
     </div>
@@ -115,7 +119,11 @@
         <span class="textLink">{{ $t("Settings") || "Settings" }}</span>
       </a>
     </div>
-    <vs-popup class="setting" title="Cài Đặt" :active.sync="popupActiveCaiDat">
+    <vs-popup
+      class="setting"
+      :title="$t('Settings') || 'Settings'"
+      :active.sync="popupActiveCaiDat"
+    >
       <div class="relative flex flex-col wrap">
         <div class="flex mb-3 line line-language-pc line-pc align-center">
           <div class="flex flex-1 type align-center">
@@ -195,7 +203,7 @@
                 ></circle>
               </g>
             </svg>
-            <span class="white">Ngôn ngữ</span>
+            <span class="white">{{ $t("LG") || "LG" }}</span>
           </div>
           <div class="flex flex-1 control align-center">
             <i18n />
@@ -229,7 +237,7 @@
                 </g>
               </g>
             </svg>
-            <span class="white">Âm thanh</span>
+            <span class="white">{{ $t("ATT") || "ATT" }}</span>
           </div>
           <div class="flex flex-1 control align-center">
             <div class="flex toggleButtonWrapper">
@@ -255,7 +263,7 @@
         svgClasses="w-5 h-5"
         class="block h-5 text-center"
       />
-      <span>Hồ Sơ</span>
+      <span>{{ $t("Profile") || "Profile" }}</span>
     </div>
     <div class="relative ml-3 mr-3 text-center cursor-pointer con-img mTT">
       <notification-drop-down />
@@ -342,7 +350,7 @@
     </vs-dropdown>-->
     <vs-popup
       class="qDeposit"
-      title="Nạp Nhanh"
+      :title="$t('FastLoading') || 'FastLoading'"
       :active.sync="popupActiveNapNhanh"
     >
       <div class="relative">
@@ -370,24 +378,26 @@
             <span class="white">{{ balanceUSDT }}</span>
           </span>
         </div>
-        <p class="mt-4 mb-2 text-xs white">Tiền Nạp</p>
+        <p class="mt-4 mb-2 text-xs white">
+          {{ $t("RealAccount") || "RealAccount" }}
+        </p>
         <div class="relative">
           <vs-input
             class="w-full"
-            placeholder="Vui lòng nhập tiền nạp"
+            :placeholder="$t('VLNSTN') || 'VLNSTN'"
             @keyup="ttThucNhan"
             v-model="enterMoneyDeposit"
           />
           <span class="cursor-pointer allIn" @click="allEnterWallet()">
-            <span class="uppercase">Tất cả</span>
+            <span class="uppercase">{{ $t("All") || "All" }}</span>
           </span>
         </div>
 
         <p class="mt-4 mb-4 text-right noticeDeposit">
-          <small>Giá trị nạp tối thiểu là $11</small>
+          <small>{{ $t("GHT") || "GHT" }} $11</small>
         </p>
         <div class="sizeLarge">
-          <p class="mb-2 white title">*Tổng sẽ nhận</p>
+          <p class="mb-2 white title">*{{ $t("TTN") || "TTN" }}</p>
           <p title="0.00" class="mb-2 text-3xl receiveAmount white">
             ${{ ttNhan }}
           </p>
@@ -399,12 +409,12 @@
           icon-pack="feather"
           type="relief"
           @click="(popupActiveNapNhanh = false), submitDeposit()"
-          >Nạp tiền ngay</vs-button
+          >{{ $t("NTN") || "NTN" }}</vs-button
         >
 
-        <p class="mt-2 text-center noticeDeposit">
+        <!-- <p class="mt-2 text-center noticeDeposit">
           <small>*Giá báo có thể thay đổi</small>
-        </p>
+        </p> -->
       </div>
     </vs-popup>
     <vs-popup

@@ -20,7 +20,7 @@
               (getSetSys.isDepositOpen = true)
           "
         >
-          <span>Nạp Tiền</span>
+          <span>{{ $t("Recharge") || "Recharge" }}</span>
         </li>
         <li
           class="itemTab"
@@ -31,7 +31,7 @@
               (getSetSys.isWithdraOpen = true)
           "
         >
-          <span>Rút Tiền</span>
+          <span>{{ $t("Withdrawal") || "Withdrawal" }}</span>
         </li>
       </ul>
     </div>
@@ -213,7 +213,7 @@
                       :class="{ hidden: isNap }"
                       type="filled"
                       @click="DepositPaypal"
-                      >Nạp Tiền</vs-button
+                      >{{ $t("Recharge") || "Recharge" }}</vs-button
                     >
                     <vs-button
                       v-if="!activeNRT"
@@ -229,7 +229,9 @@
             <div v-else>
               <div class="depos" :class="{ block: activeNRT }">
                 <div class="relative form-group">
-                  <h4 class="text-center"><span>Nhập Số Tiền</span></h4>
+                  <h4 class="text-center">
+                    <span>{{ $t("SADFW") || "SADFW" }}</span>
+                  </h4>
                 </div>
 
                 <!-- <div class="mt-4 text-center">
@@ -247,7 +249,7 @@
                         @input="updateAmountMessage"
                         v-model="amount_bank"
                         decimal="true"
-                        :placeholder="`  Nhập Số Tiền Nạp`"
+                        :placeholder="$t('SADFW') || 'SADFW'"
                         class="form-control amountbank"
                       />
                     </div>
@@ -255,7 +257,7 @@
                     <div class="infobank" v-if="isNap">
                       <div class="relative form-group">
                         <h4 class="text-center">
-                          <span>Thông tin thanh toán</span>
+                          <span>{{ $t("STLO") || "STLO" }}</span>
                         </h4>
                       </div>
                       <div class="relative form-group">
@@ -311,15 +313,15 @@
                     <div class="relative">
                       <h4 class="mb-1 text-center">
                         <span
-                          >Số tiền bạn cần thanh toán:
+                          >{{ $t("STLO") || "STLO" }}:
                           {{ this.formatPrice(amoutMustBanking) }}VND</span
                         >
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Để thanh toán bạn vui lòng chuyển tiền theo</span>
+                        <span>{{ $t("GHST") || "GHST" }}</span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Nội dung: {{ bank_desc }}</span>
+                        <span>{{ $t("SADF") || "SADF" }}: {{ bank_desc }}</span>
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span
@@ -327,13 +329,19 @@
                         >
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Chủ Tài Khoản: {{ bank_owner }} </span>
+                        <span
+                          >{{ $t("TIWE") || "TIWE" }}: {{ bank_owner }}
+                        </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Ngân hàng: {{ bank_tell }} </span>
+                        <span
+                          >{{ $t("BSDE") || "BSDE" }}: {{ bank_tell }}
+                        </span>
                       </h4>
                       <h4 class="mb-1 text-center">
-                        <span>Số tài khoản: {{ bank_number }}</span>
+                        <span
+                          >{{ $t("SADWF") || "SADWF" }}: {{ bank_number }}</span
+                        >
                       </h4>
                       <h4 class="mb-1 text-center">
                         <span
@@ -342,25 +350,19 @@
                       </h4>
 
                       <h4 class="mb-1 text-center">
-                        <span
-                          >Sau khi chuyển bạn nhập số tiền vào ô phía trên vào
-                          nhấn Nạp ở bên dưới.
-                        </span>
+                        <span>{{ $t("TRSA") || "TRSA" }} </span>
                       </h4>
                       <br />
                       <h5 class="mb-1 text-center">
                         <span>
-                          <i
-                            >Lưu ý: Hệ Thống Sẽ Không Chịu Trách Nhiệm Nếu Bạn
-                            Gửi Sai Nội Dung.</i
-                          >
+                          <i>{{ $t("DGSA") || "DGSA" }}</i>
                         </span>
                       </h5>
                     </div>
                     <div class="text-center md:w-full">
                       <div class="address">
                         <span class="noted"
-                          >Nạp tối thiểu là 5 USDT (1USDT =
+                          >{{ $t("VASA") || "VASA" }} 5 USDT (1USDT =
                           {{ exchangeVNDUSDT }})</span
                         >
                         <!-- <span class="noted">** Để giảm tải máy chủ, vui lòng khi nạp tiền rồi nhấp vào kiểm tra, hệ thống sẽ kiểm tra trong vòng 2 phút, nếu USDT chưa vào tài khoản thì xin nhấp KIỂM TRA lại. Vui lòng không Spam tránh việc khóa tài khoản!</span> -->
@@ -368,7 +370,7 @@
                           class="buttonCommon greenButton"
                           type="filled"
                           @click="NapBank"
-                          >Nạp Tiền</vs-button
+                          >{{ $t("Recharge") || "Recharge" }}</vs-button
                         >
                         <!-- <vs-button  id="button-with-loading" class="ml-2 vs-con-loading__container buttonCommon" color="warning" type="filled" :disabled="checkispay" @click="CheckPAY('USDT')">{{ ssDownSend }}</vs-button> -->
                         <!---->
@@ -382,25 +384,26 @@
                 :class="{ block: !activeNRT }"
               >
                 <div class="relative mt-1 form-group">
-                  <h4 class="colorSecondary2">Giá trị USDT</h4>
+                  <h4 class="colorSecondary2">
+                    {{ $t("Value") || "Value" }} USDT
+                  </h4>
                   <input
                     required="amount"
                     type="number"
                     v-model="amount"
                     decimal="true"
-                    :placeholder="`Số tiền tối thiểu: ${getSetSys.minWithdrawalUSDT} USDT`"
                     class="form-control"
                   />
                   <button
                     class="btn sendMax button primary"
                     @click="enterMaxAmount"
                   >
-                    Tối đa
+                    {{ $t("DSADSAD") || "DSADSAD" }}
                   </button>
                 </div>
                 <div v-if="checkBackInfor == 0">
                   <div class="relative form-group">
-                    <h4 class="colorSecondary2">Tên Ngân Hàng</h4>
+                    <h4 class="colorSecondary2">{{ $t("BSDE") || "BSDE" }}</h4>
                     <select
                       id="nganHang"
                       class="form-control"
@@ -449,39 +452,43 @@
                     </select>
                   </div>
                   <div class="relative form-group">
-                    <h4 class="colorSecondary2">Chi nhánh ngân hàng</h4>
+                    <h4 class="colorSecondary2">
+                      {{ $t("DSADJ") || "DSADJ" }}
+                    </h4>
                     <input
                       type="text"
-                      placeholder="Nhập chi nhánh ngân hàng của bạn"
+                      :placeholder="$t('POSD') || 'POSD'"
                       class="form-control"
                     />
                   </div>
                   <div class="relative form-group">
-                    <h4 class="colorSecondary2">Số tài khoản</h4>
+                    <h4 class="colorSecondary2">
+                      {{ $t("SADWF") || "SADWF" }}
+                    </h4>
                     <input
                       v-model="stk"
                       required="stk"
                       type="text"
-                      placeholder="Nhập số tài khoản của bạn"
+                      :placeholder="$t('SADKSA') || 'SADKSA'"
                       class="form-control"
                     />
                   </div>
 
                   <div class="relative form-group">
-                    <h4 class="colorSecondary2">Chủ tài khoản</h4>
+                    <h4 class="colorSecondary2">{{ $t("TIWE") || "TIWE" }}</h4>
                     <input
                       v-model="chutk"
                       required="chutaikhoan"
                       type="text"
-                      placeholder="Nhập tên chủ tài khoản"
+                      :placeholder="$t('TIWESAD') || 'TIWESAD'"
                       class="form-control"
                     />
                   </div>
                   <div class="relative form-group">
-                    <h4 class="colorSecondary2">Ghi chú ( không bắt buộc)</h4>
+                    <h4 class="colorSecondary2">{{ $t("Note") || "Note" }}</h4>
                     <input
                       type="text"
-                      placeholder="Nhập ghi chú của bạn"
+                      :placeholder="$t('NOSER') || 'NOSER'"
                       class="form-control"
                     />
                   </div>
@@ -493,7 +500,7 @@
                       class="buttonCommon redButton"
                       type="filled"
                       @click="Withdrawal()"
-                      >Rút Tiền</vs-button
+                      >{{ $t("Withdrawal") || "Withdrawal" }}</vs-button
                     >
                   </div>
                 </div>
