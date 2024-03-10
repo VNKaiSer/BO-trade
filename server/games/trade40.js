@@ -145,8 +145,8 @@ wss.on("connection", function (ws) {
       HandlingProcessingGameTrade40(statusBet, data.data, ws);
       setTimeout(() => {
         handleSendKQ(data, ws);
-      // }, data.data.timeBet * 1000);
-    }, 1000);
+      }, data.data.timeBet * 1000);
+    // }, 1000);
     }
     if (data.type === "getPriceOP") {
       helperCoin.getPricecoin("BTC").then((res) => {
@@ -443,7 +443,7 @@ function randomWinLost() {
   const randomValue = Math.random();
 
   // Kiểm tra giá trị và trả về 0 hoặc 1 với tỷ lệ 70% và 30%
-  if (randomValue < 0.1) {
+  if (randomValue < 0.7 ) {
     return LOSE_STATUS;
   } else {
     return WIN_STATUS;

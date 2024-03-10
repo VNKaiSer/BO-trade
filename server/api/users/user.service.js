@@ -785,7 +785,7 @@ module.exports = {
                         open as o,
                         close as cl,
                         created_at as d 
-                        from bet_history where id_account = ? or id_account = ? and status = 1 order by id desc`,
+                        from bet_history where (id_account = ? or id_account = ?) and status = 1 order by id desc`,
           [listAcc[0], listAcc[1]],
           (error, results, fields) => {
             if (error) {

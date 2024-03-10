@@ -244,10 +244,10 @@
           </div>
           <div class="mb-6 lg:relative">
             <div class="mt-2 mb-2 text-center">
-              {{ $t("Profit") || "Profit" }}
+              {{ $t("Profit") || "Profit" }} :  {{ profit }}%
             </div>
             <div class="text-center">
-              <span class="mb-2 profitPercent color-light-blue">{{betAmount}}</span>
+              <!-- <span class="mb-2 profitPercent color-light-blue">{{betAmount}}</span> -->
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -1562,7 +1562,7 @@ export default {
           this.profit = 20;
           break;
         case 300:
-          this.profit = 30;
+          this.profit = 25;
           break;
         case 3600:
           this.profit = 50;
@@ -1747,7 +1747,7 @@ export default {
         );
         localStorage.setItem("stateOpen", JSON.stringify(this.betOpen));
         getData.Notify = this.betOpen.l.bet[0].items.length;
-      },  3000);
+      }, this.timeBet *  1000);
       // },2000)
 
       // if(v === 'buy'){
@@ -2452,8 +2452,7 @@ export default {
               getData.blDemo = getData.blDemo + dl.amount_bet;
             }
 
-            this.moneyLost = this.formatPrice(mn, 2);
-            // console.log("moneyLost", this.moneyLost);
+            this.moneyLost = this.formatPrice(lostmn, 2);
             this.isLostPop = true;
             setTimeout(() => {
               this.isLostPop = false;
