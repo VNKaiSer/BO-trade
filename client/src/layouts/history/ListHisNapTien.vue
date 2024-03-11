@@ -33,16 +33,21 @@
       <div class="mb-2">
         <p>
           <span class="mr-4" style="color: #ffb0b0"
-            >Tổng tiền nạp: <b>{{ formatPrice(dtUSD, 2) }} USDT</b></span
+            >{{ $t("DSASDAF") || "DSASDAF" }}
+            <b>{{ formatPrice(dtUSD, 2) }} USDT</b></span
           >
           <span class="mr-4" style="color: #00ffad"
-            >Tổng tiền BNB nhận: <b>{{ formatPrice(dtBNB, 10) }} BNB</b></span
+            >{{ $t("DGFSAF") || "DGFSAF" }}
+            <b>{{ formatPrice(dtBNB, 10) }} BNB</b></span
           >
           <span class="mr-4" style="color: #ffa500"
-            >Phí: <b>{{ formatPrice(feeBNB, 10) }} BNB</b></span
+            >{{ $t("DSGFAF") || "DSGFAF" }}
+            <b>{{ formatPrice(feeBNB, 10) }} BNB</b></span
           >
         </p>
-        <p><span class="mr-4">Nạp nhanh không tính chung vào</span></p>
+        <p>
+          <span class="mr-4">{{ $t("DHBDSAF") || "DHBDSAF" }}</span>
+        </p>
       </div>
       <vs-table
         ref="table"
@@ -68,7 +73,7 @@
               <div
                 class="flex items-center justify-center w-32 w-full p-4 text-lg font-medium rounded-lg cursor-pointer shadow-drop d-theme-dark-bg"
               >
-                <span class="mr-2">Tác vụ</span>
+                <span class="mr-2">{{ $t("DYTSA") || "DYTSA" }}</span>
                 <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
               </div>
 
@@ -84,7 +89,7 @@
                       svgClasses="h-4 w-4"
                       class="mr-2"
                     />
-                    <span>Xóa</span>
+                    <span>{{ $t("LKOS") || "LKOS" }}</span>
                   </span>
                 </vs-dropdown-item>
 
@@ -102,7 +107,7 @@
                       svgClasses="h-4 w-4"
                       class="mr-2"
                     />
-                    <span>In</span>
+                    <span>{{ $t("WEWS") || "WEWS" }}</span>
                   </span>
                 </vs-dropdown-item>
 
@@ -172,13 +177,13 @@
         </div>
 
         <template slot="thead">
-          <vs-th sort-key="account">Tài khoản</vs-th>
-          <vs-th sort-key="type">Loại tiền</vs-th>
-          <vs-th sort-key="amount">Số tiền</vs-th>
-          <vs-th sort-key="note">Ghi chú</vs-th>
-          <vs-th sort-key="status">Trạng thái</vs-th>
-          <vs-th sort-key="datecreate">Thời gian</vs-th>
-          <vs-th>Tác vụ</vs-th>
+          <vs-th sort-key="account">{{ $t("RET") || "RET" }}</vs-th>
+          <vs-th sort-key="type">{{ $t("REGSD") || "REGSD" }}</vs-th>
+          <vs-th sort-key="amount">{{ $t("WED") || "WED" }}</vs-th>
+          <vs-th sort-key="note">{{ $t("ASDAV") || "ASDAV" }}</vs-th>
+          <vs-th sort-key="status">{{ $t("DSFASA") || "DSFASA" }}</vs-th>
+          <vs-th sort-key="datecreate">{{ $t("DOIPSA") || "DOIPSA" }}</vs-th>
+          <vs-th>{{ $t("DYTSA") || "DYTSA" }}</vs-th>
         </template>
 
         <template slot-scope="{ data }">
@@ -186,7 +191,7 @@
             <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
               <vs-td>
                 <p class="font-medium truncate de-name">
-                  {{ tr.from_u }}<br />Mô tả: {{ tr.type }}
+                  {{ tr.from_u }}<br />{{ $t("DSQWEA") || "DSQWEA" }}{{ tr.type }}
                 </p>
               </vs-td>
 

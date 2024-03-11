@@ -24,12 +24,12 @@
           <table class="tbv">
             <tr>
               <th>Email</th>
-              <th>Loại</th>
-              <th>Mua/Bán</th>
-              <th>Số Tiền Cược</th>
-              <th>Phiên</th>
-              <th>Thắng</th>
-              <th>Thua</th>
+              <th>{{ $t("Type") || "Type" }}</th>
+              <th>{{ $t("") || "" }}</th>
+              <th>{{ $t("DSAGA") || "DSAGA" }}</th>
+              <th>{{ $t("Session") || "Session" }}</th>
+              <th>{{ $t("DSAS") || "DSAS" }}</th>
+              <th>{{ $t("DSAW") || "DSAW" }}</th>
             </tr>
             <tr :data="tr" :key="indextr" v-for="(tr, indextr) in listBetOpen">
               <td>{{ tr.email }}</td>

@@ -71,11 +71,11 @@ const router = new Router({
           name: "list-all-account",
           component: () => import("./layouts/account/AccountAllMemberList.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách tài khoản", active: true },
-            ],
-            pageTitle: "Tất cả",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách tài khoản", active: true },
+            // ],
+            // pageTitle: "Tất cả",
             rule: "editor",
           },
         },
@@ -85,11 +85,11 @@ const router = new Router({
           name: "list-verify-account",
           component: () => import("./layouts/account/AccountVerifyList.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách xác minh", active: true },
-            ],
-            pageTitle: "Xác minh",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách xác minh", active: true },
+            // ],
+            // pageTitle: "Xác minh",
             rule: "editor",
           },
         },
@@ -98,11 +98,11 @@ const router = new Router({
           name: "list-agency-account",
           component: () => import("./layouts/account/AccountAgencyList.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách đại lý", active: true },
-            ],
-            pageTitle: "Xác minh",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách đại lý", active: true },
+            // ],
+            // pageTitle: "Xác minh",
             rule: "editor",
           },
         },
@@ -116,11 +116,11 @@ const router = new Router({
           name: "list-history-deposit",
           component: () => import("./layouts/history/ListHisNapTien.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách nạp tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách nạp tiền",
             rule: "editor",
           },
         },
@@ -130,11 +130,11 @@ const router = new Router({
           name: "list-history-withdrawal",
           component: () => import("./layouts/history/ListHisRutTien.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách rút tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách rút tiền",
             rule: "editor",
           },
         },
@@ -144,11 +144,11 @@ const router = new Router({
           name: "list-history-trade",
           component: () => import("./layouts/history/ListHisTrade.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách giao dịch",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách giao dịch",
             rule: "editor",
           },
         },
@@ -158,11 +158,11 @@ const router = new Router({
           name: "list-bet-trade",
           component: () => import("./layouts/history/ListHisBet.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách đặt cược",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách đặt cược",
             rule: "editor",
           },
         },
@@ -172,11 +172,11 @@ const router = new Router({
           name: "list-history-exchange",
           component: () => import("./layouts/history/ListHisExChange.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách đổi tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách đổi tiền",
             rule: "editor",
           },
         },
@@ -186,11 +186,11 @@ const router = new Router({
           name: "list-history-addmoney",
           component: () => import("./layouts/history/ListHisAddMoney.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách thêm tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách thêm tiền",
             rule: "editor",
           },
         },
@@ -199,11 +199,11 @@ const router = new Router({
           name: "list-history-deposit",
           component: () => import("./layouts/history/ListHisNapTien1.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách", active: true },
-            ],
-            pageTitle: "Danh sách lệnh nạp tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách", active: true },
+            // ],
+            // pageTitle: "Danh sách lệnh nạp tiền",
             rule: "editor",
           },
         },
@@ -217,11 +217,11 @@ const router = new Router({
           name: "list-post-news",
           component: () => import("./layouts/history/ListPostNews.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Danh sách bài viết", active: true },
-            ],
-            pageTitle: "Danh sách",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Danh sách bài viết", active: true },
+            // ],
+            // pageTitle: "Danh sách",
             rule: "editor",
           },
         },
@@ -231,11 +231,11 @@ const router = new Router({
           name: "post-news",
           component: () => import("./layouts/tool/PostNews.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Công cụ đăng bài", active: true },
-            ],
-            pageTitle: "Viết bài",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Công cụ đăng bài", active: true },
+            // ],
+            // pageTitle: "Viết bài",
             rule: "editor",
           },
         },
@@ -244,29 +244,29 @@ const router = new Router({
 
         // công cụ
 
-        {
-          path: "/tool/data-tool/edit-commission",
-          name: "tool-edit-commission",
-          component: () => import("./layouts/tool/EditCommission.vue"),
-          meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Công cụ chỉnh sửa hoa hồng", active: true },
-            ],
-            pageTitle: "Hoa hồng",
-            rule: "editor",
-          },
-        },
+        // {
+        //   path: "/tool/data-tool/edit-commission",
+        //   name: "tool-edit-commission",
+        //   component: () => import("./layouts/tool/EditCommission.vue"),
+        //   meta: {
+        //     // breadcrumb: [
+        //     //   { title: "Trang chủ", url: "/" },
+        //     //   { title: "Công cụ chỉnh sửa hoa hồng", active: true },
+        //     // ],
+        //     // pageTitle: "Hoa hồng",
+        //     rule: "editor",
+        //   },
+        // },
         {
           path: "/tool/data-tool/add-money",
           name: "tool-add-money",
           component: () => import("./layouts/tool/AddMoney.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Công cụ trừ tiền", active: true },
-            ],
-            pageTitle: "Trừ tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Công cụ trừ tiền", active: true },
+            // ],
+            // pageTitle: "Trừ tiền",
             rule: "editor",
           },
         },
@@ -275,11 +275,11 @@ const router = new Router({
           name: "tool-adds-money",
           component: () => import("./layouts/tool/AddsMoney.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Công cụ cộng tiền", active: true },
-            ],
-            pageTitle: "Cộng tiền",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Công cụ cộng tiền", active: true },
+            // ],
+            // pageTitle: "Cộng tiền",
             rule: "editor",
           },
         },
@@ -301,11 +301,11 @@ const router = new Router({
           name: "tool-edit-bet1",
           component: () => import("./layouts/tool/EditKetQua1.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Công cụ chỉnh sửa trò chơi", active: true },
-            ],
-            pageTitle: "Bẻ cầu",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Công cụ chỉnh sửa trò chơi", active: true },
+            // ],
+            // pageTitle: "Bẻ cầu",
             rule: "editor",
           },
         },
@@ -314,11 +314,11 @@ const router = new Router({
           name: "tool-edit-bet2",
           component: () => import("./layouts/tool/ChangeBank.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Công cụ chỉnh sửa ngân hàng", active: true },
-            ],
-            pageTitle: "Change Ngân Hàng",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Công cụ chỉnh sửa ngân hàng", active: true },
+            // ],
+            // pageTitle: "Change Ngân Hàng",
             rule: "editor",
           },
         },
@@ -328,11 +328,11 @@ const router = new Router({
           name: "tool-setting",
           component: () => import("./layouts/tool/Setting.vue"),
           meta: {
-            breadcrumb: [
-              { title: "Trang chủ", url: "/" },
-              { title: "Cài đặt", active: true },
-            ],
-            pageTitle: "Cài đặt",
+            // breadcrumb: [
+            //   { title: "Trang chủ", url: "/" },
+            //   { title: "Cài đặt", active: true },
+            // ],
+            // pageTitle: "Cài đặt",
             rule: "editor",
           },
         },
