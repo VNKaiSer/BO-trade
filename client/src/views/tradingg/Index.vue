@@ -164,17 +164,17 @@
                 v-model="timeBet"
                 @change="onTimeBetChange($event)"
               >
-                <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  1m - 10%
+                <option class="w-full h-8 cursor-pointer bpF" value="600">
+                  10m - 10%
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  2m - 15%
+                <option class="w-full h-8 cursor-pointer bpF" value="900">
+                  15m - 15%
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  3m - 20%
+                <option class="w-full h-8 cursor-pointer bpF" value="1800">
+                  30m - 20%
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  5m - 25%
+                <option class="w-full h-8 cursor-pointer bpF" value="2600">
+                  45m - 25%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="3600">
                   1h - 50%
@@ -411,18 +411,19 @@
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
+                @change="onTimeBetChange($event)"
               >
-              <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  1m - 10%
+              <option class="w-full h-8 cursor-pointer bpF" value="600">
+                  10m - 10%
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  2m - 15%
+                <option class="w-full h-8 cursor-pointer bpF" value="900">
+                  15m - 15%
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  3m - 20%
+                <option class="w-full h-8 cursor-pointer bpF" value="1800">
+                  30m - 20%
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  5m - 25%
+                <option class="w-full h-8 cursor-pointer bpF" value="2600">
+                  45m - 25%
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="3600">
                   1h - 50%
