@@ -1553,16 +1553,16 @@ export default {
     onTimeBetChange(event) {
       console.log(typeof event.target.value);
       switch (Number(event.target.value)) {
-        case 60:
+        case 600:
           this.profit = 10;
           break;
-        case 120:
+        case 900:
           this.profit = 15;
           break;
-        case 180:
+        case 1800:
           this.profit = 20;
           break;
-        case 300:
+        case 2600:
           this.profit = 25;
           break;
         case 3600:
