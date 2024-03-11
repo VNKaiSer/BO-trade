@@ -439,8 +439,7 @@
           </div>
           <div class="relative">
             <div class="mt-2 mb-2 text-center">
-              {{ $t("Profit") || "Profit" }}
-              <span class="mb-2 profitPercent color-light-blue">10%</span>
+              {{ $t("Profit") || "Profit" }} :  {{ profit }}%
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -615,8 +614,7 @@
                 </div>
                 <div class="relative">
                   <div class="mt-2 mb-2 text-center">
-                    {{ $t("Profit") || "Profit" }}
-                    <span class="mb-2 profitPercent color-light-blue">10%</span>
+                    {{ $t("Profit") || "Profit" }} :  {{ profit }}%
                     <span class="text-3xl font-bold profitValue color-green"
                       >+${{ loiNhuan }}</span
                     >
@@ -1551,6 +1549,7 @@ export default {
       return (this.isBet = !this.isBet ? true : false);
     },
     onTimeBetChange(event) {
+      console.log('hihi')
       console.log(typeof event.target.value);
       switch (Number(event.target.value)) {
         case 600:
