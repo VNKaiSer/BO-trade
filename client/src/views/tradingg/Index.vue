@@ -1488,7 +1488,7 @@ export default {
       textTitleSu: "NEUTRAL",
 
       // trade 4.0
-      timeBet: 60,
+      timeBet: 600,
       coinBet: "BTC",
       profit :10,
 
