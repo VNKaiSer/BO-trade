@@ -32,14 +32,15 @@
       <div class="mb-2">
         <p>
           <span class="mr-4" style="color: #ffb0b0"
-            >Tổng tiền rút: <b>{{ formatPrice(dtUSD, 2) }} USDT</b></span
+            >{{ $t("DSSADA") || "DSSADA" }}
+            <b>{{ formatPrice(dtUSD, 2) }} USDT</b></span
           >
-          <span class="mr-4" style="color: #00ffad"
+          <!-- <span class="mr-4" style="color: #00ffad"
             >Tổng tiền BNB rút: <b>{{ formatPrice(dtBNB, 10) }} BNB</b></span
           >
           <span class="mr-4" style="color: #ffa500"
             >Phí: <b>{{ formatPrice(feeBNB, 10) }} BNB</b></span
-          >
+          > -->
         </p>
       </div>
       <!-- multiple v-model="selectedUser" -->
@@ -65,7 +66,7 @@
               <div
                 class="flex items-center justify-center w-32 w-full p-4 text-lg font-medium rounded-lg cursor-pointer shadow-drop d-theme-dark-bg"
               >
-                <span class="mr-2">Tác vụ</span>
+                <span class="mr-2">{{ $t("DSAEQWD") || "DSAEQWD" }}</span>
                 <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
               </div>
 
@@ -81,7 +82,7 @@
                       svgClasses="h-4 w-4"
                       class="mr-2"
                     />
-                    <span>Xóa</span>
+                    <span>{{ $t("LKOS") || "LKOS" }}</span>
                   </span>
                 </vs-dropdown-item>
 
@@ -99,7 +100,7 @@
                       svgClasses="h-4 w-4"
                       class="mr-2"
                     />
-                    <span>In</span>
+                    <span>{{ $t("WEWS") || "WEWS" }}</span>
                   </span>
                 </vs-dropdown-item>
 
@@ -177,7 +178,8 @@
             <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
               <vs-td>
                 <p class="font-medium truncate de-name">
-                  {{ tr.from_u }}<br />Mô tả: {{ tr.type }}
+                  {{ tr.from_u }}<br />{{ $t("DSQWEA") || "DSQWEA" }}
+                  {{ tr.type }}
                 </p>
               </vs-td>
 
@@ -245,7 +247,7 @@
                       'accept'
                     )
                   "
-                  ><span>Xác nhận</span></vs-button
+                  ><span>{{ $t("XNN") || "XNN" }}</span></vs-button
                 >
                 <vs-button
                   type="filled"
@@ -259,7 +261,7 @@
                       'nt'
                     )
                   "
-                  ><span>Từ chối</span></vs-button
+                  ><span>{{ $t("DSQWWEA") || "DSQWWEA" }}</span></vs-button
                 >
               </vs-td>
             </vs-tr>

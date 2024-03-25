@@ -13,9 +13,9 @@
       <div class="vx-row">
         <div class="w-full vx-col mb-base">
           <p class="mb-4" style="text-decoration: overline">
-            <span style="text-decoration: overline"
-              >[THIẾT LẬP MIN RÚT / NẠP]:</span
-            >
+            <span style="text-decoration: overline">{{
+              $t("DATYLL") || "DATYLL"
+            }}</span>
           </p>
           <div class="vx-row">
             <div
@@ -106,11 +106,13 @@
 
         <div class="w-full vx-col md:w-1/2 lg:w-6/12 xl:w-6/12 mb-base">
           <p class="mb-4">
-            <span style="text-decoration: overline">[THIẾT LẬP VÍ]:</span>
+            <span style="text-decoration: overline">{{
+              $t("DALJGL") || "DALJGL"
+            }}</span>
           </p>
           <div class="vx-row">
             <div class="w-full vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
-              <p class="mb-4">Mặc định Ví sử dụng:</p>
+              <p class="mb-4">{{ $t("DADFLL") || "DADFLL" }}</p>
               <ul class="centerx">
                 <li class="mb-4">
                   <vs-radio
@@ -137,14 +139,11 @@
                 </li>
               </ul>
               <p>
-                <i
-                  >Ghi chú: Ví sử dụng mặc định dùng để giao dịch tiền tệ giữa
-                  Tài Khoản thực và các Ví phụ khác</i
-                >
+                <i>{{ $t("DALHFL") || "DALHFL" }}</i>
               </p>
             </div>
             <div class="w-full vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
-              <p class="mb-4">Hiển thị Ví thanh toán:</p>
+              <p class="mb-4">{{ $t("DAJLL") || "DAJLL" }}</p>
               <ul class="centerx">
                 <li class="relative mb-4">
                   <vs-checkbox
@@ -189,16 +188,18 @@
                   </div>
                 </li>
               </ul>
-              <p><i>Ghi chú: Các Ví chứa các khoản tiền NẠP và Rút</i></p>
+              <p>
+                <i>{{ $t("DAJYTLL") || "DAJYTLL" }}</i>
+              </p>
             </div>
           </div>
         </div>
 
         <div class="w-full vx-col md:w-1/2 lg:w-6/12 xl:w-6/12 mb-base">
           <p class="mb-4">
-            <span style="text-decoration: overline"
-              >[THIẾT LẬP QUOTE USD đồng COIN]: </span
-            ><i>( Mặc định Auto Update )</i>
+            <span style="text-decoration: overline">{{
+              $t("DAYTLL") || "DAYTLL"
+            }}</span>
           </p>
           <div class="vx-row">
             <div class="vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
@@ -210,21 +211,23 @@
                 v-model="settingJson.timeLoopUpdateQuote"
               />
               <p class="m-2 mb-4">
-                <i>Chú ý: Thời gian được tính bằng (giây)</i>
+                <i>{{ $t("DALLR") || "DALLR" }}</i>
               </p>
               <div class="block m-2">
                 <vs-switch
                   v-model="checkOnOffAutoQuote"
                   @change="checkOnOffAutoQuote = !checkOnOffAutoQuote"
                 >
-                  <span slot="on">Bật</span>
+                  <span slot="on">{{ $t("Bật") || "Bật" }}</span>
                   <span slot="off">Tắt</span>
                 </vs-switch>
               </div>
-              <p class="m-2"><i>Chú ý: Bật / tắt Auto cập nhật USD Quote</i></p>
+              <p class="m-2">
+                <i>{{ $t("DASDWF") || "DASDWF" }}</i>
+              </p>
             </div>
             <div class="vx-col centerx md:w-1/2 lg:w-2/4 xl:w-2/4">
-              <p class="mb-4">Quote USD:</p>
+              <p class="mb-4">{{ $t("DATLL") || "DATLL" }}</p>
               <vs-input
                 type="number"
                 style="display: inline-block"
@@ -265,7 +268,9 @@
                 )} PAYPAL`"
                 v-model="settingJson.quote_USD_PAYPAL"
               />
-              <p><i>Chú ý: Paypal mặc định là 1</i></p>
+              <p>
+                <i>{{ $t("DASDZCWF") || "DASDZCWF" }}</i>
+              </p>
             </div>
           </div>
         </div>
@@ -275,7 +280,7 @@
             <div class="vx-col centerx md:w-1/2 lg:w-6/12 xl:w-6/12">
               <p class="mb-4">
                 <span style="text-decoration: overline"
-                  >[THIẾT LẬP GỬI THÔNG BÁO]:
+                  >{{ $t("DASDWDF") || "DASDWDF" }}
                 </span>
               </p>
               <!--<p class="mb-4">
@@ -284,27 +289,31 @@
               <!--<vs-input style="display: inline-block;" v-model="settingJson.teleToken" class="m-2 mb-4" label-placeholder="Token"/>-->
               <div class="vx-row">
                 <div class="vx-col centerx md:w-1/2 lg:w-6/12 xl:w-6/12">
-                  <p class="mb-4">Telegram kênh NẠP / RÚT:</p>
+                  <p class="mb-4">{{ $t("DASDGWF") || "DASDGWF" }}</p>
                   <div>
                     <!--<vs-input style="display: inline-block;" v-model="settingJson.teleChatID" class="m-2 mb-4" label-placeholder="Chat ID"/>-->
                     <vs-checkbox
                       :disabled="!activeNTF"
                       v-model="settingJson.teleActiveDeposit"
                       @change="changeActiveNotify('d', $event)"
-                      >Nạp tiền</vs-checkbox
+                      >{{ $t("Recharge") || "Recharge" }}</vs-checkbox
                     >
-                    <p><i>- Ghi chú: Gửi tin khi người dùng nạp tiền</i></p>
+                    <p>
+                      <i>-{{ $t("DEASDWF") || "DEASDWF" }}</i>
+                    </p>
                     <vs-checkbox
                       :disabled="!activeNTF"
                       v-model="settingJson.teleActiveWithdraw"
                       @change="changeActiveNotify('w', $event)"
-                      >Rút tiền</vs-checkbox
+                      >{{ $t("Withdrawal") || "Withdrawal" }}</vs-checkbox
                     >
-                    <p><i>- Ghi chú: Gửi tin khi người dùng rút tiền</i></p>
+                    <p>
+                      <i>{{ $t("DAFRSDWF") || "DAFRSDWF" }}</i>
+                    </p>
                   </div>
                 </div>
                 <div class="vx-col centerx md:w-1/2 lg:w-6/12 xl:w-6/12">
-                  <p class="mb-4">Telegram kênh ĐẶT CƯỢC:</p>
+                  <p class="mb-4">{{ $t("DASDADWF") || "DASDADWF" }}</p>
                   <div>
                     <!--<vs-input style="display: inline-block;" v-model="settingJson.teleChatIDBet" class="m-2 mb-4" label-placeholder="Chat ID"/>-->
                     <vs-checkbox
@@ -313,7 +322,9 @@
                       @change="changeActiveNotify('b', $event)"
                       >Đặt cược</vs-checkbox
                     >
-                    <p><i>- Ghi chú: Gửi tin khi người dùng đặt cược</i></p>
+                    <p>
+                      <i>{{ $t("DASDCWF") || "DASDCWF" }}</i>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -321,7 +332,7 @@
             <div class="vx-col centerx md:w-1/2 lg:w-3/12 xl:w-3/12">
               <p class="mb-4">
                 <span style="text-decoration: overline"
-                  >[THIẾT LẬP BẢO TRÌ]:
+                  >{{ $t("DAIOSDWF") || "DAIOSDWF" }}
                 </span>
               </p>
               <vs-checkbox
@@ -332,7 +343,7 @@
               <p class="mb-4"><i>- Ghi chú: Bảo trì hệ thống</i></p>
               <p class="mb-4">
                 <span style="text-decoration: overline"
-                  >[THIẾT LẬP MẠNG NẠP TIỀN]:
+                  >{{ $t("DASCXDWF") || "DASCXDWF" }}
                 </span>
               </p>
               <vs-radio v-model="settingJson.default_netw_pay" vs-value="ct"
@@ -343,18 +354,11 @@
                 >Thử nghiệm</vs-radio
               >
               <p>
-                <b
-                  >- Mạng đang sử dụng là:
-                  {{
-                    settingJson.default_netw_pay == "tn"
-                      ? "Thử nghiệm"
-                      : "Chính thức"
-                  }}</b
-                >
+                <b>{{ $t("DASDWFAF") || "DASDWFAF" }}</b>
               </p>
               <p>
                 <i
-                  >- Ghi chú: Mạng nạp tiền mặc định BSC <br /><a
+                  >{{ $t("DASWDWF") || "DASWDWF" }} <br /><a
                     href="https://bscscan.com"
                     >https://bscscan.com</a
                   ></i
@@ -364,7 +368,7 @@
             <div class="vx-col centerx md:w-1/2 lg:w-3/12 xl:w-3/12">
               <p class="mb-4">
                 <span style="text-decoration: overline"
-                  >[THIẾT LẬP ĐỊA CHỈ VÍ]:
+                  >{{ $t("DASDVVWF") || "DASDVVWF" }}
                 </span>
               </p>
               <vs-input
@@ -380,10 +384,7 @@
                 label-placeholder="Private KEY Ví nhận tiền ( Có thể rỗng )"
               />
               <p>
-                <i
-                  >- Ghi chú: Là địa chỉ Ví chính người chơi để nạp tiền vào
-                  <b>(Vui lòng liên kết 2 mạng BEP20 và ERC20)</b></i
-                >
+                <i>{{ $t("DASRQWDWF") || "DASRQWDWF" }} </i>
               </p>
               <vs-input
                 style="display: inline-block"
@@ -398,10 +399,7 @@
                 label-placeholder="Private KEY Ví gửi tiền"
               />
               <p>
-                <i
-                  >- Ghi chú: Là địa chỉ Ví dùng để chi trả cho người chơi rút
-                  tiền <b>(Vui lòng liên kết 2 mạng BEP20 và ERC20)</b></i
-                >
+                <i>{{ $t("DASRQWDWF") || "DASRQWDWF" }}</i>
               </p>
             </div>
           </div>
@@ -412,7 +410,7 @@
           color="success"
           type="filled"
           @click="clickSubmitSetting"
-          >Cập nhật</vs-button
+          >{{ $t("GRSFS") || "GRSFS" }}</vs-button
         >
       </div>
     </template>

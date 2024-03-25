@@ -165,25 +165,13 @@
                 @change="onTimeBetChange($event)"
               >
                 <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  1m - 10%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  2m - 15%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  3m - 20%
+                  1m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  5m - 25%
+                  5m
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="3600">
-                  1h - 50%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="43200">
-                  12h - 75%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="86400">
-                  24h - 95%
+                <option class="w-full h-8 cursor-pointer bpF" value="600">
+                  10m
                 </option>
               </select>
             </div>
@@ -411,35 +399,23 @@
               <select
                 class="w-full p-1 mt-2 text-center vx-col bpF md:w-6/12"
                 v-model="timeBet"
+                @change="onTimeBetChange($event)"
               >
               <option class="w-full h-8 cursor-pointer bpF" value="60">
-                  1m - 10%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="120">
-                  2m - 15%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="180">
-                  3m - 20%
+                  1m
                 </option>
                 <option class="w-full h-8 cursor-pointer bpF" value="300">
-                  5m - 25%
+                  5m
                 </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="3600">
-                  1h - 50%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="43200">
-                  12h - 75%
-                </option>
-                <option class="w-full h-8 cursor-pointer bpF" value="86400">
-                  24h - 95%
+                <option class="w-full h-8 cursor-pointer bpF" value="600">
+                  10m
                 </option>
               </select>
             </div>
           </div>
           <div class="relative">
             <div class="mt-2 mb-2 text-center">
-              {{ $t("Profit") || "Profit" }}
-              <span class="mb-2 profitPercent color-light-blue">10%</span>
+              {{ $t("Profit") || "Profit" }} :  {{ profit }}%
               <span class="text-3xl font-bold profitValue color-green"
                 >+${{ loiNhuan }}</span
               >
@@ -614,8 +590,7 @@
                 </div>
                 <div class="relative">
                   <div class="mt-2 mb-2 text-center">
-                    {{ $t("Profit") || "Profit" }}
-                    <span class="mb-2 profitPercent color-light-blue">10%</span>
+                    {{ $t("Profit") || "Profit" }} :  {{ profit }}%
                     <span class="text-3xl font-bold profitValue color-green"
                       >+${{ loiNhuan }}</span
                     >
@@ -1487,9 +1462,9 @@ export default {
       textTitleSu: "NEUTRAL",
 
       // trade 4.0
-      timeBet: 60,
+      timeBet: 600,
       coinBet: "BTC",
-      profit :10,
+      profit :90,
 
       moneyWin: 0,
       isWinPop: false,
@@ -1550,30 +1525,32 @@ export default {
       return (this.isBet = !this.isBet ? true : false);
     },
     onTimeBetChange(event) {
-      console.log(typeof event.target.value);
-      switch (Number(event.target.value)) {
-        case 60:
-          this.profit = 10;
-          break;
-        case 120:
-          this.profit = 15;
-          break;
-        case 180:
-          this.profit = 20;
-          break;
-        case 300:
-          this.profit = 25;
-          break;
-        case 3600:
-          this.profit = 50;
-          break;
-        case 43200:
-          this.profit = 75;
-          break;
-        case 86400:
-          this.profit = 95;
-          break;
-        }
+      // console.log('hihi')
+      // console.log(typeof event.target.value);
+      this.profit = 90;
+     // switch (Number(event.target.value)) {
+       // case 600:
+        //   this.profit = 10;
+        //   break;
+        // case 900:
+        //   this.profit = 15;
+        //   break;
+        // case 1800:
+        //   this.profit = 20;
+        //   break;
+        // case 2600:
+        //   this.profit = 25;
+        //   break;
+        // case 3600:
+        //   this.profit = 50;
+        //   break;
+        // case 43200:
+        //   this.profit = 75;
+        //   break;
+        // case 86400:
+        //   this.profit = 95;
+        //   break;
+        // }
         this.tinhloinhuan(this.betAmount );
       // this.profit = event.target.value;
     },

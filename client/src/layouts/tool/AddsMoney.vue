@@ -2,15 +2,24 @@
   <div id="tool-adds-money" class="data-list-container">
     <template>
       <div class="vx-row">
-        <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
-          <div class="centerx labelx mb-4">
-            <vs-input style="width: 100%" label="Biệt danh" v-model="nickName" />
+        <div class="w-full vx-col sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
+          <div class="mb-4 centerx labelx">
+            <vs-input
+              style="width: 100%"
+              :label="$t('DALDSAL') || 'DALDSAL'"
+              v-model="nickName"
+            />
           </div>
           <p></p>
-          <div class="centerx labelx mb-4">
-            <vs-input type="number" style="width: 100%" label="Số tiền USDT" v-model="amountUSDT" />
+          <div class="mb-4 centerx labelx">
+            <vs-input
+              type="number"
+              style="width: 100%"
+              :label="$t('DALACL') || 'DALACL'"
+              v-model="amountUSDT"
+            />
           </div>
-          <!-- <div class="centerx labelx mb-4">
+          <!-- <div class="mb-4 centerx labelx">
             <vs-input
               type="number"
               style="width: 100%"
@@ -18,7 +27,7 @@
               v-model="amountBTC"
             />
           </div>
-          <div class="centerx labelx mb-4">
+          <div class="mb-4 centerx labelx">
             <vs-input
               type="number"
               style="width: 100%"
@@ -26,7 +35,7 @@
               v-model="amountETH"
             />
           </div>
-          <div class="centerx labelx mb-4">
+          <div class="mb-4 centerx labelx">
             <vs-input
               type="number"
               style="width: 100%"
@@ -34,7 +43,7 @@
               v-model="amountPAYPAL"
             />
           </div>
-          <div class="centerx labelx mb-4">
+          <div class="mb-4 centerx labelx">
             <vs-input
               type="number"
               style="width: 100%"
@@ -45,7 +54,9 @@
         </div>
       </div>
 
-      <vs-button type="filled" @click.prevent="addMoney" class="mt-5 block">Cộng tiền</vs-button>
+      <vs-button type="filled" @click.prevent="addMoney" class="block mt-5">{{
+        $t("DAKILL") || "DAKILL"
+      }}</vs-button>
     </template>
   </div>
 </template>
@@ -87,7 +98,7 @@ export default {
         let d = res.data;
         if (!d.success) {
           localStorage.removeItem("token");
-          this.$router.push("/pages/login").catch(() => { });
+          this.$router.push("/pages/login").catch(() => {});
         } else {
           // tránh tình trạng click nhìu lần sinh ra + nhiều
           this.amountUSDT = 0;

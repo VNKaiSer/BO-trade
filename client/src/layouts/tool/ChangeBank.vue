@@ -14,7 +14,7 @@
             <vs-input
               v-model="bank_owner"
               style="width: 100%"
-              label="Chủ Tài Khoản"
+              :label="$t('YUI') || 'YUI'"
             />
           </div>
           <div class="mb-4 centerx labelx">
@@ -22,7 +22,7 @@
               v-model="bank_tell"
               type="text"
               style="width: 100%"
-              label="Tên ngân hàng"
+              :label="$t('YIJT') || 'YIJT'"
             />
           </div>
           <div class="mb-4 centerx labelx">
@@ -30,7 +30,7 @@
               v-model="bank_number"
               type="text"
               style="width: 100%"
-              label="Số tài khoản"
+              :label="$t('JTN') || 'JTN'"
             />
           </div>
           <div class="mb-4 centerx labelx">
@@ -38,7 +38,7 @@
               v-model="bank_desc"
               type="text"
               style="width: 100%"
-              label="Nội dung mẫu"
+              :label="$t('NT') || 'NT'"
             />
           </div>
           <div class="mb-4 centerx labelx">
@@ -46,7 +46,7 @@
               v-model="exchangeVNDUSDT"
               type="text"
               style="width: 100%"
-              label="Tỉ giá VND/USDT"
+              :label="$t('DSYNTNTAF') || 'DSYNTNTAF'"
             />
           </div>
           <!-- <div class="mb-4 centerx labelx">
@@ -88,7 +88,7 @@
         @click="actionChangeBank()"
         type="filled"
         class="block mt-5 mb-12"
-        >Xác Nhận</vs-button
+        >{{ $t("DSADGF") || "DSADGF" }}</vs-button
       >
     </template>
     <template>
@@ -96,11 +96,11 @@
         <div class="w-full vx-col lg:w-1/2">
           <table class="tbv">
             <tr>
-              <th>Chủ Tài Khoản</th>
-              <th>Tên ngân hàng</th>
-              <th>Số tài khoản</th>
-              <th>Nội dung mẫu</th>
-              <th>Tỉ giá VND/USDT</th>
+              <th>{{ $t("YUI") || "YUI" }}</th>
+              <th>{{ $t("YIJT") || "YIJT" }}</th>
+              <th>{{ $t("JTN") || "JTN" }}</th>
+              <th>{{ $t("NT") || "NT" }}</th>
+              <th>{{ $t("DSYNTNTAF") || "DSYNTNTAF" }}</th>
             </tr>
             <tr>
               <!-- thêm class td-check -->
